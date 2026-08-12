@@ -1,0 +1,872 @@
+/* ==========================================================================
+   COL Status -- visual system
+   Palette and lettering are borrowed from NOAA raster nautical charts: navy
+   chart ink, land buff, paper, and the magenta reserved on real charts for
+   regulatory boundaries (used here for the selected lease).
+   ========================================================================== */
+
+:root {
+  --ink: #0f1d26;
+  --ink-raised: #172a35;
+  --ink-sunk: #0a141b;
+  --rule: #243b48;
+  --rule-soft: #1b2f3a;
+
+  --buff: #e3d5b8;
+  --buff-dim: #9b9584;
+  --paper: #f7f4ec;
+
+  --magenta: #e0457b;
+
+  --accept: #35b37e;
+  --modify: #e9a13b;
+  --decline: #e2564f;
+
+  --sans: var(--font-body), system-ui, sans-serif;
+  --mono: var(--font-mono), ui-monospace, monospace;
+  --label: var(--font-label), var(--font-body), sans-serif;
+
+  --sheet-peek: 132px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--ink);
+  color: var(--buff);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  /* Nothing in this app scrolls sideways. Without this, one over-wide element
+     makes a phone shrink-to-fit the whole layout and the sheet lands
+     off-screen. */
+  overflow-x: hidden;
+}
+
+/* Chart-lettering treatment: narrow, uppercase, widely tracked. Every small
+   label in the app uses it, which is what ties the chrome together. */
+.eyebrow {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--buff-dim);
+}
+
+.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------- shell -- */
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 348px 1fr;
+  grid-template-areas:
+    "masthead masthead"
+    "panel    map";
+  height: 100dvh;
+  width: 100%;
+}
+
+/* ------------------------------------------------------------ masthead -- */
+
+.masthead {
+  grid-area: masthead;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 16px;
+  height: 52px;
+  background: var(--ink-sunk);
+  border-bottom: 1px solid var(--rule);
+  z-index: 30;
+}
+
+.masthead__mark {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.masthead__title {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--paper);
+  margin: 0;
+}
+
+.masthead__sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--buff-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.masthead__saving {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--magenta);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------- signature: ledger --
+   78 ticks in TPWD application order. Tick width tracks acreage, colour
+   tracks status, and ticks filtered out of the current view go quiet. It is
+   the legend, the caseload overview, and a jump-to control in one strip. */
+
+.ledger {
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  height: 26px;
+  flex: 1;
+  min-width: 0;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 2px;
+}
+
+.ledger__tick {
+  min-width: 2px;
+  padding: 0;
+  border-radius: 0;
+  opacity: 0.28;
+  transition: opacity 120ms var(--ease), transform 120ms var(--ease);
+  transform-origin: bottom;
+}
+
+.ledger__tick[data-visible="true"] {
+  opacity: 1;
+}
+
+.ledger__tick:hover {
+  transform: scaleY(1.18);
+}
+
+.ledger__tick[data-selected="true"] {
+  outline: 2px solid var(--paper);
+  outline-offset: -2px;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------- panel -- */
+
+.panel {
+  grid-area: panel;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--ink);
+  border-right: 1px solid var(--rule);
+  z-index: 20;
+}
+
+.panel__scroll {
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.search {
+  position: relative;
+  padding: 12px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.search__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 34px 0 12px;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.search__input::placeholder {
+  color: var(--buff-dim);
+}
+
+.search__clear {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  color: var(--buff-dim);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.search__clear:hover {
+  color: var(--paper);
+}
+
+/* -------------------------------------------------------------- filters -- */
+
+.filters {
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.filter-group {
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.filter-group:last-child {
+  border-bottom: none;
+}
+
+.filter-group__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.filter-group__head:hover {
+  background: var(--ink-raised);
+}
+
+.filter-group__caret {
+  font-size: 9px;
+  color: var(--buff-dim);
+  transition: transform 140ms var(--ease);
+}
+
+.filter-group[data-open="true"] .filter-group__caret {
+  transform: rotate(90deg);
+}
+
+.filter-group__count {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--magenta);
+}
+
+.filter-group__body {
+  padding: 0 12px 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  min-height: 34px;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  color: var(--buff-dim);
+  font-size: 12px;
+  transition: border-color 120ms var(--ease), color 120ms var(--ease);
+}
+
+.chip:hover {
+  border-color: var(--buff-dim);
+  color: var(--buff);
+}
+
+.chip[data-on="true"] {
+  color: var(--paper);
+  border-color: currentColor;
+  background: var(--ink-raised);
+}
+
+.chip__swatch {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.chip__n {
+  font-family: var(--mono);
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+/* Owner list gets its own denser treatment -- 25 of them. */
+.owners {
+  display: flex;
+  flex-direction: column;
+  max-height: 244px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 6px;
+  min-height: 36px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.owner:hover {
+  background: var(--ink-raised);
+}
+
+.owner__box {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+  position: relative;
+}
+
+.owner[data-on="true"] .owner__box {
+  background: var(--magenta);
+  border-color: var(--magenta);
+}
+
+.owner[data-on="true"] .owner__box::after {
+  content: "";
+  position: absolute;
+  left: 3.5px;
+  top: 0.5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+
+.owner__name {
+  flex: 1;
+  min-width: 0;
+  font-size: 12.5px;
+  color: var(--buff);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.owner__n {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--buff-dim);
+}
+
+.filter-reset {
+  display: block;
+  width: 100%;
+  padding: 11px 12px;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--magenta);
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: left;
+}
+
+.filter-reset:hover {
+  background: var(--ink-raised);
+}
+
+/* ---------------------------------------------------------------- list -- */
+
+.results-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 12px 12px 8px;
+}
+
+.results-head__acres {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--buff-dim);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 4px 46px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px 10px 0;
+  min-height: 52px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.row:hover {
+  background: var(--ink-raised);
+}
+
+.row[data-selected="true"] {
+  background: var(--ink-raised);
+}
+
+.row__bar {
+  align-self: stretch;
+  width: 4px;
+}
+
+.row[data-selected="true"] .row__bar {
+  box-shadow: inset 0 0 0 1px var(--paper);
+}
+
+.row__id {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--paper);
+  text-align: right;
+}
+
+.row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.row__applicant {
+  display: block;
+  font-size: 13px;
+  color: var(--buff);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row__meta {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--buff-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row__acres {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--buff-dim);
+  text-align: right;
+}
+
+.empty {
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.empty__line {
+  color: var(--buff-dim);
+  font-size: 13px;
+  margin: 0 0 14px;
+}
+
+.empty__action {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--magenta);
+}
+
+/* ----------------------------------------------------------------- map -- */
+
+.map {
+  grid-area: map;
+  position: relative;
+  min-height: 0;
+  background: var(--ink-sunk);
+}
+
+/* MapLibre stamps `position: relative` on its own container via
+   maplibre-gl.css, which loads after this file and would otherwise collapse
+   the canvas to zero height. Out-specify it and pin the size both ways. */
+.map .map__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.basemaps {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  z-index: 5;
+}
+
+.basemap {
+  padding: 8px 11px;
+  min-height: 34px;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--buff-dim);
+  border-right: 1px solid var(--rule);
+}
+
+.basemap:last-child {
+  border-right: none;
+}
+
+.basemap:hover {
+  color: var(--buff);
+}
+
+.basemap[data-on="true"] {
+  color: var(--ink);
+  background: var(--buff);
+}
+
+/* --------------------------------------------------------------- detail -- */
+
+.detail {
+  position: absolute;
+  right: 12px;
+  /* Clears MapLibre's attribution strip along the bottom edge. */
+  bottom: 30px;
+  width: 330px;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--magenta);
+  z-index: 10;
+  animation: detail-in 180ms var(--ease);
+}
+
+@keyframes detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.detail__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 12px 10px;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.detail__id {
+  font-family: var(--mono);
+  font-size: 20px;
+  line-height: 1;
+  color: var(--paper);
+}
+
+.detail__names {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.detail__names .eyebrow {
+  display: block;
+}
+
+.detail__applicant {
+  display: block;
+  font-size: 14px;
+  color: var(--paper);
+  line-height: 1.25;
+}
+
+.detail__close {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--buff-dim);
+  font-size: 17px;
+  line-height: 1;
+}
+
+.detail__close:hover {
+  color: var(--paper);
+}
+
+.detail__facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.fact {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  border-right: 1px solid var(--rule-soft);
+}
+
+.fact:nth-child(2n) {
+  border-right: none;
+}
+
+.fact__value {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--buff);
+  margin-top: 2px;
+}
+
+.detail__actions {
+  padding: 12px;
+}
+
+.status-set {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.status-btn {
+  padding: 11px 4px;
+  min-height: 44px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--buff-dim);
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 11px;
+  font-weight: 600;
+  transition: color 120ms var(--ease), border-color 120ms var(--ease);
+}
+
+.status-btn:hover:not(:disabled) {
+  color: var(--paper);
+  border-color: currentColor;
+}
+
+.status-btn[data-on="true"] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.status-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.detail__note {
+  margin: 10px 0 0;
+  font-size: 11.5px;
+  color: var(--buff-dim);
+  line-height: 1.4;
+}
+
+.detail__error {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  background: rgba(226, 86, 79, 0.12);
+  border-left: 2px solid var(--decline);
+  font-size: 12px;
+  color: #f3b4b0;
+}
+
+/* ---------------------------------------------------------------- misc -- */
+
+.sheet-toggle {
+  display: none;
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 10px;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------- small screens --
+   Phone and tablet: the map takes the whole screen and the panel becomes a
+   sheet that rests at a peek height showing the ledger and the result count,
+   and lifts to full height for filtering and scanning the list. */
+
+@media (max-width: 900px) {
+  .shell {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "masthead"
+      "map";
+  }
+
+  .masthead {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 8px 12px;
+    gap: 8px 14px;
+  }
+
+  /* The per-status counts are already carried by the ledger and the status
+     chips, so the masthead keeps only the title and the strip. */
+  .masthead__sub {
+    display: none;
+  }
+
+  .masthead .ledger {
+    flex-basis: 100%;
+    order: 3;
+    height: 20px;
+  }
+
+  /* The sheet handle already reports the count and the ledger already shows
+     the status mix, so the strapline is redundant here -- and it is the one
+     thing narrow enough to overflow the bar. */
+  .masthead__sub {
+    display: none;
+  }
+
+  .panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 78dvh;
+    border-right: none;
+    border-top: 1px solid var(--rule);
+    box-shadow: 0 -14px 34px rgba(0, 0, 0, 0.45);
+    transform: translateY(calc(78dvh - var(--sheet-peek)));
+    transition: transform 260ms var(--ease);
+  }
+
+  .panel[data-open="true"] {
+    transform: translateY(0);
+  }
+
+  .sheet-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 14px 12px;
+    border-bottom: 1px solid var(--rule-soft);
+    flex-shrink: 0;
+  }
+
+  .sheet-toggle__grip {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 3px;
+    background: var(--rule);
+    border-radius: 2px;
+  }
+
+  .sheet-toggle__count {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--paper);
+  }
+
+  .sheet-toggle__hint {
+    margin-left: auto;
+  }
+
+  .detail {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    bottom: calc(var(--sheet-peek) + 12px);
+  }
+
+  .basemaps {
+    top: auto;
+    bottom: calc(var(--sheet-peek) + 12px);
+    left: 12px;
+  }
+
+  /* Detail card is open: it owns the bottom of the screen, so move the
+     basemap switcher clear of it rather than letting them stack. */
+  .map[data-detail="true"] .basemaps {
+    bottom: auto;
+    top: 12px;
+  }
+
+  /* A scroll region inside a scroll region is miserable with a thumb -- let the
+     owner list run full length and let the sheet do the scrolling. */
+  .owners {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .row {
+    min-height: 58px;
+  }
+
+  .status-btn {
+    min-height: 48px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
