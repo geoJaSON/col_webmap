@@ -23,7 +23,7 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "COL Status",
-  description: "TPWD Certificate of Location applications by status, owner, and bay system.",
+  description: "TPWD Certificate of Location applications by status, entity, and bay system.",
 };
 
 export const viewport: Viewport = {

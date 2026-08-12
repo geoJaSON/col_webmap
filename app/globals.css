@@ -334,8 +334,8 @@ button {
   opacity: 0.75;
 }
 
-/* Owner list gets its own denser treatment -- 25 of them. */
-.owners {
+/* Entity list gets its own denser treatment -- 25 of them. */
+.entities {
   display: flex;
   flex-direction: column;
   max-height: 244px;
@@ -344,7 +344,7 @@ button {
   scrollbar-color: var(--rule) transparent;
 }
 
-.owner {
+.entity {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -354,11 +354,11 @@ button {
   border-bottom: 1px solid var(--rule-soft);
 }
 
-.owner:hover {
+.entity:hover {
   background: var(--ink-raised);
 }
 
-.owner__box {
+.entity__box {
   width: 13px;
   height: 13px;
   flex-shrink: 0;
@@ -367,12 +367,12 @@ button {
   position: relative;
 }
 
-.owner[data-on="true"] .owner__box {
+.entity[data-on="true"] .entity__box {
   background: var(--magenta);
   border-color: var(--magenta);
 }
 
-.owner[data-on="true"] .owner__box::after {
+.entity[data-on="true"] .entity__box::after {
   content: "";
   position: absolute;
   left: 3.5px;
@@ -384,7 +384,7 @@ button {
   transform: rotate(42deg);
 }
 
-.owner__name {
+.entity__name {
   flex: 1;
   min-width: 0;
   font-size: 12.5px;
@@ -394,7 +394,7 @@ button {
   white-space: nowrap;
 }
 
-.owner__n {
+.entity__n {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--buff-dim);
@@ -724,6 +724,89 @@ button {
   color: #f3b4b0;
 }
 
+/* ---------------------------------------------------------------- gate --
+   Shown instead of the map when SITE_PASSCODE is set and the visitor has no
+   cookie yet. Deliberately plain: it is a door, not a landing page. */
+
+.gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 24px;
+  background: var(--ink);
+}
+
+.gate__card {
+  width: 100%;
+  max-width: 340px;
+  padding: 26px 24px 24px;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--magenta);
+}
+
+.gate__title {
+  margin: 0;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+.gate__blurb {
+  margin: 8px 0 22px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--buff-dim);
+}
+
+.gate__label {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.gate__input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 16px; /* 16px stops iOS zooming the page on focus. */
+  letter-spacing: 0.08em;
+}
+
+.gate__error {
+  margin: 12px 0 0;
+  padding: 8px 10px;
+  background: rgba(226, 86, 79, 0.12);
+  border-left: 2px solid var(--decline);
+  font-size: 12px;
+  color: #f3b4b0;
+}
+
+.gate__submit {
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px;
+  min-height: 46px;
+  background: var(--buff);
+  color: var(--ink);
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.gate__submit:hover {
+  background: var(--paper);
+}
+
 /* ---------------------------------------------------------------- misc -- */
 
 .sheet-toggle {
@@ -848,8 +931,8 @@ button {
   }
 
   /* A scroll region inside a scroll region is miserable with a thumb -- let the
-     owner list run full length and let the sheet do the scrolling. */
-  .owners {
+     entity list run full length and let the sheet do the scrolling. */
+  .entities {
     max-height: none;
     overflow-y: visible;
   }

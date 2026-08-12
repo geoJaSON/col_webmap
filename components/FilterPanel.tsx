@@ -86,22 +86,24 @@ export default function FilterPanel({
         </div>
       </Group>
 
-      <Group title="Owner" count={filters.applicants.size} startOpen>
-        <div className="owners">
-          {applicants.map((owner) => (
+      {/* "Entity" is the workbook's Applicant Name -- the company or person on
+          the TPWD application. */}
+      <Group title="Entity" count={filters.applicants.size}>
+        <div className="entities">
+          {applicants.map((entity) => (
             <button
-              key={owner.value}
+              key={entity.value}
               type="button"
-              className="owner"
-              data-on={filters.applicants.has(owner.value)}
-              aria-pressed={filters.applicants.has(owner.value)}
-              onClick={() => onToggle("applicants", owner.value)}
+              className="entity"
+              data-on={filters.applicants.has(entity.value)}
+              aria-pressed={filters.applicants.has(entity.value)}
+              onClick={() => onToggle("applicants", entity.value)}
             >
-              <span className="owner__box" aria-hidden="true" />
-              <span className="owner__name" title={owner.value}>
-                {owner.value}
+              <span className="entity__box" aria-hidden="true" />
+              <span className="entity__name" title={entity.value}>
+                {entity.value}
               </span>
-              <span className="owner__n">{owner.count}</span>
+              <span className="entity__n">{entity.count}</span>
             </button>
           ))}
         </div>
@@ -125,7 +127,8 @@ export default function FilterPanel({
         </div>
       </Group>
 
-      <Group title="Reviewer" count={filters.groups.size}>
+      {/* "Owner" is the workbook's Group column -- Justin or Johny. */}
+      <Group title="Owner" count={filters.groups.size}>
         <div className="chips">
           {groups.map((group) => (
             <button

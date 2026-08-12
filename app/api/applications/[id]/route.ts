@@ -15,13 +15,8 @@ export async function PATCH(
     return NextResponse.json({ error: `"${rawId}" is not an application number.` }, { status: 400 });
   }
 
-  // Optional shared passcode. Unset means the deployment is open to anyone
-  // holding the URL, which is the documented default.
-  const required = process.env.EDIT_PASSCODE;
-  if (required && request.headers.get("x-edit-passcode") !== required) {
-    return NextResponse.json({ error: "That passcode does not match." }, { status: 401 });
-  }
-
+  // No check here: if SITE_PASSCODE is set, middleware has already turned away
+  // anyone without the cookie, including on this route.
   let body: unknown;
   try {
     body = await request.json();

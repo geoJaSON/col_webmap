@@ -9,9 +9,14 @@ export function isStatus(value: unknown): value is Status {
 export type Application = {
   /** TPWD Application # */
   id: number;
-  /** Reviewer group: "Justin" or "Johny" */
+  /**
+   * The workbook's Group column: "Justin" or "Johny". Shown in the UI as
+   * "Owner" -- not to be confused with `applicant`, which the UI calls
+   * "Entity".
+   */
   group_name: string;
   status: Status;
+  /** The workbook's Applicant Name. Shown in the UI as "Entity". */
   applicant: string;
   bay_system: string;
   acreage: number | null;

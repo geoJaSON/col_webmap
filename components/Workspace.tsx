@@ -10,8 +10,6 @@ import ResultList from "@/components/ResultList";
 import type { StoreMode } from "@/lib/store";
 import { STATUSES, type Application, type Filters, type Status } from "@/lib/types";
 
-const PASSCODE_KEY = "col-edit-passcode";
-
 const emptyFilters = (): Filters => ({
   statuses: new Set<Status>(),
   applicants: new Set<string>(),
@@ -43,14 +41,6 @@ export default function Workspace({ initialApplications, mode }: Props) {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [passcodeRequired, setPasscodeRequired] = useState(false);
-
-  useEffect(() => {
-    fetch("/api/config")
-      .then((r) => r.json())
-      .then((c) => setPasscodeRequired(Boolean(c.passcodeRequired)))
-      .catch(() => setPasscodeRequired(false));
-  }, []);
 
   const facets = useMemo(
     () => ({
@@ -149,24 +139,18 @@ export default function Workspace({ initialApplications, mode }: Props) {
       // Optimistic: the map recolours the moment the button is pressed.
       setApplications((prev) => prev.map((a) => (a.id === id ? { ...a, status } : a)));
 
-      const headers: Record<string, string> = { "Content-Type": "application/json" };
-      if (passcodeRequired) {
-        let code = window.localStorage.getItem(PASSCODE_KEY);
-        if (!code) {
-          code = window.prompt("Passcode to change a status") ?? "";
-          if (code) window.localStorage.setItem(PASSCODE_KEY, code);
-        }
-        headers["x-edit-passcode"] = code;
-      }
-
       try {
         const response = await fetch(`/api/applications/${id}`, {
           method: "PATCH",
-          headers,
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ status }),
         });
         if (!response.ok) {
-          if (response.status === 401) window.localStorage.removeItem(PASSCODE_KEY);
+          // 401 means the site passcode cookie expired. A reload lands on the
+          // unlock page, and the edit can be redone from there.
+          if (response.status === 401) {
+            throw new Error("Your session expired. Reload the page to sign back in.");
+          }
           const payload = await response.json().catch(() => ({}));
           throw new Error(payload.error ?? `Save failed (${response.status}).`);
         }
@@ -179,7 +163,7 @@ export default function Workspace({ initialApplications, mode }: Props) {
         setSaving(false);
       }
     },
-    [applications, passcodeRequired],
+    [applications],
   );
 
   return (
@@ -221,7 +205,7 @@ export default function Workspace({ initialApplications, mode }: Props) {
             className="search__input"
             type="search"
             inputMode="search"
-            placeholder="Find by number, owner, or bay"
+            placeholder="Find by number, entity, or bay"
             value={filters.search}
             onChange={(e) => setFilters((prev) => ({ ...prev, search: e.target.value }))}
             aria-label="Find an application"

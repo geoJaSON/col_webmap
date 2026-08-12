@@ -46,7 +46,7 @@ export default function DetailCard({
           <div className="fact__value">{application.bay_system}</div>
         </div>
         <div className="fact">
-          <div className="eyebrow">Reviewer</div>
+          <div className="eyebrow">Owner</div>
           <div className="fact__value">{application.group_name}</div>
         </div>
         <div className="fact">
