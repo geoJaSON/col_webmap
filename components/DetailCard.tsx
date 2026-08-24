@@ -8,8 +8,12 @@ type Props = {
   readOnlyReason?: string;
   saving: boolean;
   error: string | null;
+  editing: boolean;
+  onEditShape: () => void;
   onSetStatus: (status: Status) => void;
   onClose: () => void;
+  /** The shape editor, rendered in place of the status buttons while open. */
+  children?: React.ReactNode;
 };
 
 export default function DetailCard({
@@ -18,13 +22,20 @@ export default function DetailCard({
   readOnlyReason,
   saving,
   error,
+  editing,
+  onEditShape,
   onSetStatus,
   onClose,
+  children,
 }: Props) {
   const vertices = application.geometry.coordinates[0]?.length ?? 1;
 
   return (
-    <aside className="detail" aria-label={`Application ${application.id}`}>
+    <aside
+      className="detail"
+      data-editing={editing}
+      aria-label={`Application ${application.id}`}
+    >
       <div className="detail__head">
         <span className="detail__id">{application.id}</span>
         <span className="detail__names">
@@ -50,14 +61,24 @@ export default function DetailCard({
           <div className="fact__value">{application.group_name}</div>
         </div>
         <div className="fact">
-          <div className="eyebrow">Vertices</div>
+          <div className="eyebrow">Corners</div>
           {/* The ring repeats its first point to close; report real corners. */}
           <div className="fact__value">{vertices - 1}</div>
         </div>
       </div>
 
+      {editing ? (
+        children
+      ) : (
       <div className="detail__actions">
-        <div className="eyebrow">Status</div>
+        <div className="detail__actions-head">
+          <span className="eyebrow">Status</span>
+          {!readOnly && (
+            <button type="button" className="detail__edit" onClick={onEditShape}>
+              Edit shape
+            </button>
+          )}
+        </div>
         <div className="status-set">
           {STATUSES.map((status) => {
             const on = application.status === status;
@@ -81,6 +102,7 @@ export default function DetailCard({
         {readOnly && <p className="detail__note">{readOnlyReason ?? "This view is read-only."}</p>}
         {error && <p className="detail__error">{error}</p>}
       </div>
+      )}
     </aside>
   );
 }

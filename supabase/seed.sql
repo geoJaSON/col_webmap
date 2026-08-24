@@ -43,7 +43,7 @@ insert into public.col_applications (id, group_name, status, applicant, bay_syst
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (7, 'Justin', 'Modify', 'Sassy Lady, Inc.', 'Galveston Bay', 99.6, '{"type": "Polygon", "coordinates": [[[-94.70283, 29.47568], [-94.70699, 29.47286], [-94.70455, 29.47106], [-94.70275, 29.46837], [-94.70025, 29.47058], [-94.69782, 29.46775], [-94.69783, 29.47257], [-94.70283, 29.47568]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (7, 'Justin', 'Modify', 'Sassy Lady, Inc.', 'Galveston Bay', 92.34, '{"type": "Polygon", "coordinates": [[[-94.70182, 29.47505], [-94.70699, 29.47286], [-94.70455, 29.47106], [-94.70275, 29.46837], [-94.70025, 29.47058], [-94.69782, 29.46775], [-94.69783, 29.47257], [-94.70182, 29.47505]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,
@@ -106,7 +106,7 @@ insert into public.col_applications (id, group_name, status, applicant, bay_syst
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (16, 'Justin', 'Modify', 'Justin Woody', 'Galveston Bay', 99.07, '{"type": "Polygon", "coordinates": [[[-94.71944, 29.48726], [-94.73056, 29.4797], [-94.72813, 29.47804], [-94.71671, 29.48579], [-94.71944, 29.48726]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (16, 'Justin', 'Modify', 'Justin Woody', 'Galveston Bay', 93.76, '{"type": "Polygon", "coordinates": [[[-94.71944, 29.48726], [-94.73056, 29.4797], [-94.72813, 29.47804], [-94.71796, 29.48493], [-94.71944, 29.48726]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,
@@ -176,14 +176,14 @@ insert into public.col_applications (id, group_name, status, applicant, bay_syst
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (26, 'Justin', 'Modify', 'Nightmare, Inc.', 'Galveston Bay', 99.24, '{"type": "Polygon", "coordinates": [[[-94.72778, 29.49115], [-94.73265, 29.48866], [-94.73117, 29.48603], [-94.73042, 29.48665], [-94.73034, 29.48427], [-94.72153, 29.49025], [-94.72209, 29.49106], [-94.72778, 29.49115]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (26, 'Justin', 'Modify', 'Nightmare, Inc.', 'Galveston Bay', 91.22, '{"type": "Polygon", "coordinates": [[[-94.72691, 29.49113], [-94.73234, 29.48811], [-94.73117, 29.48603], [-94.73042, 29.48665], [-94.73034, 29.48427], [-94.72153, 29.49025], [-94.72209, 29.49106], [-94.72691, 29.49113]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (27, 'Justin', 'Accept', 'Nightmare, Inc.', 'Galveston Bay', 91.71, '{"type": "Polygon", "coordinates": [[[-94.71532, 29.48274], [-94.72179, 29.47834], [-94.71567, 29.47597], [-94.71104, 29.47912], [-94.71333, 29.48023], [-94.71532, 29.48274]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (27, 'Justin', 'Modify', 'Nightmare, Inc.', 'Galveston Bay', 84.0, '{"type": "Polygon", "coordinates": [[[-94.72222, 29.48143], [-94.71611, 29.47565], [-94.71148, 29.4788], [-94.71722, 29.48143], [-94.72222, 29.48143]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,
@@ -379,7 +379,7 @@ insert into public.col_applications (id, group_name, status, applicant, bay_syst
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (94, 'Johny', 'Modify', 'Jurisich & Sons, Inc.', 'Galveston Bay', 95.57, '{"type": "Polygon", "coordinates": [[[-94.70749, 29.47287], [-94.7031, 29.47585], [-94.70746, 29.47852], [-94.70901, 29.4781], [-94.71074, 29.47897], [-94.71533, 29.47585], [-94.7115, 29.47593], [-94.70901, 29.47288], [-94.70749, 29.47287]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (94, 'Johny', 'Modify', 'Jurisich & Sons, Inc.', 'Galveston Bay', 73.43, '{"type": "Polygon", "coordinates": [[[-94.70749, 29.47287], [-94.70416, 29.47511], [-94.71108, 29.47872], [-94.71533, 29.47585], [-94.7115, 29.47593], [-94.70901, 29.47288], [-94.70749, 29.47287]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,
@@ -484,7 +484,7 @@ insert into public.col_applications (id, group_name, status, applicant, bay_syst
     bay_system = excluded.bay_system,
     acreage    = excluded.acreage,
     geometry   = excluded.geometry;
-insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (109, 'Johny', 'Decline', 'Capt. Johny Jurisich, LP', 'Galveston Bay', 95.15, '{"type": "Polygon", "coordinates": [[[-94.71666, 29.48549], [-94.72787, 29.47787], [-94.72537, 29.47615], [-94.72377, 29.47617], [-94.72235, 29.47831], [-94.71557, 29.48291], [-94.71677, 29.48407], [-94.71666, 29.48549]]]}'::jsonb)
+insert into public.col_applications (id, group_name, status, applicant, bay_system, acreage, geometry) values (109, 'Johny', 'Modify', 'Capt. Johny Jurisich, LP', 'Galveston Bay', 82.87, '{"type": "Polygon", "coordinates": [[[-94.71825, 29.48483], [-94.72787, 29.47787], [-94.72537, 29.47615], [-94.72377, 29.47617], [-94.72235, 29.47831], [-94.71735, 29.48169], [-94.71825, 29.48483]]]}'::jsonb)
   on conflict (id) do update set
     group_name = excluded.group_name,
     applicant  = excluded.applicant,

@@ -239,14 +239,14 @@
     "status": "Modify",
     "applicant": "Sassy Lady, Inc.",
     "bay_system": "Galveston Bay",
-    "acreage": 99.6,
+    "acreage": 92.34,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
         [
           [
-            -94.70283,
-            29.47568
+            -94.70182,
+            29.47505
           ],
           [
             -94.70699,
@@ -273,8 +273,8 @@
             29.47257
           ],
           [
-            -94.70283,
-            29.47568
+            -94.70182,
+            29.47505
           ]
         ]
       ]
@@ -602,7 +602,7 @@
     "status": "Modify",
     "applicant": "Justin Woody",
     "bay_system": "Galveston Bay",
-    "acreage": 99.07,
+    "acreage": 93.76,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -620,8 +620,8 @@
             29.47804
           ],
           [
-            -94.71671,
-            29.48579
+            -94.71796,
+            29.48493
           ],
           [
             -94.71944,
@@ -984,18 +984,18 @@
     "status": "Modify",
     "applicant": "Nightmare, Inc.",
     "bay_system": "Galveston Bay",
-    "acreage": 99.24,
+    "acreage": 91.22,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
         [
           [
-            -94.72778,
-            29.49115
+            -94.72691,
+            29.49113
           ],
           [
-            -94.73265,
-            29.48866
+            -94.73234,
+            29.48811
           ],
           [
             -94.73117,
@@ -1018,8 +1018,8 @@
             29.49106
           ],
           [
-            -94.72778,
-            29.49115
+            -94.72691,
+            29.49113
           ]
         ]
       ]
@@ -1028,37 +1028,33 @@
   {
     "id": 27,
     "group_name": "Justin",
-    "status": "Accept",
+    "status": "Modify",
     "applicant": "Nightmare, Inc.",
     "bay_system": "Galveston Bay",
-    "acreage": 91.71,
+    "acreage": 84.0,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
         [
           [
-            -94.71532,
-            29.48274
+            -94.72222,
+            29.48143
           ],
           [
-            -94.72179,
-            29.47834
+            -94.71611,
+            29.47565
           ],
           [
-            -94.71567,
-            29.47597
+            -94.71148,
+            29.4788
           ],
           [
-            -94.71104,
-            29.47912
+            -94.71722,
+            29.48143
           ],
           [
-            -94.71333,
-            29.48023
-          ],
-          [
-            -94.71532,
-            29.48274
+            -94.72222,
+            29.48143
           ]
         ]
       ]
@@ -2087,7 +2083,7 @@
     "status": "Modify",
     "applicant": "Jurisich & Sons, Inc.",
     "bay_system": "Galveston Bay",
-    "acreage": 95.57,
+    "acreage": 73.43,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
@@ -2097,20 +2093,12 @@
             29.47287
           ],
           [
-            -94.7031,
-            29.47585
+            -94.70416,
+            29.47511
           ],
           [
-            -94.70746,
-            29.47852
-          ],
-          [
-            -94.70901,
-            29.4781
-          ],
-          [
-            -94.71074,
-            29.47897
+            -94.71108,
+            29.47872
           ],
           [
             -94.71533,
@@ -2677,17 +2665,17 @@
   {
     "id": 109,
     "group_name": "Johny",
-    "status": "Decline",
+    "status": "Modify",
     "applicant": "Capt. Johny Jurisich, LP",
     "bay_system": "Galveston Bay",
-    "acreage": 95.15,
+    "acreage": 82.87,
     "geometry": {
       "type": "Polygon",
       "coordinates": [
         [
           [
-            -94.71666,
-            29.48549
+            -94.71825,
+            29.48483
           ],
           [
             -94.72787,
@@ -2706,16 +2694,12 @@
             29.47831
           ],
           [
-            -94.71557,
-            29.48291
+            -94.71735,
+            29.48169
           ],
           [
-            -94.71677,
-            29.48407
-          ],
-          [
-            -94.71666,
-            29.48549
+            -94.71825,
+            29.48483
           ]
         ]
       ]

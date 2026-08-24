@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
+import type { Ring } from "@/lib/geometry";
 import { STATUS_COLORS, type Application } from "@/lib/types";
 
 const SOURCE = "col";
@@ -13,6 +14,13 @@ const LINE = "col-line";
 const PICK = "col-pick";
 const SELECTED = "col-selected";
 const LABEL = "col-label";
+
+// Edit-mode layers, drawn above everything else while a shape is open.
+const EDIT_SRC = "edit";
+const EDIT_FILL = "edit-fill";
+const EDIT_LINE = "edit-line";
+const EDIT_MID = "edit-midpoint";
+const EDIT_VERTEX = "edit-vertex";
 
 /**
  * Three raster basemaps live in the style at once and are toggled by
@@ -76,12 +84,50 @@ const statusColor: maplibregl.ExpressionSpecification = [
  * so the frame is biased upward rather than centred underneath them. On a wide
  * screen the equivalent obstruction is the detail card in the bottom-right.
  */
-function framePadding(avoidDetailCard = false): maplibregl.PaddingOptions {
+function framePadding(
+  avoidDetailCard = false,
+  editing = false,
+): maplibregl.PaddingOptions {
   if (typeof window === "undefined") return { top: 60, left: 60, right: 60, bottom: 60 };
   if (window.innerWidth < 900) {
+    // Editing on a phone: the card owns the lower half, so push the shape into
+    // the strip above it rather than centring it underneath.
+    if (editing) return { top: 16, left: 20, right: 20, bottom: 430 };
     return { top: 26, left: 26, right: 26, bottom: avoidDetailCard ? 330 : 216 };
   }
   return { top: 80, left: 80, right: avoidDetailCard ? 380 : 80, bottom: 90 };
+}
+
+/**
+ * The edit overlay as one FeatureCollection: the ring itself, a handle on each
+ * corner, and a hollow handle at each midpoint that inserts a new corner.
+ */
+function editFeatures(points: Ring) {
+  const closed = [...points, points[0]];
+  const features: GeoJSON.Feature[] = [
+    {
+      type: "Feature",
+      properties: { kind: "ring" },
+      geometry: { type: "Polygon", coordinates: [closed] },
+    },
+  ];
+  points.forEach((point, i) => {
+    features.push({
+      type: "Feature",
+      properties: { kind: "vertex", i },
+      geometry: { type: "Point", coordinates: point },
+    });
+    const next = points[(i + 1) % points.length];
+    features.push({
+      type: "Feature",
+      properties: { kind: "midpoint", i },
+      geometry: {
+        type: "Point",
+        coordinates: [(point[0] + next[0]) / 2, (point[1] + next[1]) / 2],
+      },
+    });
+  });
+  return { type: "FeatureCollection" as const, features };
 }
 
 type Props = {
@@ -90,6 +136,9 @@ type Props = {
   selectedId: number | null;
   onSelect: (id: number | null) => void;
   detailOpen: boolean;
+  /** Open ring being edited (corners only, no closing point), or null. */
+  editPoints: Ring | null;
+  onEditPointsChange: (points: Ring) => void;
   /** The detail card, positioned against the map frame. */
   children?: React.ReactNode;
 };
@@ -100,6 +149,8 @@ export default function MapCanvas({
   selectedId,
   onSelect,
   detailOpen,
+  editPoints,
+  onEditPointsChange,
   children,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
@@ -110,6 +161,12 @@ export default function MapCanvas({
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
   onSelectRef.current = onSelect;
+  const editPointsRef = useRef(editPoints);
+  editPointsRef.current = editPoints;
+  const onEditChangeRef = useRef(onEditPointsChange);
+  onEditChangeRef.current = onEditPointsChange;
+  /** Index of the corner under the cursor mid-drag, or null. */
+  const dragging = useRef<number | null>(null);
 
   useEffect(() => {
     if (!container.current || map.current) return;
@@ -213,6 +270,8 @@ export default function MapCanvas({
       });
 
       const pick = (event: maplibregl.MapLayerMouseEvent) => {
+        // While editing, clicks belong to the shape, not to picking a new lease.
+        if (editPointsRef.current) return;
         const feature = event.features?.[0];
         if (feature?.properties) onSelectRef.current(Number(feature.properties.id));
       };
@@ -221,6 +280,7 @@ export default function MapCanvas({
 
       // Tapping bare water clears the selection.
       instance.on("click", (event) => {
+        if (editPointsRef.current) return;
         const hits = instance.queryRenderedFeatures(event.point, { layers: [FILL, PICK] });
         if (hits.length === 0) onSelectRef.current(null);
       });
@@ -233,6 +293,128 @@ export default function MapCanvas({
           instance.getCanvas().style.cursor = "";
         });
       }
+
+      instance.addSource(EDIT_SRC, {
+        type: "geojson",
+        data: { type: "FeatureCollection", features: [] },
+      });
+
+      instance.addLayer({
+        id: EDIT_FILL,
+        type: "fill",
+        source: EDIT_SRC,
+        filter: ["==", ["get", "kind"], "ring"],
+        paint: { "fill-color": "#e0457b", "fill-opacity": 0.15 },
+      });
+
+      instance.addLayer({
+        id: EDIT_LINE,
+        type: "line",
+        source: EDIT_SRC,
+        filter: ["==", ["get", "kind"], "ring"],
+        paint: { "line-color": "#e0457b", "line-width": 2.5 },
+      });
+
+      // Hollow, and smaller than a real corner, so the two never read alike.
+      instance.addLayer({
+        id: EDIT_MID,
+        type: "circle",
+        source: EDIT_SRC,
+        filter: ["==", ["get", "kind"], "midpoint"],
+        paint: {
+          "circle-radius": 4.5,
+          "circle-color": "#0f1d26",
+          "circle-stroke-color": "#e0457b",
+          "circle-stroke-width": 1.5,
+          "circle-opacity": 0.9,
+        },
+      });
+
+      instance.addLayer({
+        id: EDIT_VERTEX,
+        type: "circle",
+        source: EDIT_SRC,
+        filter: ["==", ["get", "kind"], "vertex"],
+        paint: {
+          "circle-radius": 7,
+          "circle-color": "#f7f4ec",
+          "circle-stroke-color": "#e0457b",
+          "circle-stroke-width": 2.5,
+        },
+      });
+
+      // ---- corner dragging -------------------------------------------------
+      const startDrag = (event: { features?: maplibregl.MapGeoJSONFeature[] }) => {
+        const index = event.features?.[0]?.properties?.i;
+        if (index === undefined) return;
+        dragging.current = Number(index);
+        instance.dragPan.disable();
+        instance.getCanvas().style.cursor = "grabbing";
+      };
+
+      const moveDrag = (event: { lngLat: maplibregl.LngLat }) => {
+        const index = dragging.current;
+        const points = editPointsRef.current;
+        if (index === null || !points) return;
+        const next = points.map((pt, i) =>
+          i === index ? ([event.lngLat.lng, event.lngLat.lat] as [number, number]) : pt,
+        );
+        onEditChangeRef.current(next);
+      };
+
+      const endDrag = () => {
+        if (dragging.current === null) return;
+        dragging.current = null;
+        instance.dragPan.enable();
+        instance.getCanvas().style.cursor = "";
+      };
+
+      instance.on("mousedown", EDIT_VERTEX, (e) => {
+        e.preventDefault();
+        startDrag(e);
+      });
+      instance.on("touchstart", EDIT_VERTEX, (e) => {
+        e.preventDefault();
+        startDrag(e);
+      });
+      instance.on("mousemove", moveDrag);
+      instance.on("touchmove", moveDrag);
+      instance.on("mouseup", endDrag);
+      instance.on("touchend", endDrag);
+
+      // ---- add a corner ----------------------------------------------------
+      instance.on("click", EDIT_MID, (e) => {
+        e.preventDefault();
+        const points = editPointsRef.current;
+        const index = e.features?.[0]?.properties?.i;
+        if (!points || index === undefined) return;
+        const next = [...points];
+        next.splice(Number(index) + 1, 0, [e.lngLat.lng, e.lngLat.lat]);
+        onEditChangeRef.current(next);
+      });
+
+      // ---- remove a corner -------------------------------------------------
+      instance.on("dblclick", EDIT_VERTEX, (e) => {
+        e.preventDefault();
+        const points = editPointsRef.current;
+        const index = e.features?.[0]?.properties?.i;
+        if (!points || index === undefined) return;
+        if (points.length <= 3) return; // a triangle is the floor
+        onEditChangeRef.current(points.filter((_, i) => i !== Number(index)));
+      });
+
+      instance.on("mouseenter", EDIT_VERTEX, () => {
+        if (dragging.current === null) instance.getCanvas().style.cursor = "grab";
+      });
+      instance.on("mouseleave", EDIT_VERTEX, () => {
+        if (dragging.current === null) instance.getCanvas().style.cursor = "";
+      });
+      instance.on("mouseenter", EDIT_MID, () => {
+        instance.getCanvas().style.cursor = "copy";
+      });
+      instance.on("mouseleave", EDIT_MID, () => {
+        instance.getCanvas().style.cursor = "";
+      });
 
       setReady(true);
     });
@@ -310,6 +492,47 @@ export default function MapCanvas({
       );
     }
   }, [ready, basemap]);
+
+  // Opening the editor zooms in close. At the framing used for browsing, a
+  // small lease is only a few dozen pixels across and its corner handles
+  // overlap, which makes them impossible to grab.
+  const editingId = editPoints ? selectedId : null;
+  const framedForEdit = useRef<number | null>(null);
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    if (editingId === null) {
+      framedForEdit.current = null;
+      return;
+    }
+    if (framedForEdit.current === editingId) return;
+    framedForEdit.current = editingId;
+    const points = editPointsRef.current;
+    if (!points) return;
+    const lons = points.map((pt) => pt[0]);
+    const lats = points.map((pt) => pt[1]);
+    map.current.fitBounds(
+      [
+        [Math.min(...lons), Math.min(...lats)],
+        [Math.max(...lons), Math.max(...lats)],
+      ],
+      { padding: framePadding(true, true), maxZoom: 17.5, duration: 600 },
+    );
+  }, [ready, editingId]);
+
+  // Push the edit overlay to the map, and clear it when editing stops.
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const source = map.current.getSource(EDIT_SRC) as maplibregl.GeoJSONSource | undefined;
+    if (!source) return;
+    source.setData(
+      editPoints && editPoints.length >= 2
+        ? editFeatures(editPoints)
+        : { type: "FeatureCollection", features: [] },
+    );
+    // Double-click zoom would fight deleting a corner.
+    if (editPoints) map.current.doubleClickZoom.disable();
+    else map.current.doubleClickZoom.enable();
+  }, [ready, editPoints]);
 
   return (
     <div className="map" data-detail={detailOpen}>

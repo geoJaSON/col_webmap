@@ -7,6 +7,8 @@ import FilterPanel from "@/components/FilterPanel";
 import Ledger from "@/components/Ledger";
 import MapCanvas from "@/components/MapCanvas";
 import ResultList from "@/components/ResultList";
+import ShapeEditor from "@/components/ShapeEditor";
+import { formatRing, parseCoordinateText, type Ring } from "@/lib/geometry";
 import type { StoreMode } from "@/lib/store";
 import { STATUSES, type Application, type Filters, type Status } from "@/lib/types";
 
@@ -41,6 +43,12 @@ export default function Workspace({ initialApplications, mode }: Props) {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /**
+   * The shape being reworked. `points` is the open ring the map drags, `text`
+   * is what the box shows. Map edits rewrite the text; typing reparses into
+   * points when it is valid, so both stay in step without fighting.
+   */
+  const [edit, setEdit] = useState<{ id: number; points: Ring; text: string } | null>(null);
 
   const facets = useMemo(
     () => ({
@@ -110,6 +118,7 @@ export default function Workspace({ initialApplications, mode }: Props) {
   const select = useCallback((id: number | null) => {
     setSelectedId(id);
     setError(null);
+    setEdit((prev) => (prev && prev.id === id ? prev : null));
     // On a phone the sheet covers the map, so drop it back to the peek height
     // to reveal the lease that was just picked.
     if (id !== null) setSheetOpen(false);
@@ -117,7 +126,13 @@ export default function Workspace({ initialApplications, mode }: Props) {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedId(null);
+      if (event.key !== "Escape") return;
+      // Step back one level at a time rather than dropping everything at once.
+      setEdit((prev) => {
+        if (prev) return null;
+        setSelectedId(null);
+        return prev;
+      });
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -128,6 +143,66 @@ export default function Workspace({ initialApplications, mode }: Props) {
   useEffect(() => {
     if (selectedId !== null && !visibleIdSet.has(selectedId)) setSelectedId(null);
   }, [selectedId, visibleIdSet]);
+
+  const beginEdit = useCallback((application: Application) => {
+    const points = application.geometry.coordinates[0].slice(0, -1) as Ring;
+    setError(null);
+    setEdit({ id: application.id, points, text: formatRing(application.geometry.coordinates[0]) });
+  }, []);
+
+  /** From the map: corners moved, so regenerate the text to match. */
+  const setEditPoints = useCallback((points: Ring) => {
+    setEdit((prev) =>
+      prev ? { ...prev, points, text: formatRing([...points, points[0]]) } : prev,
+    );
+  }, []);
+
+  /** From the box: keep whatever was typed, and preview it if it parses. */
+  const setEditText = useCallback((text: string) => {
+    setEdit((prev) => {
+      if (!prev) return prev;
+      const parsed = parseCoordinateText(text);
+      return {
+        ...prev,
+        text,
+        points: parsed.ok && parsed.points.length >= 3 ? parsed.points : prev.points,
+      };
+    });
+  }, []);
+
+  const saveShape = useCallback(
+    async (id: number, ring: Ring, acres: number) => {
+      setError(null);
+      setSaving(true);
+      try {
+        const response = await fetch(`/api/applications/${id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            geometry: { type: "Polygon", coordinates: [ring] },
+            acreage: Number(acres.toFixed(2)),
+          }),
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          if (response.status === 401) {
+            throw new Error("Your session expired. Reload the page to sign back in.");
+          }
+          throw new Error(payload.error ?? `Save failed (${response.status}).`);
+        }
+        // Take the server's version rather than the local one -- it is the
+        // record of what was actually stored, including the tidied ring.
+        const saved = payload.application as Application;
+        setApplications((prev) => prev.map((a) => (a.id === id ? saved : a)));
+        setEdit(null);
+      } catch (cause) {
+        setError(cause instanceof Error ? cause.message : "Save failed.");
+      } finally {
+        setSaving(false);
+      }
+    },
+    [],
+  );
 
   const setStatus = useCallback(
     async (id: number, status: Status) => {
@@ -250,6 +325,8 @@ export default function Workspace({ initialApplications, mode }: Props) {
         selectedId={selectedId}
         onSelect={select}
         detailOpen={selected !== null}
+        editPoints={edit ? edit.points : null}
+        onEditPointsChange={setEditPoints}
       >
         {selected && (
           <DetailCard
@@ -257,10 +334,26 @@ export default function Workspace({ initialApplications, mode }: Props) {
             readOnly={mode.readOnly}
             readOnlyReason={mode.reason}
             saving={saving}
-            error={error}
+            error={edit ? null : error}
+            editing={edit !== null}
+            onEditShape={() => beginEdit(selected)}
             onSetStatus={(status) => setStatus(selected.id, status)}
             onClose={() => setSelectedId(null)}
-          />
+          >
+            {edit && edit.id === selected.id && (
+              <ShapeEditor
+                points={edit.points}
+                text={edit.text}
+                currentAcreage={selected.acreage}
+                saving={saving}
+                error={error}
+                onTextChange={setEditText}
+                onRevert={() => beginEdit(selected)}
+                onCancel={() => setEdit(null)}
+                onSave={(ring, acres) => saveShape(selected.id, ring, acres)}
+              />
+            )}
+          </DetailCard>
         )}
       </MapCanvas>
     </div>

@@ -807,6 +807,155 @@ button {
   background: var(--paper);
 }
 
+/* --------------------------------------------------------------- shape --
+   The corner editor replaces the status buttons inside the detail card
+   while a shape is open, so the card never grows two competing footers. */
+
+.detail__actions-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail__edit {
+  margin-left: auto;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--magenta);
+  padding: 3px 0;
+}
+
+.detail__edit:hover {
+  color: var(--paper);
+}
+
+.shape {
+  padding: 12px;
+}
+
+.shape__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.shape__hint {
+  margin-left: auto;
+  font-size: 10.5px;
+  color: var(--buff-dim);
+}
+
+.shape__text {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--mono);
+  /* 16px keeps iOS from zooming the page when the box takes focus. */
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+
+.shape__text:focus {
+  border-color: var(--magenta);
+  outline: none;
+}
+
+.shape__stats {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--buff);
+}
+
+.shape__stats .num {
+  font-size: 12px;
+}
+
+.shape__delta {
+  margin-left: 6px;
+  color: var(--accept);
+}
+
+.shape__delta--down {
+  color: var(--modify);
+}
+
+.shape__problem,
+.shape__warning {
+  margin: 8px 0 0;
+  padding: 7px 9px;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+.shape__problem {
+  background: rgba(226, 86, 79, 0.12);
+  border-left: 2px solid var(--decline);
+  color: #f3b4b0;
+}
+
+.shape__warning {
+  background: rgba(233, 161, 59, 0.12);
+  border-left: 2px solid var(--modify);
+  color: #f0cf9b;
+}
+
+.shape__actions {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.shape__btn {
+  padding: 10px 12px;
+  min-height: 42px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--buff-dim);
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.shape__btn:hover:not(:disabled) {
+  color: var(--paper);
+  border-color: var(--buff-dim);
+}
+
+.shape__btn--save {
+  background: var(--magenta);
+  border-color: var(--magenta);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.shape__btn--save:hover:not(:disabled) {
+  background: #ef5f8d;
+  border-color: #ef5f8d;
+  color: var(--ink);
+}
+
+.shape__btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 /* ---------------------------------------------------------------- misc -- */
 
 .sheet-toggle {
@@ -944,6 +1093,22 @@ button {
   .status-btn {
     min-height: 48px;
     font-size: 12px;
+  }
+
+  /* While reshaping, the facts grid is dead weight -- dropping it gives the
+     map back about 150px, which is the difference between being able to drag
+     a corner and not. */
+  .detail[data-editing="true"] .detail__facts {
+    display: none;
+  }
+
+  .shape__btn {
+    min-height: 46px;
+  }
+
+  .shape__text {
+    /* Fewer rows so the whole card still clears the sheet peek. */
+    min-height: 132px;
   }
 }
 

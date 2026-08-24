@@ -1,6 +1,7 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import seed from "@/data/applications.json";
+import { areaAcres, validateRing, type Ring } from "@/lib/geometry";
 import { type Application, type Status, isStatus } from "@/lib/types";
 
 const TABLE = "col_applications";
@@ -90,4 +91,58 @@ export async function updateStatus(id: number, status: Status): Promise<Applicat
     ...data,
     acreage: data.acreage === null ? null : Number(data.acreage),
   } as Application;
+}
+
+const SELECT = "id, group_name, status, applicant, bay_system, acreage, geometry";
+
+/**
+ * Replace an application's outline.
+ *
+ * The ring is re-validated here rather than trusted from the browser: the API
+ * is reachable on its own, and a bowtie or a two-point "polygon" would render
+ * as garbage for everyone. Acreage is recomputed from the new shape unless the
+ * caller supplies a figure, because the two must never disagree.
+ */
+export async function updateGeometry(
+  id: number,
+  ring: Ring,
+  acreageOverride?: number | null,
+): Promise<Application> {
+  const db = supabase();
+  if (!db) throw new Error("No database configured -- changes cannot be saved.");
+
+  const checked = validateRing(ring);
+  if (!checked.ok) throw new GeometryRejected(checked.error);
+
+  const acreage =
+    acreageOverride === undefined || acreageOverride === null
+      ? Number(areaAcres(checked.ring).toFixed(2))
+      : acreageOverride;
+
+  const { data, error } = await db
+    .from(TABLE)
+    .update({
+      geometry: { type: "Polygon", coordinates: [checked.ring] },
+      acreage,
+    })
+    .eq("id", id)
+    .select(SELECT)
+    .single();
+
+  if (error?.code === "PGRST116") throw new ApplicationNotFound(id);
+  if (error) throw new Error(`Could not save application ${id}: ${error.message}`);
+  if (!data) throw new ApplicationNotFound(id);
+
+  return {
+    ...data,
+    acreage: data.acreage === null ? null : Number(data.acreage),
+  } as Application;
+}
+
+/** Thrown when a submitted outline is not a usable polygon, so the route can 422. */
+export class GeometryRejected extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "GeometryRejected";
+  }
 }
