@@ -1,0 +1,17 @@
+[
+  {
+    "id": "hannas-reef-permit-area",
+    "label": "Hannas Reef Permit Area",
+    "file": "hannas-reef-permit-area.geojson",
+    "geometryType": "Polygon",
+    "features": 1,
+    "bounds": [
+      -94.737738,
+      29.490948,
+      -94.729192,
+      29.500879
+    ],
+    "acres": 100.01,
+    "color": "#4db6d0"
+  }
+]

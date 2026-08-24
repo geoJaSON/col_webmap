@@ -956,6 +956,139 @@ button {
   opacity: 0.45;
 }
 
+/* -------------------------------------------------------------- layers --
+   Reference overlays. Sits under the basemap switcher so the two map-chrome
+   controls read as one stack in the corner. */
+
+.layers {
+  position: absolute;
+  top: 54px;
+  left: 12px;
+  z-index: 6;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule);
+  max-width: 260px;
+}
+
+.layers__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 11px;
+  min-height: 34px;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--buff-dim);
+}
+
+.layers__toggle:hover {
+  color: var(--buff);
+}
+
+.layers[data-open="true"] .layers__toggle {
+  color: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.layers__count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--magenta);
+}
+
+.layers__list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.layers__item {
+  display: flex;
+  align-items: stretch;
+}
+
+.layers__row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 4px 8px 11px;
+  min-height: 38px;
+  text-align: left;
+  color: var(--buff-dim);
+}
+
+.layers__row:hover {
+  background: var(--ink-raised);
+  color: var(--buff);
+}
+
+.layers__row[data-on="true"] {
+  color: var(--paper);
+}
+
+/* Hollow when off, filled when on -- the swatch is the checkbox. */
+.layers__swatch {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  border: 2px solid var(--swatch, currentColor);
+  background: transparent;
+  opacity: 0.55;
+}
+
+.layers__row[data-on="true"] .layers__swatch {
+  background: var(--swatch, currentColor);
+  opacity: 1;
+}
+
+.layers__label {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.layers__zoom {
+  padding: 0 10px;
+  color: var(--buff-dim);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.layers__zoom:hover {
+  color: var(--paper);
+  background: var(--ink-raised);
+}
+
+@media (max-width: 900px) {
+  .layers {
+    max-width: 210px;
+  }
+
+  .layers__row {
+    min-height: 44px;
+  }
+
+  .layers__zoom {
+    padding: 0 14px;
+  }
+
+  /* The detail card owns the bottom; keep the stack clear of it. */
+  .map[data-detail="true"] .layers {
+    top: 54px;
+  }
+}
+
 /* ---------------------------------------------------------------- misc -- */
 
 .sheet-toggle {

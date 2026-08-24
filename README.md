@@ -16,6 +16,8 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `supabase/schema.sql` | Table, status constraint, `updated_at` trigger, RLS lockdown |
 | `supabase/seed.sql` | Re-runnable inserts for all 78 rows |
 | `lib/geometry.ts` | Coordinate parsing, ring validation, and acreage — shared by the browser and the API |
+| `scripts/import_layers.py` | Converts reference shapefiles into `public/layers/` |
+| `public/layers/` | Generated reference layers plus the `index.json` the map reads |
 | `app/`, `components/`, `lib/` | The Next.js app |
 
 ## Running it locally
@@ -139,7 +141,39 @@ workbook passes with one duplicate-vertex cleanup and no errors.
   reefs, depths, and the ICW, and is the default because that is the context
   these decisions are made in. *Satellite* and *Plain* are one tap away.
 
+## Reference layers
+
+Permit areas, restoration reefs, and any other context that is not a COL
+application live as separate overlays. To add one, drop the shapefile anywhere
+in the repo and run:
+
+```bash
+python scripts/import_layers.py
+```
+
+It reprojects to WGS84, strips Z, rounds coordinates to six decimals (~11 cm),
+and writes one GeoJSON per layer into `public/layers/` along with an
+`index.json` the map reads at runtime. No code changes are needed for a new
+layer, and colours are assigned from a palette deliberately clear of the
+status triad and the editing magenta, so context can never be mistaken for a
+lease.
+
+Layers are fetched rather than bundled, so a large one never lands in the
+JavaScript payload, and they sit behind the site passcode like everything else.
+On the map they draw *beneath* the leases with a dashed outline. The **Layers**
+control under the basemap switcher toggles each one and zooms to its extent.
+
+A shapefile is a file set, and the importer refuses partial ones rather than
+guessing: `.shp`, `.shx`, and `.dbf` are all required, and a missing `.prj` is
+reported as an assumption rather than silently accepted.
+
 ## Notes
+
+- `hannahs_reef/` holds `East Redfish Permit Area.shx` with no `.shp` or
+  `.dbf`. An `.shx` is only an index into the geometry file, so the shape
+  cannot be recovered from it. Its header does record that the missing feature
+  is a single PolygonZ spanning lon -94.834198..-94.808020, lat
+  29.483861..29.502939. The importer skips it and says so.
 
 - Acreage is computed from the ring by spherical excess on the WGS84 authalic
   radius. It agrees with the acreages in the source workbook within 0.5% for 75

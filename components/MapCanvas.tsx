@@ -2,10 +2,12 @@
 
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
 import type { Ring } from "@/lib/geometry";
+import LayerControl from "@/components/LayerControl";
+import { fetchLayerGeoJSON, fetchLayerIndex, type LayerMeta } from "@/lib/layers";
 import { STATUS_COLORS, type Application } from "@/lib/types";
 
 const SOURCE = "col";
@@ -157,6 +159,10 @@ export default function MapCanvas({
   const map = useRef<maplibregl.Map | null>(null);
   const [ready, setReady] = useState(false);
   const [basemap, setBasemap] = useState<BasemapId>(DEFAULT_BASEMAP);
+  const [refLayers, setRefLayers] = useState<LayerMeta[]>([]);
+  const [activeLayers, setActiveLayers] = useState<Set<string>>(new Set());
+  /** Layer ids whose source and style layers are already on the map. */
+  const mounted = useRef<Set<string>>(new Set());
 
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
@@ -519,6 +525,128 @@ export default function MapCanvas({
     );
   }, [ready, editingId]);
 
+  // Reference layers arrive from public/layers/index.json. They default to on:
+  // they were added to be looked at, and the toggle is there to get them out
+  // of the way rather than to opt in.
+  useEffect(() => {
+    let cancelled = false;
+    fetchLayerIndex().then((found) => {
+      if (cancelled) return;
+      setRefLayers(found);
+      setActiveLayers(new Set(found.map((l) => l.id)));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Mount newly-enabled layers (fetching the GeoJSON the first time), then
+  // drive everything after that with visibility alone.
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const instance = map.current;
+    let cancelled = false;
+
+    (async () => {
+      for (const layer of refLayers) {
+        if (!activeLayers.has(layer.id) || mounted.current.has(layer.id)) continue;
+        try {
+          const data = await fetchLayerGeoJSON(layer);
+          if (cancelled || !map.current) return;
+          const src = `ref-${layer.id}`;
+          if (instance.getSource(src)) continue;
+          instance.addSource(src, { type: "geojson", data });
+          mounted.current.add(layer.id);
+
+          // Inserted beneath the lease polygons so context never covers the
+          // thing being decided on.
+          const below = instance.getLayer(FILL) ? FILL : undefined;
+          const isPolygon = layer.geometryType.includes("Polygon");
+          if (isPolygon) {
+            instance.addLayer(
+              {
+                id: `${src}-fill`,
+                type: "fill",
+                source: src,
+                paint: { "fill-color": layer.color, "fill-opacity": 0.16 },
+              },
+              below,
+            );
+          }
+          instance.addLayer(
+            {
+              id: `${src}-line`,
+              type: "line",
+              source: src,
+              paint: {
+                "line-color": layer.color,
+                "line-width": 2,
+                "line-dasharray": [3, 1.6],
+              },
+            },
+            below,
+          );
+          if (isPolygon) {
+            instance.addLayer({
+              id: `${src}-label`,
+              type: "symbol",
+              source: src,
+              minzoom: 11,
+              layout: {
+                "text-field": layer.label,
+                "text-font": ["Noto Sans Regular"],
+                "text-size": 11,
+              },
+              paint: {
+                // Paper halo like the lease labels: legible over the light
+                // chart and the dark satellite alike, where a navy halo went
+                // muddy on the chart.
+                "text-color": layer.color,
+                "text-halo-color": "#f7f4ec",
+                "text-halo-width": 1.8,
+              },
+            });
+          }
+        } catch {
+          // A layer that will not load should not take the map down with it.
+        }
+      }
+
+      if (cancelled || !map.current) return;
+      for (const layer of refLayers) {
+        const visible = activeLayers.has(layer.id) ? "visible" : "none";
+        for (const suffix of ["-fill", "-line", "-label"]) {
+          const id = `ref-${layer.id}${suffix}`;
+          if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", visible);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [ready, refLayers, activeLayers]);
+
+  const toggleLayer = useCallback((id: string) => {
+    setActiveLayers((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }, []);
+
+  const zoomToLayer = useCallback((layer: LayerMeta) => {
+    const [west, south, east, north] = layer.bounds;
+    map.current?.fitBounds(
+      [
+        [west, south],
+        [east, north],
+      ],
+      { padding: framePadding(), maxZoom: 15.5, duration: 700 },
+    );
+  }, []);
+
   // Push the edit overlay to the map, and clear it when editing stops.
   useEffect(() => {
     if (!ready || !map.current) return;
@@ -551,6 +679,12 @@ export default function MapCanvas({
           </button>
         ))}
       </div>
+      <LayerControl
+        layers={refLayers}
+        active={activeLayers}
+        onToggle={toggleLayer}
+        onZoomTo={zoomToLayer}
+      />
       {children}
     </div>
   );
