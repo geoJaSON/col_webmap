@@ -31,6 +31,7 @@ const EDIT_VERTEX = "edit-vertex";
 // Below this a 500 ft ring is roughly a pixel wide, so it is neither drawn
 // nor computed -- which happens to skip the slowest case as well.
 const BUFFER_MIN_ZOOM = 10.5;
+const BUFFER_COLOR = "#e2564f";
 
 const POLL_SRC = "polling";
 const POLL_LAYER = "polling-points";
@@ -612,7 +613,7 @@ export default function MapCanvas({
               id: `${buf}-fill`,
               type: "fill",
               source: buf,
-              paint: { "fill-color": category.color, "fill-opacity": 0.1 },
+              paint: { "fill-color": BUFFER_COLOR, "fill-opacity": 0.1 },
             },
             below,
           );
@@ -622,7 +623,7 @@ export default function MapCanvas({
               type: "line",
               source: buf,
               paint: {
-                "line-color": category.color,
+                "line-color": BUFFER_COLOR,
                 "line-width": 1.2,
                 "line-dasharray": [2, 2],
                 "line-opacity": 0.75,
