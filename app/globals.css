@@ -967,7 +967,7 @@ button {
   z-index: 6;
   background: var(--ink-sunk);
   border: 1px solid var(--rule);
-  max-width: 260px;
+  max-width: 284px;
 }
 
 .layers__toggle {
@@ -1010,9 +1010,15 @@ button {
   scrollbar-color: var(--rule) transparent;
 }
 
+/* The row and its buffer slider stack; only the head is a row. */
 .layers__item {
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.layers__item:last-child {
+  border-bottom: none;
 }
 
 .layers__row {
@@ -1086,6 +1092,105 @@ button {
   /* The detail card owns the bottom; keep the stack clear of it. */
   .map[data-detail="true"] .layers {
     top: 54px;
+  }
+}
+
+/* Category rows carry a slider now, so the row and the zoom button share a
+   line and the buffer control sits underneath. */
+.layers__head {
+  display: flex;
+  align-items: stretch;
+}
+
+.layers__n {
+  margin-left: auto;
+  padding-left: 8px;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.buffer {
+  padding: 2px 11px 12px;
+}
+
+.buffer__label {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.buffer__value {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--paper);
+}
+
+.buffer__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.buffer__slider::-webkit-slider-runnable-track {
+  height: 3px;
+  background: var(--rule);
+}
+
+.buffer__slider::-moz-range-track {
+  height: 3px;
+  background: var(--rule);
+}
+
+.buffer__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--swatch, var(--buff));
+  border: 2px solid var(--ink-sunk);
+}
+
+.buffer__slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--swatch, var(--buff));
+  border: 2px solid var(--ink-sunk);
+}
+
+.buffer__slider:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+.buffer__note {
+  margin: 6px 0 0;
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: var(--modify);
+}
+
+@media (max-width: 900px) {
+  .buffer__slider {
+    height: 30px;
+  }
+
+  .buffer__slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    margin-top: -9px;
+  }
+
+  .buffer__slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
   }
 }
 

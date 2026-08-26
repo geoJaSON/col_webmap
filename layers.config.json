@@ -1,0 +1,22 @@
+{
+  "_comment": [
+    "Categories for the reference layers drawn under the leases.",
+    "A category is a blocker type: everything in it shares a colour and one",
+    "buffer distance. Add a shapefile anywhere in the repo, map its slug to a",
+    "category here, and re-run scripts/import_layers.py -- no code changes.",
+    "bufferFeet is the default the slider starts at; 0 means no buffer."
+  ],
+  "categories": {
+    "restoration-area": {
+      "label": "Restoration area",
+      "color": "#4db6d0",
+      "bufferFeet": 500
+    }
+  },
+  "layers": {
+    "hannas-reef-permit-area": "restoration-area",
+    "coastal-lease-polygon-c-tcms": "restoration-area"
+  },
+  "defaultCategory": "restoration-area",
+  "nameFields": ["GLO_ID", "NAME", "Name", "name", "ID", "Id"]
+}

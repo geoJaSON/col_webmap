@@ -7,7 +7,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
 import type { Ring } from "@/lib/geometry";
 import LayerControl from "@/components/LayerControl";
-import { fetchLayerGeoJSON, fetchLayerIndex, type LayerMeta } from "@/lib/layers";
+import { fetchCategories, fetchCategoryGeoJSON, type LayerCategory } from "@/lib/layers";
+import { bufferInView, indexCategory, type BBox, type IndexedCategory } from "@/lib/buffer";
 import { STATUS_COLORS, type Application } from "@/lib/types";
 
 const SOURCE = "col";
@@ -23,6 +24,10 @@ const EDIT_FILL = "edit-fill";
 const EDIT_LINE = "edit-line";
 const EDIT_MID = "edit-midpoint";
 const EDIT_VERTEX = "edit-vertex";
+
+// Below this a 500 ft ring is roughly a pixel wide, so it is neither drawn
+// nor computed -- which happens to skip the slowest case as well.
+const BUFFER_MIN_ZOOM = 10.5;
 
 /**
  * Three raster basemaps live in the style at once and are toggled by
@@ -159,10 +164,15 @@ export default function MapCanvas({
   const map = useRef<maplibregl.Map | null>(null);
   const [ready, setReady] = useState(false);
   const [basemap, setBasemap] = useState<BasemapId>(DEFAULT_BASEMAP);
-  const [refLayers, setRefLayers] = useState<LayerMeta[]>([]);
+  const [categories, setCategories] = useState<LayerCategory[]>([]);
   const [activeLayers, setActiveLayers] = useState<Set<string>>(new Set());
-  /** Layer ids whose source and style layers are already on the map. */
+  const [bufferFeet, setBufferFeet] = useState<Record<string, number>>({});
+  const [indexed, setIndexed] = useState<Record<string, IndexedCategory>>({});
+  /** Category ids whose source and style layers are already on the map. */
   const mounted = useRef<Set<string>>(new Set());
+  /** Bumped on move end so buffers recompute for what is actually on screen. */
+  const [viewKey, setViewKey] = useState(0);
+  const [zoom, setZoom] = useState(0);
 
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
@@ -525,98 +535,142 @@ export default function MapCanvas({
     );
   }, [ready, editingId]);
 
-  // Reference layers arrive from public/layers/index.json. They default to on:
-  // they were added to be looked at, and the toggle is there to get them out
-  // of the way rather than to opt in.
+  // Categories arrive from public/layers/index.json. They default to on: they
+  // were added to be looked at, and the toggle is there to get them out of the
+  // way rather than to opt in.
   useEffect(() => {
     let cancelled = false;
-    fetchLayerIndex().then((found) => {
+    fetchCategories().then((found) => {
       if (cancelled) return;
-      setRefLayers(found);
-      setActiveLayers(new Set(found.map((l) => l.id)));
+      setCategories(found);
+      setActiveLayers(new Set(found.map((c) => c.id)));
+      setBufferFeet(Object.fromEntries(found.map((c) => [c.id, c.bufferFeet])));
     });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // Mount newly-enabled layers (fetching the GeoJSON the first time), then
-  // drive everything after that with visibility alone.
+  // Track the viewport so buffering only ever runs on what is on screen.
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const instance = map.current;
+    const sync = () => {
+      setViewKey((n) => n + 1);
+      setZoom(instance.getZoom());
+    };
+    sync();
+    instance.on("moveend", sync);
+    return () => {
+      instance.off("moveend", sync);
+    };
+  }, [ready]);
+
+  // Mount newly-enabled categories (fetching the GeoJSON once), then drive
+  // everything after that with visibility alone.
   useEffect(() => {
     if (!ready || !map.current) return;
     const instance = map.current;
     let cancelled = false;
 
     (async () => {
-      for (const layer of refLayers) {
-        if (!activeLayers.has(layer.id) || mounted.current.has(layer.id)) continue;
+      for (const category of categories) {
+        if (!activeLayers.has(category.id) || mounted.current.has(category.id)) continue;
         try {
-          const data = await fetchLayerGeoJSON(layer);
+          const data = await fetchCategoryGeoJSON(category);
           if (cancelled || !map.current) return;
-          const src = `ref-${layer.id}`;
+          const src = `ref-${category.id}`;
+          const buf = `buf-${category.id}`;
           if (instance.getSource(src)) continue;
-          instance.addSource(src, { type: "geojson", data });
-          mounted.current.add(layer.id);
 
-          // Inserted beneath the lease polygons so context never covers the
-          // thing being decided on.
+          mounted.current.add(category.id);
+          setIndexed((prev) => ({ ...prev, [category.id]: indexCategory(data) }));
+
+          // Everything reference-related sits beneath the leases, so context
+          // never covers the thing being decided on. The buffer goes under the
+          // blocker itself.
           const below = instance.getLayer(FILL) ? FILL : undefined;
-          const isPolygon = layer.geometryType.includes("Polygon");
-          if (isPolygon) {
-            instance.addLayer(
-              {
-                id: `${src}-fill`,
-                type: "fill",
-                source: src,
-                paint: { "fill-color": layer.color, "fill-opacity": 0.16 },
+
+          instance.addSource(buf, {
+            type: "geojson",
+            data: { type: "FeatureCollection", features: [] },
+          });
+          instance.addLayer(
+            {
+              id: `${buf}-fill`,
+              type: "fill",
+              source: buf,
+              paint: { "fill-color": category.color, "fill-opacity": 0.1 },
+            },
+            below,
+          );
+          instance.addLayer(
+            {
+              id: `${buf}-line`,
+              type: "line",
+              source: buf,
+              paint: {
+                "line-color": category.color,
+                "line-width": 1.2,
+                "line-dasharray": [2, 2],
+                "line-opacity": 0.75,
               },
-              below,
-            );
-          }
+            },
+            below,
+          );
+
+          instance.addSource(src, { type: "geojson", data });
+          instance.addLayer(
+            {
+              id: `${src}-fill`,
+              type: "fill",
+              source: src,
+              paint: { "fill-color": category.color, "fill-opacity": 0.2 },
+            },
+            below,
+          );
           instance.addLayer(
             {
               id: `${src}-line`,
               type: "line",
               source: src,
-              paint: {
-                "line-color": layer.color,
-                "line-width": 2,
-                "line-dasharray": [3, 1.6],
-              },
+              paint: { "line-color": category.color, "line-width": 1.6 },
             },
             below,
           );
-          if (isPolygon) {
-            instance.addLayer({
-              id: `${src}-label`,
-              type: "symbol",
-              source: src,
-              minzoom: 11,
-              layout: {
-                "text-field": layer.label,
-                "text-font": ["Noto Sans Regular"],
-                "text-size": 11,
-              },
-              paint: {
-                // Paper halo like the lease labels: legible over the light
-                // chart and the dark satellite alike, where a navy halo went
-                // muddy on the chart.
-                "text-color": layer.color,
-                "text-halo-color": "#f7f4ec",
-                "text-halo-width": 1.8,
-              },
-            });
-          }
+          instance.addLayer({
+            id: `${src}-label`,
+            type: "symbol",
+            source: src,
+            minzoom: 12,
+            layout: {
+              "text-field": ["coalesce", ["get", "name"], category.label],
+              "text-font": ["Noto Sans Regular"],
+              "text-size": 10.5,
+            },
+            paint: {
+              // Paper halo like the lease labels: legible over the light chart
+              // and the dark satellite alike.
+              "text-color": category.color,
+              "text-halo-color": "#f7f4ec",
+              "text-halo-width": 1.8,
+            },
+          });
         } catch {
-          // A layer that will not load should not take the map down with it.
+          // A category that will not load should not take the map down with it.
         }
       }
 
       if (cancelled || !map.current) return;
-      for (const layer of refLayers) {
-        const visible = activeLayers.has(layer.id) ? "visible" : "none";
-        for (const suffix of ["-fill", "-line", "-label"]) {
-          const id = `ref-${layer.id}${suffix}`;
+      for (const category of categories) {
+        const visible = activeLayers.has(category.id) ? "visible" : "none";
+        for (const id of [
+          `ref-${category.id}-fill`,
+          `ref-${category.id}-line`,
+          `ref-${category.id}-label`,
+          `buf-${category.id}-fill`,
+          `buf-${category.id}-line`,
+        ]) {
           if (instance.getLayer(id)) instance.setLayoutProperty(id, "visibility", visible);
         }
       }
@@ -625,7 +679,44 @@ export default function MapCanvas({
     return () => {
       cancelled = true;
     };
-  }, [ready, refLayers, activeLayers]);
+  }, [ready, categories, activeLayers]);
+
+  // Recompute buffers for the current view. Debounced because the slider fires
+  // on every step, and skipped when zoomed out far enough that the ring would
+  // be sub-pixel anyway -- which is also the case that would be slowest.
+  const buffersVisible = zoom >= BUFFER_MIN_ZOOM;
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const instance = map.current;
+
+    const timer = window.setTimeout(() => {
+      const bounds = instance.getBounds();
+      const view: BBox = [
+        bounds.getWest(),
+        bounds.getSouth(),
+        bounds.getEast(),
+        bounds.getNorth(),
+      ];
+      for (const category of categories) {
+        const source = instance.getSource(`buf-${category.id}`) as
+          | maplibregl.GeoJSONSource
+          | undefined;
+        if (!source) continue;
+        const store = indexed[category.id];
+        const feet = bufferFeet[category.id] ?? 0;
+        const on = activeLayers.has(category.id) && buffersVisible && store;
+        source.setData(
+          on ? bufferInView(store, feet, view) : { type: "FeatureCollection", features: [] },
+        );
+      }
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [ready, categories, activeLayers, bufferFeet, indexed, viewKey, buffersVisible]);
+
+  const setCategoryBuffer = useCallback((id: string, feet: number) => {
+    setBufferFeet((prev) => ({ ...prev, [id]: feet }));
+  }, []);
 
   const toggleLayer = useCallback((id: string) => {
     setActiveLayers((prev) => {
@@ -636,8 +727,8 @@ export default function MapCanvas({
     });
   }, []);
 
-  const zoomToLayer = useCallback((layer: LayerMeta) => {
-    const [west, south, east, north] = layer.bounds;
+  const zoomToLayer = useCallback((category: LayerCategory) => {
+    const [west, south, east, north] = category.bounds;
     map.current?.fitBounds(
       [
         [west, south],
@@ -680,9 +771,12 @@ export default function MapCanvas({
         ))}
       </div>
       <LayerControl
-        layers={refLayers}
+        categories={categories}
         active={activeLayers}
+        bufferFeet={bufferFeet}
+        buffersVisible={buffersVisible}
         onToggle={toggleLayer}
+        onBufferChange={setCategoryBuffer}
         onZoomTo={zoomToLayer}
       />
       {children}

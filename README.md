@@ -16,7 +16,9 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `supabase/schema.sql` | Table, status constraint, `updated_at` trigger, RLS lockdown |
 | `supabase/seed.sql` | Re-runnable inserts for all 78 rows |
 | `lib/geometry.ts` | Coordinate parsing, ring validation, and acreage — shared by the browser and the API |
-| `scripts/import_layers.py` | Converts reference shapefiles into `public/layers/` |
+| `scripts/import_layers.py` | Converts reference shapefiles into categorised layers under `public/layers/` |
+| `layers.config.json` | Blocker categories: colour, default buffer, and which shapefile belongs to which |
+| `lib/buffer.ts` | On-the-fly buffering, culled to the viewport |
 | `public/layers/` | Generated reference layers plus the `index.json` the map reads |
 | `app/`, `components/`, `lib/` | The Next.js app |
 
@@ -143,31 +145,71 @@ workbook passes with one duplicate-vertex cleanup and no errors.
 
 ## Reference layers
 
-Permit areas, restoration reefs, and any other context that is not a COL
-application live as separate overlays. To add one, drop the shapefile anywhere
-in the repo and run:
+Restoration areas, and any other blocker type that is context rather than a COL
+application, are grouped into **categories**. A category is one blocker type:
+everything in it shares a colour and one buffer distance, and it arrives as a
+single combined GeoJSON.
 
-```bash
-python scripts/import_layers.py
+Categories are declared in `layers.config.json`:
+
+```json
+"categories": {
+  "restoration-area": { "label": "Restoration area", "color": "#4db6d0", "bufferFeet": 500 }
+},
+"layers": {
+  "hannas-reef-permit-area": "restoration-area",
+  "coastal-lease-polygon-c-tcms": "restoration-area"
+}
 ```
 
-It reprojects to WGS84, strips Z, rounds coordinates to six decimals (~11 cm),
-and writes one GeoJSON per layer into `public/layers/` along with an
-`index.json` the map reads at runtime. No code changes are needed for a new
-layer, and colours are assigned from a palette deliberately clear of the
-status triad and the editing magenta, so context can never be mistaken for a
-lease.
+To add a source, drop the shapefile anywhere in the repo, add one line under
+`layers` mapping its slug to a category, and run:
 
-Layers are fetched rather than bundled, so a large one never lands in the
+```bash
+npm run layers
+```
+
+It reprojects to WGS84, strips Z, simplifies to about a metre, rounds to six
+decimals, and writes one GeoJSON per category into `public/layers/` with an
+`index.json` the map reads at runtime. No code changes per layer. A new
+blocker type is a new entry under `categories` — the slider and colour come
+along for free.
+
+Layers are fetched rather than bundled, so a large category never lands in the
 JavaScript payload, and they sit behind the site passcode like everything else.
-On the map they draw *beneath* the leases with a dashed outline. The **Layers**
-control under the basemap switcher toggles each one and zooms to its extent.
+They draw *beneath* the leases so context never covers the thing being decided
+on.
 
-A shapefile is a file set, and the importer refuses partial ones rather than
-guessing: `.shp`, `.shx`, and `.dbf` are all required, and a missing `.prj` is
-reported as an assumption rather than silently accepted.
+### Buffers
+
+Each category has a buffer slider in the **Layers** control, 0–2000 ft, starting
+at the category's `bufferFeet`. The ring is computed in the browser as the
+slider moves rather than precomputed, so any distance is available.
+
+Buffering all 294 restoration areas takes roughly 400 ms, which is far too slow
+to sit behind a slider, so two things keep it responsive:
+
+- **Only features overlapping the current view are buffered**, with the view
+  padded by the buffer distance first so a blocker just off-screen still
+  contributes the part of its ring that reaches on-screen. Zoomed in on a lease
+  — the case that matters — that is a handful of shapes and the work is
+  imperceptible.
+- **Below zoom 10.5 buffers are neither drawn nor computed**, because a 500 ft
+  ring is about a pixel wide there. That also skips the slowest case. The
+  control says "Zoom in to see the buffer" when this applies.
+
+Feature bounding boxes are computed once when a category loads; recomputing
+them per slider tick would cost more than the buffering does.
 
 ## Notes
+
+- The GLO coastal lease set carries mixed `GLO_ID` prefixes — SL 227, CL 39,
+  LC 16, CE 9, ME 1, SD 1 — which look like different lease types. They are all
+  in `restoration-area` for now; splitting them into separate blocker
+  categories is a config change, not a code change.
+- `SL20200039`, cited in the modification comments for applications 16, 27 and
+  109, is present in that set. `SL20200056` and `SL20260056`, also cited, are
+  not.
 
 - `hannahs_reef/` holds `East Redfish Permit Area.shx` with no `.shp` or
   `.dbf`. An `.shx` is only an index into the geometry file, so the shape

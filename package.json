@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "extract": "python scripts/extract_xlsx.py"
+    "extract": "python scripts/extract_xlsx.py",
+    "layers": "python scripts/import_layers.py"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",
+    "@turf/buffer": "^7.4.0",
+    "@turf/helpers": "^7.4.0",
     "maplibre-gl": "^4.7.1",
     "next": "^15.0.3",
     "react": "^19.0.0",

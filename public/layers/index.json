@@ -1,17 +1,21 @@
 [
   {
-    "id": "hannas-reef-permit-area",
-    "label": "Hannas Reef Permit Area",
-    "file": "hannas-reef-permit-area.geojson",
-    "geometryType": "Polygon",
-    "features": 1,
-    "bounds": [
-      -94.737738,
-      29.490948,
-      -94.729192,
-      29.500879
+    "id": "restoration-area",
+    "label": "Restoration area",
+    "color": "#4db6d0",
+    "bufferFeet": 500,
+    "file": "restoration-area.geojson",
+    "features": 294,
+    "sources": [
+      "Coastal_Lease_Polygon_C_TCMS",
+      "Hannas Reef Permit Area"
     ],
-    "acres": 100.01,
-    "color": "#4db6d0"
+    "bounds": [
+      -97.628808,
+      25.964247,
+      -93.871706,
+      30.132662
+    ],
+    "sizeKb": 351
   }
 ]
