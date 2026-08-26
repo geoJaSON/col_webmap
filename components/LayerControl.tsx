@@ -2,9 +2,23 @@
 
 import { useState } from "react";
 
+import PollingPanel from "@/components/PollingPanel";
 import type { LayerCategory } from "@/lib/layers";
 
+type PollingProps = {
+  on: boolean;
+  year: number;
+  email: string | null;
+  minZoom: number;
+  zoom: number;
+  onToggle: () => void;
+  onYearChange: (year: number) => void;
+  onSignedIn: (token: string, email: string | null) => void;
+  onSignOut: () => void;
+};
+
 type Props = {
+  polling: PollingProps;
   categories: LayerCategory[];
   active: Set<string>;
   bufferFeet: Record<string, number>;
@@ -19,6 +33,7 @@ const MAX_FEET = 2000;
 const STEP_FEET = 50;
 
 export default function LayerControl({
+  polling,
   categories,
   active,
   bufferFeet,
@@ -28,7 +43,6 @@ export default function LayerControl({
   onZoomTo,
 }: Props) {
   const [open, setOpen] = useState(false);
-  if (categories.length === 0) return null;
 
   return (
     <div className="layers" data-open={open}>
@@ -40,12 +54,26 @@ export default function LayerControl({
       >
         Layers
         <span className="layers__count num">
-          {active.size}/{categories.length}
+          {active.size + (polling.on ? 1 : 0)}/{categories.length + 1}
         </span>
       </button>
 
       {open && (
         <ul className="layers__list">
+          <PollingPanel
+            on={polling.on}
+            year={polling.year}
+            email={polling.email}
+            onToggle={polling.onToggle}
+            onYearChange={polling.onYearChange}
+            onSignedIn={polling.onSignedIn}
+            onSignOut={polling.onSignOut}
+          />
+          {polling.on && polling.email && polling.zoom < polling.minZoom && (
+            <li className="layers__item">
+              <p className="polling__note">Zoom in to load polling points.</p>
+            </li>
+          )}
           {categories.map((category) => {
             const on = active.has(category.id);
             const feet = bufferFeet[category.id] ?? category.bufferFeet;

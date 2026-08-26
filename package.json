@@ -11,6 +11,7 @@
     "layers": "python scripts/import_layers.py"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.5",
     "@supabase/supabase-js": "^2.45.4",
     "@turf/buffer": "^7.4.0",
     "@turf/helpers": "^7.4.0",

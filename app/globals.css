@@ -434,6 +434,21 @@ button {
   color: var(--buff-dim);
 }
 
+.results-head__export {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--magenta);
+  text-decoration: none;
+  padding: 4px 2px;
+}
+
+.results-head__export:hover {
+  color: var(--paper);
+}
+
 .row {
   display: grid;
   grid-template-columns: 4px 46px 1fr auto;
@@ -1191,6 +1206,124 @@ button {
   .buffer__slider::-moz-range-thumb {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* Polling points: platform data behind a sign-in, so the row carries a lock
+   until there is a session. */
+.layers__lock {
+  margin-left: auto;
+  font-size: 10px;
+  opacity: 0.65;
+}
+
+.signin {
+  padding: 4px 11px 12px;
+}
+
+.signin__blurb {
+  margin: 0 0 8px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--buff-dim);
+}
+
+.signin__input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  margin-bottom: 6px;
+  padding: 0 10px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--sans);
+  /* 16px keeps iOS from zooming the page when the field takes focus. */
+  font-size: 16px;
+}
+
+.signin__input:focus {
+  border-color: var(--magenta);
+  outline: none;
+}
+
+.signin__error {
+  margin: 6px 0 0;
+  padding: 7px 9px;
+  background: rgba(226, 86, 79, 0.12);
+  border-left: 2px solid var(--decline);
+  font-size: 11.5px;
+  color: #f3b4b0;
+}
+
+.signin__actions {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.polling {
+  padding: 2px 11px 12px;
+}
+
+.polling__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.polling__year {
+  margin-left: auto;
+  padding: 5px 8px;
+  min-height: 32px;
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.polling__who {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 8px 0 0;
+  font-size: 10.5px;
+  color: var(--buff-dim);
+  overflow: hidden;
+}
+
+.polling__signout {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--magenta);
+}
+
+.polling__signout:hover {
+  color: var(--paper);
+}
+
+.polling__note {
+  margin: 0;
+  padding: 8px 11px 12px;
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: var(--modify);
+}
+
+@media (max-width: 900px) {
+  .signin__input {
+    height: 44px;
+  }
+
+  .polling__year {
+    min-height: 40px;
   }
 }
 

@@ -19,6 +19,8 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `scripts/import_layers.py` | Converts reference shapefiles into categorised layers under `public/layers/` |
 | `layers.config.json` | Blocker categories: colour, default buffer, and which shapefile belongs to which |
 | `lib/buffer.ts` | On-the-fly buffering, culled to the viewport |
+| `lib/csv.ts` | CSV export laid out like the original `GIS Upload` sheet |
+| `lib/pollingTiles.ts` | MapLibre protocol that reads platform polling tiles as the signed-in user |
 | `public/layers/` | Generated reference layers plus the `index.json` the map reads |
 | `app/`, `components/`, `lib/` | The Next.js app |
 
@@ -142,6 +144,49 @@ workbook passes with one duplicate-vertex cleanup and no errors.
 - **Basemaps** — *Chart* is NOAA's Maritime Chart Service, which shows charted
   reefs, depths, and the ICW, and is the default because that is the context
   these decisions are made in. *Satellite* and *Plain* are one tap away.
+- **Export CSV** — the **CSV** link in the results header downloads one row per
+  application with its corner coordinates, laid out like the `GIS Upload` sheet
+  the data came from: the fixed fields, then `Latitude N` / `Longitude N` pairs
+  across. It exports exactly what the list is showing, so filtering to one
+  entity exports that entity; the file name records it
+  (`col-areas-2026-08-26-13-of-78.csv`).
+
+  Corner columns run out to the widest polygon in the exported set rather than
+  a fixed ten, so a filtered export does not trail empty columns. Values are
+  quoted where needed — nearly every entity name contains a comma — and the
+  file is written with a BOM and CRLF endings so Excel opens it cleanly.
+
+## Polling points
+
+The Supabase project behind this app is the wider oyster platform, not a
+database of its own — `col_applications` sits alongside roughly 200 other
+tables. One of them, `gis_polling_points`, holds about 1.7 million points, and
+the platform already exposes `rpc/mvt_polling_points(z, x, y, p_year)` which
+returns a Mapbox Vector Tile.
+
+**Show polling points** in the Layers control turns that on. It asks for a
+platform sign-in first, because the tile function filters by who is asking:
+called without a user it returns an empty tile, so signing in is what makes the
+layer show anything at all.
+
+How it is wired:
+
+- Sign-in uses `signInWithPassword` against the same project, matching what the
+  existing web app does. The session persists, so a return visit does not ask
+  again.
+- Tiles are fetched through a MapLibre custom protocol (`polling://`) rather
+  than proxied through this app's server. The person's access token therefore
+  never touches our server or our logs — it goes straight to Supabase, and the
+  function's own per-user filtering decides what comes back.
+- The function returns the tile as base64 text inside a JSON string, because
+  PostgREST will not serve the underlying type as `application/octet-stream`.
+  The protocol handler decodes it before handing MapLibre the bytes.
+- Tiles are only requested at zoom 14 and above, which is where the function
+  starts answering; below that it returns `null`.
+
+This uses the **anon** key, which is public by design and safe in the bundle —
+a different key and a different trust model from the service-role key the COL
+API routes use.
 
 ## Reference layers
 
@@ -202,6 +247,22 @@ Feature bounding boxes are computed once when a category loads; recomputing
 them per slider tick would cost more than the buffering does.
 
 ## Notes
+
+- The polling-points layer is the one part of this app that was not verified
+  end to end: it needs a real platform login, which the build had no account
+  for. The sign-in, its error handling, and the gating were verified; whether
+  points actually draw was not. Two things to check first if they do not
+  appear: the vector layer name is assumed to be `polling_points` (following
+  `mvt_leases_base`, whose layer is `leases_base`), and `mvt_polling_points`
+  returned an empty tile even for the service role on a tile holding 111 known
+  points, which is consistent with per-user filtering but would also be what a
+  broken function looks like.
+
+- `data/applications.json` is the import pipeline's base, not a mirror of the
+  database. Once statuses or shapes are edited in the app the two diverge, and
+  the app, the GeoJSON export, and the CSV export all read the database. Re-run
+  `npm run extract` only when re-importing a workbook, not to refresh a
+  snapshot.
 
 - The GLO coastal lease set carries mixed `GLO_ID` prefixes — SL 227, CL 39,
   LC 16, CE 9, ME 1, SD 1 — which look like different lease types. They are all

@@ -11,6 +11,8 @@ type Props = {
   onSelect: (id: number) => void;
   onReset: () => void;
   filtered: boolean;
+  /** Link to the CSV for exactly the rows listed below. */
+  exportHref: string;
 };
 
 export default function ResultList({
@@ -20,6 +22,7 @@ export default function ResultList({
   onSelect,
   onReset,
   filtered,
+  exportHref,
 }: Props) {
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -49,6 +52,20 @@ export default function ResultList({
           {applications.length} {filtered ? "matching" : "applications"}
         </span>
         <span className="results-head__acres">{totalAcres.toFixed(1)} ac</span>
+        {/* A plain link, so the browser handles the download and the file name
+            comes from the server rather than being guessed here. */}
+        <a
+          className="results-head__export"
+          href={exportHref}
+          download
+          title={
+            filtered
+              ? `Download these ${applications.length} as CSV`
+              : "Download all applications as CSV"
+          }
+        >
+          CSV
+        </a>
       </div>
       <div ref={listRef}>
         {applications.map((app) => (

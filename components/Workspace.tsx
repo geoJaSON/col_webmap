@@ -89,6 +89,15 @@ export default function Workspace({ initialApplications, mode }: Props) {
     [visible],
   );
 
+  // Export exactly what the list is showing. Unfiltered exports skip the ids
+  // entirely so the file name says "all" rather than "78 of 78".
+  const exportHref = useMemo(() => {
+    const everything = visible.length === applications.length;
+    return everything
+      ? "/api/applications/csv"
+      : `/api/applications/csv?ids=${visibleIds.join(",")}`;
+  }, [visible.length, applications.length, visibleIds]);
+
   const activeCount =
     filters.statuses.size +
     filters.applicants.size +
@@ -315,6 +324,7 @@ export default function Workspace({ initialApplications, mode }: Props) {
             onSelect={select}
             onReset={reset}
             filtered={activeCount > 0}
+            exportHref={exportHref}
           />
         </div>
       </aside>

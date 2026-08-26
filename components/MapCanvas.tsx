@@ -7,6 +7,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
 import type { Ring } from "@/lib/geometry";
 import LayerControl from "@/components/LayerControl";
+import { POLLING_YEARS } from "@/components/PollingPanel";
+import { POLLING_PROTOCOL, registerPollingProtocol } from "@/lib/pollingTiles";
 import { fetchCategories, fetchCategoryGeoJSON, type LayerCategory } from "@/lib/layers";
 import { bufferInView, indexCategory, type BBox, type IndexedCategory } from "@/lib/buffer";
 import { STATUS_COLORS, type Application } from "@/lib/types";
@@ -28,6 +30,11 @@ const EDIT_VERTEX = "edit-vertex";
 // Below this a 500 ft ring is roughly a pixel wide, so it is neither drawn
 // nor computed -- which happens to skip the slowest case as well.
 const BUFFER_MIN_ZOOM = 10.5;
+
+const POLL_SRC = "polling";
+const POLL_LAYER = "polling-points";
+// The tile function answers nothing below this, so asking is wasted work.
+const POLLING_MIN_ZOOM = 14;
 
 /**
  * Three raster basemaps live in the style at once and are toggled by
@@ -173,6 +180,11 @@ export default function MapCanvas({
   /** Bumped on move end so buffers recompute for what is actually on screen. */
   const [viewKey, setViewKey] = useState(0);
   const [zoom, setZoom] = useState(0);
+  const [pollingOn, setPollingOn] = useState(false);
+  const [pollingYear, setPollingYear] = useState(POLLING_YEARS[0]);
+  const [pollingEmail, setPollingEmail] = useState<string | null>(null);
+  /** Read at request time by the tile protocol, so sign-in takes effect at once. */
+  const pollingToken = useRef<string | null>(null);
 
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
@@ -714,6 +726,42 @@ export default function MapCanvas({
     return () => window.clearTimeout(timer);
   }, [ready, categories, activeLayers, bufferFeet, indexed, viewKey, buffersVisible]);
 
+  // Polling points are remote vector tiles from the platform, fetched as the
+  // signed-in user. Rebuilt whenever the season changes because the year is
+  // baked into the tile URL.
+  useEffect(() => {
+    registerPollingProtocol(() => pollingToken.current);
+  }, []);
+
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const instance = map.current;
+
+    if (instance.getLayer(POLL_LAYER)) instance.removeLayer(POLL_LAYER);
+    if (instance.getSource(POLL_SRC)) instance.removeSource(POLL_SRC);
+    if (!pollingOn || !pollingEmail) return;
+
+    instance.addSource(POLL_SRC, {
+      type: "vector",
+      tiles: [`${POLLING_PROTOCOL}://{z}/{x}/{y}/${pollingYear}`],
+      minzoom: POLLING_MIN_ZOOM,
+      maxzoom: 22,
+    });
+    instance.addLayer({
+      id: POLL_LAYER,
+      type: "circle",
+      source: POLL_SRC,
+      "source-layer": "polling_points",
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2.5, 18, 6],
+        "circle-color": "#e9a13b",
+        "circle-stroke-color": "#0f1d26",
+        "circle-stroke-width": 1,
+        "circle-opacity": 0.9,
+      },
+    });
+  }, [ready, pollingOn, pollingEmail, pollingYear]);
+
   const setCategoryBuffer = useCallback((id: string, feet: number) => {
     setBufferFeet((prev) => ({ ...prev, [id]: feet }));
   }, []);
@@ -771,6 +819,24 @@ export default function MapCanvas({
         ))}
       </div>
       <LayerControl
+        polling={{
+          on: pollingOn,
+          year: pollingYear,
+          email: pollingEmail,
+          minZoom: POLLING_MIN_ZOOM,
+          zoom,
+          onToggle: () => setPollingOn((v) => !v),
+          onYearChange: setPollingYear,
+          onSignedIn: (token: string, email: string | null) => {
+            pollingToken.current = token;
+            setPollingEmail(email);
+          },
+          onSignOut: () => {
+            pollingToken.current = null;
+            setPollingEmail(null);
+            setPollingOn(false);
+          },
+        }}
         categories={categories}
         active={activeLayers}
         bufferFeet={bufferFeet}
