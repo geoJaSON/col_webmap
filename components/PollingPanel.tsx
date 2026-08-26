@@ -58,7 +58,30 @@ export default function PollingPanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!configured) return null;
+  // Vanishing when the keys are absent makes a misconfigured deploy look
+  // identical to a working one with nothing to show. Say so instead.
+  if (!configured) {
+    return (
+      <li className="layers__item">
+        <div className="layers__head">
+          <span className="layers__row" data-on={false}>
+            <span
+              className="layers__swatch"
+              style={{ "--swatch": "#e9a13b" } as React.CSSProperties}
+              aria-hidden="true"
+            />
+            <span className="layers__label">Polling points</span>
+          </span>
+        </div>
+        <p className="polling__note">
+          Not available on this deployment — NEXT_PUBLIC_SUPABASE_URL and
+          NEXT_PUBLIC_SUPABASE_ANON_KEY were missing when it was built. They are
+          read into the bundle at build time, so add them and deploy again
+          without the build cache.
+        </p>
+      </li>
+    );
+  }
 
   const signIn = async (event: React.FormEvent) => {
     event.preventDefault();
