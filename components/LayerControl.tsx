@@ -7,12 +7,10 @@ import type { LayerCategory } from "@/lib/layers";
 
 type PollingProps = {
   on: boolean;
-  year: number;
   email: string | null;
   minZoom: number;
   zoom: number;
   onToggle: () => void;
-  onYearChange: (year: number) => void;
   onSignedIn: (token: string, email: string | null) => void;
   onSignOut: () => void;
 };
@@ -62,10 +60,8 @@ export default function LayerControl({
         <ul className="layers__list">
           <PollingPanel
             on={polling.on}
-            year={polling.year}
             email={polling.email}
             onToggle={polling.onToggle}
-            onYearChange={polling.onYearChange}
             onSignedIn={polling.onSignedIn}
             onSignOut={polling.onSignOut}
           />

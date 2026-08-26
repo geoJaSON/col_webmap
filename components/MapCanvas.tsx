@@ -7,8 +7,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
 import type { Ring } from "@/lib/geometry";
 import LayerControl from "@/components/LayerControl";
-import { POLLING_YEARS } from "@/components/PollingPanel";
+import { POLLING_YEAR } from "@/components/PollingPanel";
 import { POLLING_PROTOCOL, registerPollingProtocol } from "@/lib/pollingTiles";
+import { substrateColorExpression } from "@/lib/substrate";
 import { fetchCategories, fetchCategoryGeoJSON, type LayerCategory } from "@/lib/layers";
 import { bufferInView, indexCategory, type BBox, type IndexedCategory } from "@/lib/buffer";
 import { STATUS_COLORS, type Application } from "@/lib/types";
@@ -181,7 +182,6 @@ export default function MapCanvas({
   const [viewKey, setViewKey] = useState(0);
   const [zoom, setZoom] = useState(0);
   const [pollingOn, setPollingOn] = useState(false);
-  const [pollingYear, setPollingYear] = useState(POLLING_YEARS[0]);
   const [pollingEmail, setPollingEmail] = useState<string | null>(null);
   /** Read at request time by the tile protocol, so sign-in takes effect at once. */
   const pollingToken = useRef<string | null>(null);
@@ -743,24 +743,27 @@ export default function MapCanvas({
 
     instance.addSource(POLL_SRC, {
       type: "vector",
-      tiles: [`${POLLING_PROTOCOL}://{z}/{x}/{y}/${pollingYear}`],
+      tiles: [`${POLLING_PROTOCOL}://{z}/{x}/{y}/${POLLING_YEAR}`],
       minzoom: POLLING_MIN_ZOOM,
-      maxzoom: 22,
+      maxzoom: 18,
     });
+    // Symbology matched to the platform's field map and mobile app: coloured by
+    // substrate, same radii, same dark casing.
     instance.addLayer({
       id: POLL_LAYER,
       type: "circle",
       source: POLL_SRC,
       "source-layer": "polling_points",
+      minzoom: POLLING_MIN_ZOOM,
       paint: {
-        "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2.5, 18, 6],
-        "circle-color": "#e9a13b",
-        "circle-stroke-color": "#0f1d26",
-        "circle-stroke-width": 1,
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2, 18, 4.5],
+        "circle-color": substrateColorExpression() as maplibregl.ExpressionSpecification,
         "circle-opacity": 0.9,
+        "circle-stroke-width": 0.5,
+        "circle-stroke-color": "#13293d",
       },
     });
-  }, [ready, pollingOn, pollingEmail, pollingYear]);
+  }, [ready, pollingOn, pollingEmail]);
 
   const setCategoryBuffer = useCallback((id: string, feet: number) => {
     setBufferFeet((prev) => ({ ...prev, [id]: feet }));
@@ -821,12 +824,10 @@ export default function MapCanvas({
       <LayerControl
         polling={{
           on: pollingOn,
-          year: pollingYear,
           email: pollingEmail,
           minZoom: POLLING_MIN_ZOOM,
           zoom,
           onToggle: () => setPollingOn((v) => !v),
-          onYearChange: setPollingYear,
           onSignedIn: (token: string, email: string | null) => {
             pollingToken.current = token;
             setPollingEmail(email);

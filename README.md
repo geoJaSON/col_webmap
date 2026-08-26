@@ -21,6 +21,7 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `lib/buffer.ts` | On-the-fly buffering, culled to the viewport |
 | `lib/csv.ts` | CSV export laid out like the original `GIS Upload` sheet |
 | `lib/pollingTiles.ts` | MapLibre protocol that reads platform polling tiles as the signed-in user |
+| `lib/substrate.ts` | Polling-point colours, copied from the platform field map |
 | `public/layers/` | Generated reference layers plus the `index.json` the map reads |
 | `app/`, `components/`, `lib/` | The Next.js app |
 
@@ -184,6 +185,21 @@ How it is wired:
 - Tiles are only requested at zoom 14 and above, which is where the function
   starts answering; below that it returns `null`.
 
+Points are coloured by substrate using the same palette as the platform's
+field map and mobile app, so a point means the same thing in all three:
+
+| Substrate | | Substrate | |
+|---|---|---|---|
+| Solid Reef | `#31AD41` | Buried Shell | `#B2E061` |
+| Scattered Shell | `#F79F40` | Sand | `#FF0000` |
+| Mud | `#BD7EBE` | Too Deep to Poll | `#000000` |
+| Firm/Hard Bottom | `#FFF15C` | *unrecognised* | `#9E9E9E` |
+
+Radii, opacity, and the dark casing match too. Don't re-pick these — people
+read them by eye across the three apps. The key is rendered under the toggle
+rather than as a permanent legend bar, because seven swatches on screen at all
+times is clutter when the layer is off.
+
 This uses the **anon** key, which is public by design and safe in the bundle —
 a different key and a different trust model from the service-role key the COL
 API routes use.
@@ -248,15 +264,18 @@ them per slider tick would cost more than the buffering does.
 
 ## Notes
 
-- The polling-points layer is the one part of this app that was not verified
-  end to end: it needs a real platform login, which the build had no account
-  for. The sign-in, its error handling, and the gating were verified; whether
-  points actually draw was not. Two things to check first if they do not
-  appear: the vector layer name is assumed to be `polling_points` (following
-  `mvt_leases_base`, whose layer is `leases_base`), and `mvt_polling_points`
-  returned an empty tile even for the service role on a tile holding 111 known
-  points, which is consistent with per-user filtering but would also be what a
-  broken function looks like.
+- The polling-points layer needs a real platform login, which this build had no
+  account for, so the tiles themselves were never fetched here. The sign-in,
+  its error handling, the gating, and the colour expression were all verified;
+  the drawing was confirmed in use rather than in test.
+- `mvt_polling_points` returns an empty tile for the service role even on a tile
+  holding 111 known points, while `mvt_leases_base` returns data on that same
+  tile. That is the per-user filtering doing its job — without a signed-in user
+  there is nothing to show.
+- The platform's own field map reaches these tiles through an edge function
+  (`/functions/v1/tiles/polling_points/{z}/{x}/{y}.pbf?year=`) rather than the
+  RPC used here. Either works; the edge function returns protobuf directly and
+  would remove the base64 decode step if this ever needs simplifying.
 
 - `data/applications.json` is the import pipeline's base, not a mirror of the
   database. Once statuses or shapes are edited in the app the two diverge, and

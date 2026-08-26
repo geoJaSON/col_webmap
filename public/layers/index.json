@@ -3,7 +3,7 @@
     "id": "restoration-area",
     "label": "Restoration area",
     "color": "#4db6d0",
-    "bufferFeet": 500,
+    "bufferFeet": 1000,
     "file": "restoration-area.geojson",
     "features": 294,
     "sources": [

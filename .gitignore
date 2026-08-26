@@ -2,8 +2,10 @@ node_modules/
 .next/
 out/
 build/
-.env
-.env.local
+# Every env file except the template -- a stray .env.bak or .env.real
+# holds live credentials just as surely as .env does.
+.env*
+!.env.example
 .vercel
 *.tsbuildinfo
 next-env.d.ts

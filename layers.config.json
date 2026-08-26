@@ -10,7 +10,7 @@
     "restoration-area": {
       "label": "Restoration area",
       "color": "#4db6d0",
-      "bufferFeet": 500
+      "bufferFeet": 1000
     }
   },
   "layers": {
@@ -18,5 +18,12 @@
     "coastal-lease-polygon-c-tcms": "restoration-area"
   },
   "defaultCategory": "restoration-area",
-  "nameFields": ["GLO_ID", "NAME", "Name", "name", "ID", "Id"]
+  "nameFields": [
+    "GLO_ID",
+    "NAME",
+    "Name",
+    "name",
+    "ID",
+    "Id"
+  ]
 }

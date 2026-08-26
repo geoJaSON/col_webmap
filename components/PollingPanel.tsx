@@ -3,16 +3,19 @@
 import { useEffect, useState } from "react";
 
 import { pollingConfigured, supabaseBrowser } from "@/lib/supabaseBrowser";
+import { SUBSTRATE_COLORS } from "@/lib/substrate";
 
-/** Years with polling data in the platform, newest first. */
-export const POLLING_YEARS = [2026, 2025, 2024, 2023];
+/**
+ * The season the layer draws. There is no picker: reviewers work against the
+ * current season, and an unnoticed stale selection is worse than no choice at
+ * all. Bump this when the platform rolls over to a new poll year.
+ */
+export const POLLING_YEAR = 2026;
 
 type Props = {
   on: boolean;
-  year: number;
   email: string | null;
   onToggle: () => void;
-  onYearChange: (year: number) => void;
   onSignedIn: (token: string, email: string | null) => void;
   onSignOut: () => void;
 };
@@ -26,10 +29,8 @@ type Props = {
  */
 export default function PollingPanel({
   on,
-  year,
   email,
   onToggle,
-  onYearChange,
   onSignedIn,
   onSignOut,
 }: Props) {
@@ -177,21 +178,18 @@ export default function PollingPanel({
 
       {on && email && (
         <div className="polling">
-          <label className="polling__row" htmlFor="polling-year">
-            <span className="eyebrow">Season</span>
-            <select
-              id="polling-year"
-              className="polling__year"
-              value={year}
-              onChange={(e) => onYearChange(Number(e.target.value))}
-            >
-              {POLLING_YEARS.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
-          </label>
+          {/* The palette only means something with the key next to it, and a
+              permanent legend bar would be seven swatches of clutter when the
+              layer is off. */}
+          <ul className="legend">
+            {Object.entries(SUBSTRATE_COLORS).map(([label, color]) => (
+              <li className="legend__item" key={label}>
+                <span className="legend__dot" style={{ background: color }} aria-hidden="true" />
+                {label}
+              </li>
+            ))}
+          </ul>
+
           <p className="polling__who">
             {email}
             <button

@@ -1267,23 +1267,6 @@ button {
   padding: 2px 11px 12px;
 }
 
-.polling__row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.polling__year {
-  margin-left: auto;
-  padding: 5px 8px;
-  min-height: 32px;
-  background: var(--ink);
-  border: 1px solid var(--rule);
-  color: var(--paper);
-  font-family: var(--mono);
-  font-size: 12px;
-}
-
 .polling__who {
   display: flex;
   align-items: baseline;
@@ -1321,10 +1304,37 @@ button {
   .signin__input {
     height: 44px;
   }
+}
 
-  .polling__year {
-    min-height: 40px;
-  }
+/* Substrate key for the polling layer. Two columns keeps seven swatches from
+   making the control tall enough to cover the map. */
+.legend {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+  margin: 9px 0 0;
+  padding: 0;
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--buff-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.legend__dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  /* Same dark casing the map uses, so "Too Deep to Poll" stays visible. */
+  box-shadow: 0 0 0 1px #13293d;
 }
 
 /* ---------------------------------------------------------------- misc -- */
