@@ -1895,3 +1895,52 @@ button {
     border-left: none;
   }
 }
+
+/* ------------------------------------------------------- account --
+   Who is signed in, in the masthead. There is one login for the whole
+   site now -- the shared passcode and the separate Supabase sign-in
+   buried in the Layers panel are both gone -- so this is the only place
+   identity is shown or surrendered. */
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  padding-left: 14px;
+}
+
+.account__who {
+  font-size: 11.5px;
+  color: var(--buff-dim);
+  /* A long address must not push Sign out off a narrow masthead. */
+  max-width: 22ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account__out {
+  padding: 6px 10px;
+  min-height: 32px;
+  border: 1px solid var(--rule);
+  color: var(--buff-dim);
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.account__out:hover {
+  color: var(--paper);
+  border-color: var(--buff-dim);
+}
+
+@media (max-width: 720px) {
+  /* The address is the first thing to go: the map needs the width more
+     than a masthead does, and Sign out still has to be reachable. */
+  .account__who {
+    display: none;
+  }
+}

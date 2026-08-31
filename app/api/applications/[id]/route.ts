@@ -36,8 +36,8 @@ export async function PATCH(
     return NextResponse.json({ error: `"${rawId}" is not an application number.` }, { status: 400 });
   }
 
-  // No passcode check here: if SITE_PASSCODE is set, middleware has already
-  // turned away anyone without the cookie, including on this route.
+  // No auth check here: the middleware gates every route including this one,
+  // and answers /api/* with a 401 rather than a redirect.
   let body: unknown;
   try {
     body = await request.json();

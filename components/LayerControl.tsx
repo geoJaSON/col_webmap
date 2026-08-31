@@ -8,23 +8,17 @@ import type { LayerCategory } from "@/lib/layers";
 
 type PollingProps = {
   on: boolean;
-  email: string | null;
   minZoom: number;
   zoom: number;
   onToggle: () => void;
-  onSignedIn: (token: string, email: string | null) => void;
-  onSignOut: () => void;
 };
 
 type SurveyProps = {
   on: boolean;
-  email: string | null;
   loading: boolean;
   error: string | null;
   progress: { sampled: number; total: number };
   onToggle: () => void;
-  onSignedIn: (userId: string, email: string | null) => void;
-  onSignOut: () => void;
 };
 
 type Props = {
@@ -74,22 +68,13 @@ export default function LayerControl({
         <ul className="layers__list">
           <SurveyPanel
             on={survey.on}
-            email={survey.email}
             loading={survey.loading}
             error={survey.error}
             progress={survey.progress}
             onToggle={survey.onToggle}
-            onSignedIn={survey.onSignedIn}
-            onSignOut={survey.onSignOut}
           />
-          <PollingPanel
-            on={polling.on}
-            email={polling.email}
-            onToggle={polling.onToggle}
-            onSignedIn={polling.onSignedIn}
-            onSignOut={polling.onSignOut}
-          />
-          {polling.on && polling.email && polling.zoom < polling.minZoom && (
+          <PollingPanel on={polling.on} onToggle={polling.onToggle} />
+          {polling.on && polling.zoom < polling.minZoom && (
             <li className="layers__item">
               <p className="polling__note">Zoom in to load polling points.</p>
             </li>

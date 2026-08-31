@@ -1,98 +1,25 @@
 "use client";
 
-import { useState } from "react";
-
-import { pollingConfigured, supabaseBrowser } from "@/lib/supabaseBrowser";
 import { SURVEY_COLORS } from "@/lib/surveyStyle";
 
 type Props = {
   on: boolean;
-  email: string | null;
   loading: boolean;
   error: string | null;
   progress: { sampled: number; total: number };
   onToggle: () => void;
-  onSignedIn: (userId: string, email: string | null) => void;
-  onSignOut: () => void;
 };
 
 /**
- * "Ground samples" plus the sign-in it needs and the progress it reports.
+ * "Ground samples" — the layer toggle, how far along the survey is, and the key.
  *
- * Laid out like the polling entry beside it because it is the same kind of
- * thing -- a layer that only means anything once the platform knows who is
- * asking. It shares the browser Supabase client with that panel, so signing in
- * on either one satisfies both.
+ * Like the polling entry beside it, this used to carry its own sign-in form.
+ * The site-wide login removed the need: anyone looking at this is already
+ * signed in, so samples are already attributable and the layer can just be a
+ * layer.
  */
-export default function SurveyPanel({
-  on,
-  email,
-  loading,
-  error,
-  progress,
-  onToggle,
-  onSignedIn,
-  onSignOut,
-}: Props) {
-  const [asking, setAsking] = useState(false);
-  const [address, setAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [failure, setFailure] = useState<string | null>(null);
-
-  if (!pollingConfigured()) {
-    return (
-      <li className="layers__item">
-        <div className="layers__head">
-          <span className="layers__row" data-on={false}>
-            <span
-              className="layers__swatch"
-              style={{ "--swatch": SURVEY_COLORS.on } as React.CSSProperties}
-              aria-hidden="true"
-            />
-            <span className="layers__label">Ground samples</span>
-          </span>
-        </div>
-        <p className="polling__note">
-          Not available on this deployment — NEXT_PUBLIC_SUPABASE_URL and
-          NEXT_PUBLIC_SUPABASE_ANON_KEY were missing when it was built.
-        </p>
-      </li>
-    );
-  }
-
-  const signIn = async (event: React.FormEvent) => {
-    event.preventDefault();
-    const client = supabaseBrowser();
-    if (!client) return;
-    setBusy(true);
-    setFailure(null);
-    const { data, error: rejected } = await client.auth.signInWithPassword({
-      email: address.trim(),
-      password,
-    });
-    setBusy(false);
-    if (rejected) {
-      setFailure(rejected.message);
-      return;
-    }
-    setPassword("");
-    setAsking(false);
-    if (data.session) onSignedIn(data.session.user.id, data.session.user.email ?? null);
-  };
-
-  const handleToggle = () => {
-    // Turning it on without a session would draw an empty layer and look like
-    // there was nothing assigned. Ask instead.
-    if (!email && !on) {
-      setAsking(true);
-      return;
-    }
-    onToggle();
-  };
-
-  const pct =
-    progress.total > 0 ? Math.round((progress.sampled / progress.total) * 100) : 0;
+export default function SurveyPanel({ on, loading, error, progress, onToggle }: Props) {
+  const pct = progress.total > 0 ? Math.round((progress.sampled / progress.total) * 100) : 0;
 
   return (
     <li className="layers__item">
@@ -102,7 +29,7 @@ export default function SurveyPanel({
           className="layers__row"
           data-on={on}
           aria-pressed={on}
-          onClick={handleToggle}
+          onClick={onToggle}
         >
           <span
             className="layers__swatch"
@@ -110,53 +37,10 @@ export default function SurveyPanel({
             aria-hidden="true"
           />
           <span className="layers__label">Ground samples</span>
-          {!email && <span className="layers__lock" aria-hidden="true">🔒</span>}
         </button>
       </div>
 
-      {asking && !email && (
-        <form className="signin" onSubmit={signIn}>
-          <p className="signin__blurb">Sign in to record ground samples.</p>
-          <input
-            className="signin__input"
-            type="email"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder="you@example.com"
-            autoComplete="username"
-            required
-            autoFocus
-          />
-          <input
-            className="signin__input"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            autoComplete="current-password"
-            required
-          />
-          {failure && <p className="signin__error">{failure}</p>}
-          <div className="signin__actions">
-            <button
-              type="button"
-              className="shape__btn"
-              onClick={() => {
-                setAsking(false);
-                setFailure(null);
-              }}
-              disabled={busy}
-            >
-              Cancel
-            </button>
-            <button type="submit" className="shape__btn shape__btn--save" disabled={busy}>
-              {busy ? "Signing in…" : "Sign in"}
-            </button>
-          </div>
-        </form>
-      )}
-
-      {on && email && (
+      {on && (
         <div className="polling">
           {loading && <p className="polling__note">Loading the assignment…</p>}
           {error && <p className="signin__error">{error}</p>}
@@ -207,20 +91,6 @@ export default function SurveyPanel({
               Sampled
             </li>
           </ul>
-
-          <p className="polling__who">
-            {email}
-            <button
-              type="button"
-              className="polling__signout"
-              onClick={async () => {
-                await supabaseBrowser()?.auth.signOut();
-                onSignOut();
-              }}
-            >
-              Sign out
-            </button>
-          </p>
         </div>
       )}
     </li>

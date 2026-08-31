@@ -12,6 +12,7 @@ import { POLLING_PROTOCOL, registerPollingProtocol } from "@/lib/pollingTiles";
 import { substrateColorExpression } from "@/lib/substrate";
 import SurveyForm from "@/components/SurveyForm";
 import { useSurvey, pointKey } from "@/lib/useSurvey";
+import { useAuth } from "@/lib/useAuth";
 import {
   reefRingColor,
   sampledFillColor,
@@ -199,12 +200,16 @@ export default function MapCanvas({
   const [viewKey, setViewKey] = useState(0);
   const [zoom, setZoom] = useState(0);
   const [pollingOn, setPollingOn] = useState(false);
-  const [pollingEmail, setPollingEmail] = useState<string | null>(null);
+  const auth = useAuth();
   const survey = useSurvey();
   /** The assigned point whose datasheet is open, or null. */
   const [openPoint, setOpenPoint] = useState<SurveyPoint | null>(null);
-  /** Read at request time by the tile protocol, so sign-in takes effect at once. */
+  /**
+   * Read at request time by the tile protocol rather than captured, so a token
+   * refresh partway through a survey day takes effect on the next tile.
+   */
   const pollingToken = useRef<string | null>(null);
+  pollingToken.current = auth.accessToken;
 
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
@@ -775,7 +780,7 @@ export default function MapCanvas({
 
     if (instance.getLayer(POLL_LAYER)) instance.removeLayer(POLL_LAYER);
     if (instance.getSource(POLL_SRC)) instance.removeSource(POLL_SRC);
-    if (!pollingOn || !pollingEmail) return;
+    if (!pollingOn || !auth.accessToken) return;
 
     instance.addSource(POLL_SRC, {
       type: "vector",
@@ -799,7 +804,7 @@ export default function MapCanvas({
         "circle-stroke-color": "#13293d",
       },
     });
-  }, [ready, pollingOn, pollingEmail]);
+  }, [ready, pollingOn, auth.accessToken]);
 
   // Assigned ground samples. Source and layers are built once and then fed by
   // the effect below, rather than torn down and rebuilt whenever a sample is
@@ -889,7 +894,7 @@ export default function MapCanvas({
     const source = map.current.getSource(SURVEY_SRC) as maplibregl.GeoJSONSource | undefined;
     if (!source) return;
 
-    const showing = survey.on && Boolean(survey.userId);
+    const showing = survey.on;
     source.setData(
       showing
         ? toSurveyFeatureCollection(survey.points, survey.samples)
@@ -903,7 +908,7 @@ export default function MapCanvas({
     }
     // A point whose layer just went away should not leave its form standing.
     if (!showing) setOpenPoint(null);
-  }, [ready, survey.on, survey.userId, survey.points, survey.samples]);
+  }, [ready, survey.on, survey.points, survey.samples]);
 
   const setCategoryBuffer = useCallback((id: string, feet: number) => {
     setBufferFeet((prev) => ({ ...prev, [id]: feet }));
@@ -964,29 +969,16 @@ export default function MapCanvas({
       <LayerControl
         survey={{
           on: survey.on,
-          email: survey.email,
           loading: survey.loading,
           error: survey.error,
           progress: survey.progress,
           onToggle: survey.toggle,
-          onSignedIn: survey.onSignedIn,
-          onSignOut: survey.onSignOut,
         }}
         polling={{
           on: pollingOn,
-          email: pollingEmail,
           minZoom: POLLING_MIN_ZOOM,
           zoom,
           onToggle: () => setPollingOn((v) => !v),
-          onSignedIn: (token: string, email: string | null) => {
-            pollingToken.current = token;
-            setPollingEmail(email);
-          },
-          onSignOut: () => {
-            pollingToken.current = null;
-            setPollingEmail(null);
-            setPollingOn(false);
-          },
         }}
         categories={categories}
         active={activeLayers}
@@ -997,14 +989,14 @@ export default function MapCanvas({
         onZoomTo={zoomToLayer}
       />
       {children}
-      {openPoint && survey.userId && (
+      {openPoint && auth.userId && (
         <SurveyForm
           point={openPoint}
           siteCode={
             survey.sites.find((site) => site.app_no === openPoint.app_no)?.site_code ?? ""
           }
           sample={survey.samples.get(pointKey(openPoint.app_no, openPoint.point_no)) ?? null}
-          userId={survey.userId}
+          userId={auth.userId}
           onSaved={(sample) => {
             survey.recordSample(sample);
             setOpenPoint(null);

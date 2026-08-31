@@ -9,6 +9,7 @@ import MapCanvas from "@/components/MapCanvas";
 import ResultList from "@/components/ResultList";
 import ShapeEditor from "@/components/ShapeEditor";
 import { formatRing, parseCoordinateText, type Ring } from "@/lib/geometry";
+import { signOut, useAuth } from "@/lib/useAuth";
 import type { StoreMode } from "@/lib/store";
 import { STATUSES, type Application, type Filters, type Status } from "@/lib/types";
 
@@ -37,6 +38,7 @@ type Props = {
 };
 
 export default function Workspace({ initialApplications, mode }: Props) {
+  const auth = useAuth();
   const [applications, setApplications] = useState(initialApplications);
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -267,6 +269,17 @@ export default function Workspace({ initialApplications, mode }: Props) {
           onSelect={select}
         />
         {saving && <span className="masthead__saving">Saving…</span>}
+        {/* Who is recording. On a shared tablet this is the difference between
+            a sample filed under the right name and one that is not, so it is
+            on screen rather than behind a menu. */}
+        {auth.status === "in" && (
+          <div className="account">
+            <span className="account__who">{auth.email}</span>
+            <button type="button" className="account__out" onClick={signOut}>
+              Sign out
+            </button>
+          </div>
+        )}
       </header>
 
       <aside className="panel" data-open={sheetOpen}>

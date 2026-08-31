@@ -66,14 +66,59 @@ is no Supabase key in the client bundle to leak.
 npx vercel
 ```
 
-Then add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` under **Settings →
-Environment Variables** and redeploy. No other configuration is needed.
+Then add all four variables from `.env.example` under **Settings → Environment
+Variables** and redeploy.
 
-### Locking down edits
+The two `NEXT_PUBLIC_` ones are **required**, not optional: the whole site is
+behind a sign-in and without them nobody can get in at all. They are read into
+the bundle at build time, so if a deploy goes out missing them, setting them
+afterwards is not enough — redeploy without the build cache.
 
-By default anyone with the URL can change a status. Set an `EDIT_PASSCODE`
-environment variable to require a shared passcode; the app asks for it once and
-remembers it in that browser. Leave it unset to keep edits open.
+## Signing in
+
+The whole site — every page and every API route — requires a **CV Carbon
+account**. Sign in at `/login` with the same email and password as the wider
+platform; there is no separate account for this map, no sign-up page, and no
+password reset here. Accounts are staff accounts, managed on the platform.
+
+This replaced a shared site passcode. The passcode was one door, and then
+polling points and ground samples each asked for a *second* Supabase sign-in
+inside the Layers panel — two passwords for one app, with the second hidden
+behind a padlock icon on a layer toggle. Now there is one login and both of
+those layers simply work.
+
+What that removed: `middleware.ts`'s passcode check, `lib/access.ts`,
+`app/unlock/`, `app/api/unlock/`, the `SITE_PASSCODE` variable, and the
+sign-in form that used to live in each of `PollingPanel` and `SurveyPanel`.
+
+### How the gate works
+
+`middleware.ts` is the only place the decision lives. It runs on every request,
+calls `supabase.auth.getUser()` — which revalidates the token with Supabase
+rather than trusting a cookie the browser could have forged — and redirects to
+`/login` (or answers `401` on `/api/*`, so a fetch fails as JSON rather than as
+HTML it cannot parse). A deep link is remembered in `?next=`, so signing in
+lands you where you were going.
+
+The session lives in **cookies**, not localStorage, and that detail is
+load-bearing: it is the only reason middleware can see who you are before a
+page renders. That is why `lib/supabaseBrowser.ts` uses `createBrowserClient`
+from `@supabase/ssr`. Swapping it back for the plain `createClient` would lock
+everyone out.
+
+### Who this lets in
+
+The check is "has a session in this Supabase project", nothing finer. That is
+safe **today** because the project is the CV Carbon platform and `auth.users`
+holds staff accounts only — lessees and other clients authenticate through
+AGOL, not Supabase. So "authenticated" and "our team" are currently the same
+set of people.
+
+If client accounts are ever added to this project, that stops being true and
+the gate silently widens to include them. The fix at that point is an
+allowlist — a table of who may see COL data, checked in the middleware — and
+nothing else in the app has to change. The assumption is written down at the
+check itself so it is hard to miss.
 
 ## Re-importing the workbook
 
@@ -165,16 +210,16 @@ tables. One of them, `gis_polling_points`, holds about 1.7 million points, and
 the platform already exposes `rpc/mvt_polling_points(z, x, y, p_year)` which
 returns a Mapbox Vector Tile.
 
-**Show polling points** in the Layers control turns that on. It asks for a
-platform sign-in first, because the tile function filters by who is asking:
-called without a user it returns an empty tile, so signing in is what makes the
-layer show anything at all.
+**Show polling points** in the Layers control turns that on. The tile function
+filters by who is asking — called without a user it returns an empty tile — so
+this only works because you are already signed in site-wide. It used to carry
+its own sign-in form; that is gone.
 
 How it is wired:
 
-- Sign-in uses `signInWithPassword` against the same project, matching what the
-  existing web app does. The session persists, so a return visit does not ask
-  again.
+- The access token comes from the site-wide session, read at request time
+  rather than captured, so a token refresh partway through a long day takes
+  effect on the next tile.
 - Tiles are fetched through a MapLibre custom protocol (`polling://`) rather
   than proxied through this app's server. The person's access token therefore
   never touches our server or our logs — it goes straight to Supabase, and the
@@ -273,8 +318,9 @@ service-role key — survey reads and writes go **straight to Supabase from the
 browser** as the signed-in surveyor, governed by the RLS policies in
 `survey_schema.sql`. That is the same trust model as the polling layer, and it
 is what lets a photo go from the tablet to Storage without a several-megabyte
-round trip through the Next.js server on a boat's connection. It shares the
-browser Supabase client with the polling panel, so one sign-in serves both.
+round trip through the Next.js server on a boat's connection. The identity is
+the site-wide one, so `recorded_by` is whoever signed in at `/login` — there is
+no separate survey sign-in to forget.
 
 Notable schema decisions:
 
@@ -355,7 +401,7 @@ blocker type is a new entry under `categories` — the slider and colour come
 along for free.
 
 Layers are fetched rather than bundled, so a large category never lands in the
-JavaScript payload, and they sit behind the site passcode like everything else.
+JavaScript payload, and they sit behind the sign-in like everything else.
 They draw *beneath* the leases so context never covers the thing being decided
 on.
 
