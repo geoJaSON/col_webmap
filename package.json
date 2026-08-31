@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "extract": "python scripts/extract_xlsx.py",
-    "layers": "python scripts/import_layers.py"
+    "layers": "python scripts/import_layers.py",
+    "survey": "python scripts/extract_survey_points.py"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.5",

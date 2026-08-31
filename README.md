@@ -204,6 +204,124 @@ This uses the **anon** key, which is public by design and safe in the bundle —
 a different key and a different trust model from the service-role key the COL
 API routes use.
 
+## Ground samples (field survey)
+
+TPWD assigns ground samples for each accepted COL and expects the results back
+on their own datasheets. **Ground samples** in the Layers control draws those
+assigned points and turns each one into a form the crew fills in on a tablet.
+
+The first round covers **582 points across 9 sites** — applications 1, 8, 9,
+14, 15, 22, 56, 75 and 107 — split 318 on-reef / 264 off-reef.
+
+### Symbology
+
+Two things have to be readable at a glance from a moving boat, so they use two
+separate channels:
+
+| Channel | Meaning |
+|---|---|
+| Ring colour | Which datasheet the point needs — amber `#e9a13b` on-reef, cyan `#4db6d0` off-reef |
+| Fill | Sampled (solid green `#35b37e`) or still outstanding (hollow) |
+
+A sampled point therefore still says which kind it was, and a crew scanning for
+what is left sees hollow rings regardless of type. Point numbers label the dots
+from zoom 15.5, which is where they stop overlapping.
+
+### The form
+
+Tapping a point opens its datasheet. Which fields appear is decided entirely by
+the point's reef type — the same fork TPWD's two worksheets use:
+
+- **On-reef** — counts for live oysters 6–25 mm and > 25 mm, oyster shells
+  > 25 mm, and black oyster shells > 25 mm.
+- **Off-reef** — presence of live oysters, Y/N.
+- **Both** — seagrass Y/N, the mud/sand/shell-hash split, a photo, and notes.
+
+Sized for a tablet on a deck: every control clears 44px, counts have stepper
+keys either side so a wet finger never has to hit a caret, the yes/no questions
+are a pair of keys rather than a select, and all inputs are 16px because
+anything smaller makes iOS zoom the page on focus.
+
+The sediment percentages show a running total and must reach 100. That is
+enforced twice — in the form, where it can explain itself, and as a CHECK
+constraint, which is what actually guarantees it.
+
+### Position
+
+Every sample carries two positions: the coordinate TPWD **assigned**, and the
+**actual** GPS fix at the time of sampling with the accuracy the device
+reported. A standard dredge tow covers ~132 linear feet, so the boat is never
+exactly on the mark; the form shows the distance between the two and warns past
+150 ft, as a prompt rather than a block. The map also has a live position
+control (blue dot with accuracy circle) for steering to the next point.
+
+### Setting it up
+
+```bash
+npm run survey   # workbook -> data/survey_points.json + supabase/survey_seed.sql
+```
+
+Then in the Supabase SQL editor run `supabase/survey_schema.sql` once, followed
+by `supabase/survey_seed.sql`. The seed is re-runnable: it refreshes the
+assignment on conflict and never touches collected samples, so re-run it
+whenever TPWD sends the next batch of points.
+
+### How it is wired
+
+Unlike `col_applications` — reached only by this app's API routes holding the
+service-role key — survey reads and writes go **straight to Supabase from the
+browser** as the signed-in surveyor, governed by the RLS policies in
+`survey_schema.sql`. That is the same trust model as the polling layer, and it
+is what lets a photo go from the tablet to Storage without a several-megabyte
+round trip through the Next.js server on a boat's connection. It shares the
+browser Supabase client with the polling panel, so one sign-in serves both.
+
+Notable schema decisions:
+
+- `survey_samples` carries a **copy of `reef_type`** pinned to the point's own
+  value by a composite foreign key. A CHECK constraint cannot reach into
+  another table, and this is what lets the database enforce that an on-reef row
+  actually carries the four counts and an off-reef row carries the presence
+  flag — not just the form.
+- `recorded_by` is stamped from the JWT by a trigger, not trusted from the
+  request body, so a client cannot file a sample under someone else's name.
+- **One row per point.** Re-recording is a correction, which keeps the map's
+  sampled/not-sampled state unambiguous.
+- **No delete policy and no delete grant.** A collected sample is a regulatory
+  record — amend it, do not remove it.
+- Photos live in a private `survey-photos` bucket, named
+  `<app#>-<point>-<timestamp>.jpg` so the filename says which sample it belongs
+  to, and downscaled to 2048px before upload.
+
+### Getting the data back out
+
+```
+/api/survey/csv?type=on&site=75    one worksheet's worth, exact columns
+/api/survey/csv?type=off           every site, plus App# and actual position
+```
+
+The single-site form reproduces TPWD's `Datasheet.xlsx` columns **verbatim**,
+including its inconsistent spacing around the size thresholds (`(>25 mm)` on
+one row, `(>25mm)` on the next). Those are not tidied up on purpose — the file
+is meant to drop into the workbook they sent, and a "corrected" header is a
+column their sheet does not recognise.
+
+Rows follow the *assignment*, not the collection: every assigned point appears,
+and one not yet sampled comes through with its coordinate and empty observation
+cells. A sheet that silently omitted outstanding points would read as a
+complete survey.
+
+### Known limitation: no offline mode
+
+This is **online-only**. A submission needs a live connection, and there is no
+local queue — if there is no signal at a point, the form cannot be saved and
+the crew has to record it another way and enter it later. Coverage out at
+Hanna's Reef is not guaranteed, so this is the thing most likely to bite.
+
+Everything a submission needs goes through a single function, `saveSample` in
+`lib/survey.ts`, specifically so that adding an IndexedDB queue later means
+changing that one function and nothing that calls it.
+
 ## Reference layers
 
 Restoration areas, and any other blocker type that is context rather than a COL

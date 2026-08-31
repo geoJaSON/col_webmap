@@ -1499,3 +1499,399 @@ button {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* -------------------------------------------------- ground samples --
+   The field survey: a progress read-out in the layer panel, and the
+   datasheet itself as a full-height form. Sized for a tablet held in one
+   hand on a moving deck -- every control clears 44px, and the two yes/no
+   questions are a pair of keys rather than a select. */
+
+.survey-progress {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  color: var(--buff-dim);
+}
+
+.survey-progress__pct {
+  margin-left: auto;
+  color: var(--accept);
+  font-weight: 700;
+}
+
+.survey-bar {
+  height: 4px;
+  margin-bottom: 10px;
+  background: var(--ink-sunk);
+  border: 1px solid var(--rule-soft);
+  overflow: hidden;
+}
+
+.survey-bar__fill {
+  display: block;
+  height: 100%;
+  background: var(--accept);
+  transition: width 240ms var(--ease);
+}
+
+/* A hollow ring in the legend, matching an unsampled point on the map. */
+.legend__ring {
+  width: 9px;
+  height: 9px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--ink);
+  flex: none;
+}
+
+/* ----- the datasheet ------------------------------------------------ */
+
+.survey-form {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  background: rgba(6, 12, 17, 0.72);
+  backdrop-filter: blur(2px);
+}
+
+.survey-form__panel {
+  display: flex;
+  flex-direction: column;
+  width: min(460px, 100%);
+  background: var(--ink);
+  border-left: 1px solid var(--rule);
+  box-shadow: -18px 0 44px rgba(0, 0, 0, 0.45);
+}
+
+.survey-form__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--ink-raised);
+}
+
+.survey-form__title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 2px 0 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--paper);
+}
+
+.survey-form__badge {
+  padding: 3px 8px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.survey-form__badge[data-reef="on"] {
+  color: var(--modify);
+}
+
+.survey-form__badge[data-reef="off"] {
+  color: #4db6d0;
+}
+
+.survey-form__close {
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  color: var(--buff-dim);
+  font-size: 17px;
+}
+
+.survey-form__close:hover {
+  color: var(--paper);
+}
+
+.survey-form__body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 16px 16px;
+}
+
+.survey-form__amending {
+  margin: 12px 0 0;
+  padding: 7px 9px;
+  background: rgba(233, 161, 59, 0.12);
+  border-left: 2px solid var(--modify);
+  font-size: 11.5px;
+  color: #f0cd97;
+}
+
+.survey-form__section {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.survey-form__section:last-of-type {
+  border-bottom: none;
+}
+
+.survey-form__section .eyebrow {
+  display: block;
+  margin: 0 0 10px;
+}
+
+.survey-form__coords {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+
+.survey-form__coords dt {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 9.5px;
+  color: var(--buff-dim);
+}
+
+.survey-form__coords dd {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: var(--paper);
+}
+
+.survey-form__fixnote {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  color: var(--buff-dim);
+}
+
+/* Far from the assigned mark is worth noticing, but it is never a blocker --
+   the crew is there and the app is not. */
+.survey-form__fixnote[data-far="true"] {
+  color: var(--modify);
+}
+
+.survey-form__warn {
+  margin: 0 0 10px;
+  padding: 7px 9px;
+  background: rgba(233, 161, 59, 0.1);
+  border-left: 2px solid var(--modify);
+  font-size: 11.5px;
+  color: #f0cd97;
+}
+
+.survey-form__error {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: #f3b4b0;
+}
+
+.survey-form__error--save {
+  margin-top: 14px;
+  padding: 8px 10px;
+  background: rgba(226, 86, 79, 0.12);
+  border-left: 2px solid var(--decline);
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.field__label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12.5px;
+  color: var(--buff);
+}
+
+/* ----- stepper ------------------------------------------------------ */
+
+.stepper {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+}
+
+.stepper__key {
+  height: 46px;
+  color: var(--buff);
+  font-size: 21px;
+  line-height: 1;
+  background: var(--ink-raised);
+  /* Repeated tapping on a touchscreen otherwise selects the glyph. */
+  user-select: none;
+}
+
+.stepper__key:active {
+  background: var(--magenta);
+  color: var(--ink);
+}
+
+.stepper__value {
+  height: 46px;
+  min-width: 0;
+  border: none;
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  background: transparent;
+  color: var(--paper);
+  text-align: center;
+  /* 16px or iOS zooms the page when the field takes focus. */
+  font-size: 16px;
+}
+
+.stepper__value:focus {
+  outline: none;
+  background: rgba(224, 69, 123, 0.08);
+}
+
+/* ----- yes / no ----------------------------------------------------- */
+
+.yesno {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.yesno__key {
+  height: 46px;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+  color: var(--buff-dim);
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.yesno__key[data-on="true"] {
+  background: var(--magenta);
+  border-color: var(--magenta);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+/* ----- sediment ----------------------------------------------------- */
+
+.survey-form__sediment {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.percent {
+  display: block;
+}
+
+.percent__label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: var(--buff);
+}
+
+.percent__input {
+  width: 100%;
+  height: 46px;
+  padding: 0 22px 0 10px;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+  color: var(--paper);
+  font-size: 16px;
+  text-align: right;
+}
+
+.percent__input:focus {
+  outline: none;
+  border-color: var(--magenta);
+}
+
+.percent__sign {
+  float: right;
+  margin: -32px 8px 0 0;
+  font-size: 12px;
+  color: var(--buff-dim);
+  pointer-events: none;
+}
+
+.survey-form__total {
+  margin: 10px 0 0;
+  font-size: 12px;
+  color: var(--buff-dim);
+}
+
+.survey-form__total[data-ok="true"] {
+  color: var(--accept);
+}
+
+.survey-form__total[data-bad="true"] {
+  color: var(--decline);
+}
+
+/* ----- photo and notes ---------------------------------------------- */
+
+.survey-form__photo {
+  display: block;
+  width: 100%;
+  max-height: 190px;
+  margin-bottom: 8px;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+.survey-form__notes {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  resize: vertical;
+}
+
+.survey-form__notes:focus {
+  outline: none;
+  border-color: var(--magenta);
+}
+
+/* Actions stay put while the body scrolls: on a small screen Submit must
+   never be something you have to go looking for. */
+.survey-form__actions {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  padding: 12px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--rule);
+  background: var(--ink-raised);
+}
+
+.survey-form__actions .shape__btn {
+  min-height: 48px;
+}
+
+@media (max-width: 620px) {
+  .survey-form__panel {
+    width: 100%;
+    border-left: none;
+  }
+}

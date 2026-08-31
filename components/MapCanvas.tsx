@@ -10,6 +10,14 @@ import LayerControl from "@/components/LayerControl";
 import { POLLING_YEAR } from "@/components/PollingPanel";
 import { POLLING_PROTOCOL, registerPollingProtocol } from "@/lib/pollingTiles";
 import { substrateColorExpression } from "@/lib/substrate";
+import SurveyForm from "@/components/SurveyForm";
+import { useSurvey, pointKey } from "@/lib/useSurvey";
+import {
+  reefRingColor,
+  sampledFillColor,
+  toSurveyFeatureCollection,
+} from "@/lib/surveyStyle";
+import type { SurveyPoint } from "@/lib/surveyTypes";
 import { fetchCategories, fetchCategoryGeoJSON, type LayerCategory } from "@/lib/layers";
 import { bufferInView, indexCategory, type BBox, type IndexedCategory } from "@/lib/buffer";
 import { STATUS_COLORS, type Application } from "@/lib/types";
@@ -37,6 +45,14 @@ const POLL_SRC = "polling";
 const POLL_LAYER = "polling-points";
 // The tile function answers nothing below this, so asking is wasted work.
 const POLLING_MIN_ZOOM = 14;
+
+// Assigned ground samples.
+const SURVEY_SRC = "survey";
+const SURVEY_LAYER = "survey-points";
+const SURVEY_PICK = "survey-pick";
+const SURVEY_LABEL = "survey-label";
+// Point numbers only stop overlapping once you are working a single site.
+const SURVEY_LABEL_MIN_ZOOM = 15.5;
 
 /**
  * Three raster basemaps live in the style at once and are toggled by
@@ -184,6 +200,9 @@ export default function MapCanvas({
   const [zoom, setZoom] = useState(0);
   const [pollingOn, setPollingOn] = useState(false);
   const [pollingEmail, setPollingEmail] = useState<string | null>(null);
+  const survey = useSurvey();
+  /** The assigned point whose datasheet is open, or null. */
+  const [openPoint, setOpenPoint] = useState<SurveyPoint | null>(null);
   /** Read at request time by the tile protocol, so sign-in takes effect at once. */
   const pollingToken = useRef<string | null>(null);
 
@@ -196,6 +215,10 @@ export default function MapCanvas({
   onEditChangeRef.current = onEditPointsChange;
   /** Index of the corner under the cursor mid-drag, or null. */
   const dragging = useRef<number | null>(null);
+
+  /** Latest assigned points, read by the tap handler registered on load. */
+  const surveyPointsRef = useRef(survey.points);
+  surveyPointsRef.current = survey.points;
 
   useEffect(() => {
     if (!container.current || map.current) return;
@@ -234,6 +257,18 @@ export default function MapCanvas({
     });
 
     instance.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    // Where the boat is. Tracking rather than a one-shot fix, with the heading
+    // shown, because the crew is steering to the next mark -- and high accuracy
+    // because the same chip stamps the samples.
+    instance.addControl(
+      new maplibregl.GeolocateControl({
+        positionOptions: { enableHighAccuracy: true },
+        trackUserLocation: true,
+        showUserLocation: true,
+        showAccuracyCircle: true,
+      }),
+      "top-right",
+    );
     instance.addControl(
       new maplibregl.ScaleControl({ maxWidth: 120, unit: "imperial" }),
       "bottom-left",
@@ -766,6 +801,110 @@ export default function MapCanvas({
     });
   }, [ready, pollingOn, pollingEmail]);
 
+  // Assigned ground samples. Source and layers are built once and then fed by
+  // the effect below, rather than torn down and rebuilt whenever a sample is
+  // recorded -- rebuilding would make the whole layer blink on every submit.
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const instance = map.current;
+    if (instance.getSource(SURVEY_SRC)) return;
+
+    instance.addSource(SURVEY_SRC, {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [] },
+    });
+
+    // Ring colour says which datasheet the point needs; the fill says whether
+    // it has been done. See lib/surveyStyle.ts.
+    instance.addLayer({
+      id: SURVEY_LAYER,
+      type: "circle",
+      source: SURVEY_SRC,
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 11, 3, 14, 5.5, 17, 9],
+        "circle-color": sampledFillColor as maplibregl.ExpressionSpecification,
+        "circle-opacity": 0.95,
+        "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 11, 1.2, 17, 2.6],
+        "circle-stroke-color": reefRingColor as maplibregl.ExpressionSpecification,
+      },
+    });
+
+    // The visible dot is a few pixels across; this is what a finger actually
+    // hits. Same trick as the lease outlines.
+    instance.addLayer({
+      id: SURVEY_PICK,
+      type: "circle",
+      source: SURVEY_SRC,
+      paint: { "circle-radius": 20, "circle-color": "#000", "circle-opacity": 0 },
+    });
+
+    instance.addLayer({
+      id: SURVEY_LABEL,
+      type: "symbol",
+      source: SURVEY_SRC,
+      minzoom: SURVEY_LABEL_MIN_ZOOM,
+      layout: {
+        "text-field": ["to-string", ["get", "point_no"]],
+        "text-font": ["Noto Sans Regular"],
+        "text-size": 11,
+        "text-offset": [0, 1.1],
+        "text-anchor": "top",
+        "text-allow-overlap": false,
+      },
+      paint: {
+        "text-color": "#f7f4ec",
+        "text-halo-color": "#0f1d26",
+        "text-halo-width": 1.6,
+      },
+    });
+
+    const openDatasheet = (event: maplibregl.MapLayerMouseEvent) => {
+      // While a lease outline is being reshaped, taps belong to that.
+      if (editPointsRef.current) return;
+      const feature = event.features?.[0];
+      if (!feature?.properties) return;
+      const app_no = Number(feature.properties.app_no);
+      const point_no = Number(feature.properties.point_no);
+      const point = surveyPointsRef.current.find(
+        (p) => p.app_no === app_no && p.point_no === point_no,
+      );
+      // Open from the authoritative record, not the feature properties: the
+      // form writes coordinates into a regulatory row and a tile-rounded
+      // number is not good enough for that.
+      if (point) setOpenPoint(point);
+    };
+    instance.on("click", SURVEY_PICK, openDatasheet);
+
+    instance.on("mouseenter", SURVEY_PICK, () => {
+      instance.getCanvas().style.cursor = "pointer";
+    });
+    instance.on("mouseleave", SURVEY_PICK, () => {
+      instance.getCanvas().style.cursor = "";
+    });
+  }, [ready]);
+
+  // Feed the layer, and empty it when the survey is switched off.
+  useEffect(() => {
+    if (!ready || !map.current) return;
+    const source = map.current.getSource(SURVEY_SRC) as maplibregl.GeoJSONSource | undefined;
+    if (!source) return;
+
+    const showing = survey.on && Boolean(survey.userId);
+    source.setData(
+      showing
+        ? toSurveyFeatureCollection(survey.points, survey.samples)
+        : { type: "FeatureCollection", features: [] },
+    );
+
+    for (const id of [SURVEY_LAYER, SURVEY_PICK, SURVEY_LABEL]) {
+      if (map.current.getLayer(id)) {
+        map.current.setLayoutProperty(id, "visibility", showing ? "visible" : "none");
+      }
+    }
+    // A point whose layer just went away should not leave its form standing.
+    if (!showing) setOpenPoint(null);
+  }, [ready, survey.on, survey.userId, survey.points, survey.samples]);
+
   const setCategoryBuffer = useCallback((id: string, feet: number) => {
     setBufferFeet((prev) => ({ ...prev, [id]: feet }));
   }, []);
@@ -823,6 +962,16 @@ export default function MapCanvas({
         ))}
       </div>
       <LayerControl
+        survey={{
+          on: survey.on,
+          email: survey.email,
+          loading: survey.loading,
+          error: survey.error,
+          progress: survey.progress,
+          onToggle: survey.toggle,
+          onSignedIn: survey.onSignedIn,
+          onSignOut: survey.onSignOut,
+        }}
         polling={{
           on: pollingOn,
           email: pollingEmail,
@@ -848,6 +997,21 @@ export default function MapCanvas({
         onZoomTo={zoomToLayer}
       />
       {children}
+      {openPoint && survey.userId && (
+        <SurveyForm
+          point={openPoint}
+          siteCode={
+            survey.sites.find((site) => site.app_no === openPoint.app_no)?.site_code ?? ""
+          }
+          sample={survey.samples.get(pointKey(openPoint.app_no, openPoint.point_no)) ?? null}
+          userId={survey.userId}
+          onSaved={(sample) => {
+            survey.recordSample(sample);
+            setOpenPoint(null);
+          }}
+          onClose={() => setOpenPoint(null)}
+        />
+      )}
     </div>
   );
 }

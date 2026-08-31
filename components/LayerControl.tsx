@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import PollingPanel from "@/components/PollingPanel";
+import SurveyPanel from "@/components/SurveyPanel";
 import type { LayerCategory } from "@/lib/layers";
 
 type PollingProps = {
@@ -15,7 +16,19 @@ type PollingProps = {
   onSignOut: () => void;
 };
 
+type SurveyProps = {
+  on: boolean;
+  email: string | null;
+  loading: boolean;
+  error: string | null;
+  progress: { sampled: number; total: number };
+  onToggle: () => void;
+  onSignedIn: (userId: string, email: string | null) => void;
+  onSignOut: () => void;
+};
+
 type Props = {
+  survey: SurveyProps;
   polling: PollingProps;
   categories: LayerCategory[];
   active: Set<string>;
@@ -31,6 +44,7 @@ const MAX_FEET = 2000;
 const STEP_FEET = 50;
 
 export default function LayerControl({
+  survey,
   polling,
   categories,
   active,
@@ -52,12 +66,22 @@ export default function LayerControl({
       >
         Layers
         <span className="layers__count num">
-          {active.size + (polling.on ? 1 : 0)}/{categories.length + 1}
+          {active.size + (polling.on ? 1 : 0) + (survey.on ? 1 : 0)}/{categories.length + 2}
         </span>
       </button>
 
       {open && (
         <ul className="layers__list">
+          <SurveyPanel
+            on={survey.on}
+            email={survey.email}
+            loading={survey.loading}
+            error={survey.error}
+            progress={survey.progress}
+            onToggle={survey.onToggle}
+            onSignedIn={survey.onSignedIn}
+            onSignOut={survey.onSignOut}
+          />
           <PollingPanel
             on={polling.on}
             email={polling.email}
