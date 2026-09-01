@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-import { fromCuts, rebalance, type ShareKey, type Shares } from "@/lib/sediment";
+import { fromCuts, type ShareKey, type Shares } from "@/lib/sediment";
 
 /**
  * Sediment composition as one proportional bar with two draggable dividers.
@@ -20,15 +20,23 @@ import { fromCuts, rebalance, type ShareKey, type Shares } from "@/lib/sediment"
  *
  * Dragging snaps to 5% because that is roughly the precision of the underlying
  * act -- someone eyeballing the contents of a dredge is not distinguishing 47%
- * from 48% mud. The number boxes underneath take any whole number for the rare
- * case that wants one.
+ * from 48% mud.
  */
 
 /** Drag and arrow-key granularity. Shift-arrow gives single points. */
 const SNAP = 5;
 
-/** Below this width a segment has no room for its label; the readout has it. */
+/** Below this width a segment has no room for its label; the key below has it. */
 const LABEL_MIN_PCT = 14;
+
+/**
+ * Where the dividers sit before anyone has touched them. This is a starting
+ * position to drag from, *not* an answer: until the bar is moved these values
+ * are shown dimmed and nothing is written to the draft. An untouched sample
+ * must not come out carrying a plausible-looking composition that nobody
+ * actually entered.
+ */
+const START: Shares = { mud: 34, sand: 33, shellHash: 33 };
 
 const COLORS = {
   mud: "#8d6e5c",
@@ -55,30 +63,23 @@ type Props = {
 export default function SedimentBar({ mud, sand, shellHash, onChange }: Props) {
   const bar = useRef<HTMLDivElement>(null);
   const [dragging, setDragging] = useState<1 | 2 | null>(null);
-  /**
-   * The box being typed in, held raw so the other two do not rebalance on
-   * every keystroke -- watching the neighbours jump while you type "75" is
-   * horrible. They settle when the field is left.
-   */
-  const [typing, setTyping] = useState<{ key: Key; value: string } | null>(null);
 
-  // Empty means nobody has answered yet, and that has to stay visible: a bar
-  // pre-filled with a plausible split is an answer the crew never gave.
+  // Empty means nobody has answered yet. The bar still draws — it is live and
+  // draggable from the first touch — but it draws dimmed and the draft keeps
+  // its empty values, so validateDraft still treats the question as open.
   const isSet = mud !== "" && sand !== "" && shellHash !== "";
 
-  const values: Shares = {
-    mud: Number(mud) || 0,
-    sand: Number(sand) || 0,
-    shellHash: Number(shellHash) || 0,
-  };
+  const values: Shares = isSet
+    ? { mud: Number(mud) || 0, sand: Number(sand) || 0, shellHash: Number(shellHash) || 0 }
+    : START;
 
   const cut1 = values.mud;
   const cut2 = values.mud + values.sand;
 
-  const emit = (next: Shares) =>
+  const emitCuts = (a: number, b: number) => {
+    const next = fromCuts(a, b);
     onChange(String(next.mud), String(next.sand), String(next.shellHash));
-
-  const emitCuts = (a: number, b: number) => emit(fromCuts(a, b));
+  };
 
   const pctFromClientX = (clientX: number) => {
     const rect = bar.current?.getBoundingClientRect();
@@ -100,6 +101,10 @@ export default function SedimentBar({ mud, sand, shellHash, onChange }: Props) {
     event.preventDefault();
     event.currentTarget.setPointerCapture(event.pointerId);
     setDragging(which);
+    // Touching a divider on an untouched bar is itself the answer: it commits
+    // the starting split, so a crew happy with an even mix does not have to
+    // nudge it away and back to register one.
+    if (!isSet) emitCuts(cut1, cut2);
   };
 
   const onDrag = (which: 1 | 2) => (event: React.PointerEvent) => {
@@ -125,52 +130,26 @@ export default function SedimentBar({ mud, sand, shellHash, onChange }: Props) {
     } else if (event.key === "ArrowRight" || event.key === "ArrowUp") {
       event.preventDefault();
       moveTo(which, at + step);
+    } else if (event.key === "Enter" || event.key === " ") {
+      // The keyboard equivalent of touching a divider: accept where it sits.
+      event.preventDefault();
+      emitCuts(cut1, cut2);
     }
   };
 
-  /**
-   * Typing one number leaves 100 minus it to share out. The other two keep
-   * their ratio to each other, so setting mud to 75 does not silently decide
-   * that the rest is all sand.
-   */
-  const commitTyped = (key: Key, text: string) => {
-    setTyping(null);
-    if (text.trim() === "") return;
-
-    emit(rebalance(values, key, Number(text) || 0));
-  };
-
-  if (!isSet) {
-    return (
-      <div className="sediment">
-        <button
-          type="button"
-          className="sediment__seed"
-          // An even split is a starting position, not an answer -- it only
-          // appears once someone has deliberately asked for the control.
-          onClick={() => onChange("34", "33", "33")}
-        >
-          <span className="sediment__seedlabel">Tap to set composition</span>
-        </button>
-      </div>
-    );
-  }
-
-  const widths: Shares = values;
-
   return (
-    <div className="sediment">
+    <div className="sediment" data-set={isSet}>
       <div className="sediment__bar" ref={bar} data-dragging={dragging !== null}>
         {FIELDS.map(({ key, short }) => (
           <div
             key={key}
             className="sediment__seg"
-            style={{ width: `${widths[key]}%`, background: COLORS[key] }}
+            style={{ width: `${values[key]}%`, background: COLORS[key] }}
           >
-            {widths[key] >= LABEL_MIN_PCT && (
+            {values[key] >= LABEL_MIN_PCT && (
               <span className="sediment__segtext">
                 <span className="sediment__segname">{short}</span>
-                <span className="num">{widths[key]}%</span>
+                <span className="num">{values[key]}%</span>
               </span>
             )}
           </div>
@@ -178,8 +157,7 @@ export default function SedimentBar({ mud, sand, shellHash, onChange }: Props) {
 
         {([1, 2] as const).map((which) => {
           const at = which === 1 ? cut1 : cut2;
-          const label =
-            which === 1 ? "Mud / sand boundary" : "Sand / shell hash boundary";
+          const label = which === 1 ? "Mud / sand boundary" : "Sand / shell hash boundary";
           return (
             <div
               key={which}
@@ -204,37 +182,24 @@ export default function SedimentBar({ mud, sand, shellHash, onChange }: Props) {
         })}
       </div>
 
-      <div className="sediment__readout">
-        {FIELDS.map(({ key, label }) => (
-          <label className="sediment__field" key={key}>
-            <span className="sediment__swatch" style={{ background: COLORS[key] }} aria-hidden="true" />
-            <span className="sediment__name">{label}</span>
-            <input
-              className="sediment__input num"
-              type="text"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={typing?.key === key ? typing.value : String(values[key])}
-              onChange={(e) =>
-                setTyping({ key, value: e.target.value.replace(/[^\d]/g, "").slice(0, 3) })
-              }
-              onFocus={(e) => {
-                setTyping({ key, value: String(values[key]) });
-                e.target.select();
-              }}
-              onBlur={(e) => commitTyped(key, e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  e.currentTarget.blur();
-                }
-              }}
-              aria-label={`${label} percentage`}
-            />
-            <span className="sediment__pct">%</span>
-          </label>
-        ))}
-      </div>
+      {/* A segment narrower than LABEL_MIN_PCT has no room for its own number,
+          so the key carries all three regardless of how thin a share gets. */}
+      {isSet ? (
+        <ul className="sediment__key">
+          {FIELDS.map(({ key, label }) => (
+            <li className="sediment__keyitem" key={key}>
+              <span
+                className="sediment__swatch"
+                style={{ background: COLORS[key] }}
+                aria-hidden="true"
+              />
+              {label} <span className="num">{values[key]}%</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="sediment__hint">Drag a divider to set the composition.</p>
+      )}
     </div>
   );
 }

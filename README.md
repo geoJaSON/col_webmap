@@ -300,20 +300,25 @@ watch, because there is never anything to correct.
 
 Dragging snaps to 5%, which is about the real precision of the act: someone
 eyeballing the contents of a dredge is not distinguishing 47% from 48% mud.
-Arrow keys move a divider by 5, shift-arrow by 1. The number boxes underneath
-still take any whole number, and when one is typed the other two absorb the
-remainder while keeping their ratio to each other — so setting mud to 75 does
-not silently decide the rest is all sand. They settle on blur rather than on
-every keystroke, so the neighbours do not jump around mid-type.
+Arrow keys move a divider by 5, shift-arrow by 1. There are no number boxes —
+the bar is the only way in, which is what keeps the invariant absolute.
 
-An untouched bar renders hatched and unset, because a bar pre-filled with a
-plausible split would put an answer on the datasheet that nobody gave.
+The bar is live from the moment the form opens, with no tap-to-start, but until
+it is touched it draws **dimmed and writes nothing**. That distinction matters
+more than it looks: an even split committed by default would put a plausible
+composition on a regulatory datasheet that nobody actually entered, and it
+would be indistinguishable from a real reading. So `validateDraft` still treats
+an untouched bar as unanswered. Touching a divider — pointer, or Enter/Space on
+a focused one — commits where it already sits, so a crew happy with the
+starting split does not have to nudge it away and back.
+
+A share narrower than 14% has no room for its own number inside the bar, so a
+key underneath carries all three regardless of how thin one gets.
 
 The arithmetic lives in `lib/sediment.ts`, apart from the control, so the
-invariant can be tested directly rather than inspected. Both functions hold it
-structurally: `fromCuts` rounds the cuts *before* taking differences, and
-`rebalance` rounds only one of the two remaining shares and derives the other
-by subtraction, so rounding cannot break either.
+invariant can be tested directly rather than inspected. `fromCuts` holds it
+structurally by rounding the cuts *before* taking differences, so rounding
+cannot break it.
 
 None of that replaces the CHECK constraint in `survey_schema.sql` or the check
 in `validateDraft`. The widget makes the error unreachable through the UI;

@@ -1960,36 +1960,13 @@ button {
   margin-top: 2px;
 }
 
-/* Unset state. An empty question has to look empty -- seeding the bar
-   with a plausible split would put an answer on the datasheet that
-   nobody gave. */
-.sediment__seed {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 64px;
-  border: 1px dashed var(--rule);
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--ink-sunk),
-    var(--ink-sunk) 7px,
-    rgba(255, 255, 255, 0.022) 7px,
-    rgba(255, 255, 255, 0.022) 14px
-  );
-}
-
-.sediment__seed:hover {
-  border-color: var(--buff-dim);
-}
-
-.sediment__seedlabel {
-  font-family: var(--label);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--buff-dim);
+/* Untouched: the bar is live and draggable from the first touch, but it
+   draws dimmed and writes nothing, so an unanswered question still looks
+   unanswered. A plausible split committed by default would put a
+   composition on the datasheet that nobody actually entered. */
+.sediment[data-set="false"] .sediment__bar {
+  opacity: 0.4;
+  filter: saturate(0.5);
 }
 
 .sediment__bar {
@@ -2096,62 +2073,37 @@ button {
   box-shadow: 0 0 0 2px var(--magenta);
 }
 
-.sediment__readout {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 10px;
+.sediment__key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 9px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.sediment__field {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    "swatch name"
-    "input  input";
+.sediment__keyitem {
+  display: flex;
   align-items: center;
-  gap: 4px 6px;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--buff-dim);
+}
+
+.sediment__keyitem .num {
+  color: var(--paper);
+  font-weight: 600;
 }
 
 .sediment__swatch {
-  grid-area: swatch;
   width: 9px;
   height: 9px;
   border-radius: 2px;
+  flex: none;
 }
 
-.sediment__name {
-  grid-area: name;
+.sediment__hint {
+  margin: 9px 0 0;
   font-size: 11.5px;
-  color: var(--buff);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.sediment__input {
-  grid-area: input;
-  width: 100%;
-  height: 44px;
-  padding: 0 20px 0 9px;
-  border: 1px solid var(--rule);
-  background: var(--ink-sunk);
-  color: var(--paper);
-  /* 16px or iOS zooms the page when the field takes focus. */
-  font-size: 16px;
-  text-align: right;
-}
-
-.sediment__input:focus {
-  outline: none;
-  border-color: var(--magenta);
-}
-
-.sediment__pct {
-  grid-area: input;
-  justify-self: end;
-  margin-right: 7px;
-  font-size: 11px;
   color: var(--buff-dim);
-  pointer-events: none;
 }
