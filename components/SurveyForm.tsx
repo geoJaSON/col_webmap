@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import SedimentBar from "@/components/SedimentBar";
 import { currentFix, photoUrl, saveSample } from "@/lib/survey";
 import { supabaseBrowser } from "@/lib/supabaseBrowser";
 import {
@@ -156,11 +157,6 @@ export default function SurveyForm({
     }
   };
 
-  const sedimentTotal =
-    (Number(draft.pctMud) || 0) + (Number(draft.pctSand) || 0) + (Number(draft.pctShellHash) || 0);
-  const sedimentComplete =
-    draft.pctMud.trim() !== "" && draft.pctSand.trim() !== "" && draft.pctShellHash.trim() !== "";
-
   return (
     <div className="survey-form" role="dialog" aria-modal="true" aria-label="Ground sample datasheet">
       <form className="survey-form__panel" onSubmit={submit}>
@@ -278,27 +274,24 @@ export default function SurveyForm({
           {/* ----- sediment ------------------------------------------------- */}
           <section className="survey-form__section">
             <h3 className="eyebrow">Sediment composition</h3>
-            <div className="survey-form__sediment">
-              <Percent label="Mud" value={draft.pctMud} onChange={(v) => set("pctMud", v)} />
-              <Percent label="Sand" value={draft.pctSand} onChange={(v) => set("pctSand", v)} />
-              <Percent
-                label="Shell hash"
-                value={draft.pctShellHash}
-                onChange={(v) => set("pctShellHash", v)}
-              />
-            </div>
-            {/* The running total is shown always, not only on error: it is far
-                easier to land on 100 when you can see where you are. */}
-            <p
-              className="survey-form__total"
-              data-ok={sedimentComplete && sedimentTotal === 100}
-              data-bad={sedimentComplete && sedimentTotal !== 100}
-            >
-              Total <span className="num">{sedimentTotal}%</span>
-              {sedimentComplete && sedimentTotal !== 100 && " — must be 100%"}
-            </p>
+            {/* Two cut points on a bar, so the three shares always total 100.
+                There is no running total to watch and nothing to correct --
+                see components/SedimentBar.tsx. */}
+            <SedimentBar
+              mud={draft.pctMud}
+              sand={draft.pctSand}
+              shellHash={draft.pctShellHash}
+              onChange={(mudPct, sandPct, shellPct) =>
+                setDraft((prev) => ({
+                  ...prev,
+                  pctMud: mudPct,
+                  pctSand: sandPct,
+                  pctShellHash: shellPct,
+                }))
+              }
+            />
             {showErrors && (errors.pctMud || errors.pctSand || errors.pctShellHash) && (
-              <p className="survey-form__error">All three percentages are required.</p>
+              <p className="survey-form__error">Set the sediment composition.</p>
             )}
           </section>
 
@@ -443,34 +436,5 @@ function YesNo({
       </div>
       {error && <p className="survey-form__error">{error}</p>}
     </div>
-  );
-}
-
-function Percent({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-}) {
-  return (
-    <label className="percent">
-      <span className="percent__label">{label}</span>
-      <input
-        className="percent__input num"
-        type="text"
-        inputMode="numeric"
-        pattern="[0-9]*"
-        value={value}
-        onChange={(e) => {
-          const cleaned = e.target.value.replace(/[^\d]/g, "").slice(0, 3);
-          onChange(cleaned);
-        }}
-        placeholder="0"
-      />
-      <span className="percent__sign">%</span>
-    </label>
   );
 }

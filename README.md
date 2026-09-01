@@ -287,9 +287,37 @@ keys either side so a wet finger never has to hit a caret, the yes/no questions
 are a pair of keys rather than a select, and all inputs are 16px because
 anything smaller makes iOS zoom the page on focus.
 
-The sediment percentages show a running total and must reach 100. That is
-enforced twice — in the form, where it can explain itself, and as a CHECK
-constraint, which is what actually guarantees it.
+### Sediment composition
+
+The three sediment shares are set with one proportional bar carrying two
+draggable dividers, not three number boxes that have to be kept in agreement.
+
+The state is the two **cut points**; mud, sand and shell hash are read off as
+the widths between them. Three whole numbers totalling 100 is therefore the
+only thing the control *can* produce — so the "must total 100%" failure the
+paper datasheet invites does not exist here. There is no running total to
+watch, because there is never anything to correct.
+
+Dragging snaps to 5%, which is about the real precision of the act: someone
+eyeballing the contents of a dredge is not distinguishing 47% from 48% mud.
+Arrow keys move a divider by 5, shift-arrow by 1. The number boxes underneath
+still take any whole number, and when one is typed the other two absorb the
+remainder while keeping their ratio to each other — so setting mud to 75 does
+not silently decide the rest is all sand. They settle on blur rather than on
+every keystroke, so the neighbours do not jump around mid-type.
+
+An untouched bar renders hatched and unset, because a bar pre-filled with a
+plausible split would put an answer on the datasheet that nobody gave.
+
+The arithmetic lives in `lib/sediment.ts`, apart from the control, so the
+invariant can be tested directly rather than inspected. Both functions hold it
+structurally: `fromCuts` rounds the cuts *before* taking differences, and
+`rebalance` rounds only one of the two remaining shares and derives the other
+by subtraction, so rounding cannot break either.
+
+None of that replaces the CHECK constraint in `survey_schema.sql` or the check
+in `validateDraft`. The widget makes the error unreachable through the UI;
+those two are what make it impossible.
 
 ### Position
 

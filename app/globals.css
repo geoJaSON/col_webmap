@@ -1944,3 +1944,214 @@ button {
     display: none;
   }
 }
+
+/* ---------------------------------------------------- sediment bar --
+   Composition as one proportional bar with two draggable dividers. The
+   three shares are the widths between the cuts, so they always total
+   100 -- there is no running total here because there is nothing to
+   watch and nothing to correct.
+
+   The colours are the materials (silt brown, pale sand, grey shell) and
+   deliberately NOT the platform's polling-substrate palette: that one
+   classifies a bottom type and paints sand pure red, which in a
+   proportion bar would read as an error rather than as sand. */
+
+.sediment {
+  margin-top: 2px;
+}
+
+/* Unset state. An empty question has to look empty -- seeding the bar
+   with a plausible split would put an answer on the datasheet that
+   nobody gave. */
+.sediment__seed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 64px;
+  border: 1px dashed var(--rule);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--ink-sunk),
+    var(--ink-sunk) 7px,
+    rgba(255, 255, 255, 0.022) 7px,
+    rgba(255, 255, 255, 0.022) 14px
+  );
+}
+
+.sediment__seed:hover {
+  border-color: var(--buff-dim);
+}
+
+.sediment__seedlabel {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--buff-dim);
+}
+
+.sediment__bar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 64px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  /* Without this a drag scrolls the form instead of moving the divider. */
+  touch-action: none;
+}
+
+.sediment__seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  /* Snappy while dragging, eased when a number is typed. */
+  transition: width 120ms var(--ease);
+}
+
+.sediment__bar[data-dragging="true"] .sediment__seg {
+  transition: none;
+}
+
+.sediment__segtext {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  /* Every segment colour is mid-to-light, so chart ink reads on all
+     three and there is no per-segment contrast juggling. */
+  color: var(--ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.sediment__segname {
+  font-family: var(--label);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 9.5px;
+  font-weight: 700;
+  opacity: 0.72;
+}
+
+.sediment__segtext .num {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* The divider. The visible rule is 2px but the grab area is 40px wide and
+   full height, because this is dragged with a thumb on a moving deck. */
+.sediment__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  margin-left: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.sediment__handle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1px rgba(15, 29, 38, 0.45);
+}
+
+.sediment__grip {
+  position: relative;
+  width: 18px;
+  height: 30px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: var(--paper);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Two ridges, so the grip reads as something to take hold of. */
+.sediment__grip::after {
+  content: "";
+  position: absolute;
+  inset: 8px 6px;
+  border-left: 1px solid rgba(15, 29, 38, 0.5);
+  border-right: 1px solid rgba(15, 29, 38, 0.5);
+}
+
+.sediment__handle:focus-visible {
+  outline: none;
+}
+
+.sediment__handle:focus-visible .sediment__grip {
+  border-color: var(--magenta);
+  box-shadow: 0 0 0 2px var(--magenta);
+}
+
+.sediment__readout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sediment__field {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "swatch name"
+    "input  input";
+  align-items: center;
+  gap: 4px 6px;
+}
+
+.sediment__swatch {
+  grid-area: swatch;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.sediment__name {
+  grid-area: name;
+  font-size: 11.5px;
+  color: var(--buff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sediment__input {
+  grid-area: input;
+  width: 100%;
+  height: 44px;
+  padding: 0 20px 0 9px;
+  border: 1px solid var(--rule);
+  background: var(--ink-sunk);
+  color: var(--paper);
+  /* 16px or iOS zooms the page when the field takes focus. */
+  font-size: 16px;
+  text-align: right;
+}
+
+.sediment__input:focus {
+  outline: none;
+  border-color: var(--magenta);
+}
+
+.sediment__pct {
+  grid-area: input;
+  justify-self: end;
+  margin-right: 7px;
+  font-size: 11px;
+  color: var(--buff-dim);
+  pointer-events: none;
+}
