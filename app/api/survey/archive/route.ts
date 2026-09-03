@@ -15,11 +15,6 @@ export const runtime = "nodejs";
 
 const fileName = (objectPath: string) => objectPath.split("/").pop() || "photo.jpg";
 
-/** Keep ZIP folders portable to Windows and macOS. */
-function safeSegment(value: string): string {
-  return value.replace(/[<>:"/\\|?*\u0000-\u001f]/g, "-").replace(/[. ]+$/g, "").trim() || "site";
-}
-
 /**
  * Every assigned site gets its own folder containing a filled copy of TPWD's
  * Datasheet.xlsx and the photos named in that workbook. Keeping workbooks
@@ -41,7 +36,7 @@ export async function GET() {
       const warnings: string[] = [];
 
       for (const site of data.sites) {
-        const folder = safeSegment(`${site.app_no}-${site.site_code}`);
+        const folder = String(site.app_no);
         const workbook = await surveyWorkbook(data.points, data.samples, site.app_no);
         zip.append(workbook, { name: `${folder}/Datasheet.xlsx` });
 

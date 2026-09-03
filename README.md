@@ -377,9 +377,11 @@ Notable schema decisions:
 The **Download datasheets + photos (.zip)** link under **Layers → Ground
 samples** is the complete handoff. It creates one folder per application, with
 a filled copy of TPWD's supplied `Datasheet.xlsx` and that site's referenced
-photos alongside it. The workbooks remain site-specific because the supplied
-template identifies rows by sample number but has no application-number
-column.
+photos alongside it. Folder names are the TPWD application number. Both sheets
+retain TPWD's original columns and append the captured **Actual Latitude** and
+**Actual Longitude**; those cells remain blank for outstanding points. The
+workbooks remain site-specific because the supplied template identifies rows
+by sample number but has no application-number column.
 
 Direct route: `/api/survey/archive`
 

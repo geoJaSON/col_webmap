@@ -15,6 +15,9 @@ const SHEETS: { name: string; reefType: ReefType }[] = [
   { name: "Off-Reef_datasheet", reefType: "off" },
 ];
 
+const ACTUAL_LATITUDE = "Actual Latitude";
+const ACTUAL_LONGITUDE = "Actual Longitude";
+
 /**
  * Fill TPWD's supplied workbook for one application without changing its
  * sheet names, headers, widths, or styles. A workbook is site-specific because
@@ -49,11 +52,27 @@ export async function surveyWorkbook(
       }
     }
 
+    // Keep TPWD's supplied columns in their original positions and add the
+    // captured position at the end. Copying the supplied header style makes
+    // the additions read as part of the same datasheet.
+    const actualLatitudeColumn = sheet.columns.length + 1;
+    const actualLongitudeColumn = sheet.columns.length + 2;
+    const templateHeader = worksheet.getCell(1, 1);
+    for (const [column, label] of [
+      [actualLatitudeColumn, ACTUAL_LATITUDE],
+      [actualLongitudeColumn, ACTUAL_LONGITUDE],
+    ] as const) {
+      const header = worksheet.getCell(1, column);
+      header.value = label;
+      header.style = { ...templateHeader.style };
+      worksheet.getColumn(column).width = 18;
+    }
+
     // The committed template is empty, but clear stale rows if somebody
     // replaces it with a previously filled copy.
     if (worksheet.rowCount > 1) worksheet.spliceRows(2, worksheet.rowCount - 1);
 
-    for (const { point, values } of sheet.rows) {
+    for (const { point, sample, values } of sheet.rows) {
       const row = worksheet.addRow(values);
       // Coordinates are numbers in Excel while still displaying the six
       // decimals TPWD supplied and uses to match each assigned point.
@@ -61,6 +80,15 @@ export async function surveyWorkbook(
       row.getCell(2).numFmt = "0.000000";
       row.getCell(3).value = point.lon;
       row.getCell(3).numFmt = "0.000000";
+
+      if (sample?.gps_lat !== null && sample?.gps_lat !== undefined) {
+        row.getCell(actualLatitudeColumn).value = sample.gps_lat;
+        row.getCell(actualLatitudeColumn).numFmt = "0.000000";
+      }
+      if (sample?.gps_lon !== null && sample?.gps_lon !== undefined) {
+        row.getCell(actualLongitudeColumn).value = sample.gps_lon;
+        row.getCell(actualLongitudeColumn).numFmt = "0.000000";
+      }
     }
   }
 
