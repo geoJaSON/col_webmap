@@ -91,6 +91,10 @@ export default function SurveyPanel({ on, loading, error, progress, onToggle }: 
               Sampled
             </li>
           </ul>
+
+          <a className="survey-export" href="/api/survey/archive" download>
+            Download datasheets + photos (.zip)
+          </a>
         </div>
       )}
     </li>

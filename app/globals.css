@@ -1536,6 +1536,26 @@ button {
   transition: width 240ms var(--ease);
 }
 
+.survey-export {
+  display: block;
+  margin-top: 11px;
+  padding: 8px 9px;
+  border: 1px solid var(--rule);
+  color: var(--paper);
+  font-family: var(--label);
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.survey-export:hover {
+  border-color: var(--buff-dim);
+  background: var(--ink-raised);
+}
+
 /* A hollow ring in the legend, matching an unsampled point on the map. */
 .legend__ring {
   width: 9px;

@@ -2,6 +2,8 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 import type { SurveyPoint, SurveySample, SurveySite } from "@/lib/surveyTypes";
 
+const PHOTO_BUCKET = "survey-photos";
+
 /**
  * Server-side survey reads, for the export route only.
  *
@@ -78,4 +80,16 @@ export async function loadSurveyForExport(): Promise<SurveyExportData> {
       ]),
     ),
   };
+}
+
+/** Download one private photo under the server's service-role credentials. */
+export async function downloadSurveyPhoto(path: string): Promise<Blob> {
+  const db = supabase();
+  if (!db) throw new SurveyUnavailable();
+
+  const { data, error } = await db.storage.from(PHOTO_BUCKET).download(path);
+  if (error || !data) {
+    throw new Error(`Could not download photo ${path}: ${error?.message ?? "empty response"}`);
+  }
+  return data;
 }

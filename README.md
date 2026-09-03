@@ -374,6 +374,17 @@ Notable schema decisions:
 
 ### Getting the data back out
 
+The **Download datasheets + photos (.zip)** link under **Layers → Ground
+samples** is the complete handoff. It creates one folder per application, with
+a filled copy of TPWD's supplied `Datasheet.xlsx` and that site's referenced
+photos alongside it. The workbooks remain site-specific because the supplied
+template identifies rows by sample number but has no application-number
+column.
+
+Direct route: `/api/survey/archive`
+
+The CSV routes remain available for quick checks and internal roll-ups:
+
 ```
 /api/survey/csv?type=on&site=75    one worksheet's worth, exact columns
 /api/survey/csv?type=off           every site, plus App# and actual position
