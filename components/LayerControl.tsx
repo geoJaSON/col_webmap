@@ -135,14 +135,6 @@ export default function LayerControl({
                     {feet > 0 && !buffersVisible && (
                       <p className="buffer__note">Zoom in to see the buffer.</p>
                     )}
-                    {category.sourceUrl && (
-                      <p className="buffer__note">
-                        <a href={category.sourceUrl} target="_blank" rel="noreferrer">RRC source</a>
-                        {category.retrievedAt && ` · Downloaded ${category.retrievedAt.slice(0, 10)}`}
-                      </p>
-                    )}
-                    {category.coverageDescription && <p className="buffer__note">{category.coverageDescription}</p>}
-                    {category.notice && <p className="buffer__note">{category.notice}</p>}
                   </div>
                 )}
               </li>

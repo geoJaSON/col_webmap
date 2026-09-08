@@ -635,7 +635,7 @@ export default function MapCanvas({
           const src = `ref-${category.id}`;
           const buf = `buf-${category.id}`;
           const isLine = category.geometryType === "line";
-          const bufferColor = isLine ? category.color : BUFFER_COLOR;
+          const bufferColor = BUFFER_COLOR;
           if (instance.getSource(src)) continue;
 
           mounted.current.add(category.id);
