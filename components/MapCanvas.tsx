@@ -634,6 +634,8 @@ export default function MapCanvas({
           if (cancelled || !map.current) return;
           const src = `ref-${category.id}`;
           const buf = `buf-${category.id}`;
+          const isLine = category.geometryType === "line";
+          const bufferColor = isLine ? category.color : BUFFER_COLOR;
           if (instance.getSource(src)) continue;
 
           mounted.current.add(category.id);
@@ -653,7 +655,7 @@ export default function MapCanvas({
               id: `${buf}-fill`,
               type: "fill",
               source: buf,
-              paint: { "fill-color": BUFFER_COLOR, "fill-opacity": 0.1 },
+              paint: { "fill-color": bufferColor, "fill-opacity": isLine ? 0.16 : 0.1 },
             },
             below,
           );
@@ -663,7 +665,7 @@ export default function MapCanvas({
               type: "line",
               source: buf,
               paint: {
-                "line-color": BUFFER_COLOR,
+                "line-color": bufferColor,
                 "line-width": 1.2,
                 "line-dasharray": [2, 2],
                 "line-opacity": 0.75,
@@ -672,8 +674,11 @@ export default function MapCanvas({
             below,
           );
 
-          instance.addSource(src, { type: "geojson", data });
-          instance.addLayer(
+          instance.addSource(src, {
+            type: "geojson", data,
+            ...(category.sourceUrl ? { attribution: `<a href="${category.sourceUrl}" target="_blank" rel="noreferrer">Railroad Commission of Texas</a>` } : {}),
+          });
+          if (!isLine) instance.addLayer(
             {
               id: `${src}-fill`,
               type: "fill",
@@ -687,7 +692,8 @@ export default function MapCanvas({
               id: `${src}-line`,
               type: "line",
               source: src,
-              paint: { "line-color": category.color, "line-width": 1.6 },
+              layout: { "line-cap": "round", "line-join": "round" },
+              paint: { "line-color": category.color, "line-width": isLine ? 2.4 : 1.6 },
             },
             below,
           );
@@ -697,6 +703,7 @@ export default function MapCanvas({
             source: src,
             minzoom: 12,
             layout: {
+              "symbol-placement": isLine ? "line" : "point",
               "text-field": ["coalesce", ["get", "name"], category.label],
               "text-font": ["Noto Sans Regular"],
               "text-size": 10.5,

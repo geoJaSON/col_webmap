@@ -4,6 +4,7 @@
     "label": "Restoration area",
     "color": "#4db6d0",
     "bufferFeet": 1000,
+    "geometryType": "polygon",
     "file": "restoration-area.geojson",
     "features": 294,
     "sources": [
@@ -17,5 +18,52 @@
       30.132662
     ],
     "sizeKb": 351
+  },
+  {
+    "sourceUrl": "https://www.rrc.texas.gov/resource-center/research/gis-viewer/",
+    "serviceUrl": "https://gis.rrc.texas.gov/server/rest/services/rrc_public/RRC_Public_Viewer_Srvs/MapServer/13",
+    "bayTractsUrl": "https://gis.rrc.texas.gov/server/rest/services/rrc_public/RRC_Public_Viewer_Srvs/MapServer/15",
+    "retrievedAt": "2026-09-08T14:13:56+00:00",
+    "baySystems": [
+      "Aransas Bay",
+      "Galveston Bay",
+      "Matagorda Bay",
+      "San Antonio Bay"
+    ],
+    "bayTracts": [
+      "ARANSAS BAY",
+      "COPANO BAY",
+      "COX BAY",
+      "EAST BAY",
+      "GALVESTON BAY",
+      "HYNES BAY",
+      "KELLER BAY",
+      "LAVACA BAY",
+      "MATAGORDA BAY",
+      "SAN ANTONIO BAY",
+      "TRINITY BAY",
+      "WEST BAY"
+    ],
+    "clipPaddingFeet": 2000,
+    "candidateFeatures": 11193,
+    "coverageDescription": "COL bay systems and adjacent shores. All reported pipeline statuses included.",
+    "notice": "Approximate RRC locations; verify pipeline positions before site work.",
+    "id": "pipelines",
+    "label": "Pipelines",
+    "color": "#edac45",
+    "bufferFeet": 500,
+    "geometryType": "line",
+    "file": "pipelines.geojson",
+    "features": 1732,
+    "sources": [
+      "rrc-pipelines"
+    ],
+    "bounds": [
+      -97.199942,
+      27.923265,
+      -94.544601,
+      29.889145
+    ],
+    "sizeKb": 1049
   }
 ]

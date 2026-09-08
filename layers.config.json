@@ -11,12 +11,21 @@
       "label": "Restoration area",
       "color": "#4db6d0",
       "bufferFeet": 1000
+    },
+    "pipelines": {
+      "label": "Pipelines",
+      "color": "#edac45",
+      "bufferFeet": 500,
+      "geometryType": "line",
+      "keepFields": ["rrc_id", "operator", "system", "subsystem", "commodity", "diameter_inches", "permit", "system_type", "status", "county"]
     }
   },
   "layers": {
     "hannas-reef-permit-area": "restoration-area",
-    "coastal-lease-polygon-c-tcms": "restoration-area"
+    "coastal-lease-polygon-c-tcms": "restoration-area",
+    "rrc-pipelines": "pipelines"
   },
+  "sources": ["data/pipelines/rrc-pipelines.geojson"],
   "defaultCategory": "restoration-area",
   "nameFields": [
     "GLO_ID",

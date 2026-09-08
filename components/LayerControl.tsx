@@ -103,7 +103,7 @@ export default function LayerControl({
                   <button
                     type="button"
                     className="layers__zoom"
-                    title={`Zoom to all ${category.label.toLowerCase()}s`}
+                    title={`Zoom to ${category.label.toLowerCase()}`}
                     aria-label={`Zoom to ${category.label}`}
                     onClick={() => onZoomTo(category)}
                   >
@@ -114,7 +114,7 @@ export default function LayerControl({
                 {on && (
                   <div className="buffer">
                     <label className="buffer__label" htmlFor={`buffer-${category.id}`}>
-                      <span className="eyebrow">Buffer</span>
+                      <span className="eyebrow">{category.geometryType === "line" ? "Each side" : "Buffer"}</span>
                       <span className="buffer__value num">
                         {feet === 0 ? "off" : `${feet} ft`}
                       </span>
@@ -127,12 +127,22 @@ export default function LayerControl({
                       max={MAX_FEET}
                       step={STEP_FEET}
                       value={feet}
+                      aria-label={`${category.label} buffer in feet`}
+                      aria-valuetext={`${feet} feet${category.geometryType === "line" ? " each side" : ""}`}
                       style={{ "--swatch": category.color } as React.CSSProperties}
                       onChange={(e) => onBufferChange(category.id, Number(e.target.value))}
                     />
                     {feet > 0 && !buffersVisible && (
                       <p className="buffer__note">Zoom in to see the buffer.</p>
                     )}
+                    {category.sourceUrl && (
+                      <p className="buffer__note">
+                        <a href={category.sourceUrl} target="_blank" rel="noreferrer">RRC source</a>
+                        {category.retrievedAt && ` · Downloaded ${category.retrievedAt.slice(0, 10)}`}
+                      </p>
+                    )}
+                    {category.coverageDescription && <p className="buffer__note">{category.coverageDescription}</p>}
+                    {category.notice && <p className="buffer__note">{category.notice}</p>}
                   </div>
                 )}
               </li>

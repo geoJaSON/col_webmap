@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 import openpyxl
@@ -28,6 +29,7 @@ ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "survey_points" / "Woody_Jurisich_GB_NRS_1.xlsx"
 JSON_OUT = ROOT / "data" / "survey_points.json"
 SQL_OUT = ROOT / "supabase" / "survey_seed.sql"
+GPX_OUT = ROOT / "exports" / "col-ground-samples.gpx"
 
 # The workbook writes these with inconsistent spacing ("On Reef", "on  reef").
 REEF_TYPES = {"on reef": "on", "off reef": "off"}
@@ -115,6 +117,80 @@ def read_points(ws, app_no: int) -> list[dict]:
     return sorted(points, key=lambda p: p["point_no"])
 
 
+def escape_xml(value: str) -> str:
+    return (
+        str(value)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def write_gpx(sites: list[dict], points: list[dict]) -> None:
+    """
+    The assigned points as GPX 1.1, for loading onto a chartplotter.
+
+    Waypoints are named "75-001" -- zero padded, because handhelds list
+    waypoints alphabetically and unpadded numbers sort 1, 10, 100, 2, which is
+    unusable when you are hunting for point 2 of 104. The longest name this
+    produces is "107-104", seven characters, inside the limit of any device
+    likely to see it.
+
+    The symbol is the reef type, which is what decides the gear and the
+    datasheet: red on-reef, blue off-reef. These are the Garmin names, which
+    most plotters and OpenCPN understand; an unrecognised symbol falls back to
+    a default pin rather than failing the file.
+
+    Note the child order inside <metadata> and <wpt>. It is not stylistic --
+    the GPX 1.1 schema is a sequence, so a device that validates will reject
+    the file if <sym> comes before <desc>.
+    """
+    codes = {s["app_no"]: s["site_code"] for s in sites}
+    symbols = {"on": "Flag, Red", "off": "Flag, Blue"}
+
+    lats = [p["lat"] for p in points]
+    lons = [p["lon"] for p in points]
+    stamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    out = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<gpx version="1.1" creator="COL Status"'
+        ' xmlns="http://www.topografix.com/GPX/1/1"'
+        ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'
+        ' xsi:schemaLocation="http://www.topografix.com/GPX/1/1'
+        ' http://www.topografix.com/GPX/1/1/gpx.xsd">',
+        "  <metadata>",
+        "    <name>COL assigned ground samples</name>",
+        "    <desc>{} assigned TPWD ground samples across {} sites."
+        " Red is on-reef, blue is off-reef.</desc>".format(len(points), len(sites)),
+        f"    <time>{stamp}</time>",
+        '    <bounds minlat="{:.6f}" minlon="{:.6f}" maxlat="{:.6f}" maxlon="{:.6f}"/>'.format(
+            min(lats), min(lons), max(lats), max(lons)
+        ),
+        "  </metadata>",
+    ]
+
+    for p in points:
+        code = codes.get(p["app_no"], "")
+        reef = "on reef" if p["reef_type"] == "on" else "off reef"
+        desc = "Site {}{} point {} - {}".format(
+            p["app_no"], f" ({code})" if code else "", p["point_no"], reef
+        )
+        out += [
+            '  <wpt lat="{:.6f}" lon="{:.6f}">'.format(p["lat"], p["lon"]),
+            "    <name>{}-{:03d}</name>".format(p["app_no"], p["point_no"]),
+            f"    <desc>{escape_xml(desc)}</desc>",
+            f"    <sym>{escape_xml(symbols[p['reef_type']])}</sym>",
+            "    <type>{}</type>".format("on-reef" if p["reef_type"] == "on" else "off-reef"),
+            "  </wpt>",
+        ]
+
+    out.append("</gpx>")
+    GPX_OUT.parent.mkdir(parents=True, exist_ok=True)
+    GPX_OUT.write_text("\n".join(out) + "\n", encoding="utf-8")
+
+
 def sql_literal(value) -> str:
     if value is None:
         return "null"
@@ -194,6 +270,8 @@ def main() -> None:
 
     SQL_OUT.write_text("\n".join(lines), encoding="utf-8")
 
+    write_gpx(sites, points)
+
     on = sum(s["on_reef_points"] for s in sites)
     off = sum(s["off_reef_points"] for s in sites)
     print(f"{len(sites)} sites, {len(points)} points ({on} on-reef, {off} off-reef)")
@@ -204,6 +282,7 @@ def main() -> None:
         )
     print(f"-> {JSON_OUT.relative_to(ROOT)}")
     print(f"-> {SQL_OUT.relative_to(ROOT)}")
+    print(f"-> {GPX_OUT.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

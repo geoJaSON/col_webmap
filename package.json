@@ -9,6 +9,8 @@
     "lint": "next lint",
     "extract": "python scripts/extract_xlsx.py",
     "layers": "python scripts/import_layers.py",
+    "pipelines": "python scripts/fetch_pipelines.py && python scripts/import_layers.py",
+    "test:buffers": "node scripts/test_buffers.cjs",
     "survey": "python scripts/extract_survey_points.py"
   },
   "dependencies": {

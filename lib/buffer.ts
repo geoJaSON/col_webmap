@@ -1,7 +1,7 @@
 import turfBuffer from "@turf/buffer";
 
 /**
- * On-the-fly buffers around blocker polygons.
+ * On-the-fly buffers around blocker polygons and pipeline centerlines.
  *
  * Buffering all 294 restoration areas takes roughly 400 ms, which is far too
  * slow to sit behind a slider. Two things make it usable:

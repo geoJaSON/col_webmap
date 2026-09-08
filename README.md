@@ -390,6 +390,28 @@ and one not yet sampled comes through with its coordinate and empty observation
 cells. A sheet that silently omitted outstanding points would read as a
 complete survey.
 
+### Getting the points onto a chartplotter
+
+`npm run survey` also writes `exports/col-ground-samples.gpx` — all 582
+assigned points as GPX 1.1 waypoints, ready to load onto a plotter or handheld.
+It is regenerated from the workbook alongside the JSON and the SQL seed, so it
+never drifts from the assignment.
+
+Waypoints are named `75-001` — zero padded, because handhelds list waypoints
+alphabetically and unpadded numbers sort 1, 10, 100, 2, which is unusable when
+you are hunting for point 2 of 104. The longest name this produces is
+`107-104`, seven characters, inside the limit of any device likely to see it.
+The symbol is the reef type, which is what decides the gear and the datasheet:
+red on-reef, blue off-reef. Those are the Garmin names, understood by most
+plotters and OpenCPN; an unrecognised symbol falls back to a default pin rather
+than failing the file. Site, code, point number and reef type ride along in
+each waypoint's `<desc>`.
+
+One thing to keep in mind if you edit `write_gpx`: the order of children inside
+`<metadata>` and `<wpt>` is not stylistic. The GPX 1.1 schema is a *sequence*,
+so a device that validates will reject the file if `<sym>` comes before
+`<desc>`.
+
 ### Known limitation: no offline mode
 
 This is **online-only**. A submission needs a live connection, and there is no
@@ -437,6 +459,43 @@ Layers are fetched rather than bundled, so a large category never lands in the
 JavaScript payload, and they sit behind the sign-in like everything else.
 They draw *beneath* the leases so context never covers the thing being decided
 on.
+
+### Pipelines in the COL bays
+
+**Pipelines** is enabled by default in Layers. Amber lines show RRC pipeline
+centerlines; the shaded corridor extends **500 ft on each side** by default
+(1,000 ft total width). The slider adjusts that distance from 0 to 2,000 ft.
+Buffers appear when zoomed in to 10.5 or closer, alongside the COL polygons.
+
+The committed snapshot contains 1,732 pipeline features downloaded from the
+[Railroad Commission of Texas public GIS service](https://www.rrc.texas.gov/resource-center/research/gis-viewer/).
+Coverage follows RRC bay tracts for Aransas, Galveston (including East, West,
+and Trinity bays), Matagorda, and San Antonio bay systems, plus sub-bays at the
+COL polygons. It includes a 2,000 ft margin onto adjacent shores so pipelines
+there can contribute their full buffer. All reported statuses are retained,
+including abandoned pipelines. These are approximate mapped locations, not a
+survey or a determination of required setbacks.
+
+To refresh the snapshot and rebuild the map layers:
+
+```bash
+python -m pip install geopandas shapely pyproj
+npm run pipelines
+```
+
+`scripts/fetch_pipelines.py` reads the public RRC pipeline layer (13) and bay
+tract layer (15), checks every requested feature ID was returned, clips the
+centerlines to the bay coverage, and writes `data/pipelines/rrc-pipelines.geojson`.
+The download date, source URLs, selected bay names, and clipping margin travel
+with the data into `public/layers/index.json`. Operator, commodity, diameter,
+permit, status, and RRC ID remain in the generated GeoJSON. The browser loads
+the committed snapshot; it does not query RRC on every map movement.
+
+The coverage defaults to `data/applications.json`. To refresh using edited COL
+boundaries, pass a current GeoJSON export with `--applications path/to/col.geojson`,
+then run `npm run layers`. The layer importer accepts lines as well as polygons;
+explicit downloaded sources are listed in `layers.config.json`. Generated files
+under `exports/` are excluded from reference imports.
 
 ### Buffers
 

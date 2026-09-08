@@ -17,6 +17,11 @@ export type LayerCategory = {
   color: string;
   /** Default for the buffer slider, in feet. 0 means start with no buffer. */
   bufferFeet: number;
+  geometryType?: "polygon" | "line";
+  sourceUrl?: string;
+  retrievedAt?: string;
+  coverageDescription?: string;
+  notice?: string;
   file: string;
   features: number;
   sources: string[];
