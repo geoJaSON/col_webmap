@@ -10,7 +10,7 @@ import type { ReefType, SurveyPoint, SurveySample } from "@/lib/surveyTypes";
  * their sheet does not recognise.
  */
 
-const ON_REEF_COLUMNS = [
+export const ON_REEF_COLUMNS = [
   "Sample Number",
   "Latitude",
   "Longitude",
@@ -25,7 +25,7 @@ const ON_REEF_COLUMNS = [
   "Image File Name",
 ] as const;
 
-const OFF_REEF_COLUMNS = [
+export const OFF_REEF_COLUMNS = [
   "Sample Number",
   "Latitude",
   "Longitude",
@@ -47,7 +47,7 @@ function cell(value: string | number | null | undefined): string {
 }
 
 const yesNo = (value: boolean | null) => (value === null ? "" : value ? "Y" : "N");
-const orBlank = (value: number | null) => (value === null ? "" : String(value));
+const orBlank = (value: number | null) => (value === null ? "" : value);
 
 /** The bucket path is `<app_no>/<file>`; the datasheet wants just the file. */
 const fileNameOf = (path: string | null) => (path ? path.split("/").pop() ?? "" : "");
@@ -57,6 +57,52 @@ export type SurveyCsvOptions = {
   /** A single application number, or null for every site in one file. */
   appNo: number | null;
 };
+
+export type SurveySheetRow = {
+  point: SurveyPoint;
+  sample: SurveySample | null;
+  values: (string | number)[];
+};
+
+/** The exact columns and rows accepted by the two sheets in Datasheet.xlsx. */
+export function surveySheet(
+  points: SurveyPoint[],
+  samples: Map<string, SurveySample>,
+  options: SurveyCsvOptions,
+): { columns: readonly string[]; rows: SurveySheetRow[] } {
+  const { reefType, appNo } = options;
+  const onReef = reefType === "on";
+
+  const wanted = points
+    .filter((point) => point.reef_type === reefType)
+    .filter((point) => appNo === null || point.app_no === appNo)
+    .sort((a, b) => a.app_no - b.app_no || a.point_no - b.point_no);
+
+  return {
+    columns: onReef ? ON_REEF_COLUMNS : OFF_REEF_COLUMNS,
+    rows: wanted.map((point) => {
+      const sample = samples.get(`${point.app_no}:${point.point_no}`) ?? null;
+      const shared = [point.point_no, point.lat.toFixed(6), point.lon.toFixed(6)];
+      const observations = onReef
+        ? [
+            orBlank(sample?.live_oysters_6_25mm ?? null),
+            orBlank(sample?.live_oysters_gt_25mm ?? null),
+            orBlank(sample?.oyster_shells_gt_25mm ?? null),
+            orBlank(sample?.black_oyster_shells_gt_25mm ?? null),
+          ]
+        : [yesNo(sample?.live_oysters_present ?? null)];
+      const tail = [
+        yesNo(sample?.seagrass ?? null),
+        orBlank(sample?.pct_mud ?? null),
+        orBlank(sample?.pct_sand ?? null),
+        orBlank(sample?.pct_shell_hash ?? null),
+        fileNameOf(sample?.image_path ?? null),
+      ];
+
+      return { point, sample, values: [...shared, ...observations, ...tail] };
+    }),
+  };
+}
 
 /**
  * Rows follow the *assignment*, not the collection: every point TPWD assigned
@@ -74,14 +120,8 @@ export function surveyToCsv(
   options: SurveyCsvOptions,
 ): string {
   const { reefType, appNo } = options;
-  const onReef = reefType === "on";
-
-  const wanted = points
-    .filter((p) => p.reef_type === reefType)
-    .filter((p) => appNo === null || p.app_no === appNo)
-    .sort((a, b) => a.app_no - b.app_no || a.point_no - b.point_no);
-
-  const base = onReef ? [...ON_REEF_COLUMNS] : [...OFF_REEF_COLUMNS];
+  const sheet = surveySheet(points, samples, options);
+  const base = [...sheet.columns];
 
   // One site is a drop-in for that site's worksheet, so its columns must match
   // exactly. An all-sites export is an internal roll-up and cannot be dropped
@@ -92,33 +132,8 @@ export function surveyToCsv(
       ? ["App#", ...base, "Actual Latitude", "Actual Longitude", "GPS Accuracy (m)", "Recorded At"]
       : base;
 
-  const rows = wanted.map((point) => {
-    const sample = samples.get(`${point.app_no}:${point.point_no}`) ?? null;
-
-    const shared = [
-      cell(point.point_no),
-      cell(point.lat.toFixed(6)),
-      cell(point.lon.toFixed(6)),
-    ];
-
-    const observations = onReef
-      ? [
-          cell(orBlank(sample?.live_oysters_6_25mm ?? null)),
-          cell(orBlank(sample?.live_oysters_gt_25mm ?? null)),
-          cell(orBlank(sample?.oyster_shells_gt_25mm ?? null)),
-          cell(orBlank(sample?.black_oyster_shells_gt_25mm ?? null)),
-        ]
-      : [cell(yesNo(sample?.live_oysters_present ?? null))];
-
-    const tail = [
-      cell(yesNo(sample?.seagrass ?? null)),
-      cell(orBlank(sample?.pct_mud ?? null)),
-      cell(orBlank(sample?.pct_sand ?? null)),
-      cell(orBlank(sample?.pct_shell_hash ?? null)),
-      cell(fileNameOf(sample?.image_path ?? null)),
-    ];
-
-    const row = [...shared, ...observations, ...tail];
+  const rows = sheet.rows.map(({ point, sample, values }) => {
+    const row = values.map(cell);
 
     if (appNo === null) {
       return [
