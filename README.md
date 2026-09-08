@@ -260,8 +260,8 @@ field map and mobile app, so a point means the same thing in all three:
 | Mud | `#BD7EBE` | Too Deep to Poll | `#000000` |
 | Firm/Hard Bottom | `#FFF15C` | *unrecognised* | `#9E9E9E` |
 
-Radii, opacity, and the dark casing match too. Don't re-pick these — people
-read them by eye across the three apps. The key is rendered under the toggle
+Radii and opacity match too. Polling points have no outline so their substrate
+colors are easier to distinguish. The key is rendered under the toggle
 rather than as a permanent legend bar, because seven swatches on screen at all
 times is clutter when the layer is off.
 

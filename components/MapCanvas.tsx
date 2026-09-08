@@ -802,8 +802,7 @@ export default function MapCanvas({
           "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2, 18, 4.5],
           "circle-color": substrateColorExpression() as maplibregl.ExpressionSpecification,
           "circle-opacity": 0.9,
-          "circle-stroke-width": 0.5,
-          "circle-stroke-color": "#13293d",
+          "circle-stroke-width": 0,
         },
       }, instance.getLayer(SURVEY_LAYER) ? SURVEY_LAYER : undefined);
     }
