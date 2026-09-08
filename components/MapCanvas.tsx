@@ -7,8 +7,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { boundsOf, toFeatureCollection } from "@/lib/geo";
 import type { Ring } from "@/lib/geometry";
 import LayerControl from "@/components/LayerControl";
-import { POLLING_YEAR } from "@/components/PollingPanel";
-import { POLLING_PROTOCOL, registerPollingProtocol } from "@/lib/pollingTiles";
+import {
+  fetchPollingSnapshot, PollingSnapshotCache, POLLING_SNAPSHOT_MIN_ZOOM,
+  type SnapshotState,
+} from "@/lib/pollingSnapshot";
 import { substrateColorExpression } from "@/lib/substrate";
 import SurveyForm from "@/components/SurveyForm";
 import { useSurvey, pointKey } from "@/lib/useSurvey";
@@ -44,8 +46,7 @@ const BUFFER_COLOR = "#e2564f";
 
 const POLL_SRC = "polling";
 const POLL_LAYER = "polling-points";
-// The tile function answers nothing below this, so asking is wasted work.
-const POLLING_MIN_ZOOM = 14;
+const POLLING_MIN_ZOOM = POLLING_SNAPSHOT_MIN_ZOOM;
 
 // Assigned ground samples.
 const SURVEY_SRC = "survey";
@@ -199,17 +200,15 @@ export default function MapCanvas({
   /** Bumped on move end so buffers recompute for what is actually on screen. */
   const [viewKey, setViewKey] = useState(0);
   const [zoom, setZoom] = useState(0);
-  const [pollingOn, setPollingOn] = useState(false);
+  const [pollingOn, setPollingOn] = useState(true);
+  const [pollingSnapshot, setPollingSnapshot] = useState<SnapshotState>({
+    metadata: null, loading: false, error: null,
+  });
+  const snapshotCache = useRef<PollingSnapshotCache | null>(null);
   const auth = useAuth();
   const survey = useSurvey();
   /** The assigned point whose datasheet is open, or null. */
   const [openPoint, setOpenPoint] = useState<SurveyPoint | null>(null);
-  /**
-   * Read at request time by the tile protocol rather than captured, so a token
-   * refresh partway through a survey day takes effect on the next tile.
-   */
-  const pollingToken = useRef<string | null>(null);
-  pollingToken.current = auth.accessToken;
 
   // Latest values for handlers that are registered once.
   const onSelectRef = useRef(onSelect);
@@ -774,44 +773,65 @@ export default function MapCanvas({
     return () => window.clearTimeout(timer);
   }, [ready, categories, activeLayers, bufferFeet, indexed, viewKey, buffersVisible]);
 
-  // Polling points are remote vector tiles from the platform, fetched as the
-  // signed-in user. Rebuilt whenever the season changes because the year is
-  // baked into the tile URL.
+  // The snapshot is served by this app, behind the same sign-in as the map.
+  // Read the small index first; point files are loaded only for the viewport.
   useEffect(() => {
-    registerPollingProtocol(() => pollingToken.current);
-  }, []);
+    if (!pollingOn || pollingSnapshot.metadata) return;
+    const controller = new AbortController();
+    setPollingSnapshot((previous) => ({ ...previous, loading: true, error: null }));
+    fetchPollingSnapshot(controller.signal).then((metadata) => {
+      if (controller.signal.aborted) return;
+      snapshotCache.current = new PollingSnapshotCache(metadata);
+      setPollingSnapshot({ metadata, loading: false, error: null });
+    }).catch((error: unknown) => {
+      if (controller.signal.aborted) return;
+      setPollingSnapshot({ metadata: null, loading: false, error: error instanceof Error ? error.message : "Could not load polling snapshot." });
+    });
+    return () => controller.abort();
+  }, [pollingOn, pollingSnapshot.metadata]);
 
   useEffect(() => {
     if (!ready || !map.current) return;
     const instance = map.current;
-
-    if (instance.getLayer(POLL_LAYER)) instance.removeLayer(POLL_LAYER);
-    if (instance.getSource(POLL_SRC)) instance.removeSource(POLL_SRC);
-    if (!pollingOn || !auth.accessToken) return;
-
-    instance.addSource(POLL_SRC, {
-      type: "vector",
-      tiles: [`${POLLING_PROTOCOL}://{z}/{x}/{y}/${POLLING_YEAR}`],
-      minzoom: POLLING_MIN_ZOOM,
-      maxzoom: 18,
+    const empty: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
+    if (!instance.getSource(POLL_SRC)) {
+      instance.addSource(POLL_SRC, { type: "geojson", data: empty, maxzoom: 18 });
+      instance.addLayer({
+        id: POLL_LAYER, type: "circle", source: POLL_SRC, minzoom: POLLING_MIN_ZOOM,
+        paint: {
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2, 18, 4.5],
+          "circle-color": substrateColorExpression() as maplibregl.ExpressionSpecification,
+          "circle-opacity": 0.9,
+          "circle-stroke-width": 0.5,
+          "circle-stroke-color": "#13293d",
+        },
+      }, instance.getLayer(SURVEY_LAYER) ? SURVEY_LAYER : undefined);
+    }
+    instance.setLayoutProperty(POLL_LAYER, "visibility", pollingOn ? "visible" : "none");
+    const source = instance.getSource(POLL_SRC) as maplibregl.GeoJSONSource;
+    if (!pollingOn || zoom < POLLING_MIN_ZOOM || !snapshotCache.current) {
+      source.setData(empty);
+      setPollingSnapshot((previous) => previous.metadata && previous.loading
+        ? { ...previous, loading: false }
+        : previous);
+      return;
+    }
+    const controller = new AbortController();
+    const bounds = instance.getBounds();
+    setPollingSnapshot((previous) => ({ ...previous, loading: true, error: null }));
+    snapshotCache.current.load([
+      bounds.getWest(), bounds.getSouth(), bounds.getEast(), bounds.getNorth(),
+    ], controller.signal).then((data) => {
+      if (controller.signal.aborted) return;
+      source.setData(data);
+      setPollingSnapshot((previous) => ({ ...previous, loading: false }));
+    }).catch((error: unknown) => {
+      if (controller.signal.aborted) return;
+      source.setData(empty);
+      setPollingSnapshot((previous) => ({ ...previous, loading: false, error: error instanceof Error ? error.message : "Could not load polling points." }));
     });
-    // Symbology matched to the platform's field map and mobile app: coloured by
-    // substrate, same radii, same dark casing.
-    instance.addLayer({
-      id: POLL_LAYER,
-      type: "circle",
-      source: POLL_SRC,
-      "source-layer": "polling_points",
-      minzoom: POLLING_MIN_ZOOM,
-      paint: {
-        "circle-radius": ["interpolate", ["linear"], ["zoom"], 14, 2, 18, 4.5],
-        "circle-color": substrateColorExpression() as maplibregl.ExpressionSpecification,
-        "circle-opacity": 0.9,
-        "circle-stroke-width": 0.5,
-        "circle-stroke-color": "#13293d",
-      },
-    });
-  }, [ready, pollingOn, auth.accessToken]);
+    return () => controller.abort();
+  }, [ready, pollingOn, pollingSnapshot.metadata, viewKey, zoom]);
 
   // Assigned ground samples. Source and layers are built once and then fed by
   // the effect below, rather than torn down and rebuilt whenever a sample is
@@ -983,6 +1003,7 @@ export default function MapCanvas({
         }}
         polling={{
           on: pollingOn,
+          snapshot: pollingSnapshot,
           minZoom: POLLING_MIN_ZOOM,
           zoom,
           onToggle: () => setPollingOn((v) => !v),

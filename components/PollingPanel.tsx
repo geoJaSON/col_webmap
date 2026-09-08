@@ -1,28 +1,16 @@
 "use client";
 
 import { SUBSTRATE_COLORS } from "@/lib/substrate";
-
-/**
- * The season the layer draws. There is no picker: reviewers work against the
- * current season, and an unnoticed stale selection is worse than no choice at
- * all. Bump this when the platform rolls over to a new poll year.
- */
-export const POLLING_YEAR = 2026;
+import type { SnapshotState } from "@/lib/pollingSnapshot";
 
 type Props = {
   on: boolean;
+  snapshot: SnapshotState;
   onToggle: () => void;
 };
 
-/**
- * "Polling points" — now just a toggle and its key.
- *
- * This used to carry its own email-and-password form, because the tile
- * function filters by who is asking and the app had no idea who that was. The
- * site-wide login made that redundant: by the time this renders, the person is
- * already signed in and their tiles already come back filtered to them.
- */
-export default function PollingPanel({ on, onToggle }: Props) {
+/** A dated snapshot shared by everyone who can sign in to this map. */
+export default function PollingPanel({ on, snapshot, onToggle }: Props) {
   return (
     <li className="layers__item">
       <div className="layers__head">
@@ -38,12 +26,20 @@ export default function PollingPanel({ on, onToggle }: Props) {
             style={{ "--swatch": "#e9a13b" } as React.CSSProperties}
             aria-hidden="true"
           />
-          <span className="layers__label">Polling points</span>
+          <span className="layers__label">Polling snapshot</span>
         </button>
       </div>
 
       {on && (
         <div className="polling">
+          {snapshot.metadata && (
+            <p className="polling__snapshot">
+              {snapshot.metadata.features.toLocaleString()} points · {snapshot.metadata.createdAt.slice(0, 10)}
+              <br />Open water in COL bays + points inside COLs.
+            </p>
+          )}
+          {snapshot.loading && <p className="polling__snapshot" role="status">Loading polling points…</p>}
+          {snapshot.error && <p className="polling__snapshot" role="alert">{snapshot.error}</p>}
           {/* The palette only means something with the key next to it, and a
               permanent legend bar would be seven swatches of clutter when the
               layer is off. */}

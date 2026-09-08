@@ -1267,6 +1267,17 @@ button {
   padding: 2px 11px 12px;
 }
 
+.polling__snapshot {
+  margin: 4px 0 9px;
+  color: var(--buff-dim);
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.polling__snapshot[role="alert"] {
+  color: var(--modify);
+}
+
 .polling__who {
   display: flex;
   align-items: baseline;

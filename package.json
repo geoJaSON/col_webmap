@@ -10,7 +10,9 @@
     "extract": "python scripts/extract_xlsx.py",
     "layers": "python scripts/import_layers.py",
     "pipelines": "python scripts/fetch_pipelines.py && python scripts/import_layers.py",
+    "polling:snapshot": "python scripts/snapshot_polling.py",
     "test:buffers": "node scripts/test_buffers.cjs",
+    "test:polling": "node scripts/test_polling_snapshot.cjs && python scripts/test_polling_snapshot.py",
     "survey": "python scripts/extract_survey_points.py"
   },
   "dependencies": {

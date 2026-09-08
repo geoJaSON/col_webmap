@@ -5,9 +5,11 @@ import { useState } from "react";
 import PollingPanel from "@/components/PollingPanel";
 import SurveyPanel from "@/components/SurveyPanel";
 import type { LayerCategory } from "@/lib/layers";
+import type { SnapshotState } from "@/lib/pollingSnapshot";
 
 type PollingProps = {
   on: boolean;
+  snapshot: SnapshotState;
   minZoom: number;
   zoom: number;
   onToggle: () => void;
@@ -73,7 +75,7 @@ export default function LayerControl({
             progress={survey.progress}
             onToggle={survey.onToggle}
           />
-          <PollingPanel on={polling.on} onToggle={polling.onToggle} />
+          <PollingPanel on={polling.on} snapshot={polling.snapshot} onToggle={polling.onToggle} />
           {polling.on && polling.zoom < polling.minZoom && (
             <li className="layers__item">
               <p className="polling__note">Zoom in to load polling points.</p>

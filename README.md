@@ -20,7 +20,8 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `layers.config.json` | Blocker categories: colour, default buffer, and which shapefile belongs to which |
 | `lib/buffer.ts` | On-the-fly buffering, culled to the viewport |
 | `lib/csv.ts` | CSV export laid out like the original `GIS Upload` sheet |
-| `lib/pollingTiles.ts` | MapLibre protocol that reads platform polling tiles as the signed-in user |
+| `lib/pollingSnapshot.ts` | Loads static polling files for the current viewport |
+| `scripts/snapshot_polling.py` | Exports unleased bay points and COL polling points using read-only database requests |
 | `lib/substrate.ts` | Polling-point colours, copied from the platform field map |
 | `public/layers/` | Generated reference layers plus the `index.json` the map reads |
 | `app/`, `components/`, `lib/` | The Next.js app |
@@ -204,31 +205,50 @@ workbook passes with one duplicate-vertex cleanup and no errors.
 
 ## Polling points
 
-The Supabase project behind this app is the wider oyster platform, not a
-database of its own — `col_applications` sits alongside roughly 200 other
-tables. One of them, `gis_polling_points`, holds about 1.7 million points, and
-the platform already exposes `rpc/mvt_polling_points(z, x, y, p_year)` which
-returns a Mapbox Vector Tile.
+**Polling snapshot** in Layers is enabled by default. It serves a dated copy
+of the polling data from this map's own files. Everyone who can sign in to the
+map, including Justin, sees the same snapshot regardless of platform lease
+permissions. Existing database RLS, tile functions, and user roles are unchanged.
 
-**Show polling points** in the Layers control turns that on. The tile function
-filters by who is asking — called without a user it returns an empty tile — so
-this only works because you are already signed in site-wide. It used to carry
-its own sign-in form; that is gone.
+The September 8, 2026 snapshot has **120,440 points**: 120,438 unleased points
+across the COL bays, plus 2 lease-attributed points inside COL polygons. A total
+of 46,984 of the captured points fall inside COLs. Counts overlap: unleased
+points inside COLs are stored once. All unarchived years are included, currently
+2023–2026; archived points and leased points outside COLs are excluded.
 
-How it is wired:
+Coverage uses RRC bay tracts for the four COL bay systems and sub-bays at the
+COLs. The additional COL inclusion test uses the **current saved database
+polygons**, including boundary points. It does not apply the pipeline buffer.
 
-- The access token comes from the site-wide session, read at request time
-  rather than captured, so a token refresh partway through a long day takes
-  effect on the next tile.
-- Tiles are fetched through a MapLibre custom protocol (`polling://`) rather
-  than proxied through this app's server. The person's access token therefore
-  never touches our server or our logs — it goes straight to Supabase, and the
-  function's own per-user filtering decides what comes back.
-- The function returns the tile as base64 text inside a JSON string, because
-  PostgREST will not serve the underlying type as `application/octet-stream`.
-  The protocol handler decodes it before handing MapLibre the bytes.
-- Tiles are only requested at zoom 14 and above, which is where the function
-  starts answering; below that it returns `null`.
+The files live under `public/polling/`. `index.json` holds the date, counts,
+scope, and a list of 129 geographic chunks. At zoom 14 and above the browser
+loads only chunks intersecting the viewport, with four requests at a time and
+a bounded cache. It draws the points as GeoJSON using the existing substrate
+palette. No polling RPC, service key, or direct database request is used by
+the browser. The site's existing middleware protects the index and data files.
+
+To refresh from the current database:
+
+```bash
+python -m pip install -r scripts/requirements-polling.txt
+npm run polling:snapshot
+npm run test:polling
+```
+
+The exporter reads server credentials from `.env.local`, `.env`, or environment
+variables and makes GET requests only. It checks paginated counts and IDs,
+filters points against the actual polygons, and removes duplicate IDs. Only
+point ID, position, substrate, lease number, and polling year are exported.
+The export runs over multiple read requests; `startedAt` and `createdAt` record
+its capture window. A changing count or failed request stops publication.
+
+Each snapshot's point files and coverage boundaries have a content-derived
+directory name; the index is replaced after all files are written. Previous
+directories are retained so an open map can finish loading its snapshot.
+`npm run layers` does not touch polling snapshots. Refresh and redeploy after
+new polling data or COL boundary edits should become visible; this layer is
+not live. The previous `lib/pollingTiles.ts` protocol is retained but unused
+by this map.
 
 Points are coloured by substrate using the same palette as the platform's
 field map and mobile app, so a point means the same thing in all three:
@@ -245,9 +265,8 @@ read them by eye across the three apps. The key is rendered under the toggle
 rather than as a permanent legend bar, because seven swatches on screen at all
 times is clutter when the layer is off.
 
-This uses the **anon** key, which is public by design and safe in the bundle —
-a different key and a different trust model from the service-role key the COL
-API routes use.
+The snapshot uses the map's existing sign-in. Source polling permissions remain
+managed independently by the CV Carbon platform.
 
 ## Ground samples (field survey)
 
@@ -533,18 +552,9 @@ them per slider tick would cost more than the buffering does.
 
 ## Notes
 
-- The polling-points layer needs a real platform login, which this build had no
-  account for, so the tiles themselves were never fetched here. The sign-in,
-  its error handling, the gating, and the colour expression were all verified;
-  the drawing was confirmed in use rather than in test.
-- `mvt_polling_points` returns an empty tile for the service role even on a tile
-  holding 111 known points, while `mvt_leases_base` returns data on that same
-  tile. That is the per-user filtering doing its job — without a signed-in user
-  there is nothing to show.
-- The platform's own field map reaches these tiles through an edge function
-  (`/functions/v1/tiles/polling_points/{z}/{x}/{y}.pbf?year=`) rather than the
-  RPC used here. Either works; the edge function returns protobuf directly and
-  would remove the base64 decode step if this ever needs simplifying.
+- The polling snapshot's scope, duplicate handling, pagination checks, and
+  viewport loader are verified by `npm run test:polling`. Its browser rendering
+  still needs a visual check in a signed-in map session.
 
 - `data/applications.json` is the import pipeline's base, not a mirror of the
   database. Once statuses or shapes are edited in the app the two diverge, and
