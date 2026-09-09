@@ -16,6 +16,22 @@ export const REEF_LABEL: Record<ReefType, string> = {
   off: "Off reef",
 };
 
+/**
+ * Whether TPWD flagged this point as sitting in potential seagrass.
+ *
+ * It is still an off-reef sample on the off-reef datasheet -- this changes the
+ * gear, not the form. Matched loosely because TPWD words it two ways: "Off
+ * Reef Seagrass" per point, "Off Reef (potential seagrass)" in the acreage
+ * block beside it.
+ */
+export const isSeagrass = (point: { reef_label: string | null }) =>
+  (point.reef_label ?? "").toLowerCase().includes("seagrass");
+
+/** What the form and the map call a point, TPWD's class included. */
+export function reefDescription(point: SurveyPoint): string {
+  return isSeagrass(point) ? "Off reef · seagrass" : REEF_LABEL[point.reef_type];
+}
+
 /** An assigned sample location. Seeded from TPWD's workbook, never edited. */
 export type SurveyPoint = {
   app_no: number;
@@ -23,11 +39,19 @@ export type SurveyPoint = {
   lat: number;
   lon: number;
   reef_type: ReefType;
+  /**
+   * TPWD's own wording, verbatim: "On Reef", "Off Reef", "Off Reef Seagrass".
+   * `reef_type` collapses these to on/off to pick the datasheet; this keeps the
+   * distinction the gear depends on. Null for points seeded before the column
+   * existed, until the seed is re-run.
+   */
+  reef_label: string | null;
 };
 
 export type SurveySite = {
   app_no: number;
-  site_code: string;
+  /** Null for sites TPWD issued no site code for — the Aransas Bay batch. */
+  site_code: string | null;
   on_reef_acres: number | null;
   off_reef_acres: number | null;
 };

@@ -14,8 +14,8 @@ import type { SurveyPoint, SurveySample, SurveySite } from "@/lib/surveyTypes";
  * fetches the assignment and tracks what has been collected.
  *
  * Data is loaded once when the layer is switched on rather than at mount: the
- * office use of this map has nothing to do with the survey, and 582 points is
- * not worth fetching for someone who is only looking at lease boundaries.
+ * office use of this map has nothing to do with the survey, and a thousand
+ * points is not worth fetching for someone only looking at lease boundaries.
  */
 
 /** `${app_no}:${point_no}` -- the composite key, flattened for Map/Set use. */

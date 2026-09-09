@@ -7,11 +7,12 @@ import { currentFix, photoUrl, saveSample } from "@/lib/survey";
 import { supabaseBrowser } from "@/lib/supabaseBrowser";
 import {
   FAR_FROM_POINT_FEET,
-  REEF_LABEL,
   distanceFeet,
   draftFromSample,
   emptyDraft,
   hasErrors,
+  isSeagrass,
+  reefDescription,
   validateDraft,
   type DraftErrors,
   type Fix,
@@ -163,12 +164,19 @@ export default function SurveyForm({
         <header className="survey-form__head">
           <div>
             <p className="eyebrow">
-              Site {point.app_no} · {siteCode}
+              {/* The Aransas Bay sites carry no TPWD site code, so the
+                  separator has to go with it rather than dangle. */}
+              Site {point.app_no}
+              {siteCode ? ` · ${siteCode}` : ""}
             </p>
             <h2 className="survey-form__title">
               Point {point.point_no}
-              <span className="survey-form__badge" data-reef={point.reef_type}>
-                {REEF_LABEL[point.reef_type]}
+              <span
+                className="survey-form__badge"
+                data-reef={point.reef_type}
+                data-seagrass={isSeagrass(point)}
+              >
+                {reefDescription(point)}
               </span>
             </h2>
           </div>
@@ -186,6 +194,13 @@ export default function SurveyForm({
           {sample && (
             <p className="survey-form__amending">
               Recorded {new Date(sample.recorded_at).toLocaleString()}. Saving replaces it.
+            </p>
+          )}
+
+          {isSeagrass(point) && (
+            <p className="survey-form__seagrass">
+              TPWD assigned this as potential seagrass. Still the off-reef
+              datasheet — check the survey procedures for the gear.
             </p>
           )}
 

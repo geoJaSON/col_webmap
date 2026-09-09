@@ -274,8 +274,43 @@ TPWD assigns ground samples for each accepted COL and expects the results back
 on their own datasheets. **Ground samples** in the Layers control draws those
 assigned points and turns each one into a form the crew fills in on a tablet.
 
-The first round covers **582 points across 9 sites** — applications 1, 8, 9,
-14, 15, 22, 56, 75 and 107 — split 318 on-reef / 264 off-reef.
+### What has been assigned
+
+**1,003 points across 16 sites**, arriving in batches. Each batch is a workbook
+in `survey_points/`; the importer discovers them, so the next one is added by
+dropping the file in and re-running `npm run survey`.
+
+| Workbook | Bay | Sites | Points |
+|---|---|---|---|
+| `Woody_Jurisich_GB_NRS_1.xlsx` | Galveston | 9 — apps 1, 8, 9, 14, 15, 22, 56, 75, 107 | 582 |
+| `Woody_Jurisich_GB_NRS_2.xlsx` | Galveston | 5 — apps 3, 12, 25, 99, 102 | 285 |
+| `Woody_Jurisich_AB_NRS_1.xlsx` | Aransas | 2 — apps 112, 113 | 136 |
+
+Split 558 on-reef / 445 off-reef, of which **100 are off-reef in potential
+seagrass**. Every one of the 16 applications exists in `col_applications`, and
+no application appears in more than one workbook — the importer refuses a
+duplicate rather than letting one batch silently overwrite another.
+
+### TPWD's three reef classes, and why the database stores two
+
+The Aransas Bay batch introduced **"Off Reef Seagrass"** (TPWD's acreage block
+words it *"Off Reef (potential seagrass)"*). It is stored as `reef_type = 'off'`
+with the verbatim wording kept alongside in `reef_label`.
+
+That split is deliberate. `reef_type` exists to decide which of TPWD's two
+datasheets the crew fills in, and they only ever sent two — a seagrass sample
+is recorded on the off-reef sheet. Widening `reef_type` to a third value would
+change which columns are *required*, through the `survey_samples_shape_check`
+constraint, with no third datasheet to require them.
+
+But the class still matters operationally: a seagrass sample is worked with
+different gear. So it survives everywhere the crew will look — the form badge
+reads "Off reef · seagrass" with a note above the fields, and the GPX gives
+those waypoints a green flag instead of blue.
+
+Aransas Bay also brought sites with **no TPWD site code** — its worksheets are
+named with bare application numbers — so `survey_sites.site_code` is nullable
+and the UI drops the separator when there is none.
 
 ### Symbology
 
@@ -363,6 +398,12 @@ by `supabase/survey_seed.sql`. The seed is re-runnable: it refreshes the
 assignment on conflict and never touches collected samples, so re-run it
 whenever TPWD sends the next batch of points.
 
+**On a database created before the Aransas Bay batch**, run
+`supabase/survey_migration_002_seagrass.sql` once before re-seeding. It makes
+`site_code` nullable and adds `reef_label`; the seed then fills `reef_label` in
+for every existing row. A database built fresh from `survey_schema.sql` already
+has both and does not need it.
+
 ### How it is wired
 
 Unlike `col_applications` — reached only by this app's API routes holding the
@@ -424,7 +465,7 @@ complete survey.
 
 ### Getting the points onto a chartplotter
 
-`npm run survey` also writes `exports/col-ground-samples.gpx` — all 582
+`npm run survey` also writes `exports/col-ground-samples.gpx` — all 1,003
 assigned points as GPX 1.1 waypoints, ready to load onto a plotter or handheld.
 It is regenerated from the workbook alongside the JSON and the SQL seed, so it
 never drifts from the assignment.
@@ -433,8 +474,8 @@ Waypoints are named `75-001` — zero padded, because handhelds list waypoints
 alphabetically and unpadded numbers sort 1, 10, 100, 2, which is unusable when
 you are hunting for point 2 of 104. The longest name this produces is
 `107-104`, seven characters, inside the limit of any device likely to see it.
-The symbol is the reef type, which is what decides the gear and the datasheet:
-red on-reef, blue off-reef. Those are the Garmin names, understood by most
+The symbol is TPWD's reef class, which is what decides the gear: red on-reef,
+blue off-reef, green off-reef in potential seagrass. Those are the Garmin names, understood by most
 plotters and OpenCPN; an unrecognised symbol falls back to a default pin rather
 than failing the file. Site, code, point number and reef type ride along in
 each waypoint's `<desc>`.

@@ -19,8 +19,9 @@ create table if not exists public.survey_sites (
   -- should not be an error.
   app_no          integer primary key,
   -- TPWD's own site code, e.g. GB20. Shown alongside the app number because
-  -- their correspondence uses both.
-  site_code       text    not null,
+  -- their correspondence uses both. Nullable: the Aransas Bay workbook names
+  -- its worksheets with bare application numbers and issues no site code.
+  site_code       text,
   on_reef_acres   numeric(8, 2),
   off_reef_acres  numeric(8, 2)
 );
@@ -37,6 +38,10 @@ create table if not exists public.survey_points (
   lat         numeric(9, 6) not null,
   lon         numeric(9, 6) not null,
   -- Decides which datasheet the crew fills in, so it drives the whole form.
+  -- Two-valued on purpose even though TPWD has three reef classes: an
+  -- off-reef-seagrass sample is recorded on the off-reef datasheet, and there
+  -- is no third sheet whose columns a third value could require. The class
+  -- itself is kept in reef_label below.
   --
   -- Re-seeding a point whose reef_type has changed will be refused while a
   -- sample references it, because the sample's own reef_type is pinned to this
@@ -44,6 +49,11 @@ create table if not exists public.survey_points (
   -- has to be collected again, and a silent flip would leave a row whose
   -- columns belong to the other sheet.
   reef_type   text    not null,
+  -- TPWD's own wording, verbatim: "On Reef", "Off Reef", "Off Reef Seagrass".
+  -- reef_type collapses these to on/off to pick the datasheet; this keeps the
+  -- distinction the gear depends on, because a seagrass sample is worked
+  -- differently and the crew has to know before they leave the dock.
+  reef_label  text,
   primary key (app_no, point_no)
 );
 

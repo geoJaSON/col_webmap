@@ -37,9 +37,9 @@ export type SurveyData = {
 /**
  * Everything the map needs in one go.
  *
- * 582 points and at most 582 samples is small enough that paging it would cost
- * more in round trips than it saves in bytes, and the crew needs the whole
- * assignment on screen to plan a run anyway.
+ * ~1,000 points and at most that many samples is small enough that paging it
+ * would cost more in round trips than it saves in bytes, and the crew needs
+ * the whole assignment on screen to plan a run anyway.
  */
 export async function fetchSurveyData(client: SupabaseClient): Promise<SurveyData> {
   const [sites, points, samples] = await Promise.all([
@@ -93,10 +93,10 @@ export function photoFileName(point: SurveyPoint, takenAt = new Date()): string 
 /**
  * Shrink a tablet photo before it goes up.
  *
- * A modern phone camera produces 4-12 MB per shot; at 582 samples that is a
- * lot of bytes over a connection that may be one bar. 2048px on the longest
- * edge is still far more than anyone needs to see substrate and oysters, and
- * it turns a minute-long upload into a few seconds.
+ * A modern phone camera produces 4-12 MB per shot; across a thousand samples
+ * that is a lot of bytes over a connection that may be one bar. 2048px on the
+ * longest edge is still far more than anyone needs to see substrate and
+ * oysters, and it turns a minute-long upload into a few seconds.
  *
  * If anything about the decode fails -- an HEIC the browser will not open, a
  * canvas that comes back empty -- the original file is returned rather than

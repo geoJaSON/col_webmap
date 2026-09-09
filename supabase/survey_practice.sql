@@ -10,8 +10,8 @@
 -- (/api/survey/csv?type=on&site=75), so 999 can never appear in anything sent
 -- to TPWD. Two things do still notice it, both cosmetic:
 --
---   * The layer panel's "N of 582 sampled" counts practice points in the
---     total, so it will read 588.
+--   * The layer panel's "N of 1003 sampled" counts practice points in the
+--     total, so it will read 1009.
 --   * The all-sites internal roll-up (/api/survey/csv?type=on with no site)
 --     includes them, tagged with App# 999 in the first column.
 --
