@@ -174,9 +174,13 @@ def escape_xml(value: str) -> str:
     )
 
 
-def write_gpx(sites: list[dict], points: list[dict]) -> None:
+def write_gpx(sites: list[dict], points: list[dict], path: Path, title: str) -> None:
     """
     The assigned points as GPX 1.1, for loading onto a chartplotter.
+
+    Called once for every point and once per workbook: each workbook is one
+    batch from TPWD, so the per-batch file is how just the new points get onto
+    a plotter without the hundreds already loaded.
 
     Waypoints are named "75-001" -- zero padded, because handhelds list
     waypoints alphabetically and unpadded numbers sort 1, 10, 100, 2, which is
@@ -212,7 +216,7 @@ def write_gpx(sites: list[dict], points: list[dict]) -> None:
         ' xsi:schemaLocation="http://www.topografix.com/GPX/1/1'
         ' http://www.topografix.com/GPX/1/1/gpx.xsd">',
         "  <metadata>",
-        "    <name>COL assigned ground samples</name>",
+        f"    <name>{escape_xml(title)}</name>",
         "    <desc>{} assigned TPWD ground samples across {} sites."
         " Red is on-reef, blue is off-reef, green is off-reef potential"
         " seagrass.</desc>".format(len(points), len(sites)),
@@ -240,8 +244,8 @@ def write_gpx(sites: list[dict], points: list[dict]) -> None:
         ]
 
     out.append("</gpx>")
-    GPX_OUT.parent.mkdir(parents=True, exist_ok=True)
-    GPX_OUT.write_text("\n".join(out) + "\n", encoding="utf-8")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
 def sql_literal(value) -> str:
@@ -357,7 +361,20 @@ def main() -> None:
 
     SQL_OUT.write_text("\n".join(lines), encoding="utf-8")
 
-    write_gpx(sites, points)
+    write_gpx(sites, points, GPX_OUT, "COL assigned ground samples")
+    gpx_written = [GPX_OUT]
+    for source in sorted({s["source"] for s in sites}):
+        batch_sites = [s for s in sites if s["source"] == source]
+        apps = {s["app_no"] for s in batch_sites}
+        stem = Path(source).stem
+        path = GPX_OUT.parent / f"{stem}.gpx"
+        write_gpx(
+            batch_sites,
+            [p for p in points if p["app_no"] in apps],
+            path,
+            f"COL ground samples - {stem}",
+        )
+        gpx_written.append(path)
 
     on = sum(s["on_reef_points"] for s in sites)
     off = sum(s["off_reef_points"] for s in sites)
@@ -383,7 +400,8 @@ def main() -> None:
     print()
     print(f"-> {JSON_OUT.relative_to(ROOT)}")
     print(f"-> {SQL_OUT.relative_to(ROOT)}")
-    print(f"-> {GPX_OUT.relative_to(ROOT)}")
+    for path in gpx_written:
+        print(f"-> {path.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

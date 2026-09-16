@@ -49,7 +49,8 @@ comment on column public.survey_points.reef_label is
   'datasheet; this keeps the distinction the gear depends on.';
 
 -- ---------------------------------------------------------------------------
--- Verification — expect 16 sites, 1003 points, and three reef classes.
+-- Verification — after re-seeding, the site and point counts should match
+-- what scripts/extract_survey_points.py printed, with three reef classes.
 -- ---------------------------------------------------------------------------
 -- select count(*) as sites from public.survey_sites;
 -- select count(*) as points from public.survey_points;

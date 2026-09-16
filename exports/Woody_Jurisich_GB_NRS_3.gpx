@@ -1,0 +1,5133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="COL Status" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>COL ground samples - Woody_Jurisich_GB_NRS_3</name>
+    <desc>854 assigned TPWD ground samples across 8 sites. Red is on-reef, blue is off-reef, green is off-reef potential seagrass.</desc>
+    <time>2026-09-15T21:55:52Z</time>
+    <bounds minlat="29.457321" minlon="-94.732794" maxlat="29.491519" maxlon="-94.696466"/>
+  </metadata>
+  <wpt lat="29.484893" lon="-94.719557">
+    <name>16-001</name>
+    <desc>Site 16 (GB 25-28) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483770" lon="-94.723076">
+    <name>16-002</name>
+    <desc>Site 16 (GB 25-28) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483451" lon="-94.720763">
+    <name>16-003</name>
+    <desc>Site 16 (GB 25-28) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485409" lon="-94.720793">
+    <name>16-004</name>
+    <desc>Site 16 (GB 25-28) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484701" lon="-94.720809">
+    <name>16-005</name>
+    <desc>Site 16 (GB 25-28) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480976" lon="-94.728122">
+    <name>16-006</name>
+    <desc>Site 16 (GB 25-28) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482109" lon="-94.722583">
+    <name>16-007</name>
+    <desc>Site 16 (GB 25-28) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479681" lon="-94.727740">
+    <name>16-008</name>
+    <desc>Site 16 (GB 25-28) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484302" lon="-94.723436">
+    <name>16-009</name>
+    <desc>Site 16 (GB 25-28) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478871" lon="-94.727610">
+    <name>16-010</name>
+    <desc>Site 16 (GB 25-28) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480358" lon="-94.727519">
+    <name>16-011</name>
+    <desc>Site 16 (GB 25-28) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480521" lon="-94.724133">
+    <name>16-012</name>
+    <desc>Site 16 (GB 25-28) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481854" lon="-94.725607">
+    <name>16-013</name>
+    <desc>Site 16 (GB 25-28) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480635" lon="-94.726088">
+    <name>16-014</name>
+    <desc>Site 16 (GB 25-28) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478889" lon="-94.726553">
+    <name>16-015</name>
+    <desc>Site 16 (GB 25-28) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485299" lon="-94.718520">
+    <name>16-016</name>
+    <desc>Site 16 (GB 25-28) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481696" lon="-94.724782">
+    <name>16-017</name>
+    <desc>Site 16 (GB 25-28) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484854" lon="-94.719036">
+    <name>16-018</name>
+    <desc>Site 16 (GB 25-28) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478170" lon="-94.727225">
+    <name>16-019</name>
+    <desc>Site 16 (GB 25-28) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484218" lon="-94.719099">
+    <name>16-020</name>
+    <desc>Site 16 (GB 25-28) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481849" lon="-94.727114">
+    <name>16-021</name>
+    <desc>Site 16 (GB 25-28) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479930" lon="-94.725698">
+    <name>16-022</name>
+    <desc>Site 16 (GB 25-28) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485965" lon="-94.720822">
+    <name>16-023</name>
+    <desc>Site 16 (GB 25-28) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485904" lon="-94.718141">
+    <name>16-024</name>
+    <desc>Site 16 (GB 25-28) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480976" lon="-94.724814">
+    <name>16-025</name>
+    <desc>Site 16 (GB 25-28) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482794" lon="-94.725270">
+    <name>16-026</name>
+    <desc>Site 16 (GB 25-28) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480839" lon="-94.723437">
+    <name>16-027</name>
+    <desc>Site 16 (GB 25-28) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484493" lon="-94.717902">
+    <name>16-028</name>
+    <desc>Site 16 (GB 25-28) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480322" lon="-94.728925">
+    <name>16-029</name>
+    <desc>Site 16 (GB 25-28) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479108" lon="-94.728066">
+    <name>16-030</name>
+    <desc>Site 16 (GB 25-28) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482722" lon="-94.724629">
+    <name>16-031</name>
+    <desc>Site 16 (GB 25-28) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479223" lon="-94.725503">
+    <name>16-032</name>
+    <desc>Site 16 (GB 25-28) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481164" lon="-94.724267">
+    <name>16-033</name>
+    <desc>Site 16 (GB 25-28) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486201" lon="-94.720158">
+    <name>16-034</name>
+    <desc>Site 16 (GB 25-28) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482404" lon="-94.721343">
+    <name>16-035</name>
+    <desc>Site 16 (GB 25-28) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481610" lon="-94.726379">
+    <name>16-036</name>
+    <desc>Site 16 (GB 25-28) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485588" lon="-94.719041">
+    <name>16-037</name>
+    <desc>Site 16 (GB 25-28) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479810" lon="-94.726339">
+    <name>16-038</name>
+    <desc>Site 16 (GB 25-28) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483996" lon="-94.720381">
+    <name>16-039</name>
+    <desc>Site 16 (GB 25-28) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484439" lon="-94.718619">
+    <name>16-040</name>
+    <desc>Site 16 (GB 25-28) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485130" lon="-94.721462">
+    <name>16-041</name>
+    <desc>Site 16 (GB 25-28) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480996" lon="-94.726672">
+    <name>16-042</name>
+    <desc>Site 16 (GB 25-28) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481835" lon="-94.723966">
+    <name>16-043</name>
+    <desc>Site 16 (GB 25-28) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482659" lon="-94.723650">
+    <name>16-044</name>
+    <desc>Site 16 (GB 25-28) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483450" lon="-94.723596">
+    <name>16-045</name>
+    <desc>Site 16 (GB 25-28) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479455" lon="-94.726908">
+    <name>16-046</name>
+    <desc>Site 16 (GB 25-28) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482773" lon="-94.722385">
+    <name>16-047</name>
+    <desc>Site 16 (GB 25-28) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486595" lon="-94.719096">
+    <name>16-048</name>
+    <desc>Site 16 (GB 25-28) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485152" lon="-94.717695">
+    <name>16-049</name>
+    <desc>Site 16 (GB 25-28) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484338" lon="-94.722627">
+    <name>16-050</name>
+    <desc>Site 16 (GB 25-28) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482686" lon="-94.720764">
+    <name>16-051</name>
+    <desc>Site 16 (GB 25-28) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482247" lon="-94.725196">
+    <name>16-052</name>
+    <desc>Site 16 (GB 25-28) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483920" lon="-94.718534">
+    <name>16-053</name>
+    <desc>Site 16 (GB 25-28) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482650" lon="-94.722994">
+    <name>16-054</name>
+    <desc>Site 16 (GB 25-28) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483132" lon="-94.721197">
+    <name>16-055</name>
+    <desc>Site 16 (GB 25-28) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480083" lon="-94.726862">
+    <name>16-056</name>
+    <desc>Site 16 (GB 25-28) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479638" lon="-94.728984">
+    <name>16-057</name>
+    <desc>Site 16 (GB 25-28) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483086" lon="-94.724212">
+    <name>16-058</name>
+    <desc>Site 16 (GB 25-28) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481276" lon="-94.725453">
+    <name>16-059</name>
+    <desc>Site 16 (GB 25-28) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483051" lon="-94.719806">
+    <name>16-060</name>
+    <desc>Site 16 (GB 25-28) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482292" lon="-94.724412">
+    <name>16-061</name>
+    <desc>Site 16 (GB 25-28) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479909" lon="-94.724895">
+    <name>16-062</name>
+    <desc>Site 16 (GB 25-28) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480834" lon="-94.728689">
+    <name>16-063</name>
+    <desc>Site 16 (GB 25-28) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484362" lon="-94.721311">
+    <name>16-064</name>
+    <desc>Site 16 (GB 25-28) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480127" lon="-94.729714">
+    <name>16-065</name>
+    <desc>Site 16 (GB 25-28) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481147" lon="-94.722578">
+    <name>16-066</name>
+    <desc>Site 16 (GB 25-28) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485617" lon="-94.719606">
+    <name>16-067</name>
+    <desc>Site 16 (GB 25-28) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486617" lon="-94.718561">
+    <name>16-068</name>
+    <desc>Site 16 (GB 25-28) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483568" lon="-94.721491">
+    <name>16-069</name>
+    <desc>Site 16 (GB 25-28) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484837" lon="-94.722057">
+    <name>16-070</name>
+    <desc>Site 16 (GB 25-28) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484876" lon="-94.720144">
+    <name>16-071</name>
+    <desc>Site 16 (GB 25-28) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485671" lon="-94.720104">
+    <name>16-072</name>
+    <desc>Site 16 (GB 25-28) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483618" lon="-94.724347">
+    <name>16-073</name>
+    <desc>Site 16 (GB 25-28) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483078" lon="-94.721810">
+    <name>16-074</name>
+    <desc>Site 16 (GB 25-28) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480165" lon="-94.728210">
+    <name>16-075</name>
+    <desc>Site 16 (GB 25-28) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482177" lon="-94.721876">
+    <name>16-076</name>
+    <desc>Site 16 (GB 25-28) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483381" lon="-94.719377">
+    <name>16-077</name>
+    <desc>Site 16 (GB 25-28) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481470" lon="-94.723258">
+    <name>16-078</name>
+    <desc>Site 16 (GB 25-28) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483989" lon="-94.719691">
+    <name>16-079</name>
+    <desc>Site 16 (GB 25-28) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482275" lon="-94.726039">
+    <name>16-080</name>
+    <desc>Site 16 (GB 25-28) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482072" lon="-94.723244">
+    <name>16-081</name>
+    <desc>Site 16 (GB 25-28) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484163" lon="-94.721922">
+    <name>16-082</name>
+    <desc>Site 16 (GB 25-28) point 82 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480943" lon="-94.727420">
+    <name>16-083</name>
+    <desc>Site 16 (GB 25-28) point 83 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486196" lon="-94.719348">
+    <name>16-084</name>
+    <desc>Site 16 (GB 25-28) point 84 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486073" lon="-94.718658">
+    <name>16-085</name>
+    <desc>Site 16 (GB 25-28) point 85 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484923" lon="-94.718157">
+    <name>16-086</name>
+    <desc>Site 16 (GB 25-28) point 86 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480574" lon="-94.725377">
+    <name>16-087</name>
+    <desc>Site 16 (GB 25-28) point 87 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483493" lon="-94.722608">
+    <name>16-088</name>
+    <desc>Site 16 (GB 25-28) point 88 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487176" lon="-94.719667">
+    <name>16-089</name>
+    <desc>Site 16 (GB 25-28) point 89 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478089" lon="-94.727906">
+    <name>16-090</name>
+    <desc>Site 16 (GB 25-28) point 90 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487002" lon="-94.718967">
+    <name>16-091</name>
+    <desc>Site 16 (GB 25-28) point 91 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479144" lon="-94.728827">
+    <name>16-092</name>
+    <desc>Site 16 (GB 25-28) point 92 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479662" lon="-94.730431">
+    <name>16-093</name>
+    <desc>Site 16 (GB 25-28) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486572" lon="-94.720218">
+    <name>16-094</name>
+    <desc>Site 16 (GB 25-28) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.480135" lon="-94.730441">
+    <name>16-095</name>
+    <desc>Site 16 (GB 25-28) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479663" lon="-94.729558">
+    <name>16-096</name>
+    <desc>Site 16 (GB 25-28) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478660" lon="-94.728726">
+    <name>16-097</name>
+    <desc>Site 16 (GB 25-28) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479574" lon="-94.730895">
+    <name>16-098</name>
+    <desc>Site 16 (GB 25-28) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479251" lon="-94.729549">
+    <name>16-099</name>
+    <desc>Site 16 (GB 25-28) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477974" lon="-94.728697">
+    <name>16-100</name>
+    <desc>Site 16 (GB 25-28) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478315" lon="-94.729302">
+    <name>16-101</name>
+    <desc>Site 16 (GB 25-28) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479110" lon="-94.730231">
+    <name>16-102</name>
+    <desc>Site 16 (GB 25-28) point 102 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479888" lon="-94.730043">
+    <name>16-103</name>
+    <desc>Site 16 (GB 25-28) point 103 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478518" lon="-94.728263">
+    <name>16-104</name>
+    <desc>Site 16 (GB 25-28) point 104 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477697" lon="-94.728234">
+    <name>16-105</name>
+    <desc>Site 16 (GB 25-28) point 105 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487674" lon="-94.719246">
+    <name>16-106</name>
+    <desc>Site 16 (GB 25-28) point 106 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478863" lon="-94.729391">
+    <name>16-107</name>
+    <desc>Site 16 (GB 25-28) point 107 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488575" lon="-94.724912">
+    <name>26-001</name>
+    <desc>Site 26 (GB 25-28) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485427" lon="-94.728956">
+    <name>26-002</name>
+    <desc>Site 26 (GB 25-28) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489444" lon="-94.728331">
+    <name>26-003</name>
+    <desc>Site 26 (GB 25-28) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489279" lon="-94.727620">
+    <name>26-004</name>
+    <desc>Site 26 (GB 25-28) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487368" lon="-94.729137">
+    <name>26-005</name>
+    <desc>Site 26 (GB 25-28) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489475" lon="-94.725574">
+    <name>26-006</name>
+    <desc>Site 26 (GB 25-28) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488266" lon="-94.729961">
+    <name>26-007</name>
+    <desc>Site 26 (GB 25-28) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487911" lon="-94.726709">
+    <name>26-008</name>
+    <desc>Site 26 (GB 25-28) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486555" lon="-94.728663">
+    <name>26-009</name>
+    <desc>Site 26 (GB 25-28) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490880" lon="-94.728088">
+    <name>26-010</name>
+    <desc>Site 26 (GB 25-28) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489745" lon="-94.730090">
+    <name>26-011</name>
+    <desc>Site 26 (GB 25-28) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487404" lon="-94.727310">
+    <name>26-012</name>
+    <desc>Site 26 (GB 25-28) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487354" lon="-94.728333">
+    <name>26-013</name>
+    <desc>Site 26 (GB 25-28) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490138" lon="-94.726232">
+    <name>26-014</name>
+    <desc>Site 26 (GB 25-28) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488972" lon="-94.731123">
+    <name>26-015</name>
+    <desc>Site 26 (GB 25-28) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489886" lon="-94.728536">
+    <name>26-016</name>
+    <desc>Site 26 (GB 25-28) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490309" lon="-94.726719">
+    <name>26-017</name>
+    <desc>Site 26 (GB 25-28) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490755" lon="-94.726283">
+    <name>26-018</name>
+    <desc>Site 26 (GB 25-28) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.491451" lon="-94.726232">
+    <name>26-019</name>
+    <desc>Site 26 (GB 25-28) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489166" lon="-94.727012">
+    <name>26-020</name>
+    <desc>Site 26 (GB 25-28) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486618" lon="-94.730599">
+    <name>26-021</name>
+    <desc>Site 26 (GB 25-28) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490312" lon="-94.728247">
+    <name>26-022</name>
+    <desc>Site 26 (GB 25-28) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489186" lon="-94.724864">
+    <name>26-023</name>
+    <desc>Site 26 (GB 25-28) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488914" lon="-94.728924">
+    <name>26-024</name>
+    <desc>Site 26 (GB 25-28) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487416" lon="-94.730504">
+    <name>26-025</name>
+    <desc>Site 26 (GB 25-28) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.491234" lon="-94.726814">
+    <name>26-026</name>
+    <desc>Site 26 (GB 25-28) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486498" lon="-94.727338">
+    <name>26-027</name>
+    <desc>Site 26 (GB 25-28) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488105" lon="-94.725217">
+    <name>26-028</name>
+    <desc>Site 26 (GB 25-28) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488628" lon="-94.729603">
+    <name>26-029</name>
+    <desc>Site 26 (GB 25-28) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490435" lon="-94.728724">
+    <name>26-030</name>
+    <desc>Site 26 (GB 25-28) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487221" lon="-94.726419">
+    <name>26-031</name>
+    <desc>Site 26 (GB 25-28) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488324" lon="-94.730662">
+    <name>26-032</name>
+    <desc>Site 26 (GB 25-28) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489381" lon="-94.726214">
+    <name>26-033</name>
+    <desc>Site 26 (GB 25-28) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486904" lon="-94.727830">
+    <name>26-034</name>
+    <desc>Site 26 (GB 25-28) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489285" lon="-94.730100">
+    <name>26-035</name>
+    <desc>Site 26 (GB 25-28) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488087" lon="-94.726182">
+    <name>26-036</name>
+    <desc>Site 26 (GB 25-28) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487549" lon="-94.725775">
+    <name>26-037</name>
+    <desc>Site 26 (GB 25-28) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488754" lon="-94.724312">
+    <name>26-038</name>
+    <desc>Site 26 (GB 25-28) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485940" lon="-94.729295">
+    <name>26-039</name>
+    <desc>Site 26 (GB 25-28) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484704" lon="-94.730084">
+    <name>26-040</name>
+    <desc>Site 26 (GB 25-28) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490891" lon="-94.725049">
+    <name>26-041</name>
+    <desc>Site 26 (GB 25-28) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490864" lon="-94.725680">
+    <name>26-042</name>
+    <desc>Site 26 (GB 25-28) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487863" lon="-94.728728">
+    <name>26-043</name>
+    <desc>Site 26 (GB 25-28) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490435" lon="-94.724509">
+    <name>26-044</name>
+    <desc>Site 26 (GB 25-28) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489487" lon="-94.728881">
+    <name>26-045</name>
+    <desc>Site 26 (GB 25-28) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486878" lon="-94.730184">
+    <name>26-046</name>
+    <desc>Site 26 (GB 25-28) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487997" lon="-94.729309">
+    <name>26-047</name>
+    <desc>Site 26 (GB 25-28) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488952" lon="-94.728168">
+    <name>26-048</name>
+    <desc>Site 26 (GB 25-28) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490234" lon="-94.729619">
+    <name>26-049</name>
+    <desc>Site 26 (GB 25-28) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490346" lon="-94.727767">
+    <name>26-050</name>
+    <desc>Site 26 (GB 25-28) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489714" lon="-94.726698">
+    <name>26-051</name>
+    <desc>Site 26 (GB 25-28) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490283" lon="-94.727264">
+    <name>26-052</name>
+    <desc>Site 26 (GB 25-28) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486288" lon="-94.728229">
+    <name>26-053</name>
+    <desc>Site 26 (GB 25-28) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488227" lon="-94.728097">
+    <name>26-054</name>
+    <desc>Site 26 (GB 25-28) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488436" lon="-94.728566">
+    <name>26-055</name>
+    <desc>Site 26 (GB 25-28) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486888" lon="-94.726838">
+    <name>26-056</name>
+    <desc>Site 26 (GB 25-28) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488824" lon="-94.730353">
+    <name>26-057</name>
+    <desc>Site 26 (GB 25-28) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490816" lon="-94.727058">
+    <name>26-058</name>
+    <desc>Site 26 (GB 25-28) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486295" lon="-94.730089">
+    <name>26-059</name>
+    <desc>Site 26 (GB 25-28) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485603" lon="-94.728430">
+    <name>26-060</name>
+    <desc>Site 26 (GB 25-28) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488907" lon="-94.727390">
+    <name>26-061</name>
+    <desc>Site 26 (GB 25-28) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487694" lon="-94.729973">
+    <name>26-062</name>
+    <desc>Site 26 (GB 25-28) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490232" lon="-94.725639">
+    <name>26-063</name>
+    <desc>Site 26 (GB 25-28) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488395" lon="-94.731229">
+    <name>26-064</name>
+    <desc>Site 26 (GB 25-28) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.491497" lon="-94.725104">
+    <name>26-065</name>
+    <desc>Site 26 (GB 25-28) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489230" lon="-94.730572">
+    <name>26-066</name>
+    <desc>Site 26 (GB 25-28) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485592" lon="-94.730153">
+    <name>26-067</name>
+    <desc>Site 26 (GB 25-28) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489931" lon="-94.729036">
+    <name>26-068</name>
+    <desc>Site 26 (GB 25-28) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486465" lon="-94.729335">
+    <name>26-069</name>
+    <desc>Site 26 (GB 25-28) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486810" lon="-94.730946">
+    <name>26-070</name>
+    <desc>Site 26 (GB 25-28) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488003" lon="-94.727538">
+    <name>26-071</name>
+    <desc>Site 26 (GB 25-28) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489703" lon="-94.724920">
+    <name>26-072</name>
+    <desc>Site 26 (GB 25-28) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489873" lon="-94.724225">
+    <name>26-073</name>
+    <desc>Site 26 (GB 25-28) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485189" lon="-94.729439">
+    <name>26-074</name>
+    <desc>Site 26 (GB 25-28) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490220" lon="-94.725025">
+    <name>26-075</name>
+    <desc>Site 26 (GB 25-28) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488514" lon="-94.727058">
+    <name>26-076</name>
+    <desc>Site 26 (GB 25-28) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.491519" lon="-94.727331">
+    <name>26-077</name>
+    <desc>Site 26 (GB 25-28) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490824" lon="-94.727666">
+    <name>26-078</name>
+    <desc>Site 26 (GB 25-28) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.491339" lon="-94.725586">
+    <name>26-079</name>
+    <desc>Site 26 (GB 25-28) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487220" lon="-94.729693">
+    <name>26-080</name>
+    <desc>Site 26 (GB 25-28) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487694" lon="-94.731009">
+    <name>26-081</name>
+    <desc>Site 26 (GB 25-28) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488742" lon="-94.725610">
+    <name>26-082</name>
+    <desc>Site 26 (GB 25-28) point 82 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489938" lon="-94.727856">
+    <name>26-083</name>
+    <desc>Site 26 (GB 25-28) point 83 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487613" lon="-94.727893">
+    <name>26-084</name>
+    <desc>Site 26 (GB 25-28) point 84 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489253" lon="-94.724071">
+    <name>26-085</name>
+    <desc>Site 26 (GB 25-28) point 85 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489458" lon="-94.729481">
+    <name>26-086</name>
+    <desc>Site 26 (GB 25-28) point 86 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489455" lon="-94.730966">
+    <name>26-087</name>
+    <desc>Site 26 (GB 25-28) point 87 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488869" lon="-94.726258">
+    <name>26-088</name>
+    <desc>Site 26 (GB 25-28) point 88 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.490031" lon="-94.722399">
+    <name>26-089</name>
+    <desc>Site 26 (GB 25-28) point 89 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490745" lon="-94.724391">
+    <name>26-090</name>
+    <desc>Site 26 (GB 25-28) point 90 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490440" lon="-94.722833">
+    <name>26-091</name>
+    <desc>Site 26 (GB 25-28) point 91 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487945" lon="-94.732794">
+    <name>26-092</name>
+    <desc>Site 26 (GB 25-28) point 92 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490659" lon="-94.723596">
+    <name>26-093</name>
+    <desc>Site 26 (GB 25-28) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.491383" lon="-94.724254">
+    <name>26-094</name>
+    <desc>Site 26 (GB 25-28) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489803" lon="-94.723385">
+    <name>26-095</name>
+    <desc>Site 26 (GB 25-28) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486764" lon="-94.732109">
+    <name>26-096</name>
+    <desc>Site 26 (GB 25-28) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487954" lon="-94.732002">
+    <name>26-097</name>
+    <desc>Site 26 (GB 25-28) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487414" lon="-94.732396">
+    <name>26-098</name>
+    <desc>Site 26 (GB 25-28) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488888" lon="-94.731688">
+    <name>26-099</name>
+    <desc>Site 26 (GB 25-28) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490696" lon="-94.721486">
+    <name>26-100</name>
+    <desc>Site 26 (GB 25-28) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489374" lon="-94.723549">
+    <name>26-101</name>
+    <desc>Site 26 (GB 25-28) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490739" lon="-94.722353">
+    <name>26-102</name>
+    <desc>Site 26 (GB 25-28) point 102 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488688" lon="-94.732099">
+    <name>26-103</name>
+    <desc>Site 26 (GB 25-28) point 103 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.485957" lon="-94.731480">
+    <name>26-104</name>
+    <desc>Site 26 (GB 25-28) point 104 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486898" lon="-94.731444">
+    <name>26-105</name>
+    <desc>Site 26 (GB 25-28) point 105 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488336" lon="-94.731611">
+    <name>26-106</name>
+    <desc>Site 26 (GB 25-28) point 106 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489709" lon="-94.722834">
+    <name>26-107</name>
+    <desc>Site 26 (GB 25-28) point 107 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487471" lon="-94.731752">
+    <name>26-108</name>
+    <desc>Site 26 (GB 25-28) point 108 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490242" lon="-94.721852">
+    <name>26-109</name>
+    <desc>Site 26 (GB 25-28) point 109 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.491494" lon="-94.722444">
+    <name>26-110</name>
+    <desc>Site 26 (GB 25-28) point 110 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490156" lon="-94.723906">
+    <name>26-111</name>
+    <desc>Site 26 (GB 25-28) point 111 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.491113" lon="-94.723035">
+    <name>26-112</name>
+    <desc>Site 26 (GB 25-28) point 112 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488415" lon="-94.732715">
+    <name>26-113</name>
+    <desc>Site 26 (GB 25-28) point 113 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.491277" lon="-94.721648">
+    <name>26-114</name>
+    <desc>Site 26 (GB 25-28) point 114 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.479933" lon="-94.719591">
+    <name>27-001</name>
+    <desc>Site 27 (GB29) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480076" lon="-94.718148">
+    <name>27-002</name>
+    <desc>Site 27 (GB29) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478963" lon="-94.718941">
+    <name>27-003</name>
+    <desc>Site 27 (GB29) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479489" lon="-94.714638">
+    <name>27-004</name>
+    <desc>Site 27 (GB29) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478934" lon="-94.712920">
+    <name>27-005</name>
+    <desc>Site 27 (GB29) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479137" lon="-94.720603">
+    <name>27-006</name>
+    <desc>Site 27 (GB29) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479854" lon="-94.715069">
+    <name>27-007</name>
+    <desc>Site 27 (GB29) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480466" lon="-94.718570">
+    <name>27-008</name>
+    <desc>Site 27 (GB29) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477821" lon="-94.718725">
+    <name>27-009</name>
+    <desc>Site 27 (GB29) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477292" lon="-94.713750">
+    <name>27-010</name>
+    <desc>Site 27 (GB29) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480521" lon="-94.716888">
+    <name>27-011</name>
+    <desc>Site 27 (GB29) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481431" lon="-94.716554">
+    <name>27-012</name>
+    <desc>Site 27 (GB29) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478848" lon="-94.712277">
+    <name>27-013</name>
+    <desc>Site 27 (GB29) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479949" lon="-94.716771">
+    <name>27-014</name>
+    <desc>Site 27 (GB29) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479327" lon="-94.717175">
+    <name>27-015</name>
+    <desc>Site 27 (GB29) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477348" lon="-94.718110">
+    <name>27-016</name>
+    <desc>Site 27 (GB29) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480923" lon="-94.716561">
+    <name>27-017</name>
+    <desc>Site 27 (GB29) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478371" lon="-94.717602">
+    <name>27-018</name>
+    <desc>Site 27 (GB29) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476833" lon="-94.714908">
+    <name>27-019</name>
+    <desc>Site 27 (GB29) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478433" lon="-94.718676">
+    <name>27-020</name>
+    <desc>Site 27 (GB29) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478933" lon="-94.720030">
+    <name>27-021</name>
+    <desc>Site 27 (GB29) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479125" lon="-94.719478">
+    <name>27-022</name>
+    <desc>Site 27 (GB29) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479416" lon="-94.714002">
+    <name>27-023</name>
+    <desc>Site 27 (GB29) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478168" lon="-94.716781">
+    <name>27-024</name>
+    <desc>Site 27 (GB29) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478497" lon="-94.715841">
+    <name>27-025</name>
+    <desc>Site 27 (GB29) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477856" lon="-94.713427">
+    <name>27-026</name>
+    <desc>Site 27 (GB29) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478821" lon="-94.711070">
+    <name>27-027</name>
+    <desc>Site 27 (GB29) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480575" lon="-94.717918">
+    <name>27-028</name>
+    <desc>Site 27 (GB29) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477326" lon="-94.714622">
+    <name>27-029</name>
+    <desc>Site 27 (GB29) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480454" lon="-94.716130">
+    <name>27-030</name>
+    <desc>Site 27 (GB29) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477192" lon="-94.712963">
+    <name>27-031</name>
+    <desc>Site 27 (GB29) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476243" lon="-94.715718">
+    <name>27-032</name>
+    <desc>Site 27 (GB29) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478770" lon="-94.711667">
+    <name>27-033</name>
+    <desc>Site 27 (GB29) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478362" lon="-94.712786">
+    <name>27-034</name>
+    <desc>Site 27 (GB29) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479757" lon="-94.713664">
+    <name>27-035</name>
+    <desc>Site 27 (GB29) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476071" lon="-94.715037">
+    <name>27-036</name>
+    <desc>Site 27 (GB29) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478482" lon="-94.713417">
+    <name>27-037</name>
+    <desc>Site 27 (GB29) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478155" lon="-94.711661">
+    <name>27-038</name>
+    <desc>Site 27 (GB29) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479477" lon="-94.718385">
+    <name>27-039</name>
+    <desc>Site 27 (GB29) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479035" lon="-94.715968">
+    <name>27-040</name>
+    <desc>Site 27 (GB29) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479293" lon="-94.712565">
+    <name>27-041</name>
+    <desc>Site 27 (GB29) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478212" lon="-94.712161">
+    <name>27-042</name>
+    <desc>Site 27 (GB29) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478917" lon="-94.715247">
+    <name>27-043</name>
+    <desc>Site 27 (GB29) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479362" lon="-94.715209">
+    <name>27-044</name>
+    <desc>Site 27 (GB29) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478072" lon="-94.720158">
+    <name>27-045</name>
+    <desc>Site 27 (GB29) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481174" lon="-94.717197">
+    <name>27-046</name>
+    <desc>Site 27 (GB29) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479033" lon="-94.716679">
+    <name>27-047</name>
+    <desc>Site 27 (GB29) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477777" lon="-94.714367">
+    <name>27-048</name>
+    <desc>Site 27 (GB29) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477315" lon="-94.715474">
+    <name>27-049</name>
+    <desc>Site 27 (GB29) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477980" lon="-94.715996">
+    <name>27-050</name>
+    <desc>Site 27 (GB29) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479512" lon="-94.716293">
+    <name>27-051</name>
+    <desc>Site 27 (GB29) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478050" lon="-94.713796">
+    <name>27-052</name>
+    <desc>Site 27 (GB29) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477027" lon="-94.716592">
+    <name>27-053</name>
+    <desc>Site 27 (GB29) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476640" lon="-94.717005">
+    <name>27-054</name>
+    <desc>Site 27 (GB29) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478428" lon="-94.720418">
+    <name>27-055</name>
+    <desc>Site 27 (GB29) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479869" lon="-94.712934">
+    <name>27-056</name>
+    <desc>Site 27 (GB29) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476726" lon="-94.714435">
+    <name>27-057</name>
+    <desc>Site 27 (GB29) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477424" lon="-94.716957">
+    <name>27-058</name>
+    <desc>Site 27 (GB29) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477507" lon="-94.716249">
+    <name>27-059</name>
+    <desc>Site 27 (GB29) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478286" lon="-94.715295">
+    <name>27-060</name>
+    <desc>Site 27 (GB29) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478139" lon="-94.714599">
+    <name>27-061</name>
+    <desc>Site 27 (GB29) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477486" lon="-94.719054">
+    <name>27-062</name>
+    <desc>Site 27 (GB29) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476827" lon="-94.713767">
+    <name>27-063</name>
+    <desc>Site 27 (GB29) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479310" lon="-94.713388">
+    <name>27-064</name>
+    <desc>Site 27 (GB29) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479679" lon="-94.717581">
+    <name>27-065</name>
+    <desc>Site 27 (GB29) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478749" lon="-94.717224">
+    <name>27-066</name>
+    <desc>Site 27 (GB29) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479851" lon="-94.715715">
+    <name>27-067</name>
+    <desc>Site 27 (GB29) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479627" lon="-94.718978">
+    <name>27-068</name>
+    <desc>Site 27 (GB29) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478860" lon="-94.714397">
+    <name>27-069</name>
+    <desc>Site 27 (GB29) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477621" lon="-94.717486">
+    <name>27-070</name>
+    <desc>Site 27 (GB29) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476756" lon="-94.715489">
+    <name>27-071</name>
+    <desc>Site 27 (GB29) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480461" lon="-94.714272">
+    <name>27-072</name>
+    <desc>Site 27 (GB29) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477831" lon="-94.719594">
+    <name>27-073</name>
+    <desc>Site 27 (GB29) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478272" lon="-94.721144">
+    <name>27-074</name>
+    <desc>Site 27 (GB29) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481854" lon="-94.717210">
+    <name>27-075</name>
+    <desc>Site 27 (GB29) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480458" lon="-94.717367">
+    <name>27-076</name>
+    <desc>Site 27 (GB29) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477756" lon="-94.715099">
+    <name>27-077</name>
+    <desc>Site 27 (GB29) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479988" lon="-94.714355">
+    <name>27-078</name>
+    <desc>Site 27 (GB29) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478878" lon="-94.713812">
+    <name>27-079</name>
+    <desc>Site 27 (GB29) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481150" lon="-94.715388">
+    <name>27-080</name>
+    <desc>Site 27 (GB29) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478556" lon="-94.714833">
+    <name>27-081</name>
+    <desc>Site 27 (GB29) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477875" lon="-94.718204">
+    <name>27-082</name>
+    <desc>Site 27 (GB29) point 82 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478502" lon="-94.716415">
+    <name>27-083</name>
+    <desc>Site 27 (GB29) point 83 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478853" lon="-94.718035">
+    <name>27-084</name>
+    <desc>Site 27 (GB29) point 84 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476813" lon="-94.716141">
+    <name>27-085</name>
+    <desc>Site 27 (GB29) point 85 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477021" lon="-94.717691">
+    <name>27-086</name>
+    <desc>Site 27 (GB29) point 86 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480503" lon="-94.715342">
+    <name>27-087</name>
+    <desc>Site 27 (GB29) point 87 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477534" lon="-94.712447">
+    <name>27-088</name>
+    <desc>Site 27 (GB29) point 88 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478558" lon="-94.719435">
+    <name>27-089</name>
+    <desc>Site 27 (GB29) point 89 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477885" lon="-94.712776">
+    <name>27-090</name>
+    <desc>Site 27 (GB29) point 90 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475575" lon="-94.715519">
+    <name>27-091</name>
+    <desc>Site 27 (GB29) point 91 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476192" lon="-94.717600">
+    <name>27-092</name>
+    <desc>Site 27 (GB29) point 92 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475617" lon="-94.716729">
+    <name>27-093</name>
+    <desc>Site 27 (GB29) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475323" lon="-94.716244">
+    <name>27-094</name>
+    <desc>Site 27 (GB29) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477686" lon="-94.720950">
+    <name>27-095</name>
+    <desc>Site 27 (GB29) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475778" lon="-94.717468">
+    <name>27-096</name>
+    <desc>Site 27 (GB29) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477496" lon="-94.721926">
+    <name>27-097</name>
+    <desc>Site 27 (GB29) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477084" lon="-94.720822">
+    <name>27-098</name>
+    <desc>Site 27 (GB29) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476701" lon="-94.719145">
+    <name>27-099</name>
+    <desc>Site 27 (GB29) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477122" lon="-94.719210">
+    <name>27-100</name>
+    <desc>Site 27 (GB29) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476614" lon="-94.719757">
+    <name>27-101</name>
+    <desc>Site 27 (GB29) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476307" lon="-94.716923">
+    <name>27-102</name>
+    <desc>Site 27 (GB29) point 102 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476588" lon="-94.718471">
+    <name>27-103</name>
+    <desc>Site 27 (GB29) point 103 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475897" lon="-94.716050">
+    <name>27-104</name>
+    <desc>Site 27 (GB29) point 104 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477902" lon="-94.722439">
+    <name>27-105</name>
+    <desc>Site 27 (GB29) point 105 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476598" lon="-94.717814">
+    <name>27-106</name>
+    <desc>Site 27 (GB29) point 106 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477241" lon="-94.720192">
+    <name>27-107</name>
+    <desc>Site 27 (GB29) point 107 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476093" lon="-94.718322">
+    <name>27-108</name>
+    <desc>Site 27 (GB29) point 108 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477774" lon="-94.721479">
+    <name>27-109</name>
+    <desc>Site 27 (GB29) point 109 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476214" lon="-94.719078">
+    <name>27-110</name>
+    <desc>Site 27 (GB29) point 110 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.462434" lon="-94.698566">
+    <name>28-001</name>
+    <desc>Site 28 (GB33) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465868" lon="-94.697053">
+    <name>28-002</name>
+    <desc>Site 28 (GB33) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463947" lon="-94.699561">
+    <name>28-003</name>
+    <desc>Site 28 (GB33) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464673" lon="-94.699374">
+    <name>28-004</name>
+    <desc>Site 28 (GB33) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459791" lon="-94.697867">
+    <name>28-005</name>
+    <desc>Site 28 (GB33) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463536" lon="-94.696849">
+    <name>28-006</name>
+    <desc>Site 28 (GB33) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.458459" lon="-94.698970">
+    <name>28-007</name>
+    <desc>Site 28 (GB33) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463001" lon="-94.697923">
+    <name>28-008</name>
+    <desc>Site 28 (GB33) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465296" lon="-94.697143">
+    <name>28-009</name>
+    <desc>Site 28 (GB33) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462609" lon="-94.699469">
+    <name>28-010</name>
+    <desc>Site 28 (GB33) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460341" lon="-94.697533">
+    <name>28-011</name>
+    <desc>Site 28 (GB33) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461619" lon="-94.699103">
+    <name>28-012</name>
+    <desc>Site 28 (GB33) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461917" lon="-94.696541">
+    <name>28-013</name>
+    <desc>Site 28 (GB33) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462991" lon="-94.698625">
+    <name>28-014</name>
+    <desc>Site 28 (GB33) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461546" lon="-94.699778">
+    <name>28-015</name>
+    <desc>Site 28 (GB33) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460044" lon="-94.700824">
+    <name>28-016</name>
+    <desc>Site 28 (GB33) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459637" lon="-94.698471">
+    <name>28-017</name>
+    <desc>Site 28 (GB33) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461447" lon="-94.698523">
+    <name>28-018</name>
+    <desc>Site 28 (GB33) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459837" lon="-94.699664">
+    <name>28-019</name>
+    <desc>Site 28 (GB33) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460459" lon="-94.700097">
+    <name>28-020</name>
+    <desc>Site 28 (GB33) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459309" lon="-94.697447">
+    <name>28-021</name>
+    <desc>Site 28 (GB33) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460573" lon="-94.699438">
+    <name>28-022</name>
+    <desc>Site 28 (GB33) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.457846" lon="-94.698606">
+    <name>28-023</name>
+    <desc>Site 28 (GB33) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459127" lon="-94.699155">
+    <name>28-024</name>
+    <desc>Site 28 (GB33) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461374" lon="-94.701341">
+    <name>28-025</name>
+    <desc>Site 28 (GB33) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464294" lon="-94.697035">
+    <name>28-026</name>
+    <desc>Site 28 (GB33) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462140" lon="-94.701058">
+    <name>28-027</name>
+    <desc>Site 28 (GB33) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463668" lon="-94.698106">
+    <name>28-028</name>
+    <desc>Site 28 (GB33) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466491" lon="-94.697070">
+    <name>28-029</name>
+    <desc>Site 28 (GB33) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460953" lon="-94.698027">
+    <name>28-030</name>
+    <desc>Site 28 (GB33) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465555" lon="-94.697624">
+    <name>28-031</name>
+    <desc>Site 28 (GB33) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461026" lon="-94.699971">
+    <name>28-032</name>
+    <desc>Site 28 (GB33) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465115" lon="-94.697985">
+    <name>28-033</name>
+    <desc>Site 28 (GB33) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.458484" lon="-94.698101">
+    <name>28-034</name>
+    <desc>Site 28 (GB33) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462147" lon="-94.698884">
+    <name>28-035</name>
+    <desc>Site 28 (GB33) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463311" lon="-94.699256">
+    <name>28-036</name>
+    <desc>Site 28 (GB33) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464709" lon="-94.698453">
+    <name>28-037</name>
+    <desc>Site 28 (GB33) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462499" lon="-94.700043">
+    <name>28-038</name>
+    <desc>Site 28 (GB33) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461513" lon="-94.697066">
+    <name>28-039</name>
+    <desc>Site 28 (GB33) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464848" lon="-94.697419">
+    <name>28-040</name>
+    <desc>Site 28 (GB33) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459030" lon="-94.697930">
+    <name>28-041</name>
+    <desc>Site 28 (GB33) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460572" lon="-94.696939">
+    <name>28-042</name>
+    <desc>Site 28 (GB33) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463238" lon="-94.699904">
+    <name>28-043</name>
+    <desc>Site 28 (GB33) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460976" lon="-94.698593">
+    <name>28-044</name>
+    <desc>Site 28 (GB33) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459976" lon="-94.696970">
+    <name>28-045</name>
+    <desc>Site 28 (GB33) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462182" lon="-94.697693">
+    <name>28-046</name>
+    <desc>Site 28 (GB33) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462297" lon="-94.701687">
+    <name>28-047</name>
+    <desc>Site 28 (GB33) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460936" lon="-94.697325">
+    <name>28-048</name>
+    <desc>Site 28 (GB33) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.457337" lon="-94.699103">
+    <name>28-049</name>
+    <desc>Site 28 (GB33) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463429" lon="-94.697423">
+    <name>28-050</name>
+    <desc>Site 28 (GB33) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460355" lon="-94.698460">
+    <name>28-051</name>
+    <desc>Site 28 (GB33) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463784" lon="-94.698679">
+    <name>28-052</name>
+    <desc>Site 28 (GB33) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462957" lon="-94.700544">
+    <name>28-053</name>
+    <desc>Site 28 (GB33) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459125" lon="-94.698529">
+    <name>28-054</name>
+    <desc>Site 28 (GB33) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462654" lon="-94.696666">
+    <name>28-055</name>
+    <desc>Site 28 (GB33) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460666" lon="-94.700695">
+    <name>28-056</name>
+    <desc>Site 28 (GB33) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461925" lon="-94.700315">
+    <name>28-057</name>
+    <desc>Site 28 (GB33) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464779" lon="-94.696732">
+    <name>28-058</name>
+    <desc>Site 28 (GB33) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.457944" lon="-94.699238">
+    <name>28-059</name>
+    <desc>Site 28 (GB33) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461067" lon="-94.699386">
+    <name>28-060</name>
+    <desc>Site 28 (GB33) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462199" lon="-94.702223">
+    <name>28-061</name>
+    <desc>Site 28 (GB33) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459177" lon="-94.699788">
+    <name>28-062</name>
+    <desc>Site 28 (GB33) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462888" lon="-94.701234">
+    <name>28-063</name>
+    <desc>Site 28 (GB33) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464261" lon="-94.698963">
+    <name>28-064</name>
+    <desc>Site 28 (GB33) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461845" lon="-94.701860">
+    <name>28-065</name>
+    <desc>Site 28 (GB33) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464019" lon="-94.697466">
+    <name>28-066</name>
+    <desc>Site 28 (GB33) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461507" lon="-94.697623">
+    <name>28-067</name>
+    <desc>Site 28 (GB33) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461800" lon="-94.698101">
+    <name>28-068</name>
+    <desc>Site 28 (GB33) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.463649" lon="-94.700364">
+    <name>28-069</name>
+    <desc>Site 28 (GB33) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461310" lon="-94.696634">
+    <name>28-070</name>
+    <desc>Site 28 (GB33) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.464282" lon="-94.698122">
+    <name>28-071</name>
+    <desc>Site 28 (GB33) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.460094" lon="-94.699217">
+    <name>28-072</name>
+    <desc>Site 28 (GB33) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462747" lon="-94.697264">
+    <name>28-073</name>
+    <desc>Site 28 (GB33) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.461438" lon="-94.700706">
+    <name>28-074</name>
+    <desc>Site 28 (GB33) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462091" lon="-94.699537">
+    <name>28-075</name>
+    <desc>Site 28 (GB33) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.462075" lon="-94.697162">
+    <name>28-076</name>
+    <desc>Site 28 (GB33) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459847" lon="-94.700306">
+    <name>28-077</name>
+    <desc>Site 28 (GB33) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465178" lon="-94.698659">
+    <name>28-078</name>
+    <desc>Site 28 (GB33) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466324" lon="-94.697514">
+    <name>28-079</name>
+    <desc>Site 28 (GB33) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465808" lon="-94.698049">
+    <name>28-080</name>
+    <desc>Site 28 (GB33) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.459037" lon="-94.700176">
+    <name>28-081</name>
+    <desc>Site 28 (GB33) point 81 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.460284" lon="-94.696586">
+    <name>28-082</name>
+    <desc>Site 28 (GB33) point 82 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.459114" lon="-94.696800">
+    <name>28-083</name>
+    <desc>Site 28 (GB33) point 83 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.459669" lon="-94.696466">
+    <name>28-084</name>
+    <desc>Site 28 (GB33) point 84 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.466944" lon="-94.696702">
+    <name>28-085</name>
+    <desc>Site 28 (GB33) point 85 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.462200" lon="-94.702680">
+    <name>28-086</name>
+    <desc>Site 28 (GB33) point 86 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.461123" lon="-94.701702">
+    <name>28-087</name>
+    <desc>Site 28 (GB33) point 87 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.464387" lon="-94.696500">
+    <name>28-088</name>
+    <desc>Site 28 (GB33) point 88 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.466106" lon="-94.696511">
+    <name>28-089</name>
+    <desc>Site 28 (GB33) point 89 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.458828" lon="-94.696512">
+    <name>28-090</name>
+    <desc>Site 28 (GB33) point 90 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.458117" lon="-94.699588">
+    <name>28-091</name>
+    <desc>Site 28 (GB33) point 91 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.457321" lon="-94.698594">
+    <name>28-092</name>
+    <desc>Site 28 (GB33) point 92 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.458235" lon="-94.697804">
+    <name>28-093</name>
+    <desc>Site 28 (GB33) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.465362" lon="-94.696636">
+    <name>28-094</name>
+    <desc>Site 28 (GB33) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.459950" lon="-94.701094">
+    <name>28-095</name>
+    <desc>Site 28 (GB33) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.458420" lon="-94.697131">
+    <name>28-096</name>
+    <desc>Site 28 (GB33) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.461083" lon="-94.696503">
+    <name>28-097</name>
+    <desc>Site 28 (GB33) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.457815" lon="-94.697700">
+    <name>28-098</name>
+    <desc>Site 28 (GB33) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.467272" lon="-94.697088">
+    <name>28-099</name>
+    <desc>Site 28 (GB33) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.458081" lon="-94.696575">
+    <name>28-100</name>
+    <desc>Site 28 (GB33) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469830" lon="-94.708782">
+    <name>57-001</name>
+    <desc>Site 57 (GB32) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468032" lon="-94.706962">
+    <name>57-002</name>
+    <desc>Site 57 (GB32) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467740" lon="-94.703898">
+    <name>57-003</name>
+    <desc>Site 57 (GB32) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467971" lon="-94.709110">
+    <name>57-004</name>
+    <desc>Site 57 (GB32) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467106" lon="-94.704524">
+    <name>57-005</name>
+    <desc>Site 57 (GB32) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470062" lon="-94.709355">
+    <name>57-006</name>
+    <desc>Site 57 (GB32) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468445" lon="-94.707402">
+    <name>57-007</name>
+    <desc>Site 57 (GB32) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467710" lon="-94.704529">
+    <name>57-008</name>
+    <desc>Site 57 (GB32) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470374" lon="-94.710747">
+    <name>57-009</name>
+    <desc>Site 57 (GB32) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469672" lon="-94.707767">
+    <name>57-010</name>
+    <desc>Site 57 (GB32) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468875" lon="-94.708097">
+    <name>57-011</name>
+    <desc>Site 57 (GB32) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465363" lon="-94.706677">
+    <name>57-012</name>
+    <desc>Site 57 (GB32) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.471280" lon="-94.710350">
+    <name>57-013</name>
+    <desc>Site 57 (GB32) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465782" lon="-94.706881">
+    <name>57-014</name>
+    <desc>Site 57 (GB32) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470116" lon="-94.710171">
+    <name>57-015</name>
+    <desc>Site 57 (GB32) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470656" lon="-94.708965">
+    <name>57-016</name>
+    <desc>Site 57 (GB32) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469288" lon="-94.708926">
+    <name>57-017</name>
+    <desc>Site 57 (GB32) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469192" lon="-94.707595">
+    <name>57-018</name>
+    <desc>Site 57 (GB32) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467792" lon="-94.705483">
+    <name>57-019</name>
+    <desc>Site 57 (GB32) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467439" lon="-94.707388">
+    <name>57-020</name>
+    <desc>Site 57 (GB32) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466193" lon="-94.706346">
+    <name>57-021</name>
+    <desc>Site 57 (GB32) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468828" lon="-94.706899">
+    <name>57-022</name>
+    <desc>Site 57 (GB32) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468411" lon="-94.704054">
+    <name>57-023</name>
+    <desc>Site 57 (GB32) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468313" lon="-94.706303">
+    <name>57-024</name>
+    <desc>Site 57 (GB32) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466750" lon="-94.706150">
+    <name>57-025</name>
+    <desc>Site 57 (GB32) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468002" lon="-94.707819">
+    <name>57-026</name>
+    <desc>Site 57 (GB32) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467400" lon="-94.706563">
+    <name>57-027</name>
+    <desc>Site 57 (GB32) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466819" lon="-94.707115">
+    <name>57-028</name>
+    <desc>Site 57 (GB32) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467395" lon="-94.705149">
+    <name>57-029</name>
+    <desc>Site 57 (GB32) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469436" lon="-94.708295">
+    <name>57-030</name>
+    <desc>Site 57 (GB32) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469382" lon="-94.710288">
+    <name>57-031</name>
+    <desc>Site 57 (GB32) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466701" lon="-94.705241">
+    <name>57-032</name>
+    <desc>Site 57 (GB32) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468776" lon="-94.709733">
+    <name>57-033</name>
+    <desc>Site 57 (GB32) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468559" lon="-94.708607">
+    <name>57-034</name>
+    <desc>Site 57 (GB32) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.471109" lon="-94.709785">
+    <name>57-035</name>
+    <desc>Site 57 (GB32) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470272" lon="-94.708376">
+    <name>57-036</name>
+    <desc>Site 57 (GB32) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467189" lon="-94.707901">
+    <name>57-037</name>
+    <desc>Site 57 (GB32) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466669" lon="-94.708238">
+    <name>57-038</name>
+    <desc>Site 57 (GB32) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470902" lon="-94.711109">
+    <name>57-039</name>
+    <desc>Site 57 (GB32) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.469422" lon="-94.709634">
+    <name>57-040</name>
+    <desc>Site 57 (GB32) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470796" lon="-94.710394">
+    <name>57-041</name>
+    <desc>Site 57 (GB32) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468379" lon="-94.704692">
+    <name>57-042</name>
+    <desc>Site 57 (GB32) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467971" lon="-94.708453">
+    <name>57-043</name>
+    <desc>Site 57 (GB32) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467428" lon="-94.708620">
+    <name>57-044</name>
+    <desc>Site 57 (GB32) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468607" lon="-94.709286">
+    <name>57-045</name>
+    <desc>Site 57 (GB32) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.466183" lon="-94.707626">
+    <name>57-046</name>
+    <desc>Site 57 (GB32) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.468135" lon="-94.703369">
+    <name>57-047</name>
+    <desc>Site 57 (GB32) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.467379" lon="-94.705807">
+    <name>57-048</name>
+    <desc>Site 57 (GB32) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.470553" lon="-94.709684">
+    <name>57-049</name>
+    <desc>Site 57 (GB32) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.465898" lon="-94.705831">
+    <name>57-050</name>
+    <desc>Site 57 (GB32) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.471779" lon="-94.711309">
+    <name>57-051</name>
+    <desc>Site 57 (GB32) point 51 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.471548" lon="-94.708567">
+    <name>57-052</name>
+    <desc>Site 57 (GB32) point 52 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.465834" lon="-94.708225">
+    <name>57-053</name>
+    <desc>Site 57 (GB32) point 53 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.471820" lon="-94.710334">
+    <name>57-054</name>
+    <desc>Site 57 (GB32) point 54 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.468619" lon="-94.710923">
+    <name>57-055</name>
+    <desc>Site 57 (GB32) point 55 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472625" lon="-94.709902">
+    <name>57-056</name>
+    <desc>Site 57 (GB32) point 56 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.464588" lon="-94.706841">
+    <name>57-057</name>
+    <desc>Site 57 (GB32) point 57 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469006" lon="-94.705240">
+    <name>57-058</name>
+    <desc>Site 57 (GB32) point 58 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469812" lon="-94.707113">
+    <name>57-059</name>
+    <desc>Site 57 (GB32) point 59 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469769" lon="-94.712419">
+    <name>57-060</name>
+    <desc>Site 57 (GB32) point 60 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472018" lon="-94.709429">
+    <name>57-061</name>
+    <desc>Site 57 (GB32) point 61 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.466851" lon="-94.708856">
+    <name>57-062</name>
+    <desc>Site 57 (GB32) point 62 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.470171" lon="-94.711470">
+    <name>57-063</name>
+    <desc>Site 57 (GB32) point 63 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.467611" lon="-94.710190">
+    <name>57-064</name>
+    <desc>Site 57 (GB32) point 64 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.470677" lon="-94.707787">
+    <name>57-065</name>
+    <desc>Site 57 (GB32) point 65 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.470674" lon="-94.712138">
+    <name>57-066</name>
+    <desc>Site 57 (GB32) point 66 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.471195" lon="-94.711587">
+    <name>57-067</name>
+    <desc>Site 57 (GB32) point 67 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.467794" lon="-94.709454">
+    <name>57-068</name>
+    <desc>Site 57 (GB32) point 68 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.468797" lon="-94.704500">
+    <name>57-069</name>
+    <desc>Site 57 (GB32) point 69 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.468549" lon="-94.710118">
+    <name>57-070</name>
+    <desc>Site 57 (GB32) point 70 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.468305" lon="-94.705674">
+    <name>57-071</name>
+    <desc>Site 57 (GB32) point 71 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469139" lon="-94.706266">
+    <name>57-072</name>
+    <desc>Site 57 (GB32) point 72 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469553" lon="-94.704753">
+    <name>57-073</name>
+    <desc>Site 57 (GB32) point 73 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.471136" lon="-94.709190">
+    <name>57-074</name>
+    <desc>Site 57 (GB32) point 74 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469070" lon="-94.711732">
+    <name>57-075</name>
+    <desc>Site 57 (GB32) point 75 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.470459" lon="-94.713065">
+    <name>57-076</name>
+    <desc>Site 57 (GB32) point 76 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.468550" lon="-94.702897">
+    <name>57-077</name>
+    <desc>Site 57 (GB32) point 77 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469449" lon="-94.710863">
+    <name>57-078</name>
+    <desc>Site 57 (GB32) point 78 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.469092" lon="-94.703833">
+    <name>57-079</name>
+    <desc>Site 57 (GB32) point 79 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.465418" lon="-94.707416">
+    <name>57-080</name>
+    <desc>Site 57 (GB32) point 80 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475613" lon="-94.710141">
+    <name>94-001</name>
+    <desc>Site 94 (GB30) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476719" lon="-94.713178">
+    <name>94-002</name>
+    <desc>Site 94 (GB30) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477909" lon="-94.709786">
+    <name>94-003</name>
+    <desc>Site 94 (GB30) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475890" lon="-94.705364">
+    <name>94-004</name>
+    <desc>Site 94 (GB30) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476487" lon="-94.705929">
+    <name>94-005</name>
+    <desc>Site 94 (GB30) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477712" lon="-94.708232">
+    <name>94-006</name>
+    <desc>Site 94 (GB30) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477481" lon="-94.710755">
+    <name>94-007</name>
+    <desc>Site 94 (GB30) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476493" lon="-94.708580">
+    <name>94-008</name>
+    <desc>Site 94 (GB30) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476330" lon="-94.708096">
+    <name>94-009</name>
+    <desc>Site 94 (GB30) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473825" lon="-94.708876">
+    <name>94-010</name>
+    <desc>Site 94 (GB30) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474885" lon="-94.705933">
+    <name>94-011</name>
+    <desc>Site 94 (GB30) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474347" lon="-94.708863">
+    <name>94-012</name>
+    <desc>Site 94 (GB30) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474152" lon="-94.706624">
+    <name>94-013</name>
+    <desc>Site 94 (GB30) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475546" lon="-94.706755">
+    <name>94-014</name>
+    <desc>Site 94 (GB30) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475985" lon="-94.710409">
+    <name>94-015</name>
+    <desc>Site 94 (GB30) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474923" lon="-94.707154">
+    <name>94-016</name>
+    <desc>Site 94 (GB30) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477519" lon="-94.711375">
+    <name>94-017</name>
+    <desc>Site 94 (GB30) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475142" lon="-94.704340">
+    <name>94-018</name>
+    <desc>Site 94 (GB30) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476117" lon="-94.713269">
+    <name>94-019</name>
+    <desc>Site 94 (GB30) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478032" lon="-94.711252">
+    <name>94-020</name>
+    <desc>Site 94 (GB30) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474388" lon="-94.705872">
+    <name>94-021</name>
+    <desc>Site 94 (GB30) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.472969" lon="-94.706628">
+    <name>94-022</name>
+    <desc>Site 94 (GB30) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475546" lon="-94.705070">
+    <name>94-023</name>
+    <desc>Site 94 (GB30) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476040" lon="-94.708960">
+    <name>94-024</name>
+    <desc>Site 94 (GB30) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475747" lon="-94.710933">
+    <name>94-025</name>
+    <desc>Site 94 (GB30) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475409" lon="-94.708070">
+    <name>94-026</name>
+    <desc>Site 94 (GB30) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475749" lon="-94.705822">
+    <name>94-027</name>
+    <desc>Site 94 (GB30) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474801" lon="-94.705220">
+    <name>94-028</name>
+    <desc>Site 94 (GB30) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475185" lon="-94.707600">
+    <name>94-029</name>
+    <desc>Site 94 (GB30) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478788" lon="-94.710267">
+    <name>94-030</name>
+    <desc>Site 94 (GB30) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477187" lon="-94.710235">
+    <name>94-031</name>
+    <desc>Site 94 (GB30) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474650" lon="-94.703930">
+    <name>94-032</name>
+    <desc>Site 94 (GB30) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476352" lon="-94.706861">
+    <name>94-033</name>
+    <desc>Site 94 (GB30) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473706" lon="-94.707207">
+    <name>94-034</name>
+    <desc>Site 94 (GB30) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475150" lon="-94.710404">
+    <name>94-035</name>
+    <desc>Site 94 (GB30) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477490" lon="-94.707589">
+    <name>94-036</name>
+    <desc>Site 94 (GB30) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477786" lon="-94.711818">
+    <name>94-037</name>
+    <desc>Site 94 (GB30) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477005" lon="-94.709050">
+    <name>94-038</name>
+    <desc>Site 94 (GB30) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477713" lon="-94.710223">
+    <name>94-039</name>
+    <desc>Site 94 (GB30) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476342" lon="-94.709586">
+    <name>94-040</name>
+    <desc>Site 94 (GB30) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473952" lon="-94.707630">
+    <name>94-041</name>
+    <desc>Site 94 (GB30) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476275" lon="-94.713949">
+    <name>94-042</name>
+    <desc>Site 94 (GB30) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478251" lon="-94.709585">
+    <name>94-043</name>
+    <desc>Site 94 (GB30) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475047" lon="-94.706519">
+    <name>94-044</name>
+    <desc>Site 94 (GB30) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476052" lon="-94.714576">
+    <name>94-045</name>
+    <desc>Site 94 (GB30) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479075" lon="-94.711069">
+    <name>94-046</name>
+    <desc>Site 94 (GB30) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475840" lon="-94.708401">
+    <name>94-047</name>
+    <desc>Site 94 (GB30) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477002" lon="-94.711122">
+    <name>94-048</name>
+    <desc>Site 94 (GB30) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476864" lon="-94.709486">
+    <name>94-049</name>
+    <desc>Site 94 (GB30) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476404" lon="-94.707538">
+    <name>94-050</name>
+    <desc>Site 94 (GB30) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476106" lon="-94.704880">
+    <name>94-051</name>
+    <desc>Site 94 (GB30) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478720" lon="-94.710709">
+    <name>94-052</name>
+    <desc>Site 94 (GB30) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477150" lon="-94.708490">
+    <name>94-053</name>
+    <desc>Site 94 (GB30) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475205" lon="-94.704925">
+    <name>94-054</name>
+    <desc>Site 94 (GB30) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473341" lon="-94.707887">
+    <name>94-055</name>
+    <desc>Site 94 (GB30) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478205" lon="-94.710460">
+    <name>94-056</name>
+    <desc>Site 94 (GB30) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476998" lon="-94.711683">
+    <name>94-057</name>
+    <desc>Site 94 (GB30) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473728" lon="-94.706129">
+    <name>94-058</name>
+    <desc>Site 94 (GB30) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473751" lon="-94.705464">
+    <name>94-059</name>
+    <desc>Site 94 (GB30) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475343" lon="-94.705789">
+    <name>94-060</name>
+    <desc>Site 94 (GB30) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476338" lon="-94.711302">
+    <name>94-061</name>
+    <desc>Site 94 (GB30) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474510" lon="-94.709685">
+    <name>94-062</name>
+    <desc>Site 94 (GB30) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474475" lon="-94.707052">
+    <name>94-063</name>
+    <desc>Site 94 (GB30) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476198" lon="-94.712078">
+    <name>94-064</name>
+    <desc>Site 94 (GB30) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475231" lon="-94.708703">
+    <name>94-065</name>
+    <desc>Site 94 (GB30) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476577" lon="-94.711783">
+    <name>94-066</name>
+    <desc>Site 94 (GB30) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476674" lon="-94.706507">
+    <name>94-067</name>
+    <desc>Site 94 (GB30) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476507" lon="-94.710137">
+    <name>94-068</name>
+    <desc>Site 94 (GB30) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475812" lon="-94.706317">
+    <name>94-069</name>
+    <desc>Site 94 (GB30) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477457" lon="-94.709132">
+    <name>94-070</name>
+    <desc>Site 94 (GB30) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475895" lon="-94.707038">
+    <name>94-071</name>
+    <desc>Site 94 (GB30) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474348" lon="-94.704919">
+    <name>94-072</name>
+    <desc>Site 94 (GB30) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477131" lon="-94.707275">
+    <name>94-073</name>
+    <desc>Site 94 (GB30) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478414" lon="-94.711027">
+    <name>94-074</name>
+    <desc>Site 94 (GB30) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477340" lon="-94.709560">
+    <name>94-075</name>
+    <desc>Site 94 (GB30) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474524" lon="-94.707784">
+    <name>94-076</name>
+    <desc>Site 94 (GB30) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478248" lon="-94.708969">
+    <name>94-077</name>
+    <desc>Site 94 (GB30) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476768" lon="-94.712415">
+    <name>94-078</name>
+    <desc>Site 94 (GB30) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476811" lon="-94.707811">
+    <name>94-079</name>
+    <desc>Site 94 (GB30) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473927" lon="-94.708174">
+    <name>94-080</name>
+    <desc>Site 94 (GB30) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.473321" lon="-94.706898">
+    <name>94-081</name>
+    <desc>Site 94 (GB30) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475763" lon="-94.709661">
+    <name>94-082</name>
+    <desc>Site 94 (GB30) point 82 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475298" lon="-94.709459">
+    <name>94-083</name>
+    <desc>Site 94 (GB30) point 83 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476503" lon="-94.710806">
+    <name>94-084</name>
+    <desc>Site 94 (GB30) point 84 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475102" lon="-94.703726">
+    <name>94-085</name>
+    <desc>Site 94 (GB30) point 85 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475817" lon="-94.707682">
+    <name>94-086</name>
+    <desc>Site 94 (GB30) point 86 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477755" lon="-94.708754">
+    <name>94-087</name>
+    <desc>Site 94 (GB30) point 87 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474816" lon="-94.709325">
+    <name>94-088</name>
+    <desc>Site 94 (GB30) point 88 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474751" lon="-94.708435">
+    <name>94-089</name>
+    <desc>Site 94 (GB30) point 89 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477156" lon="-94.712233">
+    <name>94-090</name>
+    <desc>Site 94 (GB30) point 90 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.475549" lon="-94.703898">
+    <name>94-091</name>
+    <desc>Site 94 (GB30) point 91 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476368" lon="-94.712589">
+    <name>94-092</name>
+    <desc>Site 94 (GB30) point 92 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.474128" lon="-94.709969">
+    <name>94-093</name>
+    <desc>Site 94 (GB30) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472950" lon="-94.707871">
+    <name>94-094</name>
+    <desc>Site 94 (GB30) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.473062" lon="-94.709033">
+    <name>94-095</name>
+    <desc>Site 94 (GB30) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.473521" lon="-94.709411">
+    <name>94-096</name>
+    <desc>Site 94 (GB30) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.474027" lon="-94.709432">
+    <name>94-097</name>
+    <desc>Site 94 (GB30) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472418" lon="-94.708456">
+    <name>94-098</name>
+    <desc>Site 94 (GB30) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472543" lon="-94.707260">
+    <name>94-099</name>
+    <desc>Site 94 (GB30) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472660" lon="-94.709161">
+    <name>94-100</name>
+    <desc>Site 94 (GB30) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.473408" lon="-94.710042">
+    <name>94-101</name>
+    <desc>Site 94 (GB30) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.473439" lon="-94.708762">
+    <name>94-102</name>
+    <desc>Site 94 (GB30) point 102 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475404" lon="-94.713440">
+    <name>94-103</name>
+    <desc>Site 94 (GB30) point 103 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475410" lon="-94.714984">
+    <name>94-104</name>
+    <desc>Site 94 (GB30) point 104 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.472931" lon="-94.708363">
+    <name>94-105</name>
+    <desc>Site 94 (GB30) point 105 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.474665" lon="-94.710443">
+    <name>94-106</name>
+    <desc>Site 94 (GB30) point 106 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.474815" lon="-94.711139">
+    <name>94-107</name>
+    <desc>Site 94 (GB30) point 107 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.474051" lon="-94.710534">
+    <name>94-108</name>
+    <desc>Site 94 (GB30) point 108 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475951" lon="-94.714033">
+    <name>94-109</name>
+    <desc>Site 94 (GB30) point 109 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475584" lon="-94.712636">
+    <name>94-110</name>
+    <desc>Site 94 (GB30) point 110 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475718" lon="-94.715768">
+    <name>94-111</name>
+    <desc>Site 94 (GB30) point 111 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475570" lon="-94.711543">
+    <name>94-112</name>
+    <desc>Site 94 (GB30) point 112 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.484153" lon="-94.727719">
+    <name>108-001</name>
+    <desc>Site 108 (GB25-28) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483224" lon="-94.726500">
+    <name>108-002</name>
+    <desc>Site 108 (GB25-28) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480896" lon="-94.730061">
+    <name>108-003</name>
+    <desc>Site 108 (GB25-28) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485206" lon="-94.728799">
+    <name>108-004</name>
+    <desc>Site 108 (GB25-28) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487981" lon="-94.723872">
+    <name>108-005</name>
+    <desc>Site 108 (GB25-28) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484240" lon="-94.726894">
+    <name>108-006</name>
+    <desc>Site 108 (GB25-28) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481571" lon="-94.729948">
+    <name>108-007</name>
+    <desc>Site 108 (GB25-28) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487342" lon="-94.724846">
+    <name>108-008</name>
+    <desc>Site 108 (GB25-28) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484057" lon="-94.730027">
+    <name>108-009</name>
+    <desc>Site 108 (GB25-28) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484120" lon="-94.728830">
+    <name>108-010</name>
+    <desc>Site 108 (GB25-28) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481881" lon="-94.727933">
+    <name>108-011</name>
+    <desc>Site 108 (GB25-28) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482867" lon="-94.727565">
+    <name>108-012</name>
+    <desc>Site 108 (GB25-28) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483340" lon="-94.724883">
+    <name>108-013</name>
+    <desc>Site 108 (GB25-28) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485277" lon="-94.724728">
+    <name>108-014</name>
+    <desc>Site 108 (GB25-28) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486167" lon="-94.726441">
+    <name>108-015</name>
+    <desc>Site 108 (GB25-28) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483191" lon="-94.727009">
+    <name>108-016</name>
+    <desc>Site 108 (GB25-28) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487895" lon="-94.725194">
+    <name>108-017</name>
+    <desc>Site 108 (GB25-28) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482747" lon="-94.728161">
+    <name>108-018</name>
+    <desc>Site 108 (GB25-28) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487006" lon="-94.725397">
+    <name>108-019</name>
+    <desc>Site 108 (GB25-28) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480891" lon="-94.729077">
+    <name>108-020</name>
+    <desc>Site 108 (GB25-28) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482353" lon="-94.729102">
+    <name>108-021</name>
+    <desc>Site 108 (GB25-28) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486350" lon="-94.721979">
+    <name>108-022</name>
+    <desc>Site 108 (GB25-28) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484946" lon="-94.722616">
+    <name>108-023</name>
+    <desc>Site 108 (GB25-28) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485428" lon="-94.723876">
+    <name>108-024</name>
+    <desc>Site 108 (GB25-28) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484691" lon="-94.726507">
+    <name>108-025</name>
+    <desc>Site 108 (GB25-28) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484729" lon="-94.727759">
+    <name>108-026</name>
+    <desc>Site 108 (GB25-28) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485987" lon="-94.723452">
+    <name>108-027</name>
+    <desc>Site 108 (GB25-28) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483520" lon="-94.729316">
+    <name>108-028</name>
+    <desc>Site 108 (GB25-28) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487216" lon="-94.723929">
+    <name>108-029</name>
+    <desc>Site 108 (GB25-28) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485640" lon="-94.726404">
+    <name>108-030</name>
+    <desc>Site 108 (GB25-28) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483678" lon="-94.725324">
+    <name>108-031</name>
+    <desc>Site 108 (GB25-28) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483201" lon="-94.728834">
+    <name>108-032</name>
+    <desc>Site 108 (GB25-28) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487383" lon="-94.723172">
+    <name>108-033</name>
+    <desc>Site 108 (GB25-28) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486473" lon="-94.724331">
+    <name>108-034</name>
+    <desc>Site 108 (GB25-28) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481581" lon="-94.728340">
+    <name>108-035</name>
+    <desc>Site 108 (GB25-28) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482138" lon="-94.729644">
+    <name>108-036</name>
+    <desc>Site 108 (GB25-28) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482758" lon="-94.729555">
+    <name>108-037</name>
+    <desc>Site 108 (GB25-28) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485101" lon="-94.728158">
+    <name>108-038</name>
+    <desc>Site 108 (GB25-28) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482554" lon="-94.727046">
+    <name>108-039</name>
+    <desc>Site 108 (GB25-28) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484626" lon="-94.729926">
+    <name>108-040</name>
+    <desc>Site 108 (GB25-28) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484971" lon="-94.729372">
+    <name>108-041</name>
+    <desc>Site 108 (GB25-28) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486141" lon="-94.727514">
+    <name>108-042</name>
+    <desc>Site 108 (GB25-28) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484817" lon="-94.724319">
+    <name>108-043</name>
+    <desc>Site 108 (GB25-28) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484415" lon="-94.724838">
+    <name>108-044</name>
+    <desc>Site 108 (GB25-28) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482930" lon="-94.726081">
+    <name>108-045</name>
+    <desc>Site 108 (GB25-28) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486749" lon="-94.724670">
+    <name>108-046</name>
+    <desc>Site 108 (GB25-28) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486219" lon="-94.720849">
+    <name>108-047</name>
+    <desc>Site 108 (GB25-28) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484671" lon="-94.723528">
+    <name>108-048</name>
+    <desc>Site 108 (GB25-28) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484984" lon="-94.725260">
+    <name>108-049</name>
+    <desc>Site 108 (GB25-28) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484695" lon="-94.729070">
+    <name>108-050</name>
+    <desc>Site 108 (GB25-28) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483853" lon="-94.728314">
+    <name>108-051</name>
+    <desc>Site 108 (GB25-28) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487727" lon="-94.724466">
+    <name>108-052</name>
+    <desc>Site 108 (GB25-28) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483285" lon="-94.725489">
+    <name>108-053</name>
+    <desc>Site 108 (GB25-28) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484735" lon="-94.728453">
+    <name>108-054</name>
+    <desc>Site 108 (GB25-28) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485730" lon="-94.728167">
+    <name>108-055</name>
+    <desc>Site 108 (GB25-28) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486378" lon="-94.722739">
+    <name>108-056</name>
+    <desc>Site 108 (GB25-28) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485641" lon="-94.725214">
+    <name>108-057</name>
+    <desc>Site 108 (GB25-28) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486056" lon="-94.723896">
+    <name>108-058</name>
+    <desc>Site 108 (GB25-28) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481850" lon="-94.728745">
+    <name>108-059</name>
+    <desc>Site 108 (GB25-28) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483446" lon="-94.729907">
+    <name>108-060</name>
+    <desc>Site 108 (GB25-28) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486974" lon="-94.722103">
+    <name>108-061</name>
+    <desc>Site 108 (GB25-28) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485592" lon="-94.721636">
+    <name>108-062</name>
+    <desc>Site 108 (GB25-28) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482315" lon="-94.726705">
+    <name>108-063</name>
+    <desc>Site 108 (GB25-28) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485542" lon="-94.722188">
+    <name>108-064</name>
+    <desc>Site 108 (GB25-28) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485206" lon="-94.726801">
+    <name>108-065</name>
+    <desc>Site 108 (GB25-28) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481513" lon="-94.729253">
+    <name>108-066</name>
+    <desc>Site 108 (GB25-28) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483571" lon="-94.727538">
+    <name>108-067</name>
+    <desc>Site 108 (GB25-28) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480220" lon="-94.730057">
+    <name>108-068</name>
+    <desc>Site 108 (GB25-28) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485124" lon="-94.727283">
+    <name>108-069</name>
+    <desc>Site 108 (GB25-28) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483881" lon="-94.726032">
+    <name>108-070</name>
+    <desc>Site 108 (GB25-28) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485744" lon="-94.727061">
+    <name>108-071</name>
+    <desc>Site 108 (GB25-28) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481831" lon="-94.727432">
+    <name>108-072</name>
+    <desc>Site 108 (GB25-28) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486556" lon="-94.725885">
+    <name>108-073</name>
+    <desc>Site 108 (GB25-28) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482294" lon="-94.728298">
+    <name>108-074</name>
+    <desc>Site 108 (GB25-28) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481316" lon="-94.727924">
+    <name>108-075</name>
+    <desc>Site 108 (GB25-28) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485724" lon="-94.725892">
+    <name>108-076</name>
+    <desc>Site 108 (GB25-28) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486715" lon="-94.723657">
+    <name>108-077</name>
+    <desc>Site 108 (GB25-28) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485179" lon="-94.726049">
+    <name>108-078</name>
+    <desc>Site 108 (GB25-28) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487341" lon="-94.725871">
+    <name>108-079</name>
+    <desc>Site 108 (GB25-28) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486176" lon="-94.725339">
+    <name>108-080</name>
+    <desc>Site 108 (GB25-28) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480536" lon="-94.729552">
+    <name>108-081</name>
+    <desc>Site 108 (GB25-28) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484297" lon="-94.729578">
+    <name>108-082</name>
+    <desc>Site 108 (GB25-28) point 82 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485944" lon="-94.724478">
+    <name>108-083</name>
+    <desc>Site 108 (GB25-28) point 83 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482438" lon="-94.727812">
+    <name>108-084</name>
+    <desc>Site 108 (GB25-28) point 84 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484022" lon="-94.724448">
+    <name>108-085</name>
+    <desc>Site 108 (GB25-28) point 85 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488190" lon="-94.723353">
+    <name>108-086</name>
+    <desc>Site 108 (GB25-28) point 86 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484498" lon="-94.725600">
+    <name>108-087</name>
+    <desc>Site 108 (GB25-28) point 87 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486668" lon="-94.726546">
+    <name>108-088</name>
+    <desc>Site 108 (GB25-28) point 88 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485964" lon="-94.722370">
+    <name>108-089</name>
+    <desc>Site 108 (GB25-28) point 89 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483295" lon="-94.728277">
+    <name>108-090</name>
+    <desc>Site 108 (GB25-28) point 90 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486506" lon="-94.723294">
+    <name>108-091</name>
+    <desc>Site 108 (GB25-28) point 91 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485427" lon="-94.727641">
+    <name>108-092</name>
+    <desc>Site 108 (GB25-28) point 92 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483709" lon="-94.726674">
+    <name>108-093</name>
+    <desc>Site 108 (GB25-28) point 93 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486883" lon="-94.722574">
+    <name>108-094</name>
+    <desc>Site 108 (GB25-28) point 94 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.488656" lon="-94.724077">
+    <name>108-095</name>
+    <desc>Site 108 (GB25-28) point 95 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.485470" lon="-94.723227">
+    <name>108-096</name>
+    <desc>Site 108 (GB25-28) point 96 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481180" lon="-94.729578">
+    <name>108-097</name>
+    <desc>Site 108 (GB25-28) point 97 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.487816" lon="-94.722807">
+    <name>108-098</name>
+    <desc>Site 108 (GB25-28) point 98 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482831" lon="-94.730167">
+    <name>108-099</name>
+    <desc>Site 108 (GB25-28) point 99 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.486120" lon="-94.721723">
+    <name>108-100</name>
+    <desc>Site 108 (GB25-28) point 100 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.489010" lon="-94.723704">
+    <name>108-101</name>
+    <desc>Site 108 (GB25-28) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489052" lon="-94.721924">
+    <name>108-102</name>
+    <desc>Site 108 (GB25-28) point 102 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489318" lon="-94.722713">
+    <name>108-103</name>
+    <desc>Site 108 (GB25-28) point 103 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487549" lon="-94.719741">
+    <name>108-104</name>
+    <desc>Site 108 (GB25-28) point 104 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487346" lon="-94.719178">
+    <name>108-105</name>
+    <desc>Site 108 (GB25-28) point 105 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488518" lon="-94.723381">
+    <name>108-106</name>
+    <desc>Site 108 (GB25-28) point 106 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488665" lon="-94.722696">
+    <name>108-107</name>
+    <desc>Site 108 (GB25-28) point 107 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490342" lon="-94.721351">
+    <name>108-108</name>
+    <desc>Site 108 (GB25-28) point 108 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487284" lon="-94.721114">
+    <name>108-109</name>
+    <desc>Site 108 (GB25-28) point 109 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487396" lon="-94.721920">
+    <name>108-110</name>
+    <desc>Site 108 (GB25-28) point 110 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488641" lon="-94.720160">
+    <name>108-111</name>
+    <desc>Site 108 (GB25-28) point 111 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487333" lon="-94.720221">
+    <name>108-112</name>
+    <desc>Site 108 (GB25-28) point 112 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486662" lon="-94.720744">
+    <name>108-113</name>
+    <desc>Site 108 (GB25-28) point 113 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486755" lon="-94.719737">
+    <name>108-114</name>
+    <desc>Site 108 (GB25-28) point 114 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489957" lon="-94.721401">
+    <name>108-115</name>
+    <desc>Site 108 (GB25-28) point 115 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489402" lon="-94.720844">
+    <name>108-116</name>
+    <desc>Site 108 (GB25-28) point 116 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.490083" lon="-94.721728">
+    <name>108-117</name>
+    <desc>Site 108 (GB25-28) point 117 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488788" lon="-94.721348">
+    <name>108-118</name>
+    <desc>Site 108 (GB25-28) point 118 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488112" lon="-94.719334">
+    <name>108-119</name>
+    <desc>Site 108 (GB25-28) point 119 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488043" lon="-94.720047">
+    <name>108-120</name>
+    <desc>Site 108 (GB25-28) point 120 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488740" lon="-94.720760">
+    <name>108-121</name>
+    <desc>Site 108 (GB25-28) point 121 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.486712" lon="-94.721447">
+    <name>108-122</name>
+    <desc>Site 108 (GB25-28) point 122 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489180" lon="-94.720092">
+    <name>108-123</name>
+    <desc>Site 108 (GB25-28) point 123 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489867" lon="-94.722446">
+    <name>108-124</name>
+    <desc>Site 108 (GB25-28) point 124 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487749" lon="-94.720614">
+    <name>108-125</name>
+    <desc>Site 108 (GB25-28) point 125 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488358" lon="-94.722111">
+    <name>108-126</name>
+    <desc>Site 108 (GB25-28) point 126 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.488268" lon="-94.721062">
+    <name>108-127</name>
+    <desc>Site 108 (GB25-28) point 127 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.489507" lon="-94.721448">
+    <name>108-128</name>
+    <desc>Site 108 (GB25-28) point 128 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487826" lon="-94.721620">
+    <name>108-129</name>
+    <desc>Site 108 (GB25-28) point 129 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.487955" lon="-94.722512">
+    <name>108-130</name>
+    <desc>Site 108 (GB25-28) point 130 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.483489" lon="-94.717693">
+    <name>109-001</name>
+    <desc>Site 109 (GB 25-28) point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482524" lon="-94.719935">
+    <name>109-002</name>
+    <desc>Site 109 (GB 25-28) point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481634" lon="-94.720745">
+    <name>109-003</name>
+    <desc>Site 109 (GB 25-28) point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481583" lon="-94.718767">
+    <name>109-004</name>
+    <desc>Site 109 (GB 25-28) point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481461" lon="-94.717936">
+    <name>109-005</name>
+    <desc>Site 109 (GB 25-28) point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481087" lon="-94.721851">
+    <name>109-006</name>
+    <desc>Site 109 (GB 25-28) point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481568" lon="-94.721462">
+    <name>109-007</name>
+    <desc>Site 109 (GB 25-28) point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482218" lon="-94.718218">
+    <name>109-008</name>
+    <desc>Site 109 (GB 25-28) point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478543" lon="-94.726183">
+    <name>109-009</name>
+    <desc>Site 109 (GB 25-28) point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478677" lon="-94.725623">
+    <name>109-010</name>
+    <desc>Site 109 (GB 25-28) point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478019" lon="-94.725649">
+    <name>109-011</name>
+    <desc>Site 109 (GB 25-28) point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482065" lon="-94.716890">
+    <name>109-012</name>
+    <desc>Site 109 (GB 25-28) point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482685" lon="-94.719248">
+    <name>109-013</name>
+    <desc>Site 109 (GB 25-28) point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481596" lon="-94.722143">
+    <name>109-014</name>
+    <desc>Site 109 (GB 25-28) point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476074" lon="-94.724688">
+    <name>109-015</name>
+    <desc>Site 109 (GB 25-28) point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479346" lon="-94.724166">
+    <name>109-016</name>
+    <desc>Site 109 (GB 25-28) point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477422" lon="-94.725228">
+    <name>109-017</name>
+    <desc>Site 109 (GB 25-28) point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480431" lon="-94.722308">
+    <name>109-018</name>
+    <desc>Site 109 (GB 25-28) point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480128" lon="-94.718999">
+    <name>109-019</name>
+    <desc>Site 109 (GB 25-28) point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478180" lon="-94.726492">
+    <name>109-020</name>
+    <desc>Site 109 (GB 25-28) point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479758" lon="-94.720592">
+    <name>109-021</name>
+    <desc>Site 109 (GB 25-28) point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482649" lon="-94.718430">
+    <name>109-022</name>
+    <desc>Site 109 (GB 25-28) point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483397" lon="-94.719956">
+    <name>109-023</name>
+    <desc>Site 109 (GB 25-28) point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478043" lon="-94.724505">
+    <name>109-024</name>
+    <desc>Site 109 (GB 25-28) point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476849" lon="-94.724575">
+    <name>109-025</name>
+    <desc>Site 109 (GB 25-28) point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479528" lon="-94.720230">
+    <name>109-026</name>
+    <desc>Site 109 (GB 25-28) point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482053" lon="-94.719043">
+    <name>109-027</name>
+    <desc>Site 109 (GB 25-28) point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477206" lon="-94.723415">
+    <name>109-028</name>
+    <desc>Site 109 (GB 25-28) point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476715" lon="-94.725275">
+    <name>109-029</name>
+    <desc>Site 109 (GB 25-28) point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479038" lon="-94.721974">
+    <name>109-030</name>
+    <desc>Site 109 (GB 25-28) point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.484086" lon="-94.717972">
+    <name>109-031</name>
+    <desc>Site 109 (GB 25-28) point 31 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480848" lon="-94.723068">
+    <name>109-032</name>
+    <desc>Site 109 (GB 25-28) point 32 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482792" lon="-94.717205">
+    <name>109-033</name>
+    <desc>Site 109 (GB 25-28) point 33 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481962" lon="-94.720294">
+    <name>109-034</name>
+    <desc>Site 109 (GB 25-28) point 34 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479168" lon="-94.722860">
+    <name>109-035</name>
+    <desc>Site 109 (GB 25-28) point 35 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481721" lon="-94.719605">
+    <name>109-036</name>
+    <desc>Site 109 (GB 25-28) point 36 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478689" lon="-94.722457">
+    <name>109-037</name>
+    <desc>Site 109 (GB 25-28) point 37 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480788" lon="-94.720902">
+    <name>109-038</name>
+    <desc>Site 109 (GB 25-28) point 38 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479684" lon="-94.723646">
+    <name>109-039</name>
+    <desc>Site 109 (GB 25-28) point 39 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479939" lon="-94.724259">
+    <name>109-040</name>
+    <desc>Site 109 (GB 25-28) point 40 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483380" lon="-94.718406">
+    <name>109-041</name>
+    <desc>Site 109 (GB 25-28) point 41 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480360" lon="-94.720415">
+    <name>109-042</name>
+    <desc>Site 109 (GB 25-28) point 42 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481551" lon="-94.717318">
+    <name>109-043</name>
+    <desc>Site 109 (GB 25-28) point 43 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477320" lon="-94.726059">
+    <name>109-044</name>
+    <desc>Site 109 (GB 25-28) point 44 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478827" lon="-94.721178">
+    <name>109-045</name>
+    <desc>Site 109 (GB 25-28) point 45 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479567" lon="-94.722314">
+    <name>109-046</name>
+    <desc>Site 109 (GB 25-28) point 46 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478275" lon="-94.723797">
+    <name>109-047</name>
+    <desc>Site 109 (GB 25-28) point 47 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479100" lon="-94.724847">
+    <name>109-048</name>
+    <desc>Site 109 (GB 25-28) point 48 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476578" lon="-94.723585">
+    <name>109-049</name>
+    <desc>Site 109 (GB 25-28) point 49 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480292" lon="-94.722866">
+    <name>109-050</name>
+    <desc>Site 109 (GB 25-28) point 50 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477030" lon="-94.723974">
+    <name>109-051</name>
+    <desc>Site 109 (GB 25-28) point 51 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479768" lon="-94.723005">
+    <name>109-052</name>
+    <desc>Site 109 (GB 25-28) point 52 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478772" lon="-94.727056">
+    <name>109-053</name>
+    <desc>Site 109 (GB 25-28) point 53 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480209" lon="-94.721177">
+    <name>109-054</name>
+    <desc>Site 109 (GB 25-28) point 54 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479987" lon="-94.721779">
+    <name>109-055</name>
+    <desc>Site 109 (GB 25-28) point 55 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478701" lon="-94.723408">
+    <name>109-056</name>
+    <desc>Site 109 (GB 25-28) point 56 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479634" lon="-94.724786">
+    <name>109-057</name>
+    <desc>Site 109 (GB 25-28) point 57 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482800" lon="-94.717762">
+    <name>109-058</name>
+    <desc>Site 109 (GB 25-28) point 58 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483878" lon="-94.718856">
+    <name>109-059</name>
+    <desc>Site 109 (GB 25-28) point 59 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477751" lon="-94.723932">
+    <name>109-060</name>
+    <desc>Site 109 (GB 25-28) point 60 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482026" lon="-94.721198">
+    <name>109-061</name>
+    <desc>Site 109 (GB 25-28) point 61 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477826" lon="-94.727096">
+    <name>109-062</name>
+    <desc>Site 109 (GB 25-28) point 62 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482067" lon="-94.717525">
+    <name>109-063</name>
+    <desc>Site 109 (GB 25-28) point 63 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480283" lon="-94.723611">
+    <name>109-064</name>
+    <desc>Site 109 (GB 25-28) point 64 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.476431" lon="-94.724131">
+    <name>109-065</name>
+    <desc>Site 109 (GB 25-28) point 65 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480999" lon="-94.720139">
+    <name>109-066</name>
+    <desc>Site 109 (GB 25-28) point 66 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478760" lon="-94.724122">
+    <name>109-067</name>
+    <desc>Site 109 (GB 25-28) point 67 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480816" lon="-94.718827">
+    <name>109-068</name>
+    <desc>Site 109 (GB 25-28) point 68 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.483137" lon="-94.718895">
+    <name>109-069</name>
+    <desc>Site 109 (GB 25-28) point 69 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478446" lon="-94.721631">
+    <name>109-070</name>
+    <desc>Site 109 (GB 25-28) point 70 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480558" lon="-94.721584">
+    <name>109-071</name>
+    <desc>Site 109 (GB 25-28) point 71 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481555" lon="-94.716824">
+    <name>109-072</name>
+    <desc>Site 109 (GB 25-28) point 72 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478205" lon="-94.723041">
+    <name>109-073</name>
+    <desc>Site 109 (GB 25-28) point 73 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479499" lon="-94.725963">
+    <name>109-074</name>
+    <desc>Site 109 (GB 25-28) point 74 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.481087" lon="-94.719398">
+    <name>109-075</name>
+    <desc>Site 109 (GB 25-28) point 75 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478539" lon="-94.724884">
+    <name>109-076</name>
+    <desc>Site 109 (GB 25-28) point 76 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480994" lon="-94.717733">
+    <name>109-077</name>
+    <desc>Site 109 (GB 25-28) point 77 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.482494" lon="-94.720594">
+    <name>109-078</name>
+    <desc>Site 109 (GB 25-28) point 78 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.479488" lon="-94.721367">
+    <name>109-079</name>
+    <desc>Site 109 (GB 25-28) point 79 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.480460" lon="-94.719805">
+    <name>109-080</name>
+    <desc>Site 109 (GB 25-28) point 80 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.477467" lon="-94.724526">
+    <name>109-081</name>
+    <desc>Site 109 (GB 25-28) point 81 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="29.478174" lon="-94.721889">
+    <name>109-082</name>
+    <desc>Site 109 (GB 25-28) point 82 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477862" lon="-94.727455">
+    <name>109-083</name>
+    <desc>Site 109 (GB 25-28) point 83 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475774" lon="-94.725501">
+    <name>109-084</name>
+    <desc>Site 109 (GB 25-28) point 84 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476815" lon="-94.722955">
+    <name>109-085</name>
+    <desc>Site 109 (GB 25-28) point 85 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477231" lon="-94.723200">
+    <name>109-086</name>
+    <desc>Site 109 (GB 25-28) point 86 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475756" lon="-94.724623">
+    <name>109-087</name>
+    <desc>Site 109 (GB 25-28) point 87 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476373" lon="-94.723336">
+    <name>109-088</name>
+    <desc>Site 109 (GB 25-28) point 88 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476448" lon="-94.726208">
+    <name>109-089</name>
+    <desc>Site 109 (GB 25-28) point 89 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477392" lon="-94.722469">
+    <name>109-090</name>
+    <desc>Site 109 (GB 25-28) point 90 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.475816" lon="-94.723698">
+    <name>109-091</name>
+    <desc>Site 109 (GB 25-28) point 91 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476576" lon="-94.725482">
+    <name>109-092</name>
+    <desc>Site 109 (GB 25-28) point 92 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478425" lon="-94.722499">
+    <name>109-093</name>
+    <desc>Site 109 (GB 25-28) point 93 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476990" lon="-94.726089">
+    <name>109-094</name>
+    <desc>Site 109 (GB 25-28) point 94 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477741" lon="-94.722829">
+    <name>109-095</name>
+    <desc>Site 109 (GB 25-28) point 95 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477029" lon="-94.727352">
+    <name>109-096</name>
+    <desc>Site 109 (GB 25-28) point 96 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.478103" lon="-94.728214">
+    <name>109-097</name>
+    <desc>Site 109 (GB 25-28) point 97 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476837" lon="-94.726732">
+    <name>109-098</name>
+    <desc>Site 109 (GB 25-28) point 98 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.476223" lon="-94.725476">
+    <name>109-099</name>
+    <desc>Site 109 (GB 25-28) point 99 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477492" lon="-94.727758">
+    <name>109-100</name>
+    <desc>Site 109 (GB 25-28) point 100 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="29.477479" lon="-94.726952">
+    <name>109-101</name>
+    <desc>Site 109 (GB 25-28) point 101 - Off Reef</desc>
+    <sym>Flag, Blue</sym>
+    <type>off-reef</type>
+  </wpt>
+</gpx>

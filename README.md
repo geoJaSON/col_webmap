@@ -276,7 +276,7 @@ assigned points and turns each one into a form the crew fills in on a tablet.
 
 ### What has been assigned
 
-**1,003 points across 16 sites**, arriving in batches. Each batch is a workbook
+**1,857 points across 24 sites**, arriving in batches. Each batch is a workbook
 in `survey_points/`; the importer discovers them, so the next one is added by
 dropping the file in and re-running `npm run survey`.
 
@@ -285,9 +285,10 @@ dropping the file in and re-running `npm run survey`.
 | `Woody_Jurisich_GB_NRS_1.xlsx` | Galveston | 9 — apps 1, 8, 9, 14, 15, 22, 56, 75, 107 | 582 |
 | `Woody_Jurisich_GB_NRS_2.xlsx` | Galveston | 5 — apps 3, 12, 25, 99, 102 | 285 |
 | `Woody_Jurisich_AB_NRS_1.xlsx` | Aransas | 2 — apps 112, 113 | 136 |
+| `Woody_Jurisich_GB_NRS_3.xlsx` | Galveston | 8 — apps 16, 26, 27, 28, 57, 94, 108, 109 | 854 |
 
-Split 558 on-reef / 445 off-reef, of which **100 are off-reef in potential
-seagrass**. Every one of the 16 applications exists in `col_applications`, and
+Split 1,227 on-reef / 630 off-reef, of which **100 are off-reef in potential
+seagrass**. Every one of the 24 applications exists in `col_applications`, and
 no application appears in more than one workbook — the importer refuses a
 duplicate rather than letting one batch silently overwrite another.
 
@@ -465,8 +466,21 @@ complete survey.
 
 ### Getting the points onto a chartplotter
 
-`npm run survey` also writes `exports/col-ground-samples.gpx` — all 1,003
-assigned points as GPX 1.1 waypoints, ready to load onto a plotter or handheld.
+`npm run survey` also writes GPX 1.1 waypoint files, ready to load onto a
+plotter or handheld:
+
+| File | Points |
+|---|---|
+| `exports/col-ground-samples.gpx` | all 1,857 |
+| `exports/Woody_Jurisich_GB_NRS_1.gpx` | 582 — the first Galveston batch |
+| `exports/Woody_Jurisich_GB_NRS_2.gpx` | 285 — the second Galveston batch |
+| `exports/Woody_Jurisich_AB_NRS_1.gpx` | 136 — Aransas Bay |
+| `exports/Woody_Jurisich_GB_NRS_3.gpx` | 854 — the third Galveston batch |
+
+One file per workbook, because each workbook is one batch from TPWD: that is
+how just the new points get onto a plotter without the hundreds already loaded,
+and the next batch gets its own file without anyone asking. The batch files
+together are exactly the combined file — no point in two of them.
 It is regenerated from the workbook alongside the JSON and the SQL seed, so it
 never drifts from the assignment.
 

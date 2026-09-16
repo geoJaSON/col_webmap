@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="COL Status" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>COL ground samples - Woody_Jurisich_AB_NRS_1</name>
+    <desc>136 assigned TPWD ground samples across 2 sites. Red is on-reef, blue is off-reef, green is off-reef potential seagrass.</desc>
+    <time>2026-09-15T21:55:52Z</time>
+    <bounds minlat="28.096013" minlon="-97.039825" maxlat="28.147415" maxlon="-97.016149"/>
+  </metadata>
+  <wpt lat="28.146629" lon="-97.038560">
+    <name>112-001</name>
+    <desc>Site 112 point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.146082" lon="-97.038168">
+    <name>112-002</name>
+    <desc>Site 112 point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.147228" lon="-97.038780">
+    <name>112-003</name>
+    <desc>Site 112 point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145047" lon="-97.038930">
+    <name>112-004</name>
+    <desc>Site 112 point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.140935" lon="-97.036107">
+    <name>112-005</name>
+    <desc>Site 112 point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145326" lon="-97.038533">
+    <name>112-006</name>
+    <desc>Site 112 point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.142402" lon="-97.037316">
+    <name>112-007</name>
+    <desc>Site 112 point 7 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.142292" lon="-97.036869">
+    <name>112-008</name>
+    <desc>Site 112 point 8 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.141284" lon="-97.036367">
+    <name>112-009</name>
+    <desc>Site 112 point 9 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.144595" lon="-97.037831">
+    <name>112-010</name>
+    <desc>Site 112 point 10 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.144007" lon="-97.037702">
+    <name>112-011</name>
+    <desc>Site 112 point 11 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145567" lon="-97.038048">
+    <name>112-012</name>
+    <desc>Site 112 point 12 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.144469" lon="-97.038596">
+    <name>112-013</name>
+    <desc>Site 112 point 13 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145925" lon="-97.039529">
+    <name>112-014</name>
+    <desc>Site 112 point 14 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.146222" lon="-97.038818">
+    <name>112-015</name>
+    <desc>Site 112 point 15 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.146438" lon="-97.039172">
+    <name>112-016</name>
+    <desc>Site 112 point 16 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.143047" lon="-97.037581">
+    <name>112-017</name>
+    <desc>Site 112 point 17 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.143497" lon="-97.037598">
+    <name>112-018</name>
+    <desc>Site 112 point 18 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145481" lon="-97.039140">
+    <name>112-019</name>
+    <desc>Site 112 point 19 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.144186" lon="-97.038179">
+    <name>112-020</name>
+    <desc>Site 112 point 20 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.142815" lon="-97.037115">
+    <name>112-021</name>
+    <desc>Site 112 point 21 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.140583" lon="-97.035681">
+    <name>112-022</name>
+    <desc>Site 112 point 22 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.146434" lon="-97.039825">
+    <name>112-023</name>
+    <desc>Site 112 point 23 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.143537" lon="-97.038112">
+    <name>112-024</name>
+    <desc>Site 112 point 24 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145035" lon="-97.037762">
+    <name>112-025</name>
+    <desc>Site 112 point 25 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.144909" lon="-97.038389">
+    <name>112-026</name>
+    <desc>Site 112 point 26 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.141789" lon="-97.036874">
+    <name>112-027</name>
+    <desc>Site 112 point 27 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.146918" lon="-97.039340">
+    <name>112-028</name>
+    <desc>Site 112 point 28 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.141812" lon="-97.036343">
+    <name>112-029</name>
+    <desc>Site 112 point 29 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.145771" lon="-97.038734">
+    <name>112-030</name>
+    <desc>Site 112 point 30 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.143175" lon="-97.034527">
+    <name>112-031</name>
+    <desc>Site 112 point 31 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143191" lon="-97.032848">
+    <name>112-032</name>
+    <desc>Site 112 point 32 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144965" lon="-97.033704">
+    <name>112-033</name>
+    <desc>Site 112 point 33 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145712" lon="-97.037542">
+    <name>112-034</name>
+    <desc>Site 112 point 34 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145754" lon="-97.033239">
+    <name>112-035</name>
+    <desc>Site 112 point 35 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142472" lon="-97.034224">
+    <name>112-036</name>
+    <desc>Site 112 point 36 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142618" lon="-97.035660">
+    <name>112-037</name>
+    <desc>Site 112 point 37 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146302" lon="-97.035799">
+    <name>112-038</name>
+    <desc>Site 112 point 38 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144834" lon="-97.034435">
+    <name>112-039</name>
+    <desc>Site 112 point 39 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143898" lon="-97.034716">
+    <name>112-040</name>
+    <desc>Site 112 point 40 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.147318" lon="-97.038330">
+    <name>112-041</name>
+    <desc>Site 112 point 41 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.141000" lon="-97.035256">
+    <name>112-042</name>
+    <desc>Site 112 point 42 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145517" lon="-97.035819">
+    <name>112-043</name>
+    <desc>Site 112 point 43 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145154" lon="-97.035175">
+    <name>112-044</name>
+    <desc>Site 112 point 44 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146838" lon="-97.036188">
+    <name>112-045</name>
+    <desc>Site 112 point 45 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146000" lon="-97.036627">
+    <name>112-046</name>
+    <desc>Site 112 point 46 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143187" lon="-97.036490">
+    <name>112-047</name>
+    <desc>Site 112 point 47 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.141879" lon="-97.034569">
+    <name>112-048</name>
+    <desc>Site 112 point 48 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.141742" lon="-97.035712">
+    <name>112-049</name>
+    <desc>Site 112 point 49 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143944" lon="-97.035489">
+    <name>112-050</name>
+    <desc>Site 112 point 50 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144676" lon="-97.031505">
+    <name>112-051</name>
+    <desc>Site 112 point 51 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145134" lon="-97.032283">
+    <name>112-052</name>
+    <desc>Site 112 point 52 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142825" lon="-97.035038">
+    <name>112-053</name>
+    <desc>Site 112 point 53 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144214" lon="-97.037183">
+    <name>112-054</name>
+    <desc>Site 112 point 54 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.147092" lon="-97.037003">
+    <name>112-055</name>
+    <desc>Site 112 point 55 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144567" lon="-97.035950">
+    <name>112-056</name>
+    <desc>Site 112 point 56 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142130" lon="-97.035117">
+    <name>112-057</name>
+    <desc>Site 112 point 57 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143615" lon="-97.033964">
+    <name>112-058</name>
+    <desc>Site 112 point 58 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145881" lon="-97.034999">
+    <name>112-059</name>
+    <desc>Site 112 point 59 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144323" lon="-97.033997">
+    <name>112-060</name>
+    <desc>Site 112 point 60 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.147415" lon="-97.037875">
+    <name>112-061</name>
+    <desc>Site 112 point 61 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146055" lon="-97.034364">
+    <name>112-062</name>
+    <desc>Site 112 point 62 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143949" lon="-97.033363">
+    <name>112-063</name>
+    <desc>Site 112 point 63 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143901" lon="-97.036416">
+    <name>112-064</name>
+    <desc>Site 112 point 64 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144668" lon="-97.033168">
+    <name>112-065</name>
+    <desc>Site 112 point 65 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144581" lon="-97.032286">
+    <name>112-066</name>
+    <desc>Site 112 point 66 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145510" lon="-97.036763">
+    <name>112-067</name>
+    <desc>Site 112 point 67 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144662" lon="-97.036641">
+    <name>112-068</name>
+    <desc>Site 112 point 68 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145528" lon="-97.034245">
+    <name>112-069</name>
+    <desc>Site 112 point 69 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143147" lon="-97.035759">
+    <name>112-070</name>
+    <desc>Site 112 point 70 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143933" lon="-97.032525">
+    <name>112-071</name>
+    <desc>Site 112 point 71 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.143535" lon="-97.037148">
+    <name>112-072</name>
+    <desc>Site 112 point 72 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.145045" lon="-97.037422">
+    <name>112-073</name>
+    <desc>Site 112 point 73 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146229" lon="-97.037693">
+    <name>112-074</name>
+    <desc>Site 112 point 74 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.144553" lon="-97.034979">
+    <name>112-075</name>
+    <desc>Site 112 point 75 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146749" lon="-97.037977">
+    <name>112-076</name>
+    <desc>Site 112 point 76 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.146544" lon="-97.037282">
+    <name>112-077</name>
+    <desc>Site 112 point 77 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142088" lon="-97.036106">
+    <name>112-078</name>
+    <desc>Site 112 point 78 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142927" lon="-97.033684">
+    <name>112-079</name>
+    <desc>Site 112 point 79 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.142567" lon="-97.036479">
+    <name>112-080</name>
+    <desc>Site 112 point 80 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097688" lon="-97.017301">
+    <name>113-001</name>
+    <desc>Site 113 point 1 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.098289" lon="-97.017318">
+    <name>113-002</name>
+    <desc>Site 113 point 2 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.097355" lon="-97.017653">
+    <name>113-003</name>
+    <desc>Site 113 point 3 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.098836" lon="-97.017035">
+    <name>113-004</name>
+    <desc>Site 113 point 4 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.099398" lon="-97.017151">
+    <name>113-005</name>
+    <desc>Site 113 point 5 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.100263" lon="-97.017474">
+    <name>113-006</name>
+    <desc>Site 113 point 6 - On Reef</desc>
+    <sym>Flag, Red</sym>
+    <type>on-reef</type>
+  </wpt>
+  <wpt lat="28.097012" lon="-97.017739">
+    <name>113-007</name>
+    <desc>Site 113 point 7 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096120" lon="-97.019739">
+    <name>113-008</name>
+    <desc>Site 113 point 8 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096865" lon="-97.018299">
+    <name>113-009</name>
+    <desc>Site 113 point 9 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099149" lon="-97.019312">
+    <name>113-010</name>
+    <desc>Site 113 point 10 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096013" lon="-97.017449">
+    <name>113-011</name>
+    <desc>Site 113 point 11 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099644" lon="-97.017144">
+    <name>113-012</name>
+    <desc>Site 113 point 12 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096555" lon="-97.018702">
+    <name>113-013</name>
+    <desc>Site 113 point 13 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100277" lon="-97.018974">
+    <name>113-014</name>
+    <desc>Site 113 point 14 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099124" lon="-97.016149">
+    <name>113-015</name>
+    <desc>Site 113 point 15 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097025" lon="-97.019833">
+    <name>113-016</name>
+    <desc>Site 113 point 16 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098645" lon="-97.016228">
+    <name>113-017</name>
+    <desc>Site 113 point 17 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096722" lon="-97.017215">
+    <name>113-018</name>
+    <desc>Site 113 point 18 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099434" lon="-97.017582">
+    <name>113-019</name>
+    <desc>Site 113 point 19 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098912" lon="-97.016627">
+    <name>113-020</name>
+    <desc>Site 113 point 20 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097470" lon="-97.020166">
+    <name>113-021</name>
+    <desc>Site 113 point 21 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096997" lon="-97.018980">
+    <name>113-022</name>
+    <desc>Site 113 point 22 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098510" lon="-97.019148">
+    <name>113-023</name>
+    <desc>Site 113 point 23 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098605" lon="-97.017672">
+    <name>113-024</name>
+    <desc>Site 113 point 24 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098138" lon="-97.018751">
+    <name>113-025</name>
+    <desc>Site 113 point 25 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100336" lon="-97.017685">
+    <name>113-026</name>
+    <desc>Site 113 point 26 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098764" lon="-97.018489">
+    <name>113-027</name>
+    <desc>Site 113 point 27 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097954" lon="-97.017535">
+    <name>113-028</name>
+    <desc>Site 113 point 28 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100680" lon="-97.018273">
+    <name>113-029</name>
+    <desc>Site 113 point 29 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096211" lon="-97.018487">
+    <name>113-030</name>
+    <desc>Site 113 point 30 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097342" lon="-97.019232">
+    <name>113-031</name>
+    <desc>Site 113 point 31 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098545" lon="-97.016843">
+    <name>113-032</name>
+    <desc>Site 113 point 32 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099025" lon="-97.017915">
+    <name>113-033</name>
+    <desc>Site 113 point 33 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098126" lon="-97.016461">
+    <name>113-034</name>
+    <desc>Site 113 point 34 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098229" lon="-97.019788">
+    <name>113-035</name>
+    <desc>Site 113 point 35 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099882" lon="-97.017819">
+    <name>113-036</name>
+    <desc>Site 113 point 36 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099527" lon="-97.018162">
+    <name>113-037</name>
+    <desc>Site 113 point 37 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099239" lon="-97.018719">
+    <name>113-038</name>
+    <desc>Site 113 point 38 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097278" lon="-97.016647">
+    <name>113-039</name>
+    <desc>Site 113 point 39 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.098308" lon="-97.018237">
+    <name>113-040</name>
+    <desc>Site 113 point 40 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099739" lon="-97.019089">
+    <name>113-041</name>
+    <desc>Site 113 point 41 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097772" lon="-97.018152">
+    <name>113-042</name>
+    <desc>Site 113 point 42 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099052" lon="-97.017290">
+    <name>113-043</name>
+    <desc>Site 113 point 43 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096508" lon="-97.020329">
+    <name>113-044</name>
+    <desc>Site 113 point 44 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097818" lon="-97.019283">
+    <name>113-045</name>
+    <desc>Site 113 point 45 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100249" lon="-97.018412">
+    <name>113-046</name>
+    <desc>Site 113 point 46 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097317" lon="-97.018218">
+    <name>113-047</name>
+    <desc>Site 113 point 47 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097895" lon="-97.016811">
+    <name>113-048</name>
+    <desc>Site 113 point 48 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097369" lon="-97.017199">
+    <name>113-049</name>
+    <desc>Site 113 point 49 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100120" lon="-97.017171">
+    <name>113-050</name>
+    <desc>Site 113 point 50 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099811" lon="-97.018589">
+    <name>113-051</name>
+    <desc>Site 113 point 51 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.097619" lon="-97.018669">
+    <name>113-052</name>
+    <desc>Site 113 point 52 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.100615" lon="-97.018749">
+    <name>113-053</name>
+    <desc>Site 113 point 53 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.099680" lon="-97.016615">
+    <name>113-054</name>
+    <desc>Site 113 point 54 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096424" lon="-97.019294">
+    <name>113-055</name>
+    <desc>Site 113 point 55 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+  <wpt lat="28.096454" lon="-97.017647">
+    <name>113-056</name>
+    <desc>Site 113 point 56 - Off Reef Seagrass</desc>
+    <sym>Flag, Green</sym>
+    <type>off-reef</type>
+  </wpt>
+</gpx>

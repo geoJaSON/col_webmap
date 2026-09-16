@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
+import { fetchAllRows } from "@/lib/fetchAllRows";
 import type { SurveyPoint, SurveySample, SurveySite } from "@/lib/surveyTypes";
 
 const PHOTO_BUCKET = "survey-photos";
@@ -45,31 +46,45 @@ export async function loadSurveyForExport(): Promise<SurveyExportData> {
   const db = supabase();
   if (!db) throw new SurveyUnavailable();
 
+  // Paged for the same reason as the map's loader: the API stops at 1,000 rows
+  // without saying so, and a datasheet missing rows reads as a finished survey.
   const [sites, points, samples] = await Promise.all([
-    db.from("survey_sites").select("*").order("app_no"),
-    db.from("survey_points").select("*").order("app_no").order("point_no"),
-    db.from("survey_samples").select("*"),
-  ]);
-
-  const failure = sites.error ?? points.error ?? samples.error;
-  if (failure) throw new Error(`Could not read the survey: ${failure.message}`);
+    fetchAllRows((from, to) =>
+      db.from("survey_sites").select("*", { count: "exact" }).order("app_no").range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      db
+        .from("survey_points")
+        .select("*", { count: "exact" })
+        .order("app_no")
+        .order("point_no")
+        .range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      db.from("survey_samples").select("*", { count: "exact" }).order("id").range(from, to),
+    ),
+  ]).catch((failure: unknown) => {
+    throw new Error(
+      `Could not read the survey: ${failure instanceof Error ? failure.message : String(failure)}`,
+    );
+  });
 
   const number = (value: unknown) =>
     value === null || value === undefined ? null : Number(value);
 
   return {
-    sites: (sites.data ?? []).map((s) => ({
+    sites: sites.map((s) => ({
       ...s,
       on_reef_acres: number(s.on_reef_acres),
       off_reef_acres: number(s.off_reef_acres),
     })) as SurveySite[],
-    points: (points.data ?? []).map((p) => ({
+    points: points.map((p) => ({
       ...p,
       lat: Number(p.lat),
       lon: Number(p.lon),
     })) as SurveyPoint[],
     samples: new Map(
-      (samples.data ?? []).map((row) => [
+      samples.map((row) => [
         `${row.app_no}:${row.point_no}`,
         {
           ...row,

@@ -10,6 +10,7 @@ import type {
   SurveySite,
 } from "@/lib/surveyTypes";
 import { draftToRow } from "@/lib/surveyTypes";
+import { fetchAllRows } from "@/lib/fetchAllRows";
 
 /**
  * Field survey data access, all of it browser-side as the signed-in surveyor.
@@ -37,33 +38,46 @@ export type SurveyData = {
 /**
  * Everything the map needs in one go.
  *
- * ~1,000 points and at most that many samples is small enough that paging it
- * would cost more in round trips than it saves in bytes, and the crew needs
- * the whole assignment on screen to plan a run anyway.
+ * Every table is read through fetchAllRows. Supabase's API returns at most
+ * 1,000 rows per request and says nothing when it stops, so once the survey
+ * passed 1,000 points a plain select silently dropped every site after that
+ * row. Each query is ordered by a unique key so pages cannot skip or repeat.
  */
 export async function fetchSurveyData(client: SupabaseClient): Promise<SurveyData> {
   const [sites, points, samples] = await Promise.all([
-    client.from("survey_sites").select("*").order("app_no"),
-    client.from("survey_points").select("*").order("app_no").order("point_no"),
-    client.from("survey_samples").select("*"),
-  ]);
-
-  const failure = sites.error ?? points.error ?? samples.error;
-  if (failure) throw new Error(`Could not load the survey: ${failure.message}`);
+    fetchAllRows((from, to) =>
+      client.from("survey_sites").select("*", { count: "exact" }).order("app_no").range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      client
+        .from("survey_points")
+        .select("*", { count: "exact" })
+        .order("app_no")
+        .order("point_no")
+        .range(from, to),
+    ),
+    fetchAllRows((from, to) =>
+      client.from("survey_samples").select("*", { count: "exact" }).order("id").range(from, to),
+    ),
+  ]).catch((failure: unknown) => {
+    throw new Error(
+      `Could not load the survey: ${failure instanceof Error ? failure.message : String(failure)}`,
+    );
+  });
 
   return {
-    sites: (sites.data ?? []).map((s) => ({
+    sites: sites.map((s) => ({
       ...s,
       // numeric() comes back from PostgREST as a string.
       on_reef_acres: s.on_reef_acres === null ? null : Number(s.on_reef_acres),
       off_reef_acres: s.off_reef_acres === null ? null : Number(s.off_reef_acres),
     })) as SurveySite[],
-    points: (points.data ?? []).map((p) => ({
+    points: points.map((p) => ({
       ...p,
       lat: Number(p.lat),
       lon: Number(p.lon),
     })) as SurveyPoint[],
-    samples: (samples.data ?? []).map(numbersFromSample),
+    samples: samples.map(numbersFromSample),
   };
 }
 
