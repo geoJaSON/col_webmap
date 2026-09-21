@@ -13,7 +13,7 @@ import {
 } from "@/lib/pollingSnapshot";
 import { substrateColorExpression } from "@/lib/substrate";
 import SurveyForm from "@/components/SurveyForm";
-import { useSurvey, pointKey } from "@/lib/useSurvey";
+import { pointKey, type SurveyState } from "@/lib/useSurvey";
 import { useAuth } from "@/lib/useAuth";
 import {
   reefRingColor,
@@ -173,6 +173,8 @@ type Props = {
   /** Open ring being edited (corners only, no closing point), or null. */
   editPoints: Ring | null;
   onEditPointsChange: (points: Ring) => void;
+  /** Owned by the page, which also hands each area's card its own slice. */
+  survey: SurveyState;
   /** The detail card, positioned against the map frame. */
   children?: React.ReactNode;
 };
@@ -185,6 +187,7 @@ export default function MapCanvas({
   detailOpen,
   editPoints,
   onEditPointsChange,
+  survey,
   children,
 }: Props) {
   const container = useRef<HTMLDivElement>(null);
@@ -206,7 +209,6 @@ export default function MapCanvas({
   });
   const snapshotCache = useRef<PollingSnapshotCache | null>(null);
   const auth = useAuth();
-  const survey = useSurvey();
   /** The assigned point whose datasheet is open, or null. */
   const [openPoint, setOpenPoint] = useState<SurveyPoint | null>(null);
 
@@ -337,9 +339,17 @@ export default function MapCanvas({
         },
       });
 
+      // A tap on a survey point opens its datasheet and leaves the selected
+      // area alone. Points in a site's 200 ft buffer can sit inside a
+      // neighbouring lease, and letting that tap select the neighbour would
+      // filter away the very point that was just tapped.
+      const onSurveyPoint = (point: maplibregl.PointLike) =>
+        Boolean(instance.getLayer(SURVEY_PICK)) &&
+        instance.queryRenderedFeatures(point, { layers: [SURVEY_PICK] }).length > 0;
+
       const pick = (event: maplibregl.MapLayerMouseEvent) => {
         // While editing, clicks belong to the shape, not to picking a new lease.
-        if (editPointsRef.current) return;
+        if (editPointsRef.current || onSurveyPoint(event.point)) return;
         const feature = event.features?.[0];
         if (feature?.properties) onSelectRef.current(Number(feature.properties.id));
       };
@@ -348,7 +358,7 @@ export default function MapCanvas({
 
       // Tapping bare water clears the selection.
       instance.on("click", (event) => {
-        if (editPointsRef.current) return;
+        if (editPointsRef.current || onSurveyPoint(event.point)) return;
         const hits = instance.queryRenderedFeatures(event.point, { layers: [FILL, PICK] });
         if (hits.length === 0) onSelectRef.current(null);
       });
@@ -914,16 +924,21 @@ export default function MapCanvas({
     });
   }, [ready]);
 
-  // Feed the layer, and empty it when the survey is switched off.
+  // Feed the layer, and empty it when the survey is switched off. With an area
+  // selected, only the points assigned to it are drawn -- by application
+  // number, not by what falls inside its outline, so a site's buffer points
+  // stay and a neighbour's do not.
   useEffect(() => {
     if (!ready || !map.current) return;
     const source = map.current.getSource(SURVEY_SRC) as maplibregl.GeoJSONSource | undefined;
     if (!source) return;
 
     const showing = survey.on;
+    const points =
+      selectedId === null ? survey.points : survey.points.filter((p) => p.app_no === selectedId);
     source.setData(
       showing
-        ? toSurveyFeatureCollection(survey.points, survey.samples)
+        ? toSurveyFeatureCollection(points, survey.samples)
         : { type: "FeatureCollection", features: [] },
     );
 
@@ -934,7 +949,7 @@ export default function MapCanvas({
     }
     // A point whose layer just went away should not leave its form standing.
     if (!showing) setOpenPoint(null);
-  }, [ready, survey.on, survey.points, survey.samples]);
+  }, [ready, survey.on, survey.points, survey.samples, selectedId]);
 
   const setCategoryBuffer = useCallback((id: string, feet: number) => {
     setBufferFeet((prev) => ({ ...prev, [id]: feet }));

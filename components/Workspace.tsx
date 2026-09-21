@@ -10,6 +10,7 @@ import ResultList from "@/components/ResultList";
 import ShapeEditor from "@/components/ShapeEditor";
 import { formatRing, parseCoordinateText, type Ring } from "@/lib/geometry";
 import { signOut, useAuth } from "@/lib/useAuth";
+import { useSurvey } from "@/lib/useSurvey";
 import type { StoreMode } from "@/lib/store";
 import { STATUSES, type Application, type Filters, type Status } from "@/lib/types";
 
@@ -39,6 +40,8 @@ type Props = {
 
 export default function Workspace({ initialApplications, mode }: Props) {
   const auth = useAuth();
+  // Here rather than in the map, so each area's card can show its own share.
+  const survey = useSurvey();
   const [applications, setApplications] = useState(initialApplications);
   const [filters, setFilters] = useState<Filters>(emptyFilters);
   const [selectedId, setSelectedId] = useState<number | null>(null);
@@ -350,6 +353,7 @@ export default function Workspace({ initialApplications, mode }: Props) {
         detailOpen={selected !== null}
         editPoints={edit ? edit.points : null}
         onEditPointsChange={setEditPoints}
+        survey={survey}
       >
         {selected && (
           <DetailCard
@@ -362,6 +366,14 @@ export default function Workspace({ initialApplications, mode }: Props) {
             onEditShape={() => beginEdit(selected)}
             onSetStatus={(status) => setStatus(selected.id, status)}
             onClose={() => setSelectedId(null)}
+            samples={
+              survey.sites.some((site) => site.app_no === selected.id)
+                ? {
+                    href: `/api/survey/archive?site=${selected.id}`,
+                    progress: survey.bySite.get(selected.id) ?? null,
+                  }
+                : null
+            }
           >
             {edit && edit.id === selected.id && (
               <ShapeEditor

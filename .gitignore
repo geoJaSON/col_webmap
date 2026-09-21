@@ -11,3 +11,8 @@ build/
 next-env.d.ts
 __pycache__/
 .DS_Store
+
+# Lock files a spreadsheet app leaves while a workbook is open --
+# LibreOffice (.~lock.<name>#) and Excel (~$<name>). One was committed once.
+.~lock.*#
+~$*

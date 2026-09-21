@@ -11,12 +11,19 @@ Workbooks arrive in batches and are *discovered*, not listed -- drop the next
 one in the folder and re-run. Each is one worksheet per application. Point
 numbers restart at 1 in each sheet, so the key is (app_no, point_no), not
 point_no alone; an application appearing in two workbooks is an error rather
-than a silent overwrite.
+than a silent overwrite -- unless the newer sheet is marked as an update.
 
-Two shapes TPWD has used so far, both accepted:
+Three things TPWD has varied so far, all accepted:
 
   sheet name   "75 (GB20)" in the Galveston workbooks, bare "112" in the
                Aransas Bay one, which carries no site code at all.
+
+  revisions    "27 (GB29)-updated" in GB_NRS_4: TPWD re-issuing a site it had
+               already assigned. The updated sheet replaces the earlier one
+               outright. Note the seed only adds and updates points -- it never
+               removes one, and it never moves a sample -- so a revised site
+               whose old points were already sampled needs a migration of its
+               own first (supabase/survey_migration_003_site27_update.sql).
 
   reef class   "On Reef" and "Off Reef" everywhere, plus "Off Reef Seagrass"
                in Aransas Bay. The third maps to reef_type 'off' -- it is
@@ -73,8 +80,9 @@ LAT_RANGE = (25.8, 30.3)
 LON_RANGE = (-97.6, -93.5)
 
 # "75 (GB20)", or just "112" -- the Aransas Bay workbook has no TPWD site code,
-# so the parenthesised part is optional.
-SHEET_RE = re.compile(r"^\s*(\d+)\s*(?:\(([^)]*)\))?\s*$")
+# so the parenthesised part is optional. A trailing "-updated" marks TPWD
+# re-issuing a site it had already assigned, as "27 (GB29)-updated" in GB_NRS_4.
+SHEET_RE = re.compile(r"^\s*(\d+)\s*(?:\(([^)]*)\))?\s*(-\s*updated)?\s*$", re.IGNORECASE)
 
 
 def normalise(value) -> str:
@@ -82,15 +90,17 @@ def normalise(value) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip().lower()
 
 
-def parse_sheet_title(title: str) -> tuple[int, str | None]:
-    """'75 (GB20)' -> (75, 'GB20');  '112' -> (112, None)"""
+def parse_sheet_title(title: str) -> tuple[int, str | None, bool]:
+    """'75 (GB20)' -> (75, 'GB20', False);  '112' -> (112, None, False);
+    '27 (GB29)-updated' -> (27, 'GB29', True)"""
     match = SHEET_RE.match(title)
     if not match:
         raise ValueError(
-            f"Unexpected worksheet name {title!r}; expected '<app#>' or '<app#> (<site code>)'."
+            f"Unexpected worksheet name {title!r}; expected '<app#>' or "
+            f"'<app#> (<site code>)', optionally followed by '-updated'."
         )
     code = (match.group(2) or "").strip()
-    return int(match.group(1)), code or None
+    return int(match.group(1)), code or None, match.group(3) is not None
 
 
 def read_acreage(ws) -> dict[str, float | None]:
@@ -274,39 +284,51 @@ def workbooks() -> list[Path]:
 
 
 def main() -> None:
-    sites: list[dict] = []
-    points: list[dict] = []
-    # (app_no -> workbook) so a site sent twice is caught rather than silently
-    # taking whichever file happened to be read last.
-    seen_apps: dict[int, str] = {}
+    # Every sheet read, by application. A site normally arrives once. When TPWD
+    # re-issues one, the new sheet is marked "-updated" and replaces the earlier
+    # sheet outright -- the order the files happen to be read in plays no part.
+    # Anything else sent twice is an error rather than a silent choice between
+    # two assignments.
+    originals: dict[int, list[tuple[dict, list[dict]]]] = {}
+    revisions: dict[int, list[tuple[dict, list[dict]]]] = {}
 
     for path in workbooks():
         wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
         for ws in wb.worksheets:
-            app_no, site_code = parse_sheet_title(ws.title)
-
-            if app_no in seen_apps:
-                raise ValueError(
-                    f"Application {app_no} appears in both {seen_apps[app_no]} and "
-                    f"{path.name}. Remove the superseded workbook before re-running."
-                )
-            seen_apps[app_no] = path.name
-
+            app_no, site_code, revised = parse_sheet_title(ws.title)
             sheet_points = read_points(ws, app_no)
             acres = read_acreage(ws)
+            site = {
+                "app_no": app_no,
+                "site_code": site_code,
+                "on_reef_acres": acres["on"],
+                "off_reef_acres": acres["off"],
+                "on_reef_points": sum(1 for p in sheet_points if p["reef_type"] == "on"),
+                "off_reef_points": sum(1 for p in sheet_points if p["reef_type"] == "off"),
+                "source": path.name,
+            }
+            (revisions if revised else originals).setdefault(app_no, []).append((site, sheet_points))
 
-            sites.append(
-                {
-                    "app_no": app_no,
-                    "site_code": site_code,
-                    "on_reef_acres": acres["on"],
-                    "off_reef_acres": acres["off"],
-                    "on_reef_points": sum(1 for p in sheet_points if p["reef_type"] == "on"),
-                    "off_reef_points": sum(1 for p in sheet_points if p["reef_type"] == "off"),
-                    "source": path.name,
-                }
+    sites: list[dict] = []
+    points: list[dict] = []
+    for app_no in sorted(originals.keys() | revisions.keys()):
+        first, updated = originals.get(app_no, []), revisions.get(app_no, [])
+        if len(first) > 1:
+            raise ValueError(
+                f"Application {app_no} appears in both {first[0][0]['source']} and "
+                f"{first[1][0]['source']}. Remove the superseded workbook, or mark the "
+                f"newer sheet '-updated', before re-running."
             )
-            points.extend(sheet_points)
+        if len(updated) > 1:
+            raise ValueError(
+                f"Application {app_no} has more than one '-updated' sheet "
+                f"({', '.join(u[0]['source'] for u in updated)}). Remove the older one."
+            )
+        site, site_points = (updated or first)[0]
+        if updated and first:
+            site["supersedes"] = first[0][0]["source"]
+        sites.append(site)
+        points.extend(site_points)
 
     sites.sort(key=lambda s: s["app_no"])
     points.sort(key=lambda p: (p["app_no"], p["point_no"]))
@@ -389,6 +411,7 @@ def main() -> None:
             print(
                 f"    {s['app_no']:>4}{code:<12} "
                 f"{s['on_reef_points']:>3} on / {s['off_reef_points']:>3} off"
+                + (f"   replaces the sheet in {s['supersedes']}" if s.get("supersedes") else "")
             )
 
     labels: dict[str, int] = {}

@@ -274,9 +274,17 @@ TPWD assigns ground samples for each accepted COL and expects the results back
 on their own datasheets. **Ground samples** in the Layers control draws those
 assigned points and turns each one into a form the crew fills in on a tablet.
 
+Selecting an area filters the layer to the points assigned to that area. It
+filters by application number rather than by what falls inside the outline, so
+the site's 200 ft buffer points stay and a neighbour's do not. The area's card
+shows how many of its points are sampled. Tapping a survey point opens its
+datasheet and leaves the selected area alone: buffer points can sit inside a
+neighbouring lease, and switching to that lease would hide the point just
+tapped.
+
 ### What has been assigned
 
-**1,857 points across 24 sites**, arriving in batches. Each batch is a workbook
+**1,849 points across 24 sites**, arriving in batches. Each batch is a workbook
 in `survey_points/`; the importer discovers them, so the next one is added by
 dropping the file in and re-running `npm run survey`.
 
@@ -285,12 +293,47 @@ dropping the file in and re-running `npm run survey`.
 | `Woody_Jurisich_GB_NRS_1.xlsx` | Galveston | 9 — apps 1, 8, 9, 14, 15, 22, 56, 75, 107 | 582 |
 | `Woody_Jurisich_GB_NRS_2.xlsx` | Galveston | 5 — apps 3, 12, 25, 99, 102 | 285 |
 | `Woody_Jurisich_AB_NRS_1.xlsx` | Aransas | 2 — apps 112, 113 | 136 |
-| `Woody_Jurisich_GB_NRS_3.xlsx` | Galveston | 8 — apps 16, 26, 27, 28, 57, 94, 108, 109 | 854 |
+| `Woody_Jurisich_GB_NRS_3.xlsx` | Galveston | 8 — apps 16, 26, 27, 28, 57, 94, 108, 109 | 854 as sent |
+| `Woody_Jurisich_GB_NRS_4.xlsx` | Galveston | 1 — app 27 re-issued, replacing its GB_NRS_3 sheet | 102 |
 
-Split 1,227 on-reef / 630 off-reef, of which **100 are off-reef in potential
+Split 1,229 on-reef / 620 off-reef, of which **100 are off-reef in potential
 seagrass**. Every one of the 24 applications exists in `col_applications`, and
-no application appears in more than one workbook — the importer refuses a
-duplicate rather than letting one batch silently overwrite another.
+an application appears in two workbooks only when TPWD re-issued it (see
+below) — anything else sent twice is refused rather than letting one batch
+silently overwrite another.
+
+### When TPWD re-issues a site
+
+GB_NRS_4 holds a single sheet, `27 (GB29)-updated`. TPWD redrew site 27 on 9/17
+("updated from JWs coordinates"): 110 points became 102, every point moved,
+103–110 were dropped, and 91–92 became on-reef. A sheet marked `-updated`
+replaces that application's earlier sheet outright, whichever file it is in;
+the same site sent twice *without* the marker is still refused.
+
+The seed cannot apply a revision on its own once the old points have been
+sampled. It only adds and updates points, so it would leave the dropped ones
+behind and move points out from under their samples — and deleting a point
+deletes its sample, through the foreign key. Site 27 had 20 samples from 9/16,
+so it has its own migration, `supabase/survey_migration_003_site27_update.sql`,
+run **before** the seed:
+
+- All 20 samples are first copied verbatim into `survey_samples_archive`
+  (service role only).
+- The 9 taken within one tow length (132 ft, measured from the boat's GPS) of a
+  new off-reef point are carried over to it. They are re-numbered in place, so
+  id, author and recorded time are unchanged, and each gets a note saying where
+  it came from.
+- The other 11 are retired. New off-reef point 99 is the only one left to
+  sample.
+
+TPWD should confirm they accept the carried-over samples. Their photos keep the
+old point number in the file name (`27-091-…` on point 98) — the true record of
+where each was taken.
+
+The migration refuses to run unless site 27 is exactly as it was when written,
+and does nothing the second time. Tested against a copy of production: the seed
+runs cleanly after it, and run first by mistake the seed fails on the foreign
+key without changing anything.
 
 ### TPWD's three reef classes, and why the database stores two
 
@@ -405,6 +448,10 @@ whenever TPWD sends the next batch of points.
 for every existing row. A database built fresh from `survey_schema.sql` already
 has both and does not need it.
 
+**Before re-seeding after GB_NRS_4**, run
+`supabase/survey_migration_003_site27_update.sql` — see *When TPWD re-issues a
+site* below.
+
 ### How it is wired
 
 Unlike `col_applications` — reached only by this app's API routes holding the
@@ -435,8 +482,9 @@ Notable schema decisions:
 
 ### Getting the data back out
 
-The **Download datasheets + photos (.zip)** link under **Layers → Ground
-samples** is the complete handoff. It creates one folder per application, with
+Each area's card has a **Download datasheet + photos (.zip)** button — select
+the area on the map and it is at the bottom of the card. That is the complete
+handoff for the site: a folder for the application, with
 a filled copy of TPWD's supplied `Datasheet.xlsx` and that site's referenced
 photos alongside it. Folder names are the TPWD application number. Both sheets
 retain TPWD's original columns and append the captured **Actual Latitude** and
@@ -444,7 +492,9 @@ retain TPWD's original columns and append the captured **Actual Latitude** and
 workbooks remain site-specific because the supplied template identifies rows
 by sample number but has no application-number column.
 
-Direct route: `/api/survey/archive`
+Direct route: `/api/survey/archive?site=75` for one site. Without `site` it
+still builds every assigned site into one zip; that is no longer linked from the
+app, since a site is what gets submitted.
 
 The CSV routes remain available for quick checks and internal roll-ups:
 
@@ -471,11 +521,12 @@ plotter or handheld:
 
 | File | Points |
 |---|---|
-| `exports/col-ground-samples.gpx` | all 1,857 |
+| `exports/col-ground-samples.gpx` | all 1,849 |
 | `exports/Woody_Jurisich_GB_NRS_1.gpx` | 582 — the first Galveston batch |
 | `exports/Woody_Jurisich_GB_NRS_2.gpx` | 285 — the second Galveston batch |
 | `exports/Woody_Jurisich_AB_NRS_1.gpx` | 136 — Aransas Bay |
-| `exports/Woody_Jurisich_GB_NRS_3.gpx` | 854 — the third Galveston batch |
+| `exports/Woody_Jurisich_GB_NRS_3.gpx` | 744 — the third Galveston batch, less site 27 |
+| `exports/Woody_Jurisich_GB_NRS_4.gpx` | 102 — site 27 as re-issued on 9/17 |
 
 One file per workbook, because each workbook is one batch from TPWD: that is
 how just the new points get onto a plotter without the hundreds already loaded,

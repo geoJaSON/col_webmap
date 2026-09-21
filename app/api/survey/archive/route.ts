@@ -1,7 +1,7 @@
 import { PassThrough, Readable } from "node:stream";
 
 import { ZipArchive } from "archiver";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 import {
   SurveyUnavailable,
@@ -20,10 +20,29 @@ const fileName = (objectPath: string) => objectPath.split("/").pop() || "photo.j
  * Datasheet.xlsx and the photos named in that workbook. Keeping workbooks
  * site-specific is essential: the supplied sheets have no application-number
  * column, so point numbers repeat across sites.
+ *
+ *   /api/survey/archive           every assigned site, one folder each
+ *   /api/survey/archive?site=75   one site -- what each area's card links to
  */
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const rawSite = request.nextUrl.searchParams.get("site");
+  let appNo: number | null = null;
+  if (rawSite !== null) {
+    const parsed = Number(rawSite);
+    if (!Number.isInteger(parsed)) {
+      return NextResponse.json({ error: `Not an application number: ${rawSite}` }, { status: 400 });
+    }
+    appNo = parsed;
+  }
+
   try {
     const data = await loadSurveyForExport();
+    const sites = appNo === null ? data.sites : data.sites.filter((site) => site.app_no === appNo);
+    // Checked before the stream starts, while a plain error response is still
+    // possible -- afterwards the only way to fail is a broken download.
+    if (appNo !== null && sites.length === 0) {
+      return NextResponse.json({ error: `No assigned samples for application ${appNo}.` }, { status: 404 });
+    }
     const output = new PassThrough();
     // Photos are already compressed JPEGs; storing them avoids wasting server
     // time recompressing hundreds of files for negligible size reduction.
@@ -35,7 +54,7 @@ export async function GET() {
     void (async () => {
       const warnings: string[] = [];
 
-      for (const site of data.sites) {
+      for (const site of sites) {
         const folder = String(site.app_no);
         const workbook = await surveyWorkbook(data.points, data.samples, site.app_no);
         zip.append(workbook, { name: `${folder}/Datasheet.xlsx` });
@@ -84,7 +103,7 @@ export async function GET() {
     return new NextResponse(Readable.toWeb(output) as ReadableStream, {
       headers: {
         "Content-Type": "application/zip",
-        "Content-Disposition": `attachment; filename="ground-samples-${stamp}.zip"`,
+        "Content-Disposition": `attachment; filename="ground-samples${appNo === null ? "" : `-site-${appNo}`}-${stamp}.zip"`,
         "Cache-Control": "no-store",
       },
     });

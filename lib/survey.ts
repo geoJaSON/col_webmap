@@ -66,18 +66,39 @@ export async function fetchSurveyData(client: SupabaseClient): Promise<SurveyDat
   });
 
   return {
-    sites: sites.map((s) => ({
-      ...s,
-      // numeric() comes back from PostgREST as a string.
-      on_reef_acres: s.on_reef_acres === null ? null : Number(s.on_reef_acres),
-      off_reef_acres: s.off_reef_acres === null ? null : Number(s.off_reef_acres),
-    })) as SurveySite[],
+    sites: sites.map(siteFromRow),
     points: points.map((p) => ({
       ...p,
       lat: Number(p.lat),
       lon: Number(p.lon),
     })) as SurveyPoint[],
     samples: samples.map(numbersFromSample),
+  };
+}
+
+/**
+ * Just the assigned sites: two dozen rows. Loaded as soon as the map opens, so
+ * an area's card can offer that site's datasheet download without the survey
+ * layer -- and its ~2,000 points -- having been switched on.
+ */
+export async function fetchSurveySites(client: SupabaseClient): Promise<SurveySite[]> {
+  const sites = await fetchAllRows((from, to) =>
+    client.from("survey_sites").select("*", { count: "exact" }).order("app_no").range(from, to),
+  ).catch((failure: unknown) => {
+    throw new Error(
+      `Could not load the survey sites: ${failure instanceof Error ? failure.message : String(failure)}`,
+    );
+  });
+  return sites.map(siteFromRow);
+}
+
+function siteFromRow(row: Record<string, unknown>): SurveySite {
+  const acres = (value: unknown) => (value === null || value === undefined ? null : Number(value));
+  // numeric() comes back from PostgREST as a string.
+  return {
+    ...(row as unknown as SurveySite),
+    on_reef_acres: acres(row.on_reef_acres),
+    off_reef_acres: acres(row.off_reef_acres),
   };
 }
 

@@ -12,6 +12,11 @@ type Props = {
   onEditShape: () => void;
   onSetStatus: (status: Status) => void;
   onClose: () => void;
+  /**
+   * This area's ground samples, or null when TPWD assigned it none. `progress`
+   * is null until the survey layer has loaded the points.
+   */
+  samples: { href: string; progress: { sampled: number; total: number } | null } | null;
   /** The shape editor, rendered in place of the status buttons while open. */
   children?: React.ReactNode;
 };
@@ -26,6 +31,7 @@ export default function DetailCard({
   onEditShape,
   onSetStatus,
   onClose,
+  samples,
   children,
 }: Props) {
   const vertices = application.geometry.coordinates[0]?.length ?? 1;
@@ -102,6 +108,25 @@ export default function DetailCard({
         {readOnly && <p className="detail__note">{readOnlyReason ?? "This view is read-only."}</p>}
         {error && <p className="detail__error">{error}</p>}
       </div>
+      )}
+
+      {/* One site's package per download: TPWD's sheets carry no application
+          number, so a site's folder is the unit that gets submitted. */}
+      {!editing && samples && (
+        <div className="detail__samples">
+          <div className="detail__samples-head">
+            <span className="eyebrow">Ground samples</span>
+            {samples.progress && (
+              <span className="detail__samples-count">
+                <span className="num">{samples.progress.sampled}</span> of{" "}
+                <span className="num">{samples.progress.total}</span> sampled
+              </span>
+            )}
+          </div>
+          <a className="detail__download" href={samples.href} download>
+            Download datasheet + photos (.zip)
+          </a>
+        </div>
       )}
     </aside>
   );
