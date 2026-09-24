@@ -26,7 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "layers.config.json"
 OUT_DIR = ROOT / "public" / "layers"
 INDEX = OUT_DIR / "index.json"
-SKIP_DIRS = {"node_modules", ".next", ".git", "public", "data", "exports", "__pycache__", "supabase"}
+SKIP_DIRS = {"node_modules", ".next", ".git", "public", "data", "exports", "updated_areas", "__pycache__", "supabase"}
 
 # ~1.1 m. Lease boundaries are surveyed to far less precision than that, and
 # thinning the vertices keeps the on-the-fly buffering responsive.

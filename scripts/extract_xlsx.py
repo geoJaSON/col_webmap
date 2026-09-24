@@ -6,6 +6,10 @@ overrides a handful of applications whose boundaries were redrawn to clear O&G
 locations and TPWD restoration reefs; see apply_mods() for exactly what it
 touches.
 
+updated_areas/TPWD_Current_Applications.shp takes precedence for its APP_NO
+values, replacing geometry and acreage while preserving application status.
+Reading this shapefile requires geopandas (also used by import_layers.py).
+
 The workbook stores each polygon vertex as a pair of `Latitude N` / `Longitude N`
 columns (N = 1..10) in the order TPWD supplied them. This flattens that wide
 layout into GeoJSON-style ring coordinates ([lon, lat], first vertex repeated
@@ -19,6 +23,7 @@ group-filtered copies of the same rows.
 from __future__ import annotations
 
 import json
+import math
 import re
 from pathlib import Path
 
@@ -30,6 +35,8 @@ JSON_OUT = ROOT / "data" / "applications.json"
 SQL_OUT = ROOT / "supabase" / "seed.sql"
 MODS_XLSX = ROOT / "JW_JJ_Hanna mods.xlsx"
 MODS_SQL_OUT = ROOT / "supabase" / "apply_mods.sql"
+CURRENT_BOUNDARIES = ROOT / "updated_areas" / "TPWD_Current_Applications.shp"
+GEOJSON_OUT = ROOT / "data" / "col_applications.geojson"
 
 MAX_VERTICES = 10
 VALID_STATUS = {"Accept", "Modify", "Decline"}
@@ -102,7 +109,54 @@ def build_ring(points: list[list[float]]) -> list[list[float]]:
     return closed
 
 
-def apply_mods(records: list[dict], notes: list[str], problems: list[str]) -> list[int]:
+def read_current_boundaries(records: list[dict]) -> dict[int, dict]:
+    """Read the newer TPWD boundaries, matched by APP_NO, without changing rows."""
+    if not CURRENT_BOUNDARIES.exists():
+        return {}
+
+    import geopandas as gpd
+    from shapely.geometry import mapping
+    from shapely.geometry.polygon import orient
+
+    for suffix in (".shx", ".dbf", ".prj"):
+        if not CURRENT_BOUNDARIES.with_suffix(suffix).is_file():
+            raise ValueError(f"Current boundaries are missing their {suffix} file")
+    frame = gpd.read_file(CURRENT_BOUNDARIES)
+    required = {"APP_NO", "OWNER_GRP", "OWNER", "BAY_SYSTEM", "ACRES"}
+    if not required.issubset(frame.columns) or frame.empty or frame.crs is None:
+        raise ValueError("Current boundaries need application IDs, owners, acreage and a CRS")
+    frame = frame.to_crs("EPSG:4326")
+    by_id = {row["id"]: row for row in records}
+    updates = {}
+    for _, source in frame.iterrows():
+        app_no = int(source.APP_NO)
+        if app_no != source.APP_NO or app_no in updates or app_no not in by_id:
+            raise ValueError(f"Current boundaries: duplicate, unknown or invalid APP_NO {source.APP_NO}")
+        current = by_id[app_no]
+        for field, attribute in (("group_name", "OWNER_GRP"), ("applicant", "OWNER"), ("bay_system", "BAY_SYSTEM")):
+            if current[field] != source[attribute]:
+                raise ValueError(f"Current boundaries: app {app_no} has a different {field}")
+        polygon = source.geometry
+        if (polygon is None or polygon.geom_type != "Polygon" or polygon.is_empty
+                or not polygon.is_valid or polygon.has_z or len(polygon.interiors)):
+            raise ValueError(f"Current boundaries: app {app_no} needs a valid, single-ring 2D polygon")
+        if any(not (math.isfinite(x) and math.isfinite(y) and -180 <= x <= 180 and -90 <= y <= 90)
+               for x, y in polygon.exterior.coords):
+            raise ValueError(f"Current boundaries: app {app_no} has invalid coordinates")
+        acreage = float(source.ACRES)
+        if not math.isfinite(acreage) or not 0 < round(acreage, 2) < 10000:
+            raise ValueError(f"Current boundaries: app {app_no} has invalid acreage")
+        # Keep every supplied vertex and its precision; only winding changes.
+        # ACRES is current; SUBMIT_AC and LATESTSPRE refer to older boundaries.
+        updates[app_no] = {
+            "geometry": json.loads(json.dumps(mapping(orient(polygon, sign=1.0)))),
+            "acreage": round(acreage, 2),
+        }
+    return updates
+
+
+def apply_mods(records: list[dict], notes: list[str], problems: list[str],
+               superseded_ids: set[int] | None = None) -> list[int]:
     """
     Overlay "JW_JJ_Hanna mods.xlsx" onto the base records.
 
@@ -134,6 +188,9 @@ def apply_mods(records: list[dict], notes: list[str], problems: list[str]) -> li
             if app_no is None:
                 continue
             app_no = int(app_no)
+            if app_no in (superseded_ids or set()):
+                notes.append(f"mods: app {app_no} superseded by {CURRENT_BOUNDARIES.name}")
+                continue
 
             record = by_id.get(app_no)
             if record is None:
@@ -271,13 +328,31 @@ def main() -> None:
             }
         )
 
-    modified_ids = apply_mods(records, notes, problems)
+    boundary_updates = read_current_boundaries(records)
+    modified_ids = apply_mods(records, notes, problems, set(boundary_updates))
+    for record in records:
+        if record["id"] in boundary_updates:
+            record.update(boundary_updates[record["id"]])
+            notes.append(f"current boundaries: app {record['id']}, {record['acreage']} ac; status preserved")
+
+    if problems:
+        raise ValueError("Import refused before writing files:\n" + "\n".join(problems))
 
     records.sort(key=lambda r: r["id"])
 
     JSON_OUT.parent.mkdir(parents=True, exist_ok=True)
     SQL_OUT.parent.mkdir(parents=True, exist_ok=True)
     JSON_OUT.write_text(json.dumps(records, indent=2), encoding="utf-8")
+
+    # Refresh only the revised areas in the checked-in ArcGIS export.
+    if boundary_updates and GEOJSON_OUT.exists():
+        collection = json.loads(GEOJSON_OUT.read_text(encoding="utf-8"))
+        for feature in collection["features"]:
+            update = boundary_updates.get(feature["properties"]["app_no"])
+            if update:
+                feature["geometry"] = update["geometry"]
+                feature["properties"]["acres"] = update["acreage"]
+        GEOJSON_OUT.write_text(json.dumps(collection, separators=(",", ":")), encoding="utf-8")
 
     lines = [
         "-- Generated by scripts/extract_xlsx.py -- do not edit by hand.",
@@ -301,32 +376,37 @@ def main() -> None:
         )
     SQL_OUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
-    # seed.sql deliberately never touches `status`, so re-seeding cannot revive
-    # a decision someone already made in the app. The mods DO change status, so
-    # they get their own explicit statements to run against a live database.
-    if modified_ids:
+    # The targeted patch avoids re-seeding unrelated live rows. Only legacy
+    # workbook modifications change status; newer shapefile boundaries do not.
+    patch_ids = sorted(set(modified_ids) | set(boundary_updates))
+    if patch_ids:
         mod_lines = [
-            "-- Generated by scripts/extract_xlsx.py from 'JW_JJ_Hanna mods.xlsx'.",
-            "-- Boundary modifications: new geometry, new acreage, status -> Modify.",
+            "-- Generated by scripts/extract_xlsx.py from the current boundary sources.",
+            "-- TPWD_Current_Applications.shp takes precedence over 'JW_JJ_Hanna mods.xlsx'.",
+            "-- Shapefile updates change only geometry and acreage, preserving status.",
             "-- Safe to re-run.",
             "",
+            "begin;",
+            "",
         ]
-        for app_no in modified_ids:
+        for app_no in patch_ids:
             r = next(x for x in records if x["id"] == app_no)
             geom = json.dumps(r["geometry"]).replace("'", "''")
             mod_lines.append("update public.col_applications set")
-            mod_lines.append(f"  status   = '{r['status']}',")
+            if app_no in modified_ids:
+                mod_lines.append(f"  status   = '{r['status']}',")
             mod_lines.append(f"  acreage  = {r['acreage']},")
             mod_lines.append(f"  geometry = '{geom}'::jsonb")
             mod_lines.append(f"where id = {app_no};")
             mod_lines.append("")
+        mod_lines.append("commit;")
         MODS_SQL_OUT.write_text("\n".join(mod_lines) + "\n", encoding="utf-8")
 
     print(f"wrote {len(records)} records")
     print(f"  {JSON_OUT.relative_to(ROOT)}")
     print(f"  {SQL_OUT.relative_to(ROOT)}")
-    if modified_ids:
-        print(f"  {MODS_SQL_OUT.relative_to(ROOT)}  ({len(modified_ids)} boundary modifications)")
+    if patch_ids:
+        print(f"  {MODS_SQL_OUT.relative_to(ROOT)}  ({len(patch_ids)} boundary modifications)")
     owners = sorted({r["applicant"] for r in records})
     print(f"owners: {len(owners)}, bays: {sorted({r['bay_system'] for r in records})}")
     if notes:

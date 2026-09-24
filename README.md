@@ -9,9 +9,10 @@ each one's status can be changed in two taps from a phone or a desktop.
 
 | Path | What it does |
 |------|--------------|
-| `scripts/extract_xlsx.py` | Reads the workbooks, validates every polygon, writes `data/applications.json`, `supabase/seed.sql` and `supabase/apply_mods.sql` |
+| `scripts/extract_xlsx.py` | Reads the workbooks and current TPWD boundaries, validates polygons, writes the application data and SQL patches |
 | `JW_JJ_Hanna mods.xlsx` | Boundary modifications overlaid on the base data (6 applications) |
-| `supabase/apply_mods.sql` | Updates just those 6 rows: new geometry, new acreage, status `Modify` |
+| `updated_areas/TPWD_Current_Applications.shp` | Current boundaries for 8 applications, taking precedence over the older workbook modifications |
+| `supabase/apply_mods.sql` | Targeted boundary and acreage updates; current shapefile updates preserve status |
 | `data/applications.json` | The 78 applications, shaped exactly like a database row |
 | `supabase/schema.sql` | Table, status constraint, `updated_at` trigger, RLS lockdown |
 | `supabase/seed.sql` | Re-runnable inserts for all 78 rows |
@@ -136,6 +137,25 @@ not overwritten. Delete the rows first if you do want to reset statuses.
 
 ### Boundary modifications
 
+`updated_areas/TPWD_Current_Applications.shp` is the current source for
+applications **7, 13, 16, 26, 27, 55, 94, and 109**. `npm run extract` matches
+its `APP_NO` to each application, checks the owner and bay, and imports the
+actual polygon and current `ACRES` value (rounded to two decimals). All source
+vertices and coordinate precision are retained, with counter-clockwise winding
+for GeoJSON. Statuses are preserved. `SUBMIT_AC`, `LATESTSPRE`, and descriptive
+corner counts are not used because they can describe earlier revisions.
+
+The shapefile overrides the older workbook for those application numbers.
+Extraction refreshes the local application data, the matching features in
+`data/col_applications.geojson`, the seed, and `supabase/apply_mods.sql`.
+Run the targeted SQL patch to update an existing database without re-seeding
+the other applications. The shapefile import needs `geopandas` and its `.shx`,
+`.dbf`, and `.prj` companion files. `updated_areas/` is excluded from reference
+layer imports so application polygons do not become restoration blockers.
+
+The older workbook behavior below applies only to applications not covered by
+the current shapefile.
+
 `JW_JJ_Hanna mods.xlsx` overlays the base data. For each row carrying an
 `Application#` it swaps in the `Modified Coordinates` ring, replaces the acreage
 with `New acreage`, and forces the status to `Modify` — every application in
@@ -148,8 +168,8 @@ workbooks drifting apart is an error rather than a silent bad overwrite. A ring
 that already matches the modification is recognised as previously applied, which
 makes `npm run extract` safe to re-run.
 
-Because `seed.sql` never touches `status`, these six need
-`supabase/apply_mods.sql` run against the database as well.
+Because `seed.sql` never touches `status`, any remaining workbook-only
+modifications need `supabase/apply_mods.sql` run against the database as well.
 
 The base workbook is optional: if `Justin_Johny_COL_Status.xlsx` is not present,
 the extractor uses the committed `data/applications.json` as its base so the
