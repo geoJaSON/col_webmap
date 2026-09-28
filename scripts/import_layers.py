@@ -141,7 +141,7 @@ def main() -> None:
     for filename in config.get("sources", []):
         source = ROOT / filename
         if not source.is_file():
-            raise FileNotFoundError(f"Missing {filename}; run npm run pipelines to download it")
+            raise FileNotFoundError(f"Missing {filename}; refresh its source before running npm run layers")
         if source not in sources:
             sources.append(source)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -168,7 +168,11 @@ def main() -> None:
         if not frame.geometry.geom_type.isin(allowed).all():
             raise ValueError(f"{label}: reference layers must contain polygons or lines")
         before = int(frame.geometry.map(count_vertices).sum())
-        frame["geometry"] = frame.geometry.simplify(SIMPLIFY_DEGREES, preserve_topology=True)
+        # Shorelines are simplified before their distance clip. Simplifying
+        # again here could create shortcuts outside that coverage boundary.
+        tolerance = categories[category].get("simplifyDegrees", SIMPLIFY_DEGREES)
+        if tolerance > 0:
+            frame["geometry"] = frame.geometry.simplify(tolerance, preserve_topology=True)
         after = int(frame.geometry.map(count_vertices).sum())
 
         field = next((f for f in name_fields if f in frame.columns), None)

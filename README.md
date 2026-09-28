@@ -18,6 +18,7 @@ each one's status can be changed in two taps from a phone or a desktop.
 | `supabase/seed.sql` | Re-runnable inserts for all 78 rows |
 | `lib/geometry.ts` | Coordinate parsing, ring validation, and acreage — shared by the browser and the API |
 | `scripts/import_layers.py` | Converts reference shapefiles into categorised layers under `public/layers/` |
+| `scripts/clip_shorelines.py` | Clips the ESI shoreline GeoPackage to within 3,000 ft of COL polygons |
 | `layers.config.json` | Blocker categories: colour, default buffer, and which shapefile belongs to which |
 | `lib/buffer.ts` | On-the-fly buffering, culled to the viewport |
 | `lib/csv.ts` | CSV export laid out like the original `GIS Upload` sheet |
@@ -654,6 +655,38 @@ boundaries, pass a current GeoJSON export with `--applications path/to/col.geojs
 then run `npm run layers`. The layer importer accepts lines as well as polygons;
 explicit downloaded sources are listed in `layers.config.json`. Generated files
 under `exports/` are excluded from reference imports.
+
+### Shorelines near COL areas
+
+**Shorelines** is enabled by default in Layers. Green lines show ESI 2024
+shoreline segments within **3,000 ft of the COL polygons**, including segments
+inside the polygons. The snapshot contains 416 source features, clipped to
+about 60.5 miles of shoreline across the four COL bay systems. Its buffer
+defaults to **1,000 ft on each side**, adjustable from 0 to 2,000 ft. Buffers
+appear at zoom 10.5 and above, like the other reference layers.
+
+To refresh, place `Environmental_Sensitivity_Index_Shoreline*.gpkg` in the
+repo root and run:
+
+```bash
+python -m pip install geopandas shapely pyproj
+npm run shorelines
+npm run test:shorelines
+```
+
+The exporter uses `data/applications.json` (all 78 COLs, regardless of status).
+For saved boundary edits, run
+`python scripts/clip_shorelines.py --applications path/to/current-cols.geojson`,
+then `npm run layers`. Use `--source` to specify
+a different GeoPackage path; the default layer is `ESI_Shoreline`.
+
+Clipping uses a local projection in meters, with 1 ft = 0.3048 m. Lines are
+simplified to one meter **before** clipping; `simplifyDegrees: 0` prevents the
+layer importer from moving them across the clip boundary afterward. Six-decimal
+web coordinates retain about 11 cm precision. Shoreline IDs and ESI classes are
+retained. The large original GeoPackage stays local and is ignored by Git;
+the clipped source in `data/shorelines/` and the map layer in `public/layers/`
+are committed, so running the app or `npm run layers` needs no GeoPackage.
 
 ### Buffers
 
