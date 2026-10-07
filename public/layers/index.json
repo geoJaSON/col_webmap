@@ -65,5 +65,24 @@
       29.889145
     ],
     "sizeKb": 1049
+  },
+  {
+    "id": "east-redfish",
+    "label": "East Redfish permit area",
+    "color": "#a78bfa",
+    "bufferFeet": 500,
+    "geometryType": "polygon",
+    "file": "east-redfish.geojson",
+    "features": 1,
+    "sources": [
+      "East Redfish Permit Area"
+    ],
+    "bounds": [
+      -94.834198,
+      29.483861,
+      -94.80802,
+      29.502939
+    ],
+    "sizeKb": 0
   }
 ]

@@ -18,12 +18,18 @@
       "bufferFeet": 500,
       "geometryType": "line",
       "keepFields": ["rrc_id", "operator", "system", "subsystem", "commodity", "diameter_inches", "permit", "system_type", "status", "county"]
+    },
+    "east-redfish": {
+      "label": "East Redfish permit area",
+      "color": "#a78bfa",
+      "bufferFeet": 500
     }
   },
   "layers": {
     "hannas-reef-permit-area": "restoration-area",
     "coastal-lease-polygon-c-tcms": "restoration-area",
-    "rrc-pipelines": "pipelines"
+    "rrc-pipelines": "pipelines",
+    "east-redfish-permit-area": "east-redfish"
   },
   "sources": ["data/pipelines/rrc-pipelines.geojson"],
   "defaultCategory": "restoration-area",

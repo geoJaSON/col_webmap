@@ -19,6 +19,15 @@
       "source": "Woody_Jurisich_GB_NRS_2.xlsx"
     },
     {
+      "app_no": 7,
+      "site_code": null,
+      "on_reef_acres": null,
+      "off_reef_acres": null,
+      "on_reef_points": 80,
+      "off_reef_points": 30,
+      "source": "Woody_Jurisich_GB_NRS_5.xlsx"
+    },
+    {
       "app_no": 8,
       "site_code": "GB34",
       "on_reef_acres": 18.0,
@@ -1312,6 +1321,886 @@
       "point_no": 55,
       "lat": 29.512009,
       "lon": -94.858814,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 1,
+      "lat": 29.472458,
+      "lon": -94.704771,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 2,
+      "lat": 29.472024,
+      "lon": -94.702107,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 3,
+      "lat": 29.474126,
+      "lon": -94.704761,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 4,
+      "lat": 29.472941,
+      "lon": -94.705183,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 5,
+      "lat": 29.473966,
+      "lon": -94.704336,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 6,
+      "lat": 29.470543,
+      "lon": -94.699005,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 7,
+      "lat": 29.471199,
+      "lon": -94.703965,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 8,
+      "lat": 29.469887,
+      "lon": -94.6988,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 9,
+      "lat": 29.473482,
+      "lon": -94.705579,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 10,
+      "lat": 29.472045,
+      "lon": -94.703765,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 11,
+      "lat": 29.471551,
+      "lon": -94.703305,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 12,
+      "lat": 29.471862,
+      "lon": -94.701421,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 13,
+      "lat": 29.473083,
+      "lon": -94.706576,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 14,
+      "lat": 29.473111,
+      "lon": -94.707251,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 15,
+      "lat": 29.473126,
+      "lon": -94.705993,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 16,
+      "lat": 29.473116,
+      "lon": -94.703415,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 17,
+      "lat": 29.47357,
+      "lon": -94.704973,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 18,
+      "lat": 29.471529,
+      "lon": -94.699086,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 19,
+      "lat": 29.474355,
+      "lon": -94.703228,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 20,
+      "lat": 29.469722,
+      "lon": -94.701687,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 21,
+      "lat": 29.470859,
+      "lon": -94.702107,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 22,
+      "lat": 29.470454,
+      "lon": -94.69848,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 23,
+      "lat": 29.470209,
+      "lon": -94.698104,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 24,
+      "lat": 29.471547,
+      "lon": -94.700216,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 25,
+      "lat": 29.473657,
+      "lon": -94.703461,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 26,
+      "lat": 29.474744,
+      "lon": -94.703722,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 27,
+      "lat": 29.468562,
+      "lon": -94.698124,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 28,
+      "lat": 29.475182,
+      "lon": -94.70435,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 29,
+      "lat": 29.471485,
+      "lon": -94.702701,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 30,
+      "lat": 29.469232,
+      "lon": -94.702152,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 31,
+      "lat": 29.472465,
+      "lon": -94.701289,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 32,
+      "lat": 29.470367,
+      "lon": -94.699728,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 33,
+      "lat": 29.474771,
+      "lon": -94.704904,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 34,
+      "lat": 29.471006,
+      "lon": -94.69919,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 35,
+      "lat": 29.47101,
+      "lon": -94.699895,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 36,
+      "lat": 29.471053,
+      "lon": -94.698544,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 37,
+      "lat": 29.470688,
+      "lon": -94.700433,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 38,
+      "lat": 29.470722,
+      "lon": -94.701359,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 39,
+      "lat": 29.473399,
+      "lon": -94.701056,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 40,
+      "lat": 29.474143,
+      "lon": -94.703699,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 41,
+      "lat": 29.470642,
+      "lon": -94.697962,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 42,
+      "lat": 29.474532,
+      "lon": -94.704337,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 43,
+      "lat": 29.473023,
+      "lon": -94.702631,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 44,
+      "lat": 29.475162,
+      "lon": -94.703641,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 45,
+      "lat": 29.471317,
+      "lon": -94.700811,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 46,
+      "lat": 29.46901,
+      "lon": -94.702678,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 47,
+      "lat": 29.474173,
+      "lon": -94.702219,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 48,
+      "lat": 29.471666,
+      "lon": -94.699643,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 49,
+      "lat": 29.473383,
+      "lon": -94.704156,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 50,
+      "lat": 29.470245,
+      "lon": -94.701019,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 51,
+      "lat": 29.472199,
+      "lon": -94.700083,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 52,
+      "lat": 29.473399,
+      "lon": -94.702924,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 53,
+      "lat": 29.469798,
+      "lon": -94.699356,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 54,
+      "lat": 29.473345,
+      "lon": -94.70211,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 55,
+      "lat": 29.473975,
+      "lon": -94.705937,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 56,
+      "lat": 29.472704,
+      "lon": -94.703844,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 57,
+      "lat": 29.472507,
+      "lon": -94.703127,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 58,
+      "lat": 29.470711,
+      "lon": -94.703476,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 59,
+      "lat": 29.470126,
+      "lon": -94.702935,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 60,
+      "lat": 29.471437,
+      "lon": -94.702004,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 61,
+      "lat": 29.471166,
+      "lon": -94.701576,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 62,
+      "lat": 29.469702,
+      "lon": -94.698362,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 63,
+      "lat": 29.473644,
+      "lon": -94.706536,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 64,
+      "lat": 29.472997,
+      "lon": -94.701581,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 65,
+      "lat": 29.469054,
+      "lon": -94.698415,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 66,
+      "lat": 29.472915,
+      "lon": -94.704509,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 67,
+      "lat": 29.474316,
+      "lon": -94.705278,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 68,
+      "lat": 29.469783,
+      "lon": -94.701217,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 69,
+      "lat": 29.472043,
+      "lon": -94.702875,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 70,
+      "lat": 29.472817,
+      "lon": -94.700557,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 71,
+      "lat": 29.471857,
+      "lon": -94.704341,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 72,
+      "lat": 29.473586,
+      "lon": -94.701609,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 73,
+      "lat": 29.469231,
+      "lon": -94.698988,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 74,
+      "lat": 29.470771,
+      "lon": -94.702738,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 75,
+      "lat": 29.469727,
+      "lon": -94.702487,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 76,
+      "lat": 29.472542,
+      "lon": -94.702274,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 77,
+      "lat": 29.474662,
+      "lon": -94.702817,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 78,
+      "lat": 29.474013,
+      "lon": -94.702756,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 79,
+      "lat": 29.471932,
+      "lon": -94.70079,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 80,
+      "lat": 29.470179,
+      "lon": -94.702141,
+      "reef_type": "on",
+      "reef_label": "On Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 81,
+      "lat": 29.470492,
+      "lon": -94.697695,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 82,
+      "lat": 29.471394,
+      "lon": -94.704881,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 83,
+      "lat": 29.475157,
+      "lon": -94.701353,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 84,
+      "lat": 29.472219,
+      "lon": -94.698109,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 85,
+      "lat": 29.470657,
+      "lon": -94.704325,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 86,
+      "lat": 29.472512,
+      "lon": -94.705489,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 87,
+      "lat": 29.475759,
+      "lon": -94.702688,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 88,
+      "lat": 29.468614,
+      "lon": -94.703246,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 89,
+      "lat": 29.469498,
+      "lon": -94.703914,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 90,
+      "lat": 29.473935,
+      "lon": -94.699649,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 91,
+      "lat": 29.472251,
+      "lon": -94.706158,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 92,
+      "lat": 29.469818,
+      "lon": -94.697287,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 93,
+      "lat": 29.472743,
+      "lon": -94.697735,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 94,
+      "lat": 29.472955,
+      "lon": -94.69908,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 95,
+      "lat": 29.470023,
+      "lon": -94.703443,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 96,
+      "lat": 29.469222,
+      "lon": -94.697704,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 97,
+      "lat": 29.471429,
+      "lon": -94.698286,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 98,
+      "lat": 29.473336,
+      "lon": -94.698425,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 99,
+      "lat": 29.47346,
+      "lon": -94.700552,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 100,
+      "lat": 29.474315,
+      "lon": -94.70158,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 101,
+      "lat": 29.474281,
+      "lon": -94.700634,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 102,
+      "lat": 29.468224,
+      "lon": -94.697408,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 103,
+      "lat": 29.471623,
+      "lon": -94.705724,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 104,
+      "lat": 29.472239,
+      "lon": -94.699153,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 105,
+      "lat": 29.473154,
+      "lon": -94.699786,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 106,
+      "lat": 29.472465,
+      "lon": -94.706981,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 107,
+      "lat": 29.471735,
+      "lon": -94.697406,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 108,
+      "lat": 29.467595,
+      "lon": -94.697567,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 109,
+      "lat": 29.475553,
+      "lon": -94.703474,
+      "reef_type": "off",
+      "reef_label": "Off Reef"
+    },
+    {
+      "app_no": 7,
+      "point_no": 110,
+      "lat": 29.475044,
+      "lon": -94.702526,
       "reef_type": "off",
       "reef_label": "Off Reef"
     },

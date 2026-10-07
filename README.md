@@ -304,7 +304,7 @@ tapped.
 
 ### What has been assigned
 
-**1,849 points across 24 sites**, arriving in batches. Each batch is a workbook
+**1,959 points across 25 sites**, arriving in batches. Each batch is a workbook
 in `survey_points/`; the importer discovers them, so the next one is added by
 dropping the file in and re-running `npm run survey`.
 
@@ -315,9 +315,10 @@ dropping the file in and re-running `npm run survey`.
 | `Woody_Jurisich_AB_NRS_1.xlsx` | Aransas | 2 — apps 112, 113 | 136 |
 | `Woody_Jurisich_GB_NRS_3.xlsx` | Galveston | 8 — apps 16, 26, 27, 28, 57, 94, 108, 109 | 854 as sent |
 | `Woody_Jurisich_GB_NRS_4.xlsx` | Galveston | 1 — app 27 re-issued, replacing its GB_NRS_3 sheet | 102 |
+| `Woody_Jurisich_GB_NRS_5.xlsx` | Galveston | 1 — app 7 | 110 |
 
-Split 1,229 on-reef / 620 off-reef, of which **100 are off-reef in potential
-seagrass**. Every one of the 24 applications exists in `col_applications`, and
+Split 1,309 on-reef / 650 off-reef, of which **100 are off-reef in potential
+seagrass**. Every one of the 25 applications exists in `col_applications`, and
 an application appears in two workbooks only when TPWD re-issued it (see
 below) — anything else sent twice is refused rather than letting one batch
 silently overwrite another.
@@ -541,12 +542,13 @@ plotter or handheld:
 
 | File | Points |
 |---|---|
-| `exports/col-ground-samples.gpx` | all 1,849 |
+| `exports/col-ground-samples.gpx` | all 1,959 |
 | `exports/Woody_Jurisich_GB_NRS_1.gpx` | 582 — the first Galveston batch |
 | `exports/Woody_Jurisich_GB_NRS_2.gpx` | 285 — the second Galveston batch |
 | `exports/Woody_Jurisich_AB_NRS_1.gpx` | 136 — Aransas Bay |
 | `exports/Woody_Jurisich_GB_NRS_3.gpx` | 744 — the third Galveston batch, less site 27 |
 | `exports/Woody_Jurisich_GB_NRS_4.gpx` | 102 — site 27 as re-issued on 9/17 |
+| `exports/Woody_Jurisich_GB_NRS_5.gpx` | 110 — app 7 |
 
 One file per workbook, because each workbook is one batch from TPWD: that is
 how just the new points get onto a plotter without the hundreds already loaded,
