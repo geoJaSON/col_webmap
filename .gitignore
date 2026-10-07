@@ -12,6 +12,9 @@ next-env.d.ts
 __pycache__/
 .DS_Store
 
+# Large local shoreline source; the clipped GeoJSON snapshots are committed.
+Environmental_Sensitivity_Index_Shoreline*.gpkg
+
 # Lock files a spreadsheet app leaves while a workbook is open --
 # LibreOffice (.~lock.<name>#) and Excel (~$<name>). One was committed once.
 .~lock.*#

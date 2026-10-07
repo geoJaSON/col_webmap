@@ -67,6 +67,33 @@
     "sizeKb": 1049
   },
   {
+    "sourceFile": "Environmental_Sensitivity_Index_Shoreline_2024_view_-5986554938641667011.gpkg",
+    "sourceLayer": "ESI_Shoreline",
+    "sourceFeatures": 48404,
+    "clipPaddingFeet": 3000,
+    "applicationCount": 78,
+    "clipCrs": "+proj=aeqd +lat_0=28.806935 +lon_0=-95.88280499999999 +datum=WGS84 +units=m +no_defs +type=crs",
+    "simplifyMeters": 1,
+    "coverageDescription": "ESI 2024 shoreline segments within 3,000 ft of the COL polygons.",
+    "id": "shorelines",
+    "label": "Shorelines",
+    "color": "#4c9b72",
+    "bufferFeet": 1000,
+    "geometryType": "line",
+    "file": "shorelines.geojson",
+    "features": 416,
+    "sources": [
+      "esi-shorelines"
+    ],
+    "bounds": [
+      -97.030487,
+      28.066028,
+      -94.665351,
+      29.539007
+    ],
+    "sizeKb": 421
+  },
+  {
     "id": "east-redfish",
     "label": "East Redfish permit area",
     "color": "#a78bfa",

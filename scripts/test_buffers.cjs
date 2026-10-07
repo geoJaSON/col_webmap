@@ -42,4 +42,18 @@ const restoration = { type: "Feature", properties: {}, geometry: {
   type: "Polygon", coordinates: [[[-96.001, 29], [-95.999, 29], [-95.999, 29.002], [-96.001, 29.002], [-96.001, 29]]],
 } };
 assert.equal(bufferInView(indexed(restoration), 1000, view).features.length, 1, "restoration buffers still work");
-console.log("Buffer checks passed: 500 ft each side, zero, viewport edge, distant culling, multipart, polygon.");
+
+const shorelineBuffer = bufferInView(sample, 1000, view);
+const [, shorelineSouth, , shorelineNorth] = bboxOfGeometry(shorelineBuffer.features[0].geometry);
+assert.ok(Math.abs((shorelineNorth - 29) * metersPerDegree - 304.8) < 0.1, "1,000 ft north of shoreline");
+assert.ok(Math.abs((29 - shorelineSouth) * metersPerDegree - 304.8) < 0.1, "1,000 ft south of shoreline");
+const shorelines = JSON.parse(fs.readFileSync(path.resolve(__dirname, "../public/layers/shorelines.geojson"), "utf8"));
+const shorelineIndex = indexCategory(shorelines);
+const fullView = [-98, 27, -94, 31];
+const actualBuffers = bufferInView(shorelineIndex, 1000, fullView);
+assert.equal(actualBuffers.features.length, shorelines.features.length, "every published shoreline buffers successfully");
+for (const feature of actualBuffers.features) {
+  assert.ok(["Polygon", "MultiPolygon"].includes(feature.geometry.type));
+  assert.ok(bboxOfGeometry(feature.geometry).every(Number.isFinite));
+}
+console.log("Buffer checks passed: 500/1,000 ft each side, zero, viewport edge, distant culling, multipart, polygon, published shorelines.");
